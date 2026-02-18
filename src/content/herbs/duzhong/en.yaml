@@ -1,0 +1,25 @@
+# Duzhong
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/duzhong/
+# Language: en
+
+id: "duzhong"
+slug: "duzhong"
+category: "chinese-herbs"
+title: "Duzhong"
+scientific_name: "Eucommia ulmoides Oliv."
+image: "images/duzhong.jpg"
+
+history: |
+  First appeared in Divine Husbandman's Classic of the Materia Medica, classified as upper class.
+
+introduction: |
+  The bark of Eucommia ulmoides Oliv., family Eucommiaceae.
+
+traditional_usage: |
+  Sweet and warm in nature, duzhong tonifies the liver and kidneys, strengthens the sinews and bones and lowers blood pressure. It is also prescribed to prevent miscarriage in cases where the foetus is restless, or the woman is suffering from bleeding. A more recent use of this herb, which is made from the bark of the Eucommia tree, is to treat dizziness caused by hypertension.
+
+metadata:
+  source: "vitaherbapedia.com"
+  source_url: "https://www.vitaherbapedia.com/en/shop/chiherbs-en/duzhong/"
+  scraped_at: "2026-02-18T04:52:06.006Z"
+  language: "en"

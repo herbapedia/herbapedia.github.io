@@ -1,0 +1,18 @@
+# Hydration Factor CTE4
+# Source: https://www.vitaherbapedia.com/en/shop/nutrients-en/hydration-factor-cte4/
+# Language: en
+
+id: "hydration-factor-cte4"
+slug: "hydration-factor-cte4"
+category: "nutrients"
+title: "Hydration Factor CTE4"
+image: "images/hydration-factor-cte4.jpg"
+
+traditional_usage: |
+  Moisturises and rehydrates skin and maintains the correct osmotic balance of water and lipids to keep complexions looking young and fresh.
+
+metadata:
+  source: "vitaherbapedia.com"
+  source_url: "https://www.vitaherbapedia.com/en/shop/nutrients-en/hydration-factor-cte4/"
+  scraped_at: "2026-02-18T04:54:00.562Z"
+  language: "en"

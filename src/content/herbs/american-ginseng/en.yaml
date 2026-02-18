@@ -1,0 +1,28 @@
+# American Ginseng
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/american-ginseng/
+# Language: en
+
+id: "american-ginseng"
+slug: "american-ginseng"
+category: "chinese-herbs"
+title: "American Ginseng"
+scientific_name: "Panax quinquefolium"
+image: "images/american-ginseng.jpg"
+
+history: |
+  The herb is native to eastern North America and Canada and has traditionally been used by native American Indians, but today it is also cultivated in China and France. The forked roots are harvested when ripe, usually after three to four years. It first appeared in the Thoroughly Revised Materia Medica.
+
+introduction: |
+  From the roots of Panax quinquefolium L., family araliaceae.
+
+traditional_usage: |
+  American ginseng is sweet, bitter and cool in nature. It enters the heart, lung and kidney meridians to replenish the chi and yin, clear heat and generate fluids. It is the most effective herb for treating deficiencies of the chi and yin caused by chronic ailments and is useful for generating fluids to treat persistent thirst and dryness of the mouth. Both Chinese medicine and native American Indians have also traditionally used this type of ginseng to enhance libido.
+
+modern_research: |
+  Ginseng is an adaptogen (a product that increases the body's resistance to stress), with anticarcinogenic and antioxidant properties. Clinical studies also show American Ginseng has significant anti-fatigue and anti-diuretic effects.
+
+metadata:
+  source: "vitaherbapedia.com"
+  source_url: "https://www.vitaherbapedia.com/en/shop/chiherbs-en/american-ginseng/"
+  scraped_at: "2026-02-18T04:51:43.995Z"
+  language: "en"

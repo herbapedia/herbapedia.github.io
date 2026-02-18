@@ -1,0 +1,28 @@
+# Dihuang
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/dihuang/
+# Language: en
+
+id: "dihuang"
+slug: "dihuang"
+category: "chinese-herbs"
+title: "Dihuang"
+scientific_name: "Rehmannia glutinosa"
+image: "images/dihuang.jpg"
+
+history: |
+  First appeared in Divine Husbandman's Classic of the Materia Medica.
+
+introduction: |
+  Root of Rehmannia glutinosa Libosch., family Scrophulariaceae.
+
+traditional_usage: |
+  Dihuang is a sweet, cooling herb that affects the heart, kidney and liver channels. It is used primarily for clearing heat and cooling the blood, and especially for eliminating toxins and soothing dermatological disorders caused by heat. It also nourishes yin and promotes the generation of body fluids.
+
+modern_research: |
+  Dihuang has anti-inflammatory properties and affects the endocrine system, as shown by pharmacological studies.
+
+metadata:
+  source: "vitaherbapedia.com"
+  source_url: "https://www.vitaherbapedia.com/en/shop/chiherbs-en/dihuang/"
+  scraped_at: "2026-02-18T04:52:03.616Z"
+  language: "en"

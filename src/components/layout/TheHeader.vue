@@ -6,6 +6,10 @@
         <span class="header__logo-tagline">SIPM</span>
       </router-link>
 
+      <div class="header__search">
+        <SearchBox />
+      </div>
+
       <nav class="header__nav" :class="{ 'header__nav--open': mobileMenuOpen }">
         <router-link :to="localePath('/')" class="header__link" @click="closeMobileMenu">{{ t('nav.home') }}</router-link>
         <router-link :to="localePath('/herbs')" class="header__link" @click="closeMobileMenu">{{ t('nav.herbs') }}</router-link>
@@ -32,6 +36,7 @@ import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { DEFAULT_LOCALE } from '@/i18n/locales'
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher.vue'
+import SearchBox from '@/components/ui/SearchBox.vue'
 
 const { t, locale } = useI18n()
 const route = useRoute()
@@ -128,6 +133,12 @@ const localePath = (path) => {
   gap: var(--spacing-md);
 }
 
+.header__search {
+  flex: 1;
+  max-width: 320px;
+  margin: 0 var(--spacing-xl);
+}
+
 .header__menu-toggle {
   display: none;
   flex-direction: column;
@@ -147,6 +158,10 @@ const localePath = (path) => {
 }
 
 @media (max-width: 768px) {
+  .header__search {
+    display: none;
+  }
+
   .header__menu-toggle {
     display: flex;
   }

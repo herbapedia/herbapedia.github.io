@@ -1,19 +1,13 @@
 #!/usr/bin/env node
 
 /**
- * Herbapedia Scraper v3
- * Extracts herb data from vitaherbapedia.com with multilingual support
+ * Herbapedia Scraper v4
+ * Fixed multilingual scraping with proper content matching
  *
- * Directory structure: src/content/herbs/{slug}/{en|zh-HK|zh-CN}.yaml
- * Images: src/content/herbs/{slug}/images/{slug}.jpg
- *
- * Usage:
- *   node scripts/scrape-herbapedia.js                    # Scrape English (default)
- *   node scripts/scrape-herbapedia.js --lang zh-HK       # Scrape Traditional Chinese
- *   node scripts/scrape-herbapedia.js --lang zh-CN       # Scrape Simplified Chinese
- *   node scripts/scrape-herbapedia.js --all-languages    # Scrape all languages
- *   node scripts/scrape-herbapedia.js --dry-run          # Show what would be scraped
- *   node scripts/scrape-herbapedia.js --skip-images      # Skip image downloads
+ * Strategy:
+ * 1. Scrape English first to establish slug -> directory mapping
+ * 2. For Chinese pages, find the correct directory by matching og:image
+ * 3. Store all languages in the same herb directory
  */
 
 import fs from 'fs'
@@ -24,49 +18,24 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT_DIR = path.resolve(__dirname, '..')
 const CONTENT_DIR = path.join(ROOT_DIR, 'src/content/herbs')
 
-// Configuration
 const CONFIG = {
   baseUrl: 'https://www.vitaherbapedia.com',
+  delay: 200,
   languages: {
-    'en': { code: 'en', path: 'en', file: 'en' },
-    'zh-HK': { code: 'zh-HK', path: 'zh', file: 'zh-HK' },
-    'zh-CN': { code: 'zh-CN', path: 'cn', file: 'zh-CN' }
+    'en': { path: 'en', categorySuffix: '-en' },
+    'zh-HK': { path: 'zh', categorySuffix: '' },
+    'zh-CN': { path: 'cn', categorySuffix: '-cn' }
   },
   categories: {
-    'chinese-herbs': { en: 'chiherbs-en', 'zh-HK': 'chiherbs', 'zh-CN': 'chiherbs-cn' },
-    'western-herbs': { en: 'westherbs-en', 'zh-HK': 'westherbs', 'zh-CN': 'westherbs-cn' },
-    'vitamins': { en: 'vitamins-en', 'zh-HK': 'vitamins', 'zh-CN': 'vitamins-cn' },
-    'minerals': { en: 'minerals-en', 'zh-HK': 'minerals', 'zh-CN': 'minerals-cn' },
-    'nutrients': { en: 'nutrients-en', 'zh-HK': 'nutrients', 'zh-CN': 'nutrients-cn' }
-  },
-  delay: 300
+    'chinese-herbs': 'chiherbs',
+    'western-herbs': 'westherbs',
+    'vitamins': 'vitamins',
+    'minerals': 'minerals',
+    'nutrients': 'nutrients'
+  }
 }
 
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
-
-function safeFilename(str) {
-  if (!str) return ''
-  return str
-    .toLowerCase()
-    .replace(/&#039;/g, "'")
-    .replace(/&amp;/g, '&')
-    .replace(/[^a-z0-9-]/g, '-')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '')
-}
-
-// Extract English slug from og:image URL
-function extractSlugFromImageUrl(imageUrl) {
-  if (!imageUrl) return ''
-  try {
-    const urlObj = new URL(imageUrl)
-    const filename = path.basename(urlObj.pathname)
-    const name = filename.replace(/\.[^.]+$/, '').replace(/-\d+$/, '')
-    return safeFilename(name)
-  } catch {
-    return ''
-  }
-}
 
 function ensureDir(dir) {
   if (!fs.existsSync(dir)) {
@@ -96,26 +65,11 @@ async function downloadImage(url, outputPath) {
     if (!response.ok) throw new Error(`HTTP ${response.status}`)
     const buffer = await response.arrayBuffer()
     fs.writeFileSync(outputPath, Buffer.from(buffer))
-    console.log(`    Downloaded image: ${path.basename(outputPath)}`)
     return true
   } catch (error) {
     console.error(`    Failed to download ${url}:`, error.message)
     return false
   }
-}
-
-function extractHerbUrls(html, baseUrl) {
-  const urls = []
-  const linkPattern = /href="([^"]*\/shop\/[^"]+)"/g
-  let match
-  while ((match = linkPattern.exec(html)) !== null) {
-    const url = match[1]
-    if (url.includes('/shop/') && !urls.includes(url)) {
-      const absoluteUrl = url.startsWith('http') ? url : `${baseUrl}${url}`
-      urls.push(absoluteUrl)
-    }
-  }
-  return urls
 }
 
 function cleanText(text) {
@@ -128,55 +82,95 @@ function cleanText(text) {
     .replace(/&gt;/g, '>')
     .replace(/&#039;/g, "'")
     .replace(/&quot;/g, '"')
+    .replace(/&ndash;/g, '–')
     .replace(/\s+/g, ' ')
     .trim()
 }
 
-// Extract structured content sections from the page
+function extractSlugFromImageUrl(imageUrl) {
+  if (!imageUrl) return null
+  try {
+    const urlObj = new URL(imageUrl)
+    const filename = path.basename(urlObj.pathname)
+    // Remove extension and any trailing numbers like -1, -2
+    const name = filename.replace(/\.[^.]+$/, '').replace(/-\d+$/, '')
+    return name.toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '')
+  } catch {
+    return null
+  }
+}
+
+// Extract slug from URL path (for English pages)
+function extractSlugFromUrl(url) {
+  try {
+    const urlObj = new URL(url)
+    const pathParts = urlObj.pathname.split('/').filter(p => p)
+    // Get the last part of the URL path
+    const lastPart = pathParts[pathParts.length - 1]
+    // Remove trailing slash and clean up
+    return lastPart
+      .toLowerCase()
+      .replace(/[^a-z0-9-]/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, '')
+  } catch {
+    return null
+  }
+}
+
+function extractHerbUrls(html, baseUrl) {
+  const urls = []
+  const linkPattern = /href="([^"]*\/shop\/[^"]+)"/g
+  let match
+  while ((match = linkPattern.exec(html)) !== null) {
+    let url = match[1]
+    if (url.includes('/shop/') && !urls.includes(url)) {
+      if (!url.startsWith('http')) {
+        url = baseUrl + url
+      }
+      urls.push(url)
+    }
+  }
+  return urls
+}
+
 function extractContentSections(html) {
   const sections = {}
 
-  // Match all desc_containter divs with their titles and content
+  // Match desc_containter divs
   const containerPattern = /<div class="desc_containter[^"]*"[^>]*>[\s\S]*?<div class="inner">([^<]+)<\/div>[\s\S]*?<div class="desc_content_container[^"]*">([\s\S]*?)<\/div>\s*<\/div>/gi
 
   let match
   while ((match = containerPattern.exec(html)) !== null) {
-    const title = cleanText(match[1]).toLowerCase()
+    const title = cleanText(match[1])
     const content = cleanText(match[2])
 
-    // Normalize section names
-    let sectionKey = title
-    if (title.includes('history')) sectionKey = 'history'
-    else if (title.includes('introduction')) sectionKey = 'introduction'
-    else if (title.includes('traditional') || title.includes('用法') || title.includes('傳統')) sectionKey = 'traditional_usage'
-    else if (title.includes('modern') || title.includes('research') || title.includes('研究')) sectionKey = 'modern_research'
-    else if (title.includes('botanical') || title.includes('來源')) sectionKey = 'botanical_source'
-    else if (title.includes('function') || title.includes('功能')) sectionKey = 'functions'
-    else if (title.includes('food source') || title.includes('食物來源')) sectionKey = 'food_sources'
-    else if (title.includes('importance') || title.includes('重要性')) sectionKey = 'importance'
-    else if (title.includes('precaution') || title.includes('注意')) sectionKey = 'precautions'
-    else if (title.includes('dosage') || title.includes('劑量')) sectionKey = 'dosage'
+    // Map to standardized keys
+    const titleLower = title.toLowerCase()
+    let key = titleLower
 
-    if (content) {
-      sections[sectionKey] = content
-    }
-  }
+    // English mappings
+    if (titleLower.includes('history')) key = 'history'
+    else if (titleLower.includes('introduction') || titleLower.includes('簡介') || titleLower.includes('简介')) key = 'introduction'
+    else if (titleLower.includes('traditional') || titleLower.includes('傳統') || titleLower.includes('传统') || titleLower.includes('用法')) key = 'traditional_usage'
+    else if (titleLower.includes('modern') || titleLower.includes('研究')) key = 'modern_research'
+    else if (titleLower.includes('botanical') || titleLower.includes('來源') || titleLower.includes('来源')) key = 'botanical_source'
+    else if (titleLower.includes('function') || titleLower.includes('功能') || titleLower.includes('功效')) key = 'functions'
+    else if (titleLower.includes('food source') || titleLower.includes('食物來源') || titleLower.includes('食物来源')) key = 'food_sources'
+    else if (titleLower.includes('importance') || titleLower.includes('重要性')) key = 'importance'
+    else if (titleLower.includes('precaution') || titleLower.includes('注意')) key = 'precautions'
+    else if (titleLower.includes('dosage') || titleLower.includes('劑量') || titleLower.includes('剂量')) key = 'dosage'
+    else if (titleLower.includes('現代') || titleLower.includes('现代')) key = 'modern_usage'
 
-  // Also try to extract from woocommerce tabs (alternative format)
-  const tabPattern = /<div[^>]*class="[^"]*woocommerce-Tabs-panel[^"]*"[^>]*id="[^"]*tab-([^"]+)"[^>]*>([\s\S]*?)<\/div>\s*<\/div>/gi
-  while ((match = tabPattern.exec(html)) !== null) {
-    const tabId = match[1].toLowerCase()
-    const content = cleanText(match[2])
-
-    if (content && !sections[tabId]) {
-      sections[tabId] = content
+    if (content && content.length > 10) {
+      sections[key] = content
     }
   }
 
   return sections
 }
 
-function parseHerbPage(html, url) {
+function parseHerbPage(html, url, language = 'en') {
   const data = {
     url,
     title: '',
@@ -187,21 +181,22 @@ function parseHerbPage(html, url) {
     sections: {}
   }
 
-  // Extract title from og:title or product title
+  // Extract title from og:title
   const ogTitleMatch = html.match(/property="og:title"\s+content="([^"]+)"/)
   if (ogTitleMatch) {
     data.title = ogTitleMatch[1]
       .replace(/\s*-\s*維特草本百科$/, '')
       .replace(/\s*-\s* Vita Herbapedia$/, '')
+      .replace(/\s*-\s*维特草本百科$/, '')
       .trim()
   }
 
   if (!data.title) {
-    const titleMatch = html.match(/<div[^>]*class="product_title[^"]*"[^>]*>\s*([^<]+)/)
+    const titleMatch = html.match(/<h1[^>]*class="product_title[^"]*"[^>]*>\s*([^<]+)/)
     if (titleMatch) data.title = cleanText(titleMatch[1])
   }
 
-  // Extract scientific name (in <h4><i>...</i></h4> after title)
+  // Extract scientific name
   const sciMatch = html.match(/<h4[^>]*class="product_academic_title"[^>]*><i>([^<]+)<\/i><\/h4>/)
   if (sciMatch) {
     data.scientificName = cleanText(sciMatch[1])
@@ -212,36 +207,36 @@ function parseHerbPage(html, url) {
     if (sciMatch2) data.scientificName = cleanText(sciMatch2[1])
   }
 
-  // Extract image URL and slug from it
+  // Extract image URL
   const ogImageMatch = html.match(/property="og:image"\s+content="([^"]+)"/)
   if (ogImageMatch) {
     data.imageUrl = ogImageMatch[1]
+  }
+
+  // Extract slug based on language
+  // For English: use URL path
+  // For Chinese: use image filename to match English
+  if (language === 'en') {
+    data.slug = extractSlugFromUrl(url)
+  } else {
     data.slug = extractSlugFromImageUrl(data.imageUrl)
   }
 
-  // Also try to get image from woocommerce-main-image
-  if (!data.imageUrl) {
-    const imgMatch = html.match(/<img[^>]*class="[^"]*wp-post-image[^"]*"[^>]*src="([^"]+)"/)
-    if (imgMatch) {
-      data.imageUrl = imgMatch[1]
-      data.slug = extractSlugFromImageUrl(data.imageUrl)
+  // Determine category from URL
+  for (const [cat, catPath] of Object.entries(CONFIG.categories)) {
+    if (url.includes(catPath)) {
+      data.category = cat
+      break
     }
   }
 
-  // Extract category
-  if (url.includes('chiherbs')) data.category = 'chinese-herbs'
-  else if (url.includes('westherbs')) data.category = 'western-herbs'
-  else if (url.includes('vitamins')) data.category = 'vitamins'
-  else if (url.includes('minerals')) data.category = 'minerals'
-  else if (url.includes('nutrients')) data.category = 'nutrients'
-
-  // Extract structured content sections
+  // Extract content sections
   data.sections = extractContentSections(html)
 
   return data
 }
 
-function generateYaml(data, language = 'en', slug) {
+function generateYaml(data, language, slug) {
   const lines = [
     `# ${data.title}`,
     `# Source: ${data.url}`,
@@ -257,27 +252,23 @@ function generateYaml(data, language = 'en', slug) {
     lines.push(`scientific_name: "${data.scientificName.replace(/"/g, '\\"')}"`)
   }
 
-  // Image is stored in the images subdirectory
   lines.push(`image: "images/${slug}.jpg"`)
-
   lines.push('')
 
-  // Add all extracted sections
+  // Section order
   const sectionOrder = ['history', 'introduction', 'botanical_source', 'traditional_usage',
-                       'modern_research', 'functions', 'importance', 'food_sources',
-                       'precautions', 'dosage']
+                       'modern_usage', 'modern_research', 'functions', 'importance',
+                       'food_sources', 'precautions', 'dosage']
 
-  // First output known sections in order
   for (const section of sectionOrder) {
     if (data.sections[section]) {
-      const yamlKey = section.replace(/_/g, '_') // Keep underscores
-      lines.push(`${yamlKey}: |`)
+      lines.push(`${section}: |`)
       lines.push(`  ${data.sections[section].replace(/\n/g, '\n  ')}`)
       lines.push('')
     }
   }
 
-  // Then output any other sections
+  // Other sections
   for (const [key, value] of Object.entries(data.sections)) {
     if (!sectionOrder.includes(key)) {
       lines.push(`${key}: |`)
@@ -295,213 +286,245 @@ function generateYaml(data, language = 'en', slug) {
   return lines.join('\n')
 }
 
-async function scrapeLanguage(langCode, options = {}) {
-  const { dryRun = false, skipImages = false } = options
-  const langConfig = CONFIG.languages[langCode]
-  const allHerbs = new Map()
+function getCategoryPath(category, language) {
+  const catPath = CONFIG.categories[category]
+  const langConfig = CONFIG.languages[language]
+  if (language === 'en') {
+    return catPath + langConfig.categorySuffix
+  }
+  return catPath + langConfig.categorySuffix
+}
 
-  console.log(`\n${'='.repeat(50)}`)
-  console.log(`Scraping language: ${langCode}`)
-  console.log(`${'='.repeat(50)}\n`)
+async function getCategoryUrls(category, language) {
+  const langConfig = CONFIG.languages[language]
+  const catPath = getCategoryPath(category, language)
+  const categoryUrl = `${CONFIG.baseUrl}/${langConfig.path}/product-category/${catPath}/`
 
-  for (const [categorySlug, categoryPaths] of Object.entries(CONFIG.categories)) {
-    const categoryPath = categoryPaths[langCode]
-    const categoryUrl = `${CONFIG.baseUrl}/${langConfig.path}/product-category/${categoryPath}/`
+  console.log(`  Category URL: ${categoryUrl}`)
 
-    console.log(`\nCategory: ${categorySlug}`)
-    console.log(`  URL: ${categoryUrl}`)
+  const firstPageHtml = await fetchPage(categoryUrl)
+  if (!firstPageHtml) {
+    console.log('  Failed to fetch category page')
+    return []
+  }
 
-    if (dryRun) {
-      console.log('  [DRY RUN] Would scrape this category')
-      continue
-    }
+  let urls = extractHerbUrls(firstPageHtml, CONFIG.baseUrl)
 
-    const firstPageHtml = await fetchPage(categoryUrl)
-    if (!firstPageHtml) {
-      console.log('  Failed to fetch category page')
-      continue
-    }
+  // Get total items from pagination
+  let totalItems = urls.length
 
-    let herbUrls = extractHerbUrls(firstPageHtml, CONFIG.baseUrl)
+  // Try different pagination formats
+  let pageCountMatch = firstPageHtml.match(/Showing\s+\d+(?:–|–|-|&ndash;)\s*\d+\s+of\s+(\d+)/i)
+  if (!pageCountMatch) {
+    pageCountMatch = firstPageHtml.match(/顯示\s+(\d+)\s+筆結果/)
+  }
+  if (!pageCountMatch) {
+    pageCountMatch = firstPageHtml.match(/显示\s+(\d+)\s+条/)
+  }
 
-    // Check for pagination - handle different formats including Chinese
-    // English: "Showing 1–9 of 100 results"
-    // zh-HK: "顯示 100 筆結果中的 1&ndash;9 筆" (Showing 1-9 of 100 results)
-    // zh-CN: Similar to zh-HK or uses "条"
-    let totalItems = herbUrls.length
+  if (pageCountMatch) {
+    totalItems = parseInt(pageCountMatch[1])
+  }
 
-    // Try English format first
-    let pageCountMatch = firstPageHtml.match(/Showing\s+\d+(?:–|–|-|&ndash;)\s*\d+\s+of\s+(\d+)/i)
+  console.log(`  Found ${totalItems} items (first page: ${urls.length})`)
 
-    // Try zh-HK/zh-CN format: 顯示 100 筆結果中的 1&ndash;9 筆
-    if (!pageCountMatch) {
-      pageCountMatch = firstPageHtml.match(/顯示\s+(\d+)\s+筆結果/)
-    }
+  // Fetch additional pages
+  let pageNum = 2
+  while (urls.length < totalItems && pageNum <= 20) {
+    const pageUrl = `${CONFIG.baseUrl}/${langConfig.path}/product-category/${catPath}/page/${pageNum}/`
+    const pageHtml = await fetchPage(pageUrl)
+    if (!pageHtml) break
 
-    // Alternative Chinese format
-    if (!pageCountMatch) {
-      pageCountMatch = firstPageHtml.match(/显示\s+(\d+)\s+条/)
-    }
+    const pageUrls = extractHerbUrls(pageHtml, CONFIG.baseUrl)
+    if (pageUrls.length === 0) break
 
-    if (pageCountMatch) {
-      totalItems = parseInt(pageCountMatch[1])
-    }
+    urls = [...new Set([...urls, ...pageUrls])]
+    pageNum++
+    await sleep(CONFIG.delay)
+  }
 
-    console.log(`  Found ${totalItems} items (first page: ${herbUrls.length})`)
+  console.log(`  Total URLs: ${urls.length}`)
+  return urls
+}
 
-    // Fetch additional pages
-    let pageNum = 2
-    const maxPages = 20
-    while (herbUrls.length < totalItems && pageNum <= maxPages) {
-      const pageUrl = `${CONFIG.baseUrl}/${langConfig.path}/product-category/${categoryPath}/page/${pageNum}/`
-      console.log(`  Fetching page ${pageNum}...`)
-      const pageHtml = await fetchPage(pageUrl)
-      if (!pageHtml) break
+async function scrapeEnglish() {
+  console.log('\n' + '='.repeat(50))
+  console.log('PHASE 1: Scraping English (baseline)')
+  console.log('='.repeat(50))
 
-      const pageUrls = extractHerbUrls(pageHtml, CONFIG.baseUrl)
-      if (pageUrls.length === 0) break
+  const slugToDir = new Map() // Maps slug -> directory path
+  const dirToSlug = new Map() // Maps directory path -> slug
 
-      herbUrls = [...new Set([...herbUrls, ...pageUrls])]
-      pageNum++
-      await sleep(CONFIG.delay)
-    }
+  for (const category of Object.keys(CONFIG.categories)) {
+    console.log(`\nCategory: ${category}`)
 
-    console.log(`  Total URLs collected: ${herbUrls.length}`)
+    const urls = await getCategoryUrls(category, 'en')
 
-    for (const herbUrl of herbUrls) {
-      console.log(`\n  Scraping: ${herbUrl}`)
+    for (const url of urls) {
+      console.log(`\n  Scraping: ${url}`)
+      const html = await fetchPage(url)
+      if (!html) continue
 
-      const herbHtml = await fetchPage(herbUrl)
-      if (!herbHtml) continue
-
-      const herbData = parseHerbPage(herbHtml, herbUrl)
-
-      if (!herbData.title) {
-        console.log('    Skipping - no title found')
+      const data = parseHerbPage(html, url, 'en')
+      if (!data.title || !data.slug) {
+        console.log('    Skipping - no title or slug')
         continue
       }
 
-      if (!herbData.slug) {
-        console.log('    Skipping - could not extract slug from image URL')
-        continue
-      }
-
-      const slug = herbData.slug
-      console.log(`    Title: ${herbData.title}`)
+      const slug = data.slug
+      console.log(`    Title: ${data.title}`)
       console.log(`    Slug: ${slug}`)
-      console.log(`    Sections: ${Object.keys(herbData.sections).join(', ') || 'none'}`)
+      console.log(`    Sections: ${Object.keys(data.sections).join(', ') || 'none'}`)
 
-      // Create herb directory structure
+      // Create directory
       const herbDir = path.join(CONTENT_DIR, slug)
-      const imagesDir = path.join(herbDir, 'images')
       ensureDir(herbDir)
-      ensureDir(imagesDir)
+      ensureDir(path.join(herbDir, 'images'))
 
-      // Download image (only for English)
-      if (herbData.imageUrl && !skipImages && langCode === 'en') {
-        const ext = path.extname(new URL(herbData.imageUrl).pathname) || '.jpg'
-        const imageFilename = `${slug}${ext}`
-        const imagePath = path.join(imagesDir, imageFilename)
+      // Download image
+      if (data.imageUrl) {
+        const ext = path.extname(new URL(data.imageUrl).pathname) || '.jpg'
+        const imagePath = path.join(herbDir, 'images', `${slug}${ext}`)
         if (!fs.existsSync(imagePath)) {
-          await downloadImage(herbData.imageUrl, imagePath)
-        } else {
-          console.log(`    Image exists: ${imageFilename}`)
+          console.log(`    Downloading image...`)
+          await downloadImage(data.imageUrl, imagePath)
         }
       }
 
-      allHerbs.set(slug, herbData)
+      // Save YAML
+      const yamlContent = generateYaml(data, 'en', slug)
+      fs.writeFileSync(path.join(herbDir, 'en.yaml'), yamlContent)
 
-      // Generate and save YAML in herb directory
-      const yamlContent = generateYaml(herbData, langCode, slug)
-      const yamlPath = path.join(herbDir, `${langConfig.file}.yaml`)
-      fs.writeFileSync(yamlPath, yamlContent)
-      console.log(`    Saved: ${yamlPath}`)
+      slugToDir.set(slug, herbDir)
+      dirToSlug.set(herbDir, slug)
 
       await sleep(CONFIG.delay)
     }
   }
 
-  return allHerbs
+  return slugToDir
 }
 
-async function scrapeHerbapedia(options = {}) {
-  const { dryRun = false, skipImages = false, allLanguages = false, language = 'en' } = options
+async function scrapeChinese(language, slugToDir) {
+  const langName = language === 'zh-HK' ? 'Traditional Chinese' : 'Simplified Chinese'
+  console.log('\n' + '='.repeat(50))
+  console.log(`PHASE: Scraping ${langName}`)
+  console.log('='.repeat(50))
 
-  console.log('Herbapedia Scraper v3')
+  const langConfig = CONFIG.languages[language]
+  let matched = 0
+  let unmatched = 0
+
+  for (const category of Object.keys(CONFIG.categories)) {
+    console.log(`\nCategory: ${category}`)
+
+    const urls = await getCategoryUrls(category, language)
+
+    for (const url of urls) {
+      console.log(`\n  Scraping: ${url}`)
+      const html = await fetchPage(url)
+      if (!html) continue
+
+      const data = parseHerbPage(html, url, language)
+      if (!data.title || !data.slug) {
+        console.log('    Skipping - no title or slug')
+        continue
+      }
+
+      console.log(`    Title: ${data.title}`)
+      console.log(`    Slug: ${data.slug}`)
+      console.log(`    Sections: ${Object.keys(data.sections).join(', ') || 'none'}`)
+
+      // Find the herb directory using the slug from og:image
+      const herbDir = slugToDir.get(data.slug)
+
+      if (herbDir) {
+        console.log(`    Matched to existing directory: ${path.basename(herbDir)}`)
+        matched++
+
+        // Save Chinese YAML
+        const yamlContent = generateYaml(data, language, data.slug)
+        fs.writeFileSync(path.join(herbDir, `${language}.yaml`), yamlContent)
+        console.log(`    Saved: ${language}.yaml`)
+      } else {
+        console.log(`    WARNING: No matching English directory found for slug: ${data.slug}`)
+        unmatched++
+
+        // Create new directory for unmatched herbs
+        const newDir = path.join(CONTENT_DIR, data.slug)
+        ensureDir(newDir)
+        ensureDir(path.join(newDir, 'images'))
+
+        // Still save the content
+        const yamlContent = generateYaml(data, language, data.slug)
+        fs.writeFileSync(path.join(newDir, `${language}.yaml`), yamlContent)
+
+        // Add to mapping for other Chinese variants
+        slugToDir.set(data.slug, newDir)
+      }
+
+      await sleep(CONFIG.delay)
+    }
+  }
+
+  console.log(`\n  Matched: ${matched}, Unmatched: ${unmatched}`)
+}
+
+async function main() {
+  console.log('Herbapedia Scraper v4')
   console.log('====================')
-  console.log('Directory structure: src/content/herbs/{slug}/{lang}.yaml')
-  console.log('Images: src/content/herbs/{slug}/images/{slug}.jpg')
+  console.log('Fixed multilingual scraping')
+
+  // Clear existing content
+  if (fs.existsSync(CONTENT_DIR)) {
+    console.log('\nClearing existing content...')
+    const dirs = fs.readdirSync(CONTENT_DIR, { withFileTypes: true })
+      .filter(d => d.isDirectory())
+      .map(d => d.name)
+
+    for (const dir of dirs) {
+      const dirPath = path.join(CONTENT_DIR, dir)
+      fs.rmSync(dirPath, { recursive: true })
+    }
+    console.log(`Removed ${dirs.length} directories`)
+  }
 
   ensureDir(CONTENT_DIR)
 
-  const languagesToScrape = allLanguages
-    ? Object.keys(CONFIG.languages)
-    : [language]
+  // Phase 1: Scrape English to establish baseline
+  const slugToDir = await scrapeEnglish()
 
-  let totalHerbs = 0
+  console.log(`\n\nEnglish herbs scraped: ${slugToDir.size}`)
 
-  for (const lang of languagesToScrape) {
-    const herbs = await scrapeLanguage(lang, { dryRun, skipImages })
-    totalHerbs += herbs.size
-  }
+  // Phase 2: Scrape Chinese variants
+  await scrapeChinese('zh-HK', slugToDir)
+  await scrapeChinese('zh-CN', slugToDir)
 
-  // Generate/update index
-  if (!dryRun) {
-    console.log('\n\nGenerating index...')
-    const herbDirs = fs.readdirSync(CONTENT_DIR, { withFileTypes: true })
-      .filter(dirent => dirent.isDirectory())
-      .map(dirent => dirent.name)
+  // Generate index
+  console.log('\n\nGenerating index...')
+  const herbDirs = fs.readdirSync(CONTENT_DIR, { withFileTypes: true })
+    .filter(d => d.isDirectory())
+    .map(d => d.name)
 
-    const indexData = {
-      total: herbDirs.length,
-      categories: {},
-      herbs: []
-    }
-
-    for (const slug of herbDirs) {
-      const enPath = path.join(CONTENT_DIR, slug, 'en.yaml')
-      if (fs.existsSync(enPath)) {
-        const content = fs.readFileSync(enPath, 'utf8')
-        const categoryMatch = content.match(/^category:\s*"([^"]+)"/m)
-        const titleMatch = content.match(/^title:\s*"([^"]+)"/m)
-        const sciMatch = content.match(/^scientific_name:\s*"([^"]+)"/m)
-
-        if (categoryMatch) {
-          const cat = categoryMatch[1]
-          indexData.categories[cat] = (indexData.categories[cat] || 0) + 1
-
-          indexData.herbs.push({
-            slug,
-            title: titleMatch ? titleMatch[1] : '',
-            category: cat,
-            scientific_name: sciMatch ? sciMatch[1] : null
-          })
-        }
+  const categories = {}
+  for (const slug of herbDirs) {
+    const enPath = path.join(CONTENT_DIR, slug, 'en.yaml')
+    if (fs.existsSync(enPath)) {
+      const content = fs.readFileSync(enPath, 'utf8')
+      const catMatch = content.match(/^category:\s*"([^"]+)"/m)
+      if (catMatch) {
+        categories[catMatch[1]] = (categories[catMatch[1]] || 0) + 1
       }
     }
-
-    const indexPath = path.join(CONTENT_DIR, 'index.yaml')
-    const indexYaml = `# Herbapedia Index\n# Auto-generated at ${new Date().toISOString()}\n\ntotal: ${indexData.total}\n\ncategories:\n${Object.entries(indexData.categories).map(([k, v]) => `  ${k}: ${v}`).join('\n')}\n`
-    fs.writeFileSync(indexPath, indexYaml)
-    console.log(`Saved index with ${indexData.total} herbs`)
   }
 
+  const indexPath = path.join(CONTENT_DIR, 'index.yaml')
+  const indexYaml = `# Herbapedia Index\n# Auto-generated at ${new Date().toISOString()}\n\ntotal: ${herbDirs.length}\n\ncategories:\n${Object.entries(categories).map(([k, v]) => `  ${k}: ${v}`).join('\n')}\n`
+  fs.writeFileSync(indexPath, indexYaml)
+
   console.log('\n\nScraping complete!')
-  console.log(`Total entries: ${totalHerbs}`)
+  console.log(`Total herb directories: ${herbDirs.length}`)
+  console.log('Categories:', categories)
 }
 
-// Parse arguments
-const args = process.argv.slice(2)
-const options = {
-  dryRun: args.includes('--dry-run'),
-  skipImages: args.includes('--skip-images'),
-  allLanguages: args.includes('--all-languages'),
-  language: 'en'
-}
-
-const langIndex = args.indexOf('--lang')
-if (langIndex !== -1 && args[langIndex + 1]) {
-  options.language = args[langIndex + 1]
-}
-
-scrapeHerbapedia(options).catch(console.error)
+main().catch(console.error)
