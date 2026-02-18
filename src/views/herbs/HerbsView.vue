@@ -26,6 +26,7 @@
           :key="herb.slug"
           :to="localePath(`/herbs/${herb.category}/${herb.slug}`)"
           :title="herb.title"
+          :english-title="herb.english_title"
           :scientific-name="herb.scientific_name"
           :image="herb.resolvedImage"
           :category="herb.category"

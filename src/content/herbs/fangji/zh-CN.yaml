@@ -6,17 +6,21 @@ id: "fangji"
 slug: "fangji"
 category: "chinese-herbs"
 title: "防己"
+english_title: "Fangji"
 scientific_name: "Stephania tetrandra"
 image: "images/fangji.jpg"
 
 history: |
   始载於《神农本草经》，列为中品。
+  
 
 introduction: |
   防己科植物粉防己的根，此为无毒之品种，习称汉防己或粉防己。
+  
 
 traditional_usage: |
   防已晒干后生用，其味苦、辛，药性寒，为袪风湿、止痛、利水消肿的要药，对浮肿、关节痹痛等症状均有良效。容易导致肾衰竭的马兜铃科植物广防己（木防己）现已弃用。
+  
 
 metadata:
   source: "vitaherbapedia.com"

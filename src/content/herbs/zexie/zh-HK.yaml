@@ -6,14 +6,17 @@ id: "zexie"
 slug: "zexie"
 category: "chinese-herbs"
 title: "澤瀉"
+english_title: "Zexie"
 scientific_name: "Alisma orientalis"
 image: "images/zexie.jpg"
 
 introduction: |
   澤瀉科植物澤瀉的塊莖，又名建澤瀉。
+  
 
 traditional_usage: |
   澤瀉是傳統的利水滲濕藥，味甘、淡，藥性寒，歸腎、膀胱經，能利水滲濕、泄熱，傳統醫學廣泛用於濕濁造成的浮腫、小便不利、泄瀉、淋濁帶下等症。
+  
 
 metadata:
   source: "vitaherbapedia.com"

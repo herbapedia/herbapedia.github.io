@@ -6,17 +6,21 @@ id: "chuanxinlian"
 slug: "chuanxinlian"
 category: "chinese-herbs"
 title: "穿心莲"
+english_title: "Chuanxinlian"
 scientific_name: "Andrographis paniculata"
 image: "images/chuanxinlian.jpg"
 
 history: |
   始载於〔广州部坠〕《常用中草葯手册》
+  
 
 introduction: |
   爵床科植物穿心莲的全草
+  
 
 traditional_usage: |
   穿心莲为味苦而药性大寒的清热药，归於肺、胃、大肠、小肠经，能清热解毒、燥湿消肿，常用於热毒导致的咽喉肿痛等。
+  
 
 metadata:
   source: "vitaherbapedia.com"

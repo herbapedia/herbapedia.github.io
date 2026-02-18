@@ -6,17 +6,21 @@ id: "vitamin-b2"
 slug: "vitamin-b2"
 category: "vitamins"
 title: "維他命 B2 又名核黃素"
+english_title: "Vitamin B2"
 scientific_name: "Riboflavin, Lactoflavin"
 image: "images/vitamin-b2.jpg"
 
 introduction: |
   每日需求 男仕每日1.3毫克，女仕:每日1.1毫克 維他命 B2的來源 內臟如肝、腎和心；以及奶、杏仁、乳酪、蛋、瘦肉、天然蘑菇、啤酒和小麥穀皮都含有維他命B2。
+  
 
 traditional_usage: |
   核黃素參與碳水化合物、蛋白質和脂肪的代謝作用，製造紅血球、抗體和神經傳導物質也需要核黃素。核黃素也能加強其他維他命B的功效，確保其他維他命B能順利運作。核黃素屬水溶性，容易隨汗和尿液排出體外，必須從日常飲食中額外補充。
+  
 
 functions: |
   幫助碳水化合物、蛋白質和脂肪的新陳代謝，使身體從食物中獲得能量保持口腔、口唇、舌頭及眼睛健康保持皮膚、毛髮及指甲的健康
+  
 
 metadata:
   source: "vitaherbapedia.com"

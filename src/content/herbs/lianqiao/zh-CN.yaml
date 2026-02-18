@@ -6,17 +6,21 @@ id: "lianqiao"
 slug: "lianqiao"
 category: "chinese-herbs"
 title: "连翘"
+english_title: "Lianqiao"
 scientific_name: "Forsythia suspensa"
 image: "images/lianqiao.jpg"
 
 history: |
   始载於《神农本草经》，列为下品
+  
 
 introduction: |
   木犀科植物连翘的果实去除种子
+  
 
 traditional_usage: |
   连翘是传统的清热解毒中药，药味苦，药性微寒，归肺、心、胆经，能清热解毒、消痈散结、疏散风热，用於热毒疮疡，有「疮家圣药」之称，亦用於治疗外感风热，常与金银花同用。
+  
 
 metadata:
   source: "vitaherbapedia.com"

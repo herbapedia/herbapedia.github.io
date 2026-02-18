@@ -6,14 +6,17 @@ id: "grape-seed"
 slug: "grape-seed"
 category: "western-herbs"
 title: "葡萄核"
+english_title: "Grape Seed"
 scientific_name: "Vitis vinifera"
 image: "images/grape-seed.jpg"
 
 introduction: |
   葡萄核提取自葡萄的种子。
+  
 
 traditional_usage: |
   葡萄核蕴含丰富抗氧化剂和生物类黄酮，有助保护细胞免受由氧化和游离基造成之损害。葡萄核能促进健康循环，稳定胶原蛋白和弹性蛋白，改善和保护皮肤的弹性。
+  
 
 metadata:
   source: "vitaherbapedia.com"

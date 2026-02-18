@@ -6,17 +6,21 @@ id: "deer-horn-gelatine"
 slug: "deer-horn-gelatine"
 category: "chinese-herbs"
 title: "鹿角胶"
+english_title: "Deer horn gelatine"
 scientific_name: "Colla Cornus Cervi"
 image: "images/deer-horn-gelatine.jpg"
 
 history: |
   始载於《神农本草经》，列为中品
+  
 
 introduction: |
   鹿科动物梅花或马鹿的尚未角化的幼角
+  
 
 traditional_usage: |
   将鹿角经水煎熬浓缩而成的固体胶就是鹿角胶，其药性甘、咸，温。归於肝、肾经，能温补肝肾、益精血，用於肾阳虚弱、精血不足，常用以调理虚寒体质，需要烊化服用，或加入中成药中使用。
+  
 
 metadata:
   source: "vitaherbapedia.com"

@@ -6,13 +6,16 @@ id: "zinc"
 slug: "zinc"
 category: "minerals"
 title: "鋅"
+english_title: "Zinc"
 image: "images/zinc.jpg"
 
 introduction: |
   食物來源包括牛肉、肝臟、牡蠣、香料和小麥穀皮。
+  
 
 traditional_usage: |
   鋅是維持皮膚、骨骼及毛髮健康所必須的微量元素，亦是負責消化和呼吸功能所需的酵素的重要成份。其他功能包括促進紅血球的二氧化碳傳送、加強骨骼內的鈣存量、強化骨質、促進核酸及蛋白質的合成和代謝，鋅更有助維持生殖系統健康、促進傷口癒合、維持胰島素保持正常水平及維持味覺功能。
+  
 
 metadata:
   source: "vitaherbapedia.com"

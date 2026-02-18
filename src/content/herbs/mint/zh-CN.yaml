@@ -6,11 +6,13 @@ id: "mint"
 slug: "mint"
 category: "chinese-herbs"
 title: "薄荷"
+english_title: "Mint"
 scientific_name: "Mentha haplocalyx"
 image: "images/mint.jpg"
 
 traditional_usage: |
   薄荷是发散风热药，味辛，药性凉，归肺、肝经，能疏散风热、清利头目、利咽、疏肝解鬱、透疹，常用於风热感冒、头痛、咽痛。
+  
 
 metadata:
   source: "vitaherbapedia.com"

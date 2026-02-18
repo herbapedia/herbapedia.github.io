@@ -6,14 +6,17 @@ id: "cangzhu"
 slug: "cangzhu"
 category: "chinese-herbs"
 title: "蒼朮"
+english_title: "Cangzhu"
 scientific_name: "Atractylodes lancea (Thunb.) DC., Atractylodes chinensis (DC. ) Koidz."
 image: "images/cangzhu.jpg"
 
 history: |
   始載於《神農本草經》，但無白朮、蒼朮之分，統稱為"朮"。
+  
 
 traditional_usage: |
   蒼朮屬於芳香化濕藥，藥味辛而苦，藥性溫，歸於脾、胃經，能有效燥濕健脾、袪風濕，對風寒挾濕的表證具發汗解表的作用，又能明目，能改善眼澀、視力下降等問題。
+  
 
 metadata:
   source: "vitaherbapedia.com"

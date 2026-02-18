@@ -6,11 +6,13 @@ id: "duhuo"
 slug: "duhuo"
 category: "chinese-herbs"
 title: "独活"
+english_title: "Duhuo"
 scientific_name: "radix angelicae pubescentisa"
 image: "images/duhuo.jpg"
 
 traditional_usage: |
   独活属於祛风湿药，药味辛、苦，药性微温，归肾、膀胱经，能用於祛风除湿，通痹止痛。用於风寒湿痹，腰膝疼痛，伏风头痛。
+  
 
 metadata:
   source: "vitaherbapedia.com"

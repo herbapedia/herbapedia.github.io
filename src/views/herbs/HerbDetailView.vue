@@ -30,6 +30,7 @@
           <div class="herb-detail__meta">
             <span class="herb-detail__category">{{ categoryTitle }}</span>
             <h1 class="herb-detail__title">{{ herb.title }}</h1>
+            <p v-if="herb.english_title" class="herb-detail__english-title">{{ herb.english_title }}</p>
             <p v-if="herb.scientific_name" class="herb-detail__scientific">
               {{ herb.scientific_name }}
             </p>
@@ -251,6 +252,12 @@ watch([locale, slug], ([newLocale, newSlug]) => {
 
 .herb-detail__title {
   margin-bottom: var(--spacing-sm);
+}
+
+.herb-detail__english-title {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-light);
+  margin: 0 0 var(--spacing-xs);
 }
 
 .herb-detail__scientific {

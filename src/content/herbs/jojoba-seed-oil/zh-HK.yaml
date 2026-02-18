@@ -6,14 +6,17 @@ id: "jojoba-seed-oil"
 slug: "jojoba-seed-oil"
 category: "western-herbs"
 title: "祖祖巴油"
+english_title: "Jojoba Seed Oil"
 scientific_name: "Simmondsia chinensis"
 image: "images/jojoba-seed-oil.jpg"
 
 introduction: |
   祖祖巴油源自美國南部和墨西哥北部的一種灌木Simmondsia chinensis 的種子。
+  
 
 traditional_usage: |
   祖祖巴油經化學組合成，其油份與人體皮膚油份相似，容易滲入和滋潤皮膚表層，為化妝用品的重要成份之一。祖祖巴油蘊含豐富的維生素 E，亦是知名的藥用油，具有殺黴菌特性，可治療眼睛和咽喉感染及任何類型的皮膚病。
+  
 
 metadata:
   source: "vitaherbapedia.com"

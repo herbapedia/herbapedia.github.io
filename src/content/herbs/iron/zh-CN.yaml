@@ -6,13 +6,16 @@ id: "iron"
 slug: "iron"
 category: "minerals"
 title: "铁"
+english_title: "Iron"
 image: "images/iron.jpg"
 
 introduction: |
   可在红肉、蛋黄及深绿色的多叶蔬菜中找到。
+  
 
 traditional_usage: |
   於血液中负责运载氧气的血红蛋白，是由铁与蛋白质结合而成。另外，在代谢过程中参予製造身体能量之酵素，也需要铁。
+  
 
 metadata:
   source: "vitaherbapedia.com"

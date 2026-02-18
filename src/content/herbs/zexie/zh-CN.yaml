@@ -6,14 +6,17 @@ id: "zexie"
 slug: "zexie"
 category: "chinese-herbs"
 title: "泽泻"
+english_title: "Zexie"
 scientific_name: "Alisma orientalis"
 image: "images/zexie.jpg"
 
 introduction: |
   泽泻科植物泽泻的块茎，又名建泽泻。
+  
 
 traditional_usage: |
   泽泻是传统的利水渗湿药，味甘、淡，药性寒，归肾、膀胱经，能利水渗湿、泄热，传统医学广泛用于湿浊造成的浮肿、小便不利、泄泻、淋浊带下等症。
+  
 
 metadata:
   source: "vitaherbapedia.com"

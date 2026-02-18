@@ -6,13 +6,16 @@ id: "potassium"
 slug: "potassium"
 category: "minerals"
 title: "钾"
+english_title: "Potassium"
 image: "images/potassium.jpg"
 
 introduction: |
   来源包括乾果、糖蜜、马铃薯麵粉、米穀皮、海草、大豆麵粉、香料、向日葵籽和小麦穀皮。
+  
 
 traditional_usage: |
   钾对身体的许多功能都十分重要，包括控制细胞之间的养份传送和放松平滑肌(包括心肌肉)，释放胰岛素时磷酸化作用需要的酵素也需要钾。
+  
 
 metadata:
   source: "vitaherbapedia.com"

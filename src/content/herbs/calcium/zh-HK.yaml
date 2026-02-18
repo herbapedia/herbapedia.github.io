@@ -6,13 +6,16 @@ id: "calcium"
 slug: "calcium"
 category: "minerals"
 title: "鈣"
+english_title: "Calcium"
 image: "images/calcium.jpg"
 
 introduction: |
   可在奶酪、小麥和大豆麵粉、奶和奶製品、豆奶和大豆產品中找到。
+  
 
 traditional_usage: |
   鈣是建造骨頭和牙齒、保持骨質密度的重要營養素。鈣的其他功能包括促進血液凝固、肌肉 (尤其是心臟) 的收縮和放鬆，管理和傳遞腦訊息、維持細胞之間的滲透性、酵素的活化，以及控制荷爾蒙分泌等。
+  
 
 metadata:
   source: "vitaherbapedia.com"

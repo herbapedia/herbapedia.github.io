@@ -6,13 +6,16 @@ id: "choline"
 slug: "choline"
 category: "nutrients"
 title: "胆碱"
+english_title: "Choline"
 image: "images/choline.jpg"
 
 introduction: |
   可在食物包括蛋黄、蛋、肝脏、大豆、包心菜、小麦穀皮、米穀皮 和全麦製品中找到。补充的来源包括酵母菌、小麦肧，大豆、卵磷脂、蛋黄卵磷脂、合成胆碱和胆碱衍生物。
+  
 
 traditional_usage: |
   胆碱对於维持肝脏健康和防止脂肪积聚肝脏异常重要。胆碱是製造神经传递物质乙醯胆素的必要成份，它有助於传送神经脉衝，可在各种不同的生化反应中提供甲基，而胆碱亦是构成磷脂质 phosphatidylcholine 的必要成份，而phosphatidylcholine则有助建造细胞膜。
+  
 
 metadata:
   source: "vitaherbapedia.com"

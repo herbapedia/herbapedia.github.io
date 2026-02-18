@@ -6,14 +6,17 @@ id: "shengma"
 slug: "shengma"
 category: "chinese-herbs"
 title: "升麻"
+english_title: "Shengma"
 scientific_name: "Cimicifuga heracleifolia Kom."
 image: "images/shengma.jpg"
 
 history: |
   始载於《神农本草经》，列为上品
+  
 
 traditional_usage: |
   升麻是常用的发散风热药，药味辛、甘，药性微寒，归肺、脾、胃、大肠经，能清热解毒、发表透疹；又能升举阳气，常用於气虚下陷所致的器官下垂、崩漏下血等，常与党蔘、黄蓍等中药同用。
+  
 
 metadata:
   source: "vitaherbapedia.com"

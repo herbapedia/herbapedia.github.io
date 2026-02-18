@@ -6,17 +6,21 @@ id: "chinese-angelica-or-dong-quai"
 slug: "chinese-angelica-or-dong-quai"
 category: "chinese-herbs"
 title: "当归"
+english_title: "Chinese Angelica or Dong Quai"
 scientific_name: "Angelica sinensis"
 image: "images/chinese-angelica-or-dong-quai.jpg"
 
 history: |
   始载於《神农本草经》，列为中品
+  
 
 introduction: |
   伞形科植物当归的根，分为当归身（补血）及当归尾（活血）
+  
 
 traditional_usage: |
   当归是伞形科多年生草本植物当归的根，为传统常用的补血药，药味甘、辛，药性温，归肝、心、脾经，能补血活血、调经止痛，有助促进心血管循环系统健康，亦常用於调理女性月经不调。
+  
 
 metadata:
   source: "vitaherbapedia.com"

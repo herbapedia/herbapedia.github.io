@@ -6,13 +6,16 @@ id: "chitosan"
 slug: "chitosan"
 category: "nutrients"
 title: "甲殼素"
+english_title: "Chitosan"
 image: "images/chitosan.jpg"
 
 introduction: |
   甲殼素由蟹殼質經反乙鹽化所產生；蟹殼質是甲殼綱動物如蟹及蝦的外殼的構成元素。
+  
 
 functions: |
   甲殼素被形容為一塊「吸脂磁鐵」，能從消化系統中吸取多餘脂肪，然後排出體外，讓甲殼素使用者輕鬆減去體重，免除節食的煩惱。
+  
 
 metadata:
   source: "vitaherbapedia.com"

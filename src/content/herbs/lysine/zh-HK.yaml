@@ -6,14 +6,17 @@ id: "lysine"
 slug: "lysine"
 category: "nutrients"
 title: "賴氨酸"
+english_title: "Lysine"
 scientific_name: "L-Lysine"
 image: "images/lysine.jpg"
 
 introduction: |
   賴氨酸可在具豐富蛋白質的食物中找到，包括肉、奶酪(尤其是巴馬乾酪)、某些魚(例如：鱈魚和沙丁魚)、堅果和蛋。豆類植物也含豐富賴氨酸。
+  
 
 traditional_usage: |
   賴氨酸是人體不能自行製造的必需氨基酸， 故身體必須由膳食中吸取。賴氨酸對於小孩的健康成長，尤其是大腦發育十分重要。
+  
 
 metadata:
   source: "vitaherbapedia.com"

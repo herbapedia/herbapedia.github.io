@@ -6,14 +6,17 @@ id: "glycine"
 slug: "glycine"
 category: "nutrients"
 title: "甘氨酸"
+english_title: "Glycine"
 scientific_name: "l-glycine"
 image: "images/glycine.jpg"
 
 introduction: |
   含豐富蛋白質的食物有大量甘氨酸。它可在魚、肉、豆和乳製品中找到。
+  
 
 functions: |
   甘氨酸是一種氨基酸，負責幫助合成蛋白質和氨基酸，製造核酸(傳遞遺傳物質)和將葡萄糖轉化成能量。它也負責製造膽汁，對維持健康消化系統非常重要。甘氨酸也在中樞神經系統中協助神經傳遞。
+  
 
 metadata:
   source: "vitaherbapedia.com"

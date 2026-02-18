@@ -19,6 +19,7 @@
     </div>
     <div class="herb-card__content">
       <h3 class="herb-card__title">{{ title }}</h3>
+      <p v-if="englishTitle" class="herb-card__english">{{ englishTitle }}</p>
       <p v-if="scientificName" class="herb-card__scientific">{{ scientificName }}</p>
     </div>
   </router-link>
@@ -30,6 +31,7 @@ import { computed } from 'vue'
 const props = defineProps({
   to: { type: String, required: true },
   title: { type: String, required: true },
+  englishTitle: { type: String, default: '' },
   scientificName: { type: String, default: '' },
   image: { type: String, default: '' },
   category: { type: String, default: '' }
@@ -124,6 +126,12 @@ const categoryLabel = computed(() => categoryLabels[props.category] || props.cat
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
   color: var(--color-primary);
+  margin: 0 0 var(--spacing-xs);
+}
+
+.herb-card__english {
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
   margin: 0 0 var(--spacing-xs);
 }
 

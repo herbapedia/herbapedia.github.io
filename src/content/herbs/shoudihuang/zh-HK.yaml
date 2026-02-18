@@ -6,14 +6,17 @@ id: "shoudihuang"
 slug: "shoudihuang"
 category: "chinese-herbs"
 title: "熟地 又名熟地黃"
+english_title: "Shoudihuang"
 scientific_name: "Processed Rehmannia glutinosa"
 image: "images/shoudihuang.jpg"
 
 introduction: |
   參科多年生草本植物地黃的根，經加黃酒拌蒸至同外色黑、油潤，或直接蒸至黑潤而成。
+  
 
 traditional_usage: |
   參科性甘，藥性微溫，歸屬肝、腎兩經。功效補血滋陰，益精填髓。主治血虛萎黃，眩暈，心悸失眠，月經不調，崩漏，潮熱盗汗，腰膝酸軟，腎虛耳聲嘈雜等。
+  
 
 metadata:
   source: "vitaherbapedia.com"

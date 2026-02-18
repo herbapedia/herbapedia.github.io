@@ -6,17 +6,21 @@ id: "hehuanhua"
 slug: "hehuanhua"
 category: "chinese-herbs"
 title: "合歡花"
+english_title: "Hehuanhua"
 scientific_name: "Albizzia Julibrissin Durazz"
 image: "images/hehuanhua.jpg"
 
 history: |
   始載於《神農本草經》，列為中品
+  
 
 introduction: |
   豆科植物合歡的花或花蕾
+  
 
 traditional_usage: |
   合歡花性味甘平，歸屬心、肝經，長於安神解鬱，多用於虛煩不眠、抑鬱不歡、健忘多夢等症，常與首烏藤等安神藥同用。 《神農本草經》中記載：「主安五臟，和心志，令人歡樂無懮。」
+  
 
 metadata:
   source: "vitaherbapedia.com"

@@ -6,11 +6,13 @@ id: "maidong"
 slug: "maidong"
 category: "chinese-herbs"
 title: "麥冬"
+english_title: "Maidong"
 scientific_name: "Ophiopogon japonicus"
 image: "images/maidong.jpg"
 
 traditional_usage: |
   麥冬是百合科草本植物，藥用部份是塊根，採挖後經去心曬乾生用，藥味甘、微苦，藥性微寒，歸心、肺、胃經，具有養陰潤肺、益胃生津、清心除煩，常用於肺陰不足而有燥熱的乾咳、黃痰，常配天冬使用，亦可治陰虛的口渴咽乾、心煩不眠等。
+  
 
 metadata:
   source: "vitaherbapedia.com"

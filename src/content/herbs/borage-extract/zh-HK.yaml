@@ -6,11 +6,13 @@ id: "borage-extract"
 slug: "borage-extract"
 category: "western-herbs"
 title: "琉璃苣精華"
+english_title: "Borage Extract"
 scientific_name: "Borago officinalis L."
 image: "images/borage-extract.jpg"
 
 traditional_usage: |
   琉璃苣可當作小便暢通劑、止痛劑和潤膚劑。在法國, 琉璃苣經常被用作治療發燒和肺病。外塗方面, 琉璃苣濕敷於膨脹的發炎傷口上。
+  
 
 metadata:
   source: "vitaherbapedia.com"

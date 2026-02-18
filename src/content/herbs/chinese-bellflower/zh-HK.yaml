@@ -6,11 +6,13 @@ id: "chinese-bellflower"
 slug: "chinese-bellflower"
 category: "chinese-herbs"
 title: "桔梗"
+english_title: "Chinese Bellflower"
 scientific_name: "Platycodon grandiflorum"
 image: "images/chinese-bellflower.jpg"
 
 traditional_usage: |
   桔梗是化痰藥，藥味苦、辛，藥性平和，歸肺經，能宣肺袪痰、利咽排膿，常用於咳嗽痰多、咽痛不適等症狀。
+  
 
 metadata:
   source: "vitaherbapedia.com"

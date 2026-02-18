@@ -6,13 +6,16 @@ id: "squalene"
 slug: "squalene"
 category: "nutrients"
 title: "角鲨烯"
+english_title: "Squalene"
 image: "images/squalene.jpg"
 
 introduction: |
   鲨鱼肝油含大量角鲨烯，另外橄榄油、小麦胚油、米穀皮油和酵母都含有小量角鲨烯。
+  
 
 traditional_usage: |
   角鲨烯能对抗游离基，保护肌肤免受阳光和其它物质带来的氧化伤害。角鲨烯具滋润的特性，能迅速渗入肌肤，润而不腻。
+  
 
 metadata:
   source: "vitaherbapedia.com"

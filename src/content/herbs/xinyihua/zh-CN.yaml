@@ -6,14 +6,17 @@ id: "xinyihua"
 slug: "xinyihua"
 category: "chinese-herbs"
 title: "辛夷花 又名辛夷"
+english_title: "Xinyihua"
 scientific_name: "Magnolia denudata"
 image: "images/xinyihua.jpg"
 
 introduction: |
   木兰科植物望春花的花蕾
+  
 
 traditional_usage: |
   辛夷花传统用作发散风寒药，《本草纲目》中云：「治头面目鼻之病。」辛夷花能发散风寒、宣通鼻窍，常用于鼻渊头痛、风寒头痛等。
+  
 
 metadata:
   source: "vitaherbapedia.com"

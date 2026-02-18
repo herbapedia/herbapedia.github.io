@@ -6,14 +6,17 @@ id: "baiziren"
 slug: "baiziren"
 category: "chinese-herbs"
 title: "柏子仁"
+english_title: "Baiziren"
 scientific_name: "Platycladus Orientalis (L)"
 image: "images/baiziren.jpg"
 
 history: |
   始载於《神农本草经》，列为上品
+  
 
 traditional_usage: |
   柏子仁是养心安神药，味甘，药性平和，归心、肾、大肠经，能补心安神、润肠通便，常用於心悸失眠、阴虚所致的盗汗、肠燥便秘等。
+  
 
 metadata:
   source: "vitaherbapedia.com"

@@ -6,14 +6,17 @@ id: "duzhong"
 slug: "duzhong"
 category: "chinese-herbs"
 title: "杜仲"
+english_title: "Duzhong"
 scientific_name: "Eucommia ulmoides Oliv."
 image: "images/duzhong.jpg"
 
 history: |
   始载於《神农本草经》，列为上品
+  
 
 traditional_usage: |
   杜仲是著名的温补药材，味甘而药性温，归入肝、肾经，能补肝肾、强筋骨、安胎，传统用于治疗肝肾不足而致的腰膝酸痛、四肢无力、尿频、性功能下降、胎动不安等。近年发现杜仲有助稳定血压，常用于有血压问题而又肝肾不足的情况。
+  
 
 metadata:
   source: "vitaherbapedia.com"

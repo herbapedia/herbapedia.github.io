@@ -6,13 +6,16 @@ id: "calcium"
 slug: "calcium"
 category: "minerals"
 title: "钙"
+english_title: "Calcium"
 image: "images/calcium.jpg"
 
 introduction: |
   可在奶酪、小麦和大豆麵粉、奶和奶製品、豆奶和大豆产品中找到。
+  
 
 traditional_usage: |
   钙是建造骨头和牙齿、保持骨质密度的重要营养素。钙的其他功能包括促进血液凝固、肌肉 (尤其是心脏) 的收缩和放松，管理和传递脑讯息、维持细胞之间的渗透性、酵素的活化，以及控制荷尔蒙分泌等。
+  
 
 metadata:
   source: "vitaherbapedia.com"

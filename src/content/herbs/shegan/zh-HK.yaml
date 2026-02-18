@@ -6,11 +6,13 @@ id: "shegan"
 slug: "shegan"
 category: "chinese-herbs"
 title: "射干"
+english_title: "Shegan"
 scientific_name: "Belamcanda chinensis"
 image: "images/shegan.jpg"
 
 traditional_usage: |
   射干是傳統的清熱解毒中藥，性味苦寒，歸肺經，由於本品善清肺經實火，所以常用於治療肺熱咳嗽、咳痰黃稠，《本草綱目》記：「射干能降火，故古方治喉痺咽痛為要藥。」，常與桑白皮、桔梗等同用。
+  
 
 metadata:
   source: "vitaherbapedia.com"

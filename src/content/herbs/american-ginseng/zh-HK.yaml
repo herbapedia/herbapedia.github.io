@@ -6,14 +6,17 @@ id: "american-ginseng"
 slug: "american-ginseng"
 category: "chinese-herbs"
 title: "西洋蔘"
+english_title: "American Ginseng"
 scientific_name: "Panax quinquefolium"
 image: "images/american-ginseng.jpg"
 
 introduction: |
   五加科植物西洋蔘的根，野生產於美國及加拿大，法國及本國產為培植品種。
+  
 
 traditional_usage: |
   西洋蔘是補氣藥，味甘、微苦，藥性寒，歸心、肺、腎經，能補氣養陰，清熱生津，常用於熱病氣陰兩傷，煩倦、口渴等症狀，常與生地黃、麥冬等同用。
+  
 
 metadata:
   source: "vitaherbapedia.com"
