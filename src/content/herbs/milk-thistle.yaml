@@ -1,0 +1,17 @@
+# Milk Thistle
+# Source: https://www.vitaherbapedia.com/en/shop/westherbs-en/milk-thistle/
+# Language: en
+
+id: "milk-thistle"
+slug: "milk-thistle"
+category: "western-herbs"
+title: "Milk Thistle"
+image: "/images/herbs/milk-thistle.jpg"
+
+description: |
+  Milk Thistle preparations have been used in European medicine for over 2000 years to treat liver and biliary tract diseases, and to cure people who have ingested poisonous mushrooms.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:32:33.718Z"
+  language: "en"

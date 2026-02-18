@@ -1,0 +1,14 @@
+# Clove oil
+# Source: https://www.vitaherbapedia.com/en/shop/westherbs-en/clove-oil/
+# Language: en
+
+id: "clove-oil"
+slug: "clove-oil"
+category: "western-herbs"
+title: "Clove oil"
+image: "/images/herbs/clove-oil.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:32:18.132Z"
+  language: "en"

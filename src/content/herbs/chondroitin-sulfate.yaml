@@ -1,0 +1,14 @@
+# Chondroitin Sulfate
+# Source: https://www.vitaherbapedia.com/en/shop/nutrients-en/chondroitin-sulfate/
+# Language: en
+
+id: "chondroitin-sulfate"
+slug: "chondroitin-sulfate"
+category: "nutrients"
+title: "Chondroitin Sulfate"
+image: "/images/herbs/chondroitin-sulfate.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:33:19.271Z"
+  language: "en"

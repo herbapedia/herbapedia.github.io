@@ -1,0 +1,14 @@
+# Vitamin B12
+# Source: https://www.vitaherbapedia.com/en/shop/vitamins-en/vitamin-b12/
+# Language: en
+
+id: "vitamin-b12"
+slug: "vitamin-b12"
+category: "vitamins"
+title: "Vitamin B12"
+image: "/images/herbs/vitamin-b12.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:32:47.772Z"
+  language: "en"

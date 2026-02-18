@@ -1,0 +1,14 @@
+# Balm mint oil
+# Source: https://www.vitaherbapedia.com/en/shop/westherbs-en/balm-mint-oil/
+# Language: en
+
+id: "balm-mint-oil"
+slug: "balm-mint-oil"
+category: "western-herbs"
+title: "Balm mint oil"
+image: "/images/herbs/balm-mint-oil.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:32:12.675Z"
+  language: "en"

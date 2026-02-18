@@ -1,0 +1,14 @@
+# Jojoba Seed Oil
+# Source: https://www.vitaherbapedia.com/en/shop/westherbs-en/jojoba-seed-oil/
+# Language: en
+
+id: "jojoba-seed-oil"
+slug: "jojoba-seed-oil"
+category: "western-herbs"
+title: "Jojoba Seed Oil"
+image: "/images/herbs/jojoba-seed-oil.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:32:30.455Z"
+  language: "en"

@@ -1,0 +1,206 @@
+/* CSS Reset and Base Styles - Aligned with SIPM Design System */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Colors - Teal & Gold (SIPM brand colors) */
+  --color-primary: #3b7e80;
+  --color-primary-light: #5a9e9f;
+  --color-primary-dark: #2d6263;
+  --color-secondary: #3e6c69;
+  --color-secondary-light: #5a8a87;
+  --color-secondary-dark: #2a4d4b;
+  --color-accent: #e6d388;
+  --color-accent-light: #f0e4a8;
+  --color-accent-dark: #c9a227;
+  --color-highlight: #9aab83;
+
+  /* Semantic colors */
+  --color-success: #52b788;
+  --color-warning: #f4d35e;
+  --color-error: #e63946;
+
+  /* Text colors */
+  --color-text: #1f2937;
+  --color-text-light: #6b7280;
+  --color-text-inverse: #f9fafb;
+
+  /* Background colors */
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+  --color-border: #e5e7eb;
+
+  /* Glass/Liquid */
+  --color-glass: rgba(255, 255, 255, 0.1);
+  --color-glass-light: rgba(255, 255, 255, 0.15);
+  --color-glass-dark: rgba(0, 0, 0, 0.1);
+  --color-glass-border: rgba(255, 255, 255, 0.2);
+  --color-glass-border-dark: rgba(255, 255, 255, 0.1);
+  --blur-amount: 20px;
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-serif: 'Lora', Georgia, 'Times New Roman', serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+
+  /* Border Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 350ms ease;
+
+  /* Layout */
+  --header-height: 80px;
+  --sidebar-width: 280px;
+  --content-max-width: 1200px;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-primary);
+}
+
+h1 { font-size: var(--font-size-4xl); }
+h2 { font-size: var(--font-size-3xl); }
+h3 { font-size: var(--font-size-2xl); }
+h4 { font-size: var(--font-size-xl); }
+h5 { font-size: var(--font-size-lg); }
+h6 { font-size: var(--font-size-base); font-family: var(--font-sans); }
+
+p { margin-bottom: var(--spacing-md); }
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover { color: var(--color-primary-light); }
+
+/* Utility Classes */
+.container {
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.container-narrow { max-width: 800px; }
+.container-wide { max-width: 1400px; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Glass Effect */
+.glass {
+  background: var(--color-glass);
+  backdrop-filter: blur(var(--blur-amount));
+  -webkit-backdrop-filter: blur(var(--blur-amount));
+  border: 1px solid var(--color-glass-border);
+  border-radius: var(--radius-xl);
+}
+
+.glass-light {
+  background: var(--color-glass-light);
+  backdrop-filter: blur(var(--blur-amount));
+  -webkit-backdrop-filter: blur(var(--blur-amount));
+  border: 1px solid var(--color-glass-border);
+  border-radius: var(--radius-lg);
+}
+
+/* Skip Link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  padding: var(--spacing-sm) var(--spacing-md);
+  z-index: 9999;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus { top: 0; }
+
+/* Responsive */
+@media (max-width: 640px) {
+  :root {
+    --font-size-4xl: 1.875rem;
+    --font-size-5xl: 2.25rem;
+  }
+
+  .container { padding: 0 var(--spacing-md); }
+}

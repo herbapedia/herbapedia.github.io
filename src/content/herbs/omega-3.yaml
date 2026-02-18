@@ -1,0 +1,14 @@
+# Omega 3
+# Source: https://www.vitaherbapedia.com/en/shop/nutrients-en/omega-3/
+# Language: en
+
+id: "omega-3"
+slug: "omega-3"
+category: "nutrients"
+title: "Omega 3"
+image: "/images/herbs/omega-3.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:33:37.355Z"
+  language: "en"

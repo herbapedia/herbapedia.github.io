@@ -1,0 +1,17 @@
+# Peppermint oil
+# Source: https://www.vitaherbapedia.com/en/shop/westherbs-en/peppermint-oil/
+# Language: en
+
+id: "peppermint-oil"
+slug: "peppermint-oil"
+category: "western-herbs"
+title: "Peppermint oil"
+image: "/images/herbs/peppermint-oil.jpg"
+
+description: |
+  Peppermint has been cultivated from ancient times in China and Japan. It was also known as a medicinal herb to the Egyptians and ancient Greeks.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:32:34.832Z"
+  language: "en"

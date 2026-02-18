@@ -1,0 +1,17 @@
+# Dihuang
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/dihuang/
+# Language: en
+
+id: "dihuang"
+slug: "dihuang"
+category: "chinese-herbs"
+title: "Dihuang"
+image: "/images/herbs/dihuang.jpg"
+
+description: |
+  First appeared in Divine Husbandman's Classic of the Materia Medica.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:30:42.599Z"
+  language: "en"

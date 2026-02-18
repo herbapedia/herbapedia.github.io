@@ -1,0 +1,17 @@
+# Evening Primrose Oil
+# Source: https://www.vitaherbapedia.com/en/shop/westherbs-en/evening-primrose-oil/
+# Language: en
+
+id: "evening-primrose-oil"
+slug: "evening-primrose-oil"
+category: "western-herbs"
+title: "Evening Primrose Oil"
+image: "/images/herbs/evening-primrose-oil.jpg"
+
+description: |
+  Evening Primrose is a plant native to North America. Traditionally, it was used externally to treat skin diseases and internally to treat breathing problems and arthritis. It was one of the first medicinal plants brought back to Europe by settlers in the 16th century.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:32:23.766Z"
+  language: "en"

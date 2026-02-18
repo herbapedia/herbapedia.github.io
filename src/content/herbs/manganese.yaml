@@ -1,0 +1,14 @@
+# Manganese
+# Source: https://www.vitaherbapedia.com/en/shop/minerals-en/manganese/
+# Language: en
+
+id: "manganese"
+slug: "manganese"
+category: "minerals"
+title: "Manganese"
+image: "/images/herbs/manganese.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:33:05.955Z"
+  language: "en"

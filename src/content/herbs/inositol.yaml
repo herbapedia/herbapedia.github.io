@@ -1,0 +1,14 @@
+# Inositol
+# Source: https://www.vitaherbapedia.com/en/shop/nutrients-en/inositol/
+# Language: en
+
+id: "inositol"
+slug: "inositol"
+category: "nutrients"
+title: "Inositol"
+image: "/images/herbs/inositol.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:33:28.183Z"
+  language: "en"

@@ -1,0 +1,14 @@
+# Grape Seed
+# Source: https://www.vitaherbapedia.com/en/shop/westherbs-en/grape-seed/
+# Language: en
+
+id: "grape-seed"
+slug: "grape-seed"
+category: "western-herbs"
+title: "Grape Seed"
+image: "/images/herbs/grape-seed.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:32:28.285Z"
+  language: "en"

@@ -1,0 +1,17 @@
+# Suanzaoren
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/suanzaoren/
+# Language: en
+
+id: "suanzaoren"
+slug: "suanzaoren"
+category: "chinese-herbs"
+title: "Suanzaoren"
+image: "/images/herbs/suanzaoren.jpg"
+
+description: |
+  First appeared in Divine Husbandman's Classic of the Materia Medica, classified as upper class.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:31:39.230Z"
+  language: "en"

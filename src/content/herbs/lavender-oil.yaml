@@ -1,0 +1,14 @@
+# Lavender oil
+# Source: https://www.vitaherbapedia.com/en/shop/westherbs-en/lavender-oil/
+# Language: en
+
+id: "lavender-oil"
+slug: "lavender-oil"
+category: "western-herbs"
+title: "Lavender oil"
+image: "/images/herbs/lavender-oil.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:32:32.625Z"
+  language: "en"

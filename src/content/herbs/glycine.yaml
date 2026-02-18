@@ -1,0 +1,14 @@
+# Glycine
+# Source: https://www.vitaherbapedia.com/en/shop/nutrients-en/glycine/
+# Language: en
+
+id: "glycine"
+slug: "glycine"
+category: "nutrients"
+title: "Glycine"
+image: "/images/herbs/glycine.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:33:25.925Z"
+  language: "en"

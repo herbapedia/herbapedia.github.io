@@ -1,0 +1,17 @@
+# Wuweizi
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/wuweizi/
+# Language: en
+
+id: "wuweizi"
+slug: "wuweizi"
+category: "chinese-herbs"
+title: "Wuweizi"
+image: "/images/herbs/wuweizi.jpg"
+
+description: |
+  First appeared in the Divine Husbandman's Classic of the Materia Medica.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:31:53.878Z"
+  language: "en"

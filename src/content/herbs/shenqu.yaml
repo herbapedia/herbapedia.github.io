@@ -1,0 +1,17 @@
+# Shenqu
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/shenqu/
+# Language: en
+
+id: "shenqu"
+slug: "shenqu"
+category: "chinese-herbs"
+title: "Shenqu"
+image: "/images/herbs/shenqu.jpg"
+
+description: |
+  First appeared in Materia Medica of Medicinal Properties.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:31:34.522Z"
+  language: "en"

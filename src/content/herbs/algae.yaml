@@ -1,0 +1,14 @@
+# Algae
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/algae/
+# Language: en
+
+id: "algae"
+slug: "algae"
+category: "chinese-herbs"
+title: "Algae"
+image: "/images/herbs/algae.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:30:13.956Z"
+  language: "en"

@@ -1,0 +1,14 @@
+# Argan oil
+# Source: https://www.vitaherbapedia.com/en/shop/westherbs-en/argan-oil/
+# Language: en
+
+id: "argan-oil"
+slug: "argan-oil"
+category: "western-herbs"
+title: "Argan oil"
+image: "/images/herbs/argan-oil.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:32:11.579Z"
+  language: "en"

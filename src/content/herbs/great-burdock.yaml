@@ -1,0 +1,14 @@
+# Great Burdock
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/great-burdock/
+# Language: en
+
+id: "great-burdock"
+slug: "great-burdock"
+category: "chinese-herbs"
+title: "Great Burdock"
+image: "/images/herbs/great-burdock.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:30:54.990Z"
+  language: "en"

@@ -1,0 +1,17 @@
+# Zhiko
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/zhiko/
+# Language: en
+
+id: "zhiko"
+slug: "zhiko"
+category: "chinese-herbs"
+title: "Zhiko"
+image: "/images/herbs/zhiko.jpg"
+
+description: |
+  First appeared in Grandfather Lei's Discussion of Herb Preparation.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:32:00.633Z"
+  language: "en"

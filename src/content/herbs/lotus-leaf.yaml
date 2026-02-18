@@ -1,0 +1,17 @@
+# Lotus leaf
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/lotus-leaf/
+# Language: en
+
+id: "lotus-leaf"
+slug: "lotus-leaf"
+category: "chinese-herbs"
+title: "Lotus leaf"
+image: "/images/herbs/lotus-leaf.jpg"
+
+description: |
+  First appeared in Divine Husbandman's Classic of the Materia Medica.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:31:13.209Z"
+  language: "en"

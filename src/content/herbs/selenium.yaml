@@ -1,0 +1,14 @@
+# Selenium
+# Source: https://www.vitaherbapedia.com/en/shop/minerals-en/selenium/
+# Language: en
+
+id: "selenium"
+slug: "selenium"
+category: "minerals"
+title: "Selenium"
+image: "/images/herbs/selenium.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:33:08.310Z"
+  language: "en"

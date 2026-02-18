@@ -1,0 +1,17 @@
+# Ginseng
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/ginseng/
+# Language: en
+
+id: "ginseng"
+slug: "ginseng"
+category: "chinese-herbs"
+title: "Ginseng"
+image: "/images/herbs/ginseng.jpg"
+
+description: |
+  Ginseng first appeared in the Divine Husbandman's Classic of the Materia Medica. The species Panax ginseng is thought to have been discovered over 5,000 years ago in the mountains of Manchuria, China. Although probably originally used as food, it quickly became revered for its strength-giving and rejuvenating powers and became an important trade item with neighbouring countries. It is prized for restoring harmony and balance to body: a concept understood in Chinese medicine as Yin Yang Theory. Western medicine looks upon ginseng as an adaptogen, a modern term which essentially means the same thing: restoring natural balance to the body.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:30:52.791Z"
+  language: "en"

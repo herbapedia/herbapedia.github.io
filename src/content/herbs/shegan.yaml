@@ -1,0 +1,17 @@
+# Shegan
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/shegan/
+# Language: en
+
+id: "shegan"
+slug: "shegan"
+category: "chinese-herbs"
+title: "Shegan"
+image: "/images/herbs/shegan.jpg"
+
+description: |
+  First appeared in Divine Husbandman's Classic of the Materia Medica.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:31:32.267Z"
+  language: "en"

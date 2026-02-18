@@ -1,0 +1,17 @@
+# Deer Antler
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/deer-antler/
+# Language: en
+
+id: "deer-antler"
+slug: "deer-antler"
+category: "chinese-herbs"
+title: "Deer Antler"
+image: "/images/herbs/deer-antler.jpg"
+
+description: |
+  First appeared in Divine Husbandman's Classic of the Materia Medica, classified as middle class.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:30:40.349Z"
+  language: "en"

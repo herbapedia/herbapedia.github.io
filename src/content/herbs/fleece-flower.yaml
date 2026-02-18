@@ -1,0 +1,17 @@
+# Fleece Flower
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/fleece-flower/
+# Language: en
+
+id: "fleece-flower"
+slug: "fleece-flower"
+category: "chinese-herbs"
+title: "Fleece Flower"
+image: "/images/herbs/fleece-flower.jpg"
+
+description: |
+  First appeared in Materia Medica of Ri Hua-Zi.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:30:50.533Z"
+  language: "en"

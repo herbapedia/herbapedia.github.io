@@ -1,0 +1,14 @@
+# Vitamin B5
+# Source: https://www.vitaherbapedia.com/en/shop/vitamins-en/vitamin-b5/
+# Language: en
+
+id: "vitamin-b5"
+slug: "vitamin-b5"
+category: "vitamins"
+title: "Vitamin B5"
+image: "/images/herbs/vitamin-b5.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:32:51.107Z"
+  language: "en"

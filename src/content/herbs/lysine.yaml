@@ -1,0 +1,14 @@
+# Lysine
+# Source: https://www.vitaherbapedia.com/en/shop/nutrients-en/lysine/
+# Language: en
+
+id: "lysine"
+slug: "lysine"
+category: "nutrients"
+title: "Lysine"
+image: "/images/herbs/lysine.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:33:31.514Z"
+  language: "en"

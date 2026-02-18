@@ -1,0 +1,14 @@
+# MPC
+# Source: https://www.vitaherbapedia.com/en/shop/nutrients-en/mpc/
+# Language: en
+
+id: "mpc"
+slug: "mpc"
+category: "nutrients"
+title: "MPC"
+image: "/images/herbs/mpc.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:33:36.273Z"
+  language: "en"

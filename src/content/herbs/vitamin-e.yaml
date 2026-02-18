@@ -1,0 +1,14 @@
+# Vitamin E
+# Source: https://www.vitaherbapedia.com/en/shop/vitamins-en/vitamin-e/
+# Language: en
+
+id: "vitamin-e"
+slug: "vitamin-e"
+category: "vitamins"
+title: "Vitamin E"
+image: "/images/herbs/vitamin-e.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:32:57.772Z"
+  language: "en"

@@ -1,0 +1,17 @@
+# Xinyihua
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/xinyihua/
+# Language: en
+
+id: "xinyihua"
+slug: "xinyihua"
+category: "chinese-herbs"
+title: "Xinyihua"
+image: "/images/herbs/xinyihua.jpg"
+
+description: |
+  First appeared in Divine Husbandman's Classic of the Materia Medica.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:31:54.944Z"
+  language: "en"

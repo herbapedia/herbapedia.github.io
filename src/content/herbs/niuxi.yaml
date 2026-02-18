@@ -1,0 +1,17 @@
+# Niuxi
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/niuxi/
+# Language: en
+
+id: "niuxi"
+slug: "niuxi"
+category: "chinese-herbs"
+title: "Niuxi"
+image: "/images/herbs/niuxi.jpg"
+
+description: |
+  First appeared in Divine Husbandman's Classic of the Materia Medica, classisfied as upper class.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:31:20.298Z"
+  language: "en"

@@ -1,0 +1,17 @@
+# Quanshen
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/quanshen/
+# Language: en
+
+id: "quanshen"
+slug: "quanshen"
+category: "chinese-herbs"
+title: "Quanshen"
+image: "/images/herbs/quanshen.jpg"
+
+description: |
+  First appeared in Illustrated Classic of the Materia Medica.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:31:26.430Z"
+  language: "en"

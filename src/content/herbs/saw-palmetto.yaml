@@ -1,0 +1,17 @@
+# Saw Palmetto
+# Source: https://www.vitaherbapedia.com/en/shop/nutrients-en/saw-palmetto/
+# Language: en
+
+id: "saw-palmetto"
+slug: "saw-palmetto"
+category: "nutrients"
+title: "Saw Palmetto"
+image: "/images/herbs/saw-palmetto.jpg"
+
+description: |
+  Saw palmetto berries were first used by Native Americans as a diuretic and sexual tonic, as well as for stomach ache and dysentery.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:33:44.131Z"
+  language: "en"

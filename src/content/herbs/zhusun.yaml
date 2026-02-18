@@ -1,0 +1,17 @@
+# Zhusun
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/zhusun/
+# Language: en
+
+id: "zhusun"
+slug: "zhusun"
+category: "chinese-herbs"
+title: "Zhusun"
+image: "/images/herbs/zhusun.jpg"
+
+description: |
+  First appeared in Grand Materia Medica.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:32:01.856Z"
+  language: "en"

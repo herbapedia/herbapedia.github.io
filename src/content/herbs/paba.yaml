@@ -1,0 +1,14 @@
+# PABA
+# Source: https://www.vitaherbapedia.com/en/shop/nutrients-en/paba/
+# Language: en
+
+id: "paba"
+slug: "paba"
+category: "nutrients"
+title: "PABA"
+image: "/images/herbs/paba.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:33:40.736Z"
+  language: "en"

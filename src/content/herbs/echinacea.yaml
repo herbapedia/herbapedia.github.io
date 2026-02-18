@@ -1,0 +1,17 @@
+# Echinacea
+# Source: https://www.vitaherbapedia.com/en/shop/westherbs-en/echinacea/
+# Language: en
+
+id: "echinacea"
+slug: "echinacea"
+category: "western-herbs"
+title: "Echinacea"
+image: "/images/herbs/echinacea.jpg"
+
+description: |
+  Echinacea was the medicinal plant most widely used by native Americans. Ethnobotanist M.R. Gilmore noted, "Echinacea seems to have been used as a remedy for more ailments than any other plant." These ailments included toothache, enlarged glands (mumps), sore throat, snakebites, coughs, burns and as an analgesic. It first became popular in Europe in the 1930s.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:32:21.520Z"
+  language: "en"

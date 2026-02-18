@@ -1,0 +1,17 @@
+# Duhuo
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/duhuo/
+# Language: en
+
+id: "duhuo"
+slug: "duhuo"
+category: "chinese-herbs"
+title: "Duhuo"
+image: "/images/herbs/duhuo.jpg"
+
+description: |
+  First appeared in Divine Husbandman's Classic of the Materia Medica.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:30:44.852Z"
+  language: "en"

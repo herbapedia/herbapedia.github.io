@@ -1,0 +1,17 @@
+# Liquorice Root
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/liquorice-root/
+# Language: en
+
+id: "liquorice-root"
+slug: "liquorice-root"
+category: "chinese-herbs"
+title: "Liquorice Root"
+image: "/images/herbs/liquorice-root.jpg"
+
+description: |
+  First appeared in Divine Husbandman's Classic of the Materia Medica, clasified as upper class.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:31:11.997Z"
+  language: "en"

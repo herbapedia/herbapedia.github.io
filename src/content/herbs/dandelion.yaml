@@ -1,0 +1,17 @@
+# Dandelion
+# Source: https://www.vitaherbapedia.com/en/shop/westherbs-en/dandelion/
+# Language: en
+
+id: "dandelion"
+slug: "dandelion"
+category: "western-herbs"
+title: "Dandelion"
+image: "/images/herbs/dandelion.jpg"
+
+description: |
+  Dandelion leaves and roots have been used for centuries to treat liver, gall bladder, kidney, and joint problems. In some countries, dandelion is considered a blood purifier and is used for ailments such as eczema and cancer. Dandelion has also been used to treat poor digestion, water retention and diseases of the liver such as hepatitis. The first mention of the dandelion as a medicine was in the works of Arabian physicians of the tenth and eleventh centuries. Thirteenth-century Welsh medicine also lauds its properties.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:32:20.352Z"
+  language: "en"

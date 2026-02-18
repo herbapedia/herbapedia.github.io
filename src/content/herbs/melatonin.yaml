@@ -1,0 +1,14 @@
+# Melatonin
+# Source: https://www.vitaherbapedia.com/en/shop/nutrients-en/melatonin/
+# Language: en
+
+id: "melatonin"
+slug: "melatonin"
+category: "nutrients"
+title: "Melatonin"
+image: "/images/herbs/melatonin.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:33:32.667Z"
+  language: "en"

@@ -1,0 +1,14 @@
+# Mineral oil
+# Source: https://www.vitaherbapedia.com/en/shop/nutrients-en/mineral-oil/
+# Language: en
+
+id: "mineral-oil"
+slug: "mineral-oil"
+category: "nutrients"
+title: "Mineral oil"
+image: "/images/herbs/mineral-oil.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:33:34.942Z"
+  language: "en"

@@ -1,0 +1,14 @@
+# Calcium
+# Source: https://www.vitaherbapedia.com/en/shop/minerals-en/calcium/
+# Language: en
+
+id: "calcium"
+slug: "calcium"
+category: "minerals"
+title: "Calcium"
+image: "/images/herbs/calcium.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:33:00.480Z"
+  language: "en"

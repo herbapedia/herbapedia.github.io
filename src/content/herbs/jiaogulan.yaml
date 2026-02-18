@@ -1,0 +1,17 @@
+# Jiaogulan
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/jiaogulan/
+# Language: en
+
+id: "jiaogulan"
+slug: "jiaogulan"
+category: "chinese-herbs"
+title: "Jiaogulan"
+image: "/images/herbs/jiaogulan.jpg"
+
+description: |
+  First appeared in Qiu Fang Ben Cao.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:31:02.874Z"
+  language: "en"

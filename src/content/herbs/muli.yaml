@@ -1,0 +1,17 @@
+# Muli
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/muli/
+# Language: en
+
+id: "muli"
+slug: "muli"
+category: "chinese-herbs"
+title: "Muli"
+image: "/images/herbs/muli.jpg"
+
+description: |
+  First appeared in Divine Husbandman's Classic of the Materia Medica, classified as upper class.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:31:19.012Z"
+  language: "en"

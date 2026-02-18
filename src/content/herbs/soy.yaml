@@ -1,0 +1,14 @@
+# Soy
+# Source: https://www.vitaherbapedia.com/en/shop/westherbs-en/soy/
+# Language: en
+
+id: "soy"
+slug: "soy"
+category: "western-herbs"
+title: "Soy"
+image: "/images/herbs/soy.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:32:39.291Z"
+  language: "en"

@@ -1,0 +1,17 @@
+# Yuanzhi
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/yuanzhi/
+# Language: en
+
+id: "yuanzhi"
+slug: "yuanzhi"
+category: "chinese-herbs"
+title: "Yuanzhi"
+image: "/images/herbs/yuanzhi.jpg"
+
+description: |
+  First appeared in Divine Husbandman's Classic of the Materia Medica
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:31:57.183Z"
+  language: "en"

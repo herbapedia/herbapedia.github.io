@@ -1,0 +1,14 @@
+# Blueberry
+# Source: https://www.vitaherbapedia.com/en/shop/westherbs-en/blueberry/
+# Language: en
+
+id: "blueberry"
+slug: "blueberry"
+category: "western-herbs"
+title: "Blueberry"
+image: "/images/herbs/blueberry.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:32:15.984Z"
+  language: "en"

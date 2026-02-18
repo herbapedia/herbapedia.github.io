@@ -1,0 +1,17 @@
+# Fangji
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/fangji/
+# Language: en
+
+id: "fangji"
+slug: "fangji"
+category: "chinese-herbs"
+title: "Fangji"
+image: "/images/herbs/fangji.jpg"
+
+description: |
+  First appeared in Divine Husbandman's Classic of the Materia Medica, classified as middle class.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:30:49.368Z"
+  language: "en"

@@ -1,0 +1,14 @@
+# Iodine
+# Source: https://www.vitaherbapedia.com/en/shop/minerals-en/iodine/
+# Language: en
+
+id: "iodine"
+slug: "iodine"
+category: "minerals"
+title: "Iodine"
+image: "/images/herbs/iodine.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:33:02.618Z"
+  language: "en"

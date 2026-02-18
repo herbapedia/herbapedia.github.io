@@ -1,0 +1,14 @@
+# Vitamin B3, Niacin
+# Source: https://www.vitaherbapedia.com/en/shop/vitamins-en/vitamin-b3-niacin/
+# Language: en
+
+id: "vitamin-b3-niacin"
+slug: "vitamin-b3-niacin"
+category: "vitamins"
+title: "Vitamin B3, Niacin"
+image: "/images/herbs/vitamin-b3-niacin.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:32:49.981Z"
+  language: "en"

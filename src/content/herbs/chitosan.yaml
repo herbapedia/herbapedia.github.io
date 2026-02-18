@@ -1,0 +1,14 @@
+# Chitosan
+# Source: https://www.vitaherbapedia.com/en/shop/nutrients-en/chitosan/
+# Language: en
+
+id: "chitosan"
+slug: "chitosan"
+category: "nutrients"
+title: "Chitosan"
+image: "/images/herbs/chitosan.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:33:17.013Z"
+  language: "en"

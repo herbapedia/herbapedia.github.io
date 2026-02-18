@@ -1,0 +1,14 @@
+# Omega 9
+# Source: https://www.vitaherbapedia.com/en/shop/nutrients-en/omega-9/
+# Language: en
+
+id: "omega-9"
+slug: "omega-9"
+category: "nutrients"
+title: "Omega 9"
+image: "/images/herbs/omega-9.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:33:39.644Z"
+  language: "en"

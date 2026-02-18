@@ -1,0 +1,17 @@
+# Shanzha
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/shanzha/
+# Language: en
+
+id: "shanzha"
+slug: "shanzha"
+category: "chinese-herbs"
+title: "Shanzha"
+image: "/images/herbs/shanzha.jpg"
+
+description: |
+  First appeared in Supplement to the Extension of the Materia Medica.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:31:29.974Z"
+  language: "en"

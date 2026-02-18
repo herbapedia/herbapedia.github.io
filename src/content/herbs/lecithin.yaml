@@ -1,0 +1,14 @@
+# Lecithin
+# Source: https://www.vitaherbapedia.com/en/shop/nutrients-en/lecithin/
+# Language: en
+
+id: "lecithin"
+slug: "lecithin"
+category: "nutrients"
+title: "Lecithin"
+image: "/images/herbs/lecithin.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:33:29.312Z"
+  language: "en"

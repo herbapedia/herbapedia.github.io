@@ -1,0 +1,17 @@
+# Rhodiola
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/rhodiola/
+# Language: en
+
+id: "rhodiola"
+slug: "rhodiola"
+category: "chinese-herbs"
+title: "Rhodiola"
+image: "/images/herbs/rhodiola.jpg"
+
+description: |
+  First appeared in Xi Bu Yi Dian.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:31:27.552Z"
+  language: "en"

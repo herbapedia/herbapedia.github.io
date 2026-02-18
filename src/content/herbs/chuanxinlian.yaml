@@ -1,0 +1,17 @@
+# Chuanxinlian
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/chuanxinlian/
+# Language: en
+
+id: "chuanxinlian"
+slug: "chuanxinlian"
+category: "chinese-herbs"
+title: "Chuanxinlian"
+image: "/images/herbs/chuanxinlian.jpg"
+
+description: |
+  First appeared in Handbook of Commonly used Traditional Chinese Herbs by Guangzhou People's Liberation Army Medical Brigade.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:30:33.768Z"
+  language: "en"

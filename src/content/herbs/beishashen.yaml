@@ -1,0 +1,17 @@
+# Beishashen
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/beishashen/
+# Language: en
+
+id: "beishashen"
+slug: "beishashen"
+category: "chinese-herbs"
+title: "Beishashen"
+image: "/images/herbs/beishashen.jpg"
+
+description: |
+  First appeared in Divine Husbandman's Classic of the Materia Medica.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:30:20.632Z"
+  language: "en"

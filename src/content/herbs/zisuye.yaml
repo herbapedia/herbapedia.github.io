@@ -1,0 +1,17 @@
+# Zisuye
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/zisuye/
+# Language: en
+
+id: "zisuye"
+slug: "zisuye"
+category: "chinese-herbs"
+title: "Zisuye"
+image: "/images/herbs/zisuye.jpg"
+
+description: |
+  First appeared in Materia Medica of Medicinal Properties.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:32:02.943Z"
+  language: "en"

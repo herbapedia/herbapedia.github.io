@@ -1,0 +1,14 @@
+# Petrolatum
+# Source: https://www.vitaherbapedia.com/en/shop/nutrients-en/petrolatum/
+# Language: en
+
+id: "petrolatum"
+slug: "petrolatum"
+category: "nutrients"
+title: "Petrolatum"
+image: "/images/herbs/petrolatum.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:33:41.848Z"
+  language: "en"

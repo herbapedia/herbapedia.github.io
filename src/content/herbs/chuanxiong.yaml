@@ -1,0 +1,17 @@
+# Chuanxiong
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/chuanxiong/
+# Language: en
+
+id: "chuanxiong"
+slug: "chuanxiong"
+category: "chinese-herbs"
+title: "Chuanxiong"
+image: "/images/herbs/chuanxiong.jpg"
+
+description: |
+  First appeared in the Divine Husbandman's Classic of the Materia Medica, classified as upper class.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:30:34.838Z"
+  language: "en"

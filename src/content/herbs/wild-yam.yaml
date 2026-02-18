@@ -1,0 +1,17 @@
+# Wild Yam
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/wild-yam/
+# Language: en
+
+id: "wild-yam"
+slug: "wild-yam"
+category: "chinese-herbs"
+title: "Wild Yam"
+image: "/images/herbs/wild-yam.jpg"
+
+description: |
+  In the 18th and 19th centuries, wild yam was used by herbalists to treat female complaints such as menstrual cramps and complications with childbirth. Early Americans primarily used it to treat colic, and it was also used for many other complaints across the Americas, from inflammation to asthma.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:31:51.689Z"
+  language: "en"

@@ -1,0 +1,14 @@
+# Methionine
+# Source: https://www.vitaherbapedia.com/en/shop/nutrients-en/methionine/
+# Language: en
+
+id: "methionine"
+slug: "methionine"
+category: "nutrients"
+title: "Methionine"
+image: "/images/herbs/methionine.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:33:33.805Z"
+  language: "en"

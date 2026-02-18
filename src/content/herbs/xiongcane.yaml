@@ -1,0 +1,17 @@
+# Xiongcane
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/xiongcane/
+# Language: en
+
+id: "xiongcane"
+slug: "xiongcane"
+category: "chinese-herbs"
+title: "Xiongcane"
+image: "/images/herbs/xiongcane.jpg"
+
+description: |
+  First appeared in Divine Husbandman's Classic of the Materia Medica.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:31:56.037Z"
+  language: "en"

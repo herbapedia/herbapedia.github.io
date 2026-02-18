@@ -1,0 +1,17 @@
+# Buguzhi
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/buguzhi/
+# Language: en
+
+id: "buguzhi"
+slug: "buguzhi"
+category: "chinese-herbs"
+title: "Buguzhi"
+image: "/images/herbs/buguzhi.jpg"
+
+description: |
+  First appeared in GrandfatherLei's Discussions of Herb Preparation.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:30:23.963Z"
+  language: "en"

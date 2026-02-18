@@ -1,0 +1,17 @@
+# Lianqiao
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/lianqiao/
+# Language: en
+
+id: "lianqiao"
+slug: "lianqiao"
+category: "chinese-herbs"
+title: "Lianqiao"
+image: "/images/herbs/lianqiao.jpg"
+
+description: |
+  First appeared in Divine Husbandman's Classic of the Materia Medica, classified as lower class.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:31:08.714Z"
+  language: "en"

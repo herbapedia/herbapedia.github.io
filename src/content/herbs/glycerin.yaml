@@ -1,0 +1,14 @@
+# Glycerin
+# Source: https://www.vitaherbapedia.com/en/shop/nutrients-en/glycerin/
+# Language: en
+
+id: "glycerin"
+slug: "glycerin"
+category: "nutrients"
+title: "Glycerin"
+image: "/images/herbs/glycerin.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:33:24.852Z"
+  language: "en"

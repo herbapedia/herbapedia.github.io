@@ -1,0 +1,14 @@
+# Sage oil
+# Source: https://www.vitaherbapedia.com/en/shop/westherbs-en/sage-oil/
+# Language: en
+
+id: "sage-oil"
+slug: "sage-oil"
+category: "western-herbs"
+title: "Sage oil"
+image: "/images/herbs/sage-oil.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:32:38.210Z"
+  language: "en"

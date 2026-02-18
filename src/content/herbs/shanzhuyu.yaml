@@ -1,0 +1,17 @@
+# Shanzhuyu
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/shanzhuyu/
+# Language: en
+
+id: "shanzhuyu"
+slug: "shanzhuyu"
+category: "chinese-herbs"
+title: "Shanzhuyu"
+image: "/images/herbs/shanzhuyu.jpg"
+
+description: |
+  First appeared in Divine Husbandman's Classic of the Materia Medica.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:31:31.086Z"
+  language: "en"

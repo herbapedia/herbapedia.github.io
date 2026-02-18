@@ -1,0 +1,14 @@
+# Vitamin C
+# Source: https://www.vitaherbapedia.com/en/shop/vitamins-en/vitamin-c/
+# Language: en
+
+id: "vitamin-c"
+slug: "vitamin-c"
+category: "vitamins"
+title: "Vitamin C"
+image: "/images/herbs/vitamin-c.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:32:55.516Z"
+  language: "en"

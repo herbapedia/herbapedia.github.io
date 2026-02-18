@@ -1,0 +1,14 @@
+# Potassium
+# Source: https://www.vitaherbapedia.com/en/shop/minerals-en/potassium/
+# Language: en
+
+id: "potassium"
+slug: "potassium"
+category: "minerals"
+title: "Potassium"
+image: "/images/herbs/potassium.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:33:07.082Z"
+  language: "en"

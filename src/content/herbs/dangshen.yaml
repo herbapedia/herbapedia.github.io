@@ -1,0 +1,17 @@
+# Dangshen
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/dangshen/
+# Language: en
+
+id: "dangshen"
+slug: "dangshen"
+category: "chinese-herbs"
+title: "Dangshen"
+image: "/images/herbs/dangshen.jpg"
+
+description: |
+  First appeared in Thoroughly Revised Materia Medica.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:30:38.134Z"
+  language: "en"

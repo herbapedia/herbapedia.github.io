@@ -1,0 +1,17 @@
+# Evodia Fruit
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/evodia-fruit/
+# Language: en
+
+id: "evodia-fruit"
+slug: "evodia-fruit"
+category: "chinese-herbs"
+title: "Evodia Fruit"
+image: "/images/herbs/evodia-fruit.jpg"
+
+description: |
+  First appeared in Divine Husbandman's Classic of the Materia Medica.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:30:47.106Z"
+  language: "en"

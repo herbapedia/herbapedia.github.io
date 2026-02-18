@@ -1,0 +1,17 @@
+# Barley
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/barley/
+# Language: en
+
+id: "barley"
+slug: "barley"
+category: "chinese-herbs"
+title: "Barley"
+image: "/images/herbs/barley.jpg"
+
+description: |
+  First appeared in Grand Materia Medica.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:30:19.554Z"
+  language: "en"

@@ -1,0 +1,17 @@
+# Cardamom
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/cardamom/
+# Language: en
+
+id: "cardamom"
+slug: "cardamom"
+category: "chinese-herbs"
+title: "Cardamom"
+image: "/images/herbs/cardamom.jpg"
+
+description: |
+  First appeared in Origins of the Materia Medica.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:30:26.124Z"
+  language: "en"

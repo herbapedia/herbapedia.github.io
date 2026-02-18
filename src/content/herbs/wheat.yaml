@@ -1,0 +1,17 @@
+# Wheat
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/wheat/
+# Language: en
+
+id: "wheat"
+slug: "wheat"
+category: "chinese-herbs"
+title: "Wheat"
+image: "/images/herbs/wheat.jpg"
+
+description: |
+  First appeared in Treasury of Words on the Materia Medica.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:31:47.113Z"
+  language: "en"

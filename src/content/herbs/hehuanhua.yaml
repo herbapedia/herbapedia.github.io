@@ -1,0 +1,17 @@
+# Hehuanhua
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/hehuanhua/
+# Language: en
+
+id: "hehuanhua"
+slug: "hehuanhua"
+category: "chinese-herbs"
+title: "Hehuanhua"
+image: "/images/herbs/hehuanhua.jpg"
+
+description: |
+  First appeared in Divine Husbandman's Classic of the Materia Medica, classified as middle class.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:30:57.245Z"
+  language: "en"

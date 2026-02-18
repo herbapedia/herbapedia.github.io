@@ -1,0 +1,17 @@
+# Shihu
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/shihu/
+# Language: en
+
+id: "shihu"
+slug: "shihu"
+category: "chinese-herbs"
+title: "Shihu"
+image: "/images/herbs/shihu.jpg"
+
+description: |
+  First appeared in Divine Husbandman's Classic of the Materia Medica.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:31:35.643Z"
+  language: "en"

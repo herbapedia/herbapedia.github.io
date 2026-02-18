@@ -1,0 +1,17 @@
+# Asparagus Root
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/asparagus-root/
+# Language: en
+
+id: "asparagus-root"
+slug: "asparagus-root"
+category: "chinese-herbs"
+title: "Asparagus Root"
+image: "/images/herbs/asparagus-root.jpg"
+
+description: |
+  First appeared in Divine Husbandman's Classic of the Materia Medica.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:30:16.180Z"
+  language: "en"

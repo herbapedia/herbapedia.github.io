@@ -1,0 +1,17 @@
+# Aloe Vera
+# Source: https://www.vitaherbapedia.com/en/shop/westherbs-en/aloe-vera/
+# Language: en
+
+id: "aloe-vera"
+slug: "aloe-vera"
+category: "western-herbs"
+title: "Aloe Vera"
+image: "/images/herbs/aloe-vera.jpg"
+
+description: |
+  For thousands of years, transparent gel from the pulp of the meaty leaves of Aloe Vera has been used topically to treat wounds, skin infections, burns, and numerous other dermatologic conditions. The laxative effect of latex from the leaves has also long been known and prized.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:32:09.092Z"
+  language: "en"

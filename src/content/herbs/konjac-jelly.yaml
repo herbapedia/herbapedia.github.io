@@ -1,0 +1,14 @@
+# Konjac jelly
+# Source: https://www.vitaherbapedia.com/en/shop/westherbs-en/konjac-jelly/
+# Language: en
+
+id: "konjac-jelly"
+slug: "konjac-jelly"
+category: "western-herbs"
+title: "Konjac jelly"
+image: "/images/herbs/konjac-jelly.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:32:31.549Z"
+  language: "en"

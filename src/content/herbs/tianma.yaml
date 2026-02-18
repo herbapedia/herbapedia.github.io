@@ -1,0 +1,17 @@
+# Tianma
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/tianma/
+# Language: en
+
+id: "tianma"
+slug: "tianma"
+category: "chinese-herbs"
+title: "Tianma"
+image: "/images/herbs/tianma.jpg"
+
+description: |
+  First appeared in Divine Husbandman's Classic of the Materia Medica.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:31:43.758Z"
+  language: "en"

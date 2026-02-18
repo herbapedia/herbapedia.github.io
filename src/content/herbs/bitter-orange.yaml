@@ -1,0 +1,14 @@
+# Bitter Orange
+# Source: https://www.vitaherbapedia.com/en/shop/westherbs-en/bitter-orange/
+# Language: en
+
+id: "bitter-orange"
+slug: "bitter-orange"
+category: "western-herbs"
+title: "Bitter Orange"
+image: "/images/herbs/bitter-orange.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:32:14.857Z"
+  language: "en"

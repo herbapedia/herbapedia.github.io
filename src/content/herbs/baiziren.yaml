@@ -1,0 +1,17 @@
+# Baiziren
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/baiziren/
+# Language: en
+
+id: "baiziren"
+slug: "baiziren"
+category: "chinese-herbs"
+title: "Baiziren"
+image: "/images/herbs/baiziren.jpg"
+
+description: |
+  First appeared in Divine Husbandman's Classic of the Materia Medica, classified as upper class.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:30:18.410Z"
+  language: "en"

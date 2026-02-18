@@ -1,0 +1,17 @@
+# Shoudihuang
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/shoudihuang/
+# Language: en
+
+id: "shoudihuang"
+slug: "shoudihuang"
+category: "chinese-herbs"
+title: "Shoudihuang"
+image: "/images/herbs/shoudihuang.jpg"
+
+description: |
+  First appeared in the Illustrated Classic of Materia Medica.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:31:36.818Z"
+  language: "en"

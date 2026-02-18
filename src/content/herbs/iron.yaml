@@ -1,0 +1,14 @@
+# Iron
+# Source: https://www.vitaherbapedia.com/en/shop/minerals-en/iron/
+# Language: en
+
+id: "iron"
+slug: "iron"
+category: "minerals"
+title: "Iron"
+image: "/images/herbs/iron.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:33:03.703Z"
+  language: "en"

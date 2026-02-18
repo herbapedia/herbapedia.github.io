@@ -1,0 +1,14 @@
+# Royal Jelly
+# Source: https://www.vitaherbapedia.com/en/shop/westherbs-en/royal-jelly/
+# Language: en
+
+id: "royal-jelly"
+slug: "royal-jelly"
+category: "western-herbs"
+title: "Royal Jelly"
+image: "/images/herbs/royal-jelly.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:32:37.086Z"
+  language: "en"

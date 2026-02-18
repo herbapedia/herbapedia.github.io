@@ -1,0 +1,14 @@
+# Magnesium
+# Source: https://www.vitaherbapedia.com/en/shop/minerals-en/magnesium/
+# Language: en
+
+id: "magnesium"
+slug: "magnesium"
+category: "minerals"
+title: "Magnesium"
+image: "/images/herbs/magnesium.jpg"
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:33:04.829Z"
+  language: "en"

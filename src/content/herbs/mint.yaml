@@ -1,0 +1,17 @@
+# Mint
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/mint/
+# Language: en
+
+id: "mint"
+slug: "mint"
+category: "chinese-herbs"
+title: "Mint"
+image: "/images/herbs/mint.jpg"
+
+description: |
+  First appeared in Tang Materia Medica.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:31:16.602Z"
+  language: "en"

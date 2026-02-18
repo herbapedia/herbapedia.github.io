@@ -1,0 +1,17 @@
+# Shengma
+# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/shengma/
+# Language: en
+
+id: "shengma"
+slug: "shengma"
+category: "chinese-herbs"
+title: "Shengma"
+image: "/images/herbs/shengma.jpg"
+
+description: |
+  First appeared in Divine Husbandman's Classic of the Materia Medica, classified as upper class.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:31:33.413Z"
+  language: "en"

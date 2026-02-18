@@ -1,0 +1,17 @@
+# Capigen®
+# Source: https://www.vitaherbapedia.com/en/shop/nutrients-en/capigen/
+# Language: en
+
+id: "capigen"
+slug: "capigen"
+category: "nutrients"
+title: "Capigen®"
+image: "/images/herbs/capigen.jpg"
+
+description: |
+  A key ingredient in hair regenerating treatments including Vita Hair Tonic.
+
+metadata:
+  source: "vitaherbapedia.com"
+  scraped_at: "2026-02-18T01:33:14.761Z"
+  language: "en"
