@@ -8,6 +8,7 @@ export default defineConfig({
     vue(),
     yaml()
   ],
+  base: '/',
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src')
