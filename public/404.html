@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting...</title>
+  <script>
+    // GitHub Pages SPA redirect
+    // Converts clean URLs to .html URLs
+    var pathSegmentsToKeep = 1; // /herbapedia/
+    var l = window.location;
+    var path = l.pathname.split('/').slice(pathSegmentsToKeep).join('/');
+    
+    // If path doesn't end with .html or have a file extension, add .html
+    if (path && !path.match(/\.[a-z]+$/i)) {
+      // Remove trailing slash if present
+      path = path.replace(/\/$/, '');
+      // Add .html extension
+      path = path + '.html';
+    }
+    
+    var redirect = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+                   l.pathname.split('/').slice(0, pathSegmentsToKeep).join('/') + '/' + path +
+                   l.search + l.hash;
+    
+    // Only redirect if we modified the path
+    if (redirect !== l.href) {
+      l.replace(redirect);
+    }
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
+</html>
