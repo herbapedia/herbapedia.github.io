@@ -2,59 +2,48 @@
   <div class="about-view">
     <div class="container container-narrow">
       <GlassCard padding="xl">
-        <h1>About Herbapedia</h1>
+        <h1>{{ t('about.title') }}</h1>
 
         <section class="about-section">
-          <h2>Mission</h2>
-          <p>
-            Herbapedia is a comprehensive encyclopedia developed by the International Society
-            of Phytomedicine (SIPM) to provide accurate, evidence-based information about
-            medicinal plants and natural health supplements.
-          </p>
+          <h2>{{ t('about.mission.title') }}</h2>
+          <p>{{ t('about.mission.text') }}</p>
         </section>
 
         <section class="about-section">
-          <h2>Our Content</h2>
-          <p>
-            Our database covers five main categories:
-          </p>
+          <h2>{{ t('about.history.title') }}</h2>
+          <p>{{ t('about.history.p1') }}</p>
+          <p>{{ t('about.history.p2') }}</p>
+          <p>{{ t('about.history.p3') }}</p>
+        </section>
+
+        <section class="about-section">
+          <h2>{{ t('about.content.title') }}</h2>
+          <p>{{ t('about.content.intro') }}</p>
           <ul>
-            <li><strong>Chinese Herbs</strong> - Traditional Chinese medicinal plants and fungi</li>
-            <li><strong>Western Herbs</strong> - European and North American herbal medicines</li>
-            <li><strong>Vitamins</strong> - Essential vitamins for human health</li>
-            <li><strong>Minerals</strong> - Important dietary minerals and trace elements</li>
-            <li><strong>Nutrients</strong> - Beneficial compounds and supplements</li>
+            <li><strong>{{ t('categories.chineseHerbs') }}</strong> - {{ t('about.content.chineseHerbs') }}</li>
+            <li><strong>{{ t('categories.westernHerbs') }}</strong> - {{ t('about.content.westernHerbs') }}</li>
+            <li><strong>{{ t('categories.vitamins') }}</strong> - {{ t('about.content.vitamins') }}</li>
+            <li><strong>{{ t('categories.minerals') }}</strong> - {{ t('about.content.minerals') }}</li>
+            <li><strong>{{ t('categories.nutrients') }}</strong> - {{ t('about.content.nutrients') }}</li>
           </ul>
         </section>
 
         <section class="about-section">
-          <h2>Approach</h2>
-          <p>
-            We bridge traditional wisdom with modern scientific research. Each entry combines
-            historical and traditional uses with contemporary scientific findings, providing
-            a balanced perspective on natural health remedies.
-          </p>
+          <h2>{{ t('about.approach.title') }}</h2>
+          <p>{{ t('about.approach.text') }}</p>
         </section>
 
         <section class="about-section">
-          <h2>Disclaimer</h2>
-          <p>
-            The content provided in Herbapedia is for informational purposes only and is not
-            intended to be a substitute for professional medical advice, diagnosis, or treatment.
-            Always seek the advice of your physician or other qualified health provider with
-            any questions you may have regarding a medical condition.
-          </p>
+          <h2>{{ t('disclaimer.title') }}</h2>
+          <p>{{ t('disclaimer.text') }}</p>
         </section>
 
         <section class="about-section">
-          <h2>About SIPM</h2>
-          <p>
-            The International Society of Phytomedicine (SIPM) is dedicated to advancing the
-            scientific understanding and responsible use of medicinal plants worldwide.
-          </p>
+          <h2>{{ t('about.sipm.title') }}</h2>
+          <p>{{ t('about.sipm.text') }}</p>
           <p>
             <a href="https://sipm.org" target="_blank" rel="noopener">
-              Visit SIPM website &rarr;
+              {{ t('about.sipm.link') }} &rarr;
             </a>
           </p>
         </section>
@@ -64,7 +53,10 @@
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n'
 import GlassCard from '@/components/ui/GlassCard.vue'
+
+const { t } = useI18n()
 </script>
 
 <style scoped>
@@ -84,6 +76,15 @@ import GlassCard from '@/components/ui/GlassCard.vue'
 .about-section h2 {
   font-size: var(--font-size-xl);
   margin-bottom: var(--spacing-md);
+}
+
+.about-section p {
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-md);
+}
+
+.about-section p:last-child {
+  margin-bottom: 0;
 }
 
 .about-section ul {

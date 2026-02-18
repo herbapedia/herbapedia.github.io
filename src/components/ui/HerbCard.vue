@@ -27,6 +27,7 @@
 
 <script setup>
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 const props = defineProps({
   to: { type: String, required: true },
@@ -37,15 +38,18 @@ const props = defineProps({
   category: { type: String, default: '' }
 })
 
-const categoryLabels = {
-  'chinese-herbs': 'Chinese Herb',
-  'western-herbs': 'Western Herb',
-  'vitamins': 'Vitamin',
-  'minerals': 'Mineral',
-  'nutrients': 'Nutrient'
-}
+const { t } = useI18n()
 
-const categoryLabel = computed(() => categoryLabels[props.category] || props.category)
+const categoryLabel = computed(() => {
+  const categoryMap = {
+    'chinese-herbs': t('categories.chineseHerbs'),
+    'western-herbs': t('categories.westernHerbs'),
+    'vitamins': t('categories.vitamins'),
+    'minerals': t('categories.minerals'),
+    'nutrients': t('categories.nutrients')
+  }
+  return categoryMap[props.category] || props.category
+})
 </script>
 
 <style scoped>
