@@ -11,8 +11,8 @@
       </div>
       <nav class="footer__nav">
         <router-link :to="localePath('/about')" class="footer__link">{{ t('nav.about') }}</router-link>
-        <a href="/standards/" class="footer__link">{{ t('nav.standards') }}</a>
-        <a href="/" class="footer__link">{{ t('nav.sipmHome') }}</a>
+        <a href="https://www.sipm.org/standards/" class="footer__link">{{ t('nav.standards') }}</a>
+        <a href="https://www.sipm.org/" class="footer__link">{{ t('nav.sipmHome') }}</a>
       </nav>
     </div>
   </footer>

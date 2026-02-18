@@ -14,8 +14,8 @@
         <router-link :to="localePath('/')" class="header__link" @click="closeMobileMenu">{{ t('nav.home') }}</router-link>
         <router-link :to="localePath('/herbs')" class="header__link" @click="closeMobileMenu">{{ t('nav.herbs') }}</router-link>
         <router-link :to="localePath('/about')" class="header__link" @click="closeMobileMenu">{{ t('nav.about') }}</router-link>
-        <a href="/standards/" class="header__link header__link--external" @click="closeMobileMenu">{{ t('nav.standards') }}</a>
-        <a href="/" class="header__link header__link--external" @click="closeMobileMenu">{{ t('nav.sipmHome') }}</a>
+        <a href="https://www.sipm.org/standards/" class="header__link header__link--external" @click="closeMobileMenu">{{ t('nav.standards') }}</a>
+        <a href="https://www.sipm.org/" class="header__link header__link--external" @click="closeMobileMenu">{{ t('nav.sipmHome') }}</a>
       </nav>
 
       <div class="header__actions">

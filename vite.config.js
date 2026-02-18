@@ -10,7 +10,7 @@ export default defineConfig({
     vue(),
     yaml()
   ],
-  base: '/herbapedia/',
+  base: '/',
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src')
