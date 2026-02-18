@@ -6,20 +6,32 @@
           &copy; {{ currentYear }} International Society of Phytomedicine (SIPM)
         </p>
         <p class="footer__disclaimer">
-          Content is for informational purposes only. Always seek professional medical advice.
+          {{ t('disclaimer.text') }}
         </p>
       </div>
       <nav class="footer__nav">
-        <router-link to="/about" class="footer__link">About</router-link>
-        <a href="/standards/" class="footer__link">Standards</a>
-        <a href="/" class="footer__link">SIPM Home</a>
+        <router-link :to="localePath('/about')" class="footer__link">{{ t('nav.about') }}</router-link>
+        <a href="/standards/" class="footer__link">{{ t('nav.standards') }}</a>
+        <a href="/" class="footer__link">{{ t('nav.sipmHome') }}</a>
       </nav>
     </div>
   </footer>
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n'
+import { DEFAULT_LOCALE } from '@/i18n/locales'
+
+const { t, locale } = useI18n()
 const currentYear = new Date().getFullYear()
+
+// Helper to generate localized paths
+const localePath = (path) => {
+  if (locale.value === DEFAULT_LOCALE) {
+    return path
+  }
+  return `/${locale.value}${path}`
+}
 </script>
 
 <style scoped>

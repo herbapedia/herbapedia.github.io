@@ -4,7 +4,7 @@
       <header class="herbs-view__header">
         <h1>Herbapedia</h1>
         <p class="herbs-view__subtitle">
-          Browse our collection of medicinal plants, herbs, vitamins, minerals, and nutrients
+          {{ t('common.browseCollection') }}
         </p>
       </header>
 
@@ -12,7 +12,7 @@
         <router-link
           v-for="cat in categories"
           :key="cat.slug"
-          :to="`/herbs/${cat.slug}`"
+          :to="localePath(`/herbs/${cat.slug}`)"
           class="category-chip"
           :class="{ 'category-chip--active': false }"
         >
@@ -24,7 +24,7 @@
         <HerbCard
           v-for="herb in herbs"
           :key="herb.slug"
-          :to="`/herbs/${herb.category}/${herb.slug}`"
+          :to="localePath(`/herbs/${herb.category}/${herb.slug}`)"
           :title="herb.title"
           :scientific-name="herb.scientific_name"
           :image="herb.resolvedImage"
@@ -33,55 +33,121 @@
       </div>
 
       <div v-if="herbs.length === 0" class="herbs-view__empty">
-        <p>No herbs found. Run the scraper to populate data.</p>
+        <p>{{ t('common.noHerbsFound') }}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
+import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import HerbCard from '@/components/ui/HerbCard.vue'
+import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from '@/i18n/locales'
 
-// Import all herb data using Vite glob (new structure: herbs/{slug}/en.yaml)
-const herbsModules = import.meta.glob('/src/content/herbs/*/en.yaml', { eager: true })
+const { t, locale } = useI18n()
+const route = useRoute()
 
-// Import all images
+// Category titles based on locale
+const getCategoryTitle = (slug) => {
+  const titles = {
+    'chinese-herbs': t('categories.chineseHerbs'),
+    'western-herbs': t('categories.westernHerbs'),
+    'vitamins': t('categories.vitamins'),
+    'minerals': t('categories.minerals'),
+    'nutrients': t('categories.nutrients')
+  }
+  return titles[slug] || slug
+}
+
+// Helper to generate localized paths
+const localePath = (path) => {
+  if (locale.value === DEFAULT_LOCALE) {
+    return path
+  }
+  return `/${locale.value}${path}`
+}
+
+// Import images (same for all locales)
 const imageModules = import.meta.glob('/src/content/herbs/*/images/*.jpg', { eager: true, as: 'url' })
 
-// Parse herb data
+// Import herb modules for all locales
+const herbsModulesEn = import.meta.glob('/src/content/herbs/*/en.yaml', { eager: true })
+const herbsModulesZhHK = import.meta.glob('/src/content/herbs/*/zh-HK.yaml', { eager: true })
+const herbsModulesZhCN = import.meta.glob('/src/content/herbs/*/zh-CN.yaml', { eager: true })
+
 const herbs = ref([])
 const categories = ref([
-  { slug: 'chinese-herbs', title: 'Chinese Herbs', count: 0 },
-  { slug: 'western-herbs', title: 'Western Herbs', count: 0 },
-  { slug: 'vitamins', title: 'Vitamins', count: 0 },
-  { slug: 'minerals', title: 'Minerals', count: 0 },
-  { slug: 'nutrients', title: 'Nutrients', count: 0 }
+  { slug: 'chinese-herbs', title: getCategoryTitle('chinese-herbs'), count: 0 },
+  { slug: 'western-herbs', title: getCategoryTitle('western-herbs'), count: 0 },
+  { slug: 'vitamins', title: getCategoryTitle('vitamins'), count: 0 },
+  { slug: 'minerals', title: getCategoryTitle('minerals'), count: 0 },
+  { slug: 'nutrients', title: getCategoryTitle('nutrients'), count: 0 }
 ])
 
-// Process imported modules
-Object.entries(herbsModules).forEach(([path, module]) => {
-  const data = module?.default || module
-  if (data && data.title) {
-    // Extract slug from path
-    const slugMatch = path.match(/\/([^/]+)\/en\.yaml$/)
-    if (slugMatch) {
-      data.slug = data.slug || slugMatch[1]
+// Function to load herbs for a specific locale
+function loadHerbsForLocale(targetLocale) {
+  // Select the appropriate modules based on locale
+  let modules
+  switch (targetLocale) {
+    case 'zh-HK':
+      modules = herbsModulesZhHK
+      break
+    case 'zh-CN':
+      modules = herbsModulesZhCN
+      break
+    default:
+      modules = herbsModulesEn
+  }
 
-      // Resolve image URL
-      const imagePath = `/src/content/herbs/${data.slug}/images/${data.slug}.jpg`
-      if (imageModules[imagePath]) {
-        data.resolvedImage = imageModules[imagePath]
+  const newHerbs = []
+  const counts = {
+    'chinese-herbs': 0,
+    'western-herbs': 0,
+    'vitamins': 0,
+    'minerals': 0,
+    'nutrients': 0
+  }
+
+  Object.entries(modules).forEach(([path, module]) => {
+    const data = module?.default || module
+    if (data && data.title) {
+      // Extract slug from path
+      const slugMatch = path.match(/\/([^/]+)\/(?:en|zh-HK|zh-CN)\.yaml$/)
+      if (slugMatch) {
+        data.slug = data.slug || slugMatch[1]
+
+        // Resolve image URL
+        const imagePath = `/src/content/herbs/${data.slug}/images/${data.slug}.jpg`
+        if (imageModules[imagePath]) {
+          data.resolvedImage = imageModules[imagePath]
+        }
+      }
+
+      newHerbs.push(data)
+
+      // Update category count
+      if (counts[data.category] !== undefined) {
+        counts[data.category]++
       }
     }
+  })
 
-    herbs.value.push(data)
+  herbs.value = newHerbs
 
-    // Update category count
-    const cat = categories.value.find(c => c.slug === data.category)
-    if (cat) cat.count++
-  }
-})
+  // Update category counts and titles
+  categories.value = categories.value.map(cat => ({
+    ...cat,
+    title: getCategoryTitle(cat.slug),
+    count: counts[cat.slug] || 0
+  }))
+}
+
+// Load herbs when locale changes
+watch(locale, (newLocale) => {
+  loadHerbsForLocale(newLocale)
+}, { immediate: true })
 </script>
 
 <style scoped>

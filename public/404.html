@@ -4,24 +4,40 @@
   <meta charset="utf-8">
   <title>Redirecting...</title>
   <script>
-    // GitHub Pages SPA redirect
-    // Converts clean URLs to .html URLs
+    // GitHub Pages SPA redirect for multilingual site
+    // Handles clean URLs for /herbapedia/ base path
     var pathSegmentsToKeep = 1; // /herbapedia/
     var l = window.location;
     var path = l.pathname.split('/').slice(pathSegmentsToKeep).join('/');
-    
-    // If path doesn't end with .html or have a file extension, add .html
-    if (path && !path.match(/\.[a-z]+$/i)) {
-      // Remove trailing slash if present
-      path = path.replace(/\/$/, '');
-      // Add .html extension
-      path = path + '.html';
+
+    // Detect if path already has a locale prefix
+    var localePrefix = '';
+    var pathWithoutLocale = path;
+    var locales = ['zh-HK', 'zh-CN'];
+
+    for (var i = 0; i < locales.length; i++) {
+      if (path.startsWith(locales[i] + '/') || path === locales[i]) {
+        localePrefix = locales[i];
+        pathWithoutLocale = path.slice(locales[i].length);
+        break;
+      }
     }
-    
+
+    // If path doesn't end with .html or have a file extension, add .html
+    if (pathWithoutLocale && !pathWithoutLocale.match(/\.[a-z]+$/i)) {
+      // Remove trailing slash if present
+      pathWithoutLocale = pathWithoutLocale.replace(/\/$/, '');
+      // Add .html extension
+      pathWithoutLocale = pathWithoutLocale + '.html';
+    }
+
+    // Rebuild the path with locale prefix if present
+    var finalPath = localePrefix ? localePrefix + pathWithoutLocale : pathWithoutLocale;
+
     var redirect = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-                   l.pathname.split('/').slice(0, pathSegmentsToKeep).join('/') + '/' + path +
+                   l.pathname.split('/').slice(0, pathSegmentsToKeep).join('/') + '/' + finalPath +
                    l.search + l.hash;
-    
+
     // Only redirect if we modified the path
     if (redirect !== l.href) {
       l.replace(redirect);

@@ -27,21 +27,17 @@ export default defineConfig({
       // Include all static routes
       const staticRoutes = paths.filter(p => !p.includes(':'))
 
-      // Add dynamic herb routes by reading content
-      const herbRoutes = []
+      const allRoutes = [...staticRoutes]
+      const herbsDir = path.resolve(__dirname, 'src/content/herbs')
 
       // Categories
       const categories = ['chinese-herbs', 'western-herbs', 'vitamins', 'minerals', 'nutrients']
-      categories.forEach(cat => {
-        herbRoutes.push(`/herbs/${cat}`)
-      })
 
-      // Individual herbs - will be populated from content directories
-      // This runs at build time, so we read from the content directory
-      const herbsDir = path.resolve(__dirname, 'src/content/herbs')
+      // Locales - English (default, no prefix) and other languages
+      const locales = ['', '/zh-HK', '/zh-CN']
 
       if (fs.existsSync(herbsDir)) {
-        // New structure: herbs/{slug}/en.yaml
+        // Get all herb directories
         const dirs = fs.readdirSync(herbsDir, { withFileTypes: true })
           .filter(dirent => dirent.isDirectory())
           .map(dirent => dirent.name)
@@ -53,13 +49,45 @@ export default defineConfig({
             const content = fs.readFileSync(enPath, 'utf8')
             const catMatch = content.match(/^category:\s*"([^"]+)"/m)
             if (catMatch) {
-              herbRoutes.push(`/herbs/${catMatch[1]}/${slug}`)
+              const category = catMatch[1]
+
+              // Check which locale files exist for this herb
+              const hasEn = fs.existsSync(path.join(herbsDir, slug, 'en.yaml'))
+              const hasZhHK = fs.existsSync(path.join(herbsDir, slug, 'zh-HK.yaml'))
+              const hasZhCN = fs.existsSync(path.join(herbsDir, slug, 'zh-CN.yaml'))
+
+              // Add route for each available locale
+              if (hasEn) {
+                allRoutes.push(`/herbs/${category}/${slug}`)
+              }
+              if (hasZhHK) {
+                allRoutes.push(`/zh-HK/herbs/${category}/${slug}`)
+              }
+              if (hasZhCN) {
+                allRoutes.push(`/zh-CN/herbs/${category}/${slug}`)
+              }
             }
           }
         })
+
+        // Add category routes for each locale
+        categories.forEach(cat => {
+          // English (no prefix)
+          allRoutes.push(`/herbs/${cat}`)
+          // zh-HK
+          allRoutes.push(`/zh-HK/herbs/${cat}`)
+          // zh-CN
+          allRoutes.push(`/zh-CN/herbs/${cat}`)
+        })
+
+        // Add locale-specific home and about pages
+        allRoutes.push('/zh-HK')
+        allRoutes.push('/zh-HK/about')
+        allRoutes.push('/zh-CN')
+        allRoutes.push('/zh-CN/about')
       }
 
-      return [...staticRoutes, ...herbRoutes]
+      return allRoutes
     }
   },
   build: {

@@ -1,30 +1,40 @@
 <template>
   <header class="header">
     <div class="container header__container">
-      <a href="/" class="header__logo">
+      <router-link :to="localePath('/')" class="header__logo">
         <span class="header__logo-text">Herbapedia</span>
         <span class="header__logo-tagline">SIPM</span>
-      </a>
+      </router-link>
 
       <nav class="header__nav" :class="{ 'header__nav--open': mobileMenuOpen }">
-        <router-link to="/" class="header__link" @click="closeMobileMenu">Home</router-link>
-        <router-link to="/herbs" class="header__link" @click="closeMobileMenu">Herbs</router-link>
-        <router-link to="/about" class="header__link" @click="closeMobileMenu">About</router-link>
-        <a href="/standards/" class="header__link header__link--external" @click="closeMobileMenu">Standards</a>
-        <a href="/" class="header__link header__link--external" @click="closeMobileMenu">SIPM</a>
+        <router-link :to="localePath('/')" class="header__link" @click="closeMobileMenu">{{ t('nav.home') }}</router-link>
+        <router-link :to="localePath('/herbs')" class="header__link" @click="closeMobileMenu">{{ t('nav.herbs') }}</router-link>
+        <router-link :to="localePath('/about')" class="header__link" @click="closeMobileMenu">{{ t('nav.about') }}</router-link>
+        <a href="/standards/" class="header__link header__link--external" @click="closeMobileMenu">{{ t('nav.standards') }}</a>
+        <a href="/" class="header__link header__link--external" @click="closeMobileMenu">{{ t('nav.sipmHome') }}</a>
       </nav>
 
-      <button class="header__menu-toggle" @click="toggleMobileMenu" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <div class="header__actions">
+        <LanguageSwitcher />
+        <button class="header__menu-toggle" @click="toggleMobileMenu" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
   </header>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+import { DEFAULT_LOCALE } from '@/i18n/locales'
+import LanguageSwitcher from '@/components/ui/LanguageSwitcher.vue'
+
+const { t, locale } = useI18n()
+const route = useRoute()
 
 const mobileMenuOpen = ref(false)
 
@@ -34,6 +44,14 @@ const toggleMobileMenu = () => {
 
 const closeMobileMenu = () => {
   mobileMenuOpen.value = false
+}
+
+// Helper to generate localized paths
+const localePath = (path) => {
+  if (locale.value === DEFAULT_LOCALE) {
+    return path
+  }
+  return `/${locale.value}${path}`
 }
 </script>
 
@@ -102,6 +120,12 @@ const closeMobileMenu = () => {
 
 .header__link--external:hover {
   opacity: 1;
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
 }
 
 .header__menu-toggle {
