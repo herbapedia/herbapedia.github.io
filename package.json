@@ -7,11 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite-ssg build",
-    "preview": "vite preview",
-    "scrape": "node scripts/scrape-herbapedia.js",
-    "scrape:zh-hant": "node scripts/scrape-herbapedia.js --lang zh-Hant --skip-images",
-    "scrape:zh-hans": "node scripts/scrape-herbapedia.js --lang zh-Hans --skip-images",
-    "scrape:all": "node scripts/scrape-herbapedia.js --all-languages"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@modyfi/vite-plugin-yaml": "^1.1.1",
