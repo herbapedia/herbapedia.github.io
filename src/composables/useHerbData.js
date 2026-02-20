@@ -1,74 +1,15 @@
 /**
  * Herbapedia JSON-LD Data Composable
  *
- * Loads and manages data from @herbapedia/data package.
- * Provides herbs, categories, and search functionality.
+ * Provides herbs, categories, and search functionality using the
+ * HerbapediaDataset API.
  *
- * Architecture:
- * - Plants contain botanical data (scientific name, common names, images)
- * - System profiles (TCM, Ayurveda, etc.) contain system-specific content
- * - This composable merges plant + system data for display
+ * This composable wraps the dataset API with Vue reactivity and i18n helpers.
  */
 
-import { ref, computed, watch } from 'vue'
+import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-
-// Import all JSON-LD files using Vite glob
-// Plants: botanical data
-const plantModules = import.meta.glob('@herbapedia/data/entities/plants/*/entity.jsonld', {
-  eager: true
-})
-
-// TCM profiles: TCM-specific content
-const tcmModules = import.meta.glob('@herbapedia/data/systems/tcm/herbs/*/profile.jsonld', {
-  eager: true
-})
-
-// Western profiles: Western herbalism content
-const westernModules = import.meta.glob('@herbapedia/data/systems/western/herbs/*/profile.jsonld', {
-  eager: true
-})
-
-// Reference data for lookups
-const meridianModules = import.meta.glob('@herbapedia/data/systems/tcm/meridians.jsonld', {
-  eager: true
-})
-const natureModules = import.meta.glob('@herbapedia/data/systems/tcm/natures.jsonld', {
-  eager: true
-})
-const flavorModules = import.meta.glob('@herbapedia/data/systems/tcm/flavors.jsonld', {
-  eager: true
-})
-const categoryModules = import.meta.glob('@herbapedia/data/systems/tcm/categories.jsonld', {
-  eager: true
-})
-
-// Western reference data: actions and organ affinities
-const westernActionModules = import.meta.glob('@herbapedia/data/systems/western/actions.jsonld', {
-  eager: true
-})
-const westernOrganModules = import.meta.glob('@herbapedia/data/systems/western/organs.jsonld', {
-  eager: true
-})
-
-// Chemical compounds reference data
-const chemicalModules = import.meta.glob('@herbapedia/data/reference/chemicals/compounds.jsonld', {
-  eager: true
-})
-
-// Cache for merged data
-const plantsCache = new Map()
-const tcmCache = new Map()
-const westernCache = new Map()
-const mergedCache = new Map()
-const categoryCache = new Map()
-
-// Western reference data caches
-const westernActionCache = new Map()
-const westernOrganCache = new Map()
-
-// Chemical compounds cache
-const chemicalCache = new Map()
+import { dataset } from '@/api/dataset'
 
 // Category mapping from TCM category ID to site category
 const TCM_CATEGORY_MAP = {
@@ -91,66 +32,44 @@ const TCM_CATEGORY_MAP = {
 }
 
 /**
- * Initialize caches from imported modules
+ * Get localized value from language map
  */
-function initializeCaches() {
-  if (plantsCache.size > 0) return // Already initialized
-
-  // Process plant entities
-  for (const [path, module] of Object.entries(plantModules)) {
-    const data = module?.default || module
-    if (data && data['@id']) {
-      const slug = data['@id'].replace('plant/', '')
-      plantsCache.set(slug, {
-        slug,
-        ...data
-      })
-    }
+function getLocalizedValue(langMap, locale, fallbackLocale = 'en') {
+  if (!langMap) return null
+  if (typeof langMap === 'string') return langMap
+  if (typeof langMap === 'object') {
+    // Try exact match first
+    if (langMap[locale]) return langMap[locale]
+    // Fallback to other variants
+    if (locale.startsWith('zh-H') && langMap['zh-Hant']) return langMap['zh-Hant']
+    if (locale.startsWith('zh-') && langMap['zh-Hans']) return langMap['zh-Hans']
+    if (locale === 'zh-Hant' && langMap['zh-Hans']) return langMap['zh-Hans']
+    if (locale === 'zh-Hans' && langMap['zh-Hant']) return langMap['zh-Hant']
+    // Fallback to English
+    if (langMap[fallbackLocale]) return langMap[fallbackLocale]
+    // Return first value
+    const keys = Object.keys(langMap)
+    if (keys.length > 0) return langMap[keys[0]]
   }
+  return null
+}
 
-  // Process TCM profiles
-  for (const [path, module] of Object.entries(tcmModules)) {
-    const data = module?.default || module
-    if (data && data['@id']) {
-      const slug = data['@id'].replace('tcm/', '')
-      tcmCache.set(slug, {
-        slug,
-        ...data
-      })
-    }
-  }
+/**
+ * Build merged cache from dataset
+ */
+function buildMergedCache() {
+  const mergedCache = new Map()
+  const categoryCache = new Map()
 
-  // Process Western profiles
-  for (const [path, module] of Object.entries(westernModules)) {
-    const data = module?.default || module
-    if (data && data['@id']) {
-      const slug = data['@id'].replace('western/', '')
-      westernCache.set(slug, {
-        slug,
-        ...data
-      })
-    }
-  }
+  const plants = dataset.getAllPlants()
 
-  // Build merged cache (plants + TCM data + Western data)
-  for (const [slug, plant] of plantsCache) {
-    // Find TCM profile for this plant
-    let tcmProfile = null
-    for (const [tcmSlug, tcm] of tcmCache) {
-      if (tcm.derivedFromPlant && tcm.derivedFromPlant['@id']) {
-        const plantRef = tcm.derivedFromPlant['@id']
-          .replace('plant/', '')
-          .replace('#root', '')
-          .replace('#leaf', '')
-        if (plantRef === slug) {
-          tcmProfile = tcm
-          break
-        }
-      }
-    }
+  for (const plant of plants) {
+    const slug = plant['@id'].replace('plant/', '')
 
-    // Find Western profile for this plant
-    let westernProfile = westernCache.get(slug) || null
+    // Get all profiles for this plant
+    const profiles = dataset.getAllProfilesForPlant(slug)
+    const tcmProfile = profiles.tcm
+    const westernProfile = profiles.western
 
     // Determine category
     let category = 'western-herbs'
@@ -179,11 +98,11 @@ function initializeCaches() {
       }
     }
 
-    // Merge plant and system data (TCM + Western)
+    // Merge plant and system data
     const merged = {
       slug,
       category,
-      type: tcmProfile ? 'tcm-herb' : (westernProfile ? 'western-herb' : 'plant'),
+      type: herbType,
 
       // Plant data
       name: plant.name || {},
@@ -195,12 +114,12 @@ function initializeCaches() {
       botanicalDescription: plant.botanicalDescription || {},
       description: plant.description || {},
       geographicalDistribution: plant.geographicalDistribution || {},
-      hasPart: plant.hasPart || [],
+      hasPart: plant.hasParts || [],
       containsChemical: plant.containsChemical || [],
       image: plant.image ? `/@herbapedia/data/${plant.image}` : null,
 
       // TCM profile data
-      tcmSlug: tcmProfile?.slug || null,
+      tcmSlug: tcmProfile ? (tcmProfile['@id'].replace('tcm/', '')) : null,
       pinyin: tcmProfile?.pinyin || null,
       chineseName: tcmProfile?.chineseName || null,
       hasCategory: tcmProfile?.hasCategory || null,
@@ -223,7 +142,7 @@ function initializeCaches() {
       tcmSafetyConsideration: tcmProfile?.tcmSafetyConsideration || {},
 
       // System-scoped content - Western
-      westernSlug: westernProfile?.slug || null,
+      westernSlug: westernProfile ? (westernProfile['@id'].replace('western/', '')) : null,
       hasAction: westernProfile?.hasAction || [],
       hasOrganAffinity: westernProfile?.hasOrganAffinity || [],
       westernHistory: westernProfile?.westernHistory || {},
@@ -231,8 +150,8 @@ function initializeCaches() {
       westernModernResearch: westernProfile?.westernModernResearch || {},
       westernConstituents: westernProfile?.westernConstituents || {},
 
-      sameAs: [...(plant.sameAs || []), ...(tcmProfile?.sameAs || []), ...(westernProfile?.sameAs || [])],
-      source: plant.source || tcmProfile?.source || westernProfile?.source || null
+      sameAs: [...(plant.sameAs || [])],
+      source: plant.source || null
     }
 
     mergedCache.set(slug, merged)
@@ -243,33 +162,12 @@ function initializeCaches() {
     }
     categoryCache.get(category).push(merged)
   }
+
+  return { mergedCache, categoryCache }
 }
 
-// Initialize on first use
-initializeCaches()
-
-/**
- * Get localized value from language map
- */
-function getLocalizedValue(langMap, locale, fallbackLocale = 'en') {
-  if (!langMap) return null
-  if (typeof langMap === 'string') return langMap
-  if (typeof langMap === 'object') {
-    // Try exact match first
-    if (langMap[locale]) return langMap[locale]
-    // Fallback to other variants
-    if (locale.startsWith('zh-H') && langMap['zh-Hant']) return langMap['zh-Hant']
-    if (locale.startsWith('zh-') && langMap['zh-Hans']) return langMap['zh-Hans']
-    if (locale === 'zh-Hant' && langMap['zh-Hans']) return langMap['zh-Hans']
-    if (locale === 'zh-Hans' && langMap['zh-Hant']) return langMap['zh-Hant']
-    // Fallback to English
-    if (langMap[fallbackLocale]) return langMap[fallbackLocale]
-    // Return first value
-    const keys = Object.keys(langMap)
-    if (keys.length > 0) return langMap[keys[0]]
-  }
-  return null
-}
+// Build caches on module load
+const { mergedCache, categoryCache } = buildMergedCache()
 
 /**
  * Get all herbs
@@ -280,7 +178,6 @@ export function useAllHerbs() {
 
 /**
  * Get herbs by category
- * Accepts either a string or a computed ref
  */
 export function useHerbsByCategory(category) {
   return computed(() => {
@@ -294,28 +191,6 @@ export function useHerbsByCategory(category) {
  */
 export function useHerb(slug) {
   return computed(() => mergedCache.get(slug) || null)
-}
-
-/**
- * Get TCM profile for a plant slug
- */
-export function useTcmProfile(plantSlug) {
-  return computed(() => {
-    const tcm = tcmCache.get(plantSlug)
-    if (!tcm) return null
-
-    // Find the plant slug from the TCM profile
-    const plantRef = tcm.derivedFromPlant?.['@id']
-    if (plantRef) {
-      const refSlug = plantRef.replace('plant/', '').replace('#root', '').replace('#leaf', '')
-      const plant = plantsCache.get(refSlug)
-      return {
-        ...tcm,
-        plant
-      }
-    }
-    return tcm
-  })
 }
 
 /**
@@ -392,33 +267,21 @@ export function useHerbLocalizer() {
   const { locale } = useI18n()
 
   return {
-    /**
-     * Get localized name
-     */
     getName: (herb) => {
       if (!herb) return null
       return getLocalizedValue(herb.name, locale.value)
     },
 
-    /**
-     * Get localized common name
-     */
     getCommonName: (herb) => {
       if (!herb) return null
       return getLocalizedValue(herb.commonName, locale.value)
     },
 
-    /**
-     * Get localized description
-     */
     getDescription: (herb) => {
       if (!herb) return null
       return getLocalizedValue(herb.description, locale.value)
     },
 
-    /**
-     * Get localized TCM content
-     */
     getTcmHistory: (herb) => {
       if (!herb) return null
       return getLocalizedValue(herb.tcmHistory, locale.value)
@@ -439,9 +302,6 @@ export function useHerbLocalizer() {
       return getLocalizedValue(herb.tcmFunctions, locale.value)
     },
 
-    /**
-     * Get localized Western content
-     */
     getWesternHistory: (herb) => {
       if (!herb) return null
       return getLocalizedValue(herb.westernHistory, locale.value)
@@ -457,9 +317,6 @@ export function useHerbLocalizer() {
       return getLocalizedValue(herb.westernModernResearch, locale.value)
     },
 
-    /**
-     * Get category label
-     */
     getCategoryLabel: (categorySlug) => {
       return getLocalizedValue(categoryLabels[categorySlug], locale.value)
     }
@@ -472,108 +329,45 @@ export function useHerbLocalizer() {
 export function useTcmReferences() {
   const { locale } = useI18n()
 
-  const meridians = ref([])
-  const natures = ref([])
-  const flavors = ref([])
-  const categories = ref([])
+  const meridians = ref(dataset.getAllMeridians())
+  const natures = ref(dataset.getAllNatures())
+  const flavors = ref(dataset.getAllFlavors())
+  const categories = ref(dataset.getAllCategories())
 
-  // Lookup maps for fast access
-  const meridianMap = new Map()
-  const natureMap = new Map()
-  const flavorMap = new Map()
-  const categoryMap = new Map()
-
-  // Load reference data
-  for (const [path, module] of Object.entries(meridianModules)) {
-    const data = module?.default || module
-    if (data && data['@graph']) {
-      meridians.value = data['@graph']
-      data['@graph'].forEach(item => {
-        const id = item['@id']
-        if (id) meridianMap.set(id, item)
-      })
-    }
-  }
-  for (const [path, module] of Object.entries(natureModules)) {
-    const data = module?.default || module
-    if (data && data['@graph']) {
-      natures.value = data['@graph']
-      data['@graph'].forEach(item => {
-        const id = item['@id']
-        if (id) natureMap.set(id, item)
-      })
-    }
-  }
-  for (const [path, module] of Object.entries(flavorModules)) {
-    const data = module?.default || module
-    if (data && data['@graph']) {
-      flavors.value = data['@graph']
-      data['@graph'].forEach(item => {
-        const id = item['@id']
-        if (id) flavorMap.set(id, item)
-      })
-    }
-  }
-  for (const [path, module] of Object.entries(categoryModules)) {
-    const data = module?.default || module
-    if (data && data['@graph']) {
-      categories.value = data['@graph']
-      data['@graph'].forEach(item => {
-        const id = item['@id']
-        if (id) categoryMap.set(id, item)
-      })
-    }
-  }
-
-  /**
-   * Get localized label for a reference item
-   */
   function getLabel(item) {
     if (!item || !item.prefLabel) return null
     return getLocalizedValue(item.prefLabel, locale.value)
   }
 
-  /**
-   * Get nature label from @id reference
-   */
   function getNatureLabel(natureRef) {
     if (!natureRef) return null
     const id = typeof natureRef === 'object' ? natureRef['@id'] : natureRef
-    const item = natureMap.get(id)
+    const item = dataset.getNature(id)
     return item ? getLabel(item) : id
   }
 
-  /**
-   * Get flavor labels from @id array
-   */
   function getFlavorLabels(flavorRefs) {
     if (!flavorRefs || !Array.isArray(flavorRefs)) return []
     return flavorRefs.map(ref => {
       const id = typeof ref === 'object' ? ref['@id'] : ref
-      const item = flavorMap.get(id)
+      const item = dataset.getFlavor(id)
       return item ? { id, label: getLabel(item) } : { id, label: id }
     })
   }
 
-  /**
-   * Get meridian labels from @id array
-   */
   function getMeridianLabels(meridianRefs) {
     if (!meridianRefs || !Array.isArray(meridianRefs)) return []
     return meridianRefs.map(ref => {
       const id = typeof ref === 'object' ? ref['@id'] : ref
-      const item = meridianMap.get(id)
+      const item = dataset.getMeridian(id)
       return item ? { id, label: getLabel(item) } : { id, label: id }
     })
   }
 
-  /**
-   * Get category label from @id reference
-   */
   function getCategoryLabel(categoryRef) {
     if (!categoryRef) return null
     const id = typeof categoryRef === 'object' ? categoryRef['@id'] : categoryRef
-    const item = categoryMap.get(id)
+    const item = dataset.getCategory(id)
     return item ? getLabel(item) : id
   }
 
@@ -582,7 +376,6 @@ export function useTcmReferences() {
     natures,
     flavors,
     categories,
-    // Lookup functions
     getNatureLabel,
     getFlavorLabels,
     getMeridianLabels,
@@ -596,63 +389,28 @@ export function useTcmReferences() {
 export function useWesternReferences() {
   const { locale } = useI18n()
 
-  const actions = ref([])
-  const organs = ref([])
+  const actions = ref(dataset.getAllActions())
+  const organs = ref(dataset.getAllOrgans())
 
-  // Lookup maps for fast access
-  const actionMap = new Map()
-  const organMap = new Map()
-
-  // Load reference data
-  for (const [path, module] of Object.entries(westernActionModules)) {
-    const data = module?.default || module
-    if (data && data['@graph']) {
-      actions.value = data['@graph']
-      data['@graph'].forEach(item => {
-        const id = item['@id']
-        if (id) actionMap.set(id, item)
-      })
-    }
-  }
-  for (const [path, module] of Object.entries(westernOrganModules)) {
-    const data = module?.default || module
-    if (data && data['@graph']) {
-      organs.value = data['@graph']
-      data['@graph'].forEach(item => {
-        const id = item['@id']
-        if (id) organMap.set(id, item)
-      })
-    }
-  }
-
-  /**
-   * Get localized label for a reference item
-   */
   function getLabel(item) {
     if (!item || !item.prefLabel) return null
     return getLocalizedValue(item.prefLabel, locale.value)
   }
 
-  /**
-   * Get action labels from @id array
-   */
   function getActionLabels(actionRefs) {
     if (!actionRefs || !Array.isArray(actionRefs)) return []
     return actionRefs.map(ref => {
       const id = typeof ref === 'object' ? ref['@id'] : ref
-      const item = actionMap.get(id)
+      const item = dataset.getAction(id)
       return item ? { id, label: getLabel(item) } : { id, label: id }
     })
   }
 
-  /**
-   * Get organ affinity labels from @id array
-   */
   function getOrganLabels(organRefs) {
     if (!organRefs || !Array.isArray(organRefs)) return []
     return organRefs.map(ref => {
       const id = typeof ref === 'object' ? ref['@id'] : ref
-      const item = organMap.get(id)
+      const item = dataset.getOrgan(id)
       return item ? { id, label: getLabel(item) } : { id, label: id }
     })
   }
@@ -660,7 +418,6 @@ export function useWesternReferences() {
   return {
     actions,
     organs,
-    // Lookup functions
     getActionLabels,
     getOrganLabels
   }
@@ -672,43 +429,54 @@ export function useWesternReferences() {
 export function useChemicalReferences() {
   const { locale } = useI18n()
 
-  const compounds = ref([])
+  // Load compound reference data from dataset
+  // The dataset.ts doesn't expose getCompoundLabels, so we need to implement it here
+  // by iterating through plants to find compounds
 
-  // Load reference data
-  for (const [path, module] of Object.entries(chemicalModules)) {
-    const data = module?.default || module
-    if (data && data['@graph']) {
-      compounds.value = data['@graph']
-      data['@graph'].forEach(item => {
-        const id = item['@id']
-        if (id) chemicalCache.set(id, item)
-      })
-    }
-  }
-
-  /**
-   * Get localized label for a compound
-   */
-  function getLabel(item) {
+  function getLocalizedLabel(item) {
     if (!item || !item.prefLabel) return null
     return getLocalizedValue(item.prefLabel, locale.value)
   }
 
-  /**
-   * Get compound labels from @id array
-   */
   function getCompoundLabels(compoundRefs) {
     if (!compoundRefs || !Array.isArray(compoundRefs)) return []
+
+    // Build a map of compound IDs to their data from plants
+    const compoundMap = new Map()
+    const plants = dataset.getAllPlants()
+
+    for (const plant of plants) {
+      if (plant.containsChemical) {
+        for (const ref of plant.containsChemical) {
+          const id = typeof ref === 'object' ? ref['@id'] : ref
+          if (!compoundMap.has(id)) {
+            compoundMap.set(id, ref)
+          }
+        }
+      }
+    }
+
     return compoundRefs.map(ref => {
       const id = typeof ref === 'object' ? ref['@id'] : ref
-      const item = chemicalCache.get(id)
-      return item ? { id, label: getLabel(item), description: getLocalizedValue(item.description, locale.value) } : { id, label: id, description: null }
+      const originalRef = compoundMap.get(id)
+      // Extract label from the ref object if it has prefLabel
+      let label = id
+      let description = null
+
+      if (originalRef && typeof originalRef === 'object') {
+        if (originalRef.prefLabel) {
+          label = getLocalizedLabel(originalRef)
+        }
+        if (originalRef.description) {
+          description = getLocalizedValue(originalRef.description, locale.value)
+        }
+      }
+
+      return { id, label, description }
     })
   }
 
   return {
-    compounds,
-    // Lookup functions
     getCompoundLabels
   }
 }
