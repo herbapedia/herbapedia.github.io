@@ -71,11 +71,27 @@ function buildMergedCache() {
     const tcmProfile = profiles.tcm
     const westernProfile = profiles.western
 
-    // Determine category
+    // Determine category - TYPE first, then system profiles
+    // The hierarchy: Vitamins > Minerals > Nutrients > Herbs (by system)
     let category = 'western-herbs'
     let herbType = 'plant'
 
-    if (tcmProfile) {
+    // First, determine the TYPE of entity
+    const isVitamin = slug.includes('vitamin-') || slug.startsWith('vitamin-')
+    const isMineral = ['calcium', 'copper', 'iodine', 'iron', 'magnesium', 'manganese', 'potassium', 'selenium', 'zinc'].includes(slug)
+    const isNutrient = ['choline', 'chondroitin-sulfate', 'glucosamine-sulfate', 'inositol', 'lecithin', 'lysine', 'melatonin', 'methionine', 'capigen', 'ceramides', 'chitosan', 'cysteine-hci', 'glycerin', 'glycine', 'linolenic-acid', 'omega-3', 'omega-6', 'omega-9', 'paba', 'phospholipids', 'squalene'].some(n => slug.includes(n) || slug === n)
+
+    if (isVitamin) {
+      category = 'vitamins'
+      herbType = 'vitamin'
+    } else if (isMineral) {
+      category = 'minerals'
+      herbType = 'mineral'
+    } else if (isNutrient) {
+      category = 'nutrients'
+      herbType = 'nutrient'
+    } else if (tcmProfile) {
+      // Herbs with TCM profile → Chinese Herbs
       herbType = 'tcm-herb'
       const categoryRef = tcmProfile.hasCategory
       if (categoryRef && typeof categoryRef === 'object' && categoryRef['@id']) {
@@ -85,17 +101,13 @@ function buildMergedCache() {
         category = 'chinese-herbs'
       }
     } else if (westernProfile) {
+      // Herbs with only Western profile → Western Herbs
       herbType = 'western-herb'
       category = 'western-herbs'
     } else {
-      // Determine from slug patterns
-      if (slug.includes('vitamin-')) {
-        category = 'vitamins'
-      } else if (['calcium', 'copper', 'iodine', 'iron', 'magnesium', 'manganese', 'potassium', 'selenium', 'zinc'].includes(slug)) {
-        category = 'minerals'
-      } else if (['choline', 'chondroitin', 'glucosamine', 'inositol', 'lecithin', 'lysine', 'melatonin', 'methionine', 'capigen', 'ceramides', 'chitosan', 'cysteine', 'glycerin', 'glycine', 'linolenic'].some(n => slug.includes(n))) {
-        category = 'nutrients'
-      }
+      // Plants without any system profile → still Western Herbs (default)
+      herbType = 'plant'
+      category = 'western-herbs'
     }
 
     // Merge plant and system data
