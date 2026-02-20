@@ -391,28 +391,42 @@ class HerbapediaDatasetBrowser {
   // Reference Data
   // ===========================================================================
 
+  private normalizeRefId(id: string, prefix: string): string {
+    // Strip prefix if present (e.g., "tcm/nature/hot" -> "nature/hot")
+    if (id.startsWith(prefix + '/')) {
+      return id.substring(prefix.length + 1)
+    }
+    return id
+  }
+
   getMeridian(id: string): ReferenceItem | null {
-    return this.meridianMap.get(id) || null
+    const normalizedId = this.normalizeRefId(id, 'tcm')
+    return this.meridianMap.get(normalizedId) || this.meridianMap.get(id) || null
   }
 
   getNature(id: string): ReferenceItem | null {
-    return this.natureMap.get(id) || null
+    const normalizedId = this.normalizeRefId(id, 'tcm')
+    return this.natureMap.get(normalizedId) || this.natureMap.get(id) || null
   }
 
   getFlavor(id: string): ReferenceItem | null {
-    return this.flavorMap.get(id) || null
+    const normalizedId = this.normalizeRefId(id, 'tcm')
+    return this.flavorMap.get(normalizedId) || this.flavorMap.get(id) || null
   }
 
   getCategory(id: string): ReferenceItem | null {
-    return this.categoryMap.get(id) || null
+    const normalizedId = this.normalizeRefId(id, 'tcm')
+    return this.categoryMap.get(normalizedId) || this.categoryMap.get(id) || null
   }
 
   getAction(id: string): ReferenceItem | null {
-    return this.actionMap.get(id) || null
+    const normalizedId = this.normalizeRefId(id, 'western')
+    return this.actionMap.get(normalizedId) || this.actionMap.get(id) || null
   }
 
   getOrgan(id: string): ReferenceItem | null {
-    return this.organMap.get(id) || null
+    const normalizedId = this.normalizeRefId(id, 'western')
+    return this.organMap.get(normalizedId) || this.organMap.get(id) || null
   }
 
   getAllNatures(): ReferenceItem[] {
