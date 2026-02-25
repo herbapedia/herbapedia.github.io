@@ -184,12 +184,30 @@ export interface MongolianProfile extends Entity {
   contraIndications?: LanguageMap
 }
 
+export interface ModernSubstanceProfile extends Entity {
+  name?: LanguageMap
+  derivedFromSource?: IRIReference
+  clinicalEvidence?: LanguageMap
+  source?: string
+  sourceUrl?: string
+  regulatoryCategory?: string[]
+  fdaStatus?: string
+  substanceClass?: string
+  mechanismOfAction?: LanguageMap
+  pharmacokinetics?: LanguageMap
+  safetyProfile?: LanguageMap
+  interactions?: string[]
+  contraindications?: LanguageMap
+  dosage?: LanguageMap
+}
+
 export interface SystemProfiles {
   tcm?: TCMProfile
   western?: WesternHerbalProfile
   ayurveda?: AyurvedaProfile
   persian?: PersianProfile
   mongolian?: MongolianProfile
+  modern?: ModernSubstanceProfile
 }
 
 export interface ReferenceItem {
@@ -355,6 +373,11 @@ const persianModules = import.meta.glob('@herbapedia/data/profiles/persian/*/pro
 const mongolianModules = import.meta.glob('@herbapedia/data/profiles/mongolian/*/profile.jsonld', {
   eager: true
 }) as Record<string, { default: MongolianProfile }>
+
+// Modern medicine substance profiles
+const modernModules = import.meta.glob('@herbapedia/data/systems/modern/substances/*/profile.jsonld', {
+  eager: true
+}) as Record<string, { default: ModernSubstanceProfile }>
 
 // Reference data - TCM (reference subdirectory for all)
 const meridianModules = import.meta.glob('@herbapedia/data/systems/tcm/reference/meridians.jsonld', {
@@ -579,12 +602,13 @@ class HerbapediaDatasetBrowser {
   private plantsCache: Map<string, PlantSpecies>
   private plantPartsCache: Map<string, PlantPart>
 
-  // System profile caches - ALL 5 SYSTEMS
+  // System profile caches - ALL 5 SYSTEMS + MODERN
   private tcmCache: Map<string, TCMProfile>
   private westernCache: Map<string, WesternHerbalProfile>
   private ayurvedaCache: Map<string, AyurvedaProfile>
   private persianCache: Map<string, PersianProfile>
   private mongolianCache: Map<string, MongolianProfile>
+  private modernCache: Map<string, ModernSubstanceProfile>
 
   // Reference data - TCM
   private meridianMap: Map<string, ReferenceItem>
@@ -654,12 +678,13 @@ class HerbapediaDatasetBrowser {
     this.plantsCache = getModuleData(plantModules)
     this.plantPartsCache = getModuleData(plantPartModules)
 
-    // Load system profiles - ALL 5 SYSTEMS
+    // Load system profiles - ALL 5 SYSTEMS + MODERN
     this.tcmCache = getModuleData(tcmModules)
     this.westernCache = getModuleData(westernModules)
     this.ayurvedaCache = getModuleData(ayurvedaModules)
     this.persianCache = getModuleData(persianModules)
     this.mongolianCache = getModuleData(mongolianModules)
+    this.modernCache = getModuleData(modernModules)
 
     // Load TCM reference data
     this.meridianMap = getGraphData(meridianModules)
@@ -987,6 +1012,14 @@ class HerbapediaDatasetBrowser {
 
   getAllMongolianProfiles(): Map<string, MongolianProfile> {
     return this.mongolianCache
+  }
+
+  getAllModernProfiles(): Map<string, ModernSubstanceProfile> {
+    return this.modernCache
+  }
+
+  getModernProfile(slug: string): ModernSubstanceProfile | undefined {
+    return this.modernCache.get(slug)
   }
 
   // ===========================================================================
@@ -1624,6 +1657,7 @@ class HerbapediaDatasetBrowser {
       ayurveda: this.ayurvedaCache.size,
       persian: this.persianCache.size,
       mongolian: this.mongolianCache.size,
+      modern: this.modernCache.size,
     }
   }
 }

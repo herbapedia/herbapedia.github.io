@@ -175,6 +175,13 @@ const systemConfigs = {
     nativeName: 'Монгол эмнэлэг / Traditional Tibetan Medicine',
     description: 'Central Asian medical system integrating Tibetan and Mongolian traditions',
     aboutText: 'Mongolian Traditional Medicine is a syncretic system combining Tibetan Buddhist medicine with indigenous Mongolian practices. It is based on the theory of three roots (Heyi, Xila, Badagan) similar to the Ayurvedic doshas. The system uses five elements and six tastes to classify medicinal substances.'
+  },
+  modern: {
+    icon: '💊',
+    name: 'Modern Medicine',
+    nativeName: 'Evidence-Based Nutrition & Pharmacology',
+    description: 'Contemporary nutritional and pharmaceutical substances supported by scientific research',
+    aboutText: 'Modern Medicine encompasses vitamins, minerals, amino acids, nutraceuticals, and other bioactive compounds backed by clinical research. This system provides evidence-based profiles including regulatory status, pharmacokinetics, and clinical applications for substances used in contemporary healthcare and supplementation.'
   }
 }
 
@@ -429,6 +436,17 @@ const referenceCategories = computed(() => {
         }))
       })
     }
+  } else if (system.value === 'modern') {
+    // Modern medicine reference categories - to be added
+    // For now, show basic info about available substances
+    categories.push({
+      id: 'substances',
+      name: t('modern.substances') || 'Substances',
+      items: Array.from(dataset.getAllModernProfiles().values()).map(item => ({
+        id: item['@id'],
+        label: item.name?.[locale.value] || item.name?.en || extractLabel(item['@id'])
+      }))
+    })
   }
 
   return categories

@@ -141,6 +141,15 @@ const systems = computed(() => [
     description: t('systems.mongolian.description'),
     profileCount: stats.mongolian,
     referenceCount: 11 // 5 elements + 6 tastes
+  },
+  {
+    id: 'modern',
+    icon: '💊',
+    name: t('systems.modern.name'),
+    nativeName: 'Modern Medicine',
+    description: t('systems.modern.description'),
+    profileCount: stats.modern,
+    referenceCount: 0 // Reference data coming soon
   }
 ])
 </script>
