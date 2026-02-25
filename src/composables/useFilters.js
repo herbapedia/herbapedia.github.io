@@ -26,13 +26,16 @@ export function useFilters() {
   const route = useRoute()
   const router = useRouter()
 
-  // Reactive filter state
+  // Reactive filter state - supports all 6 systems
   const filters = reactive({
     search: '',
     system: {
       tcm: false,
       western: false,
-      ayurveda: false
+      ayurveda: false,
+      persian: false,
+      mongolian: false,
+      modern: false
     },
     tcm: {
       nature: null,      // 'hot', 'warm', 'neutral', 'cool', 'cold'
@@ -70,6 +73,9 @@ export function useFilters() {
       filters.system.tcm = systems.includes('tcm')
       filters.system.western = systems.includes('western')
       filters.system.ayurveda = systems.includes('ayurveda')
+      filters.system.persian = systems.includes('persian')
+      filters.system.mongolian = systems.includes('mongolian')
+      filters.system.modern = systems.includes('modern')
     }
 
     // TCM filters
@@ -99,6 +105,9 @@ export function useFilters() {
     if (filters.system.tcm) systems.push('tcm')
     if (filters.system.western) systems.push('western')
     if (filters.system.ayurveda) systems.push('ayurveda')
+    if (filters.system.persian) systems.push('persian')
+    if (filters.system.mongolian) systems.push('mongolian')
+    if (filters.system.modern) systems.push('modern')
     if (systems.length > 0) {
       query.system = systems.join(',')
     }
@@ -142,6 +151,9 @@ export function useFilters() {
     filters.system.tcm = false
     filters.system.western = false
     filters.system.ayurveda = false
+    filters.system.persian = false
+    filters.system.mongolian = false
+    filters.system.modern = false
     filters.tcm.nature = null
     filters.tcm.flavor = null
     filters.tcm.meridian = null

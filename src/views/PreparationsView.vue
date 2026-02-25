@@ -76,10 +76,22 @@
               <input type="checkbox" v-model="filters.system.ayurveda" @change="handleFilterChange" />
               <span class="filter-checkbox__label">Ayurveda ({{ ayurvedaCount }})</span>
             </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" v-model="filters.system.persian" @change="handleFilterChange" />
+              <span class="filter-checkbox__label">Persian ({{ persianCount }})</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" v-model="filters.system.mongolian" @change="handleFilterChange" />
+              <span class="filter-checkbox__label">Mongolian ({{ mongolianCount }})</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" v-model="filters.system.modern" @change="handleFilterChange" />
+              <span class="filter-checkbox__label">Modern ({{ modernCount }})</span>
+            </label>
           </div>
 
-          <!-- TCM Filters -->
-          <div class="filter-group">
+          <!-- TCM Filters - Show if TCM selected or no system selected -->
+          <div v-if="showTCMFilters" class="filter-group">
             <h4 class="filter-group__title">{{ t('preparations.tcmProperties') }}</h4>
 
             <div class="filter-select">
@@ -113,8 +125,8 @@
             </div>
           </div>
 
-          <!-- Western Filters -->
-          <div class="filter-group">
+          <!-- Western Filters - Show if Western selected or no system selected -->
+          <div v-if="showWesternFilters" class="filter-group">
             <h4 class="filter-group__title">{{ t('preparations.westernProperties') }}</h4>
 
             <div class="filter-select">
@@ -231,6 +243,31 @@ const localePath = (path) => {
 const tcmCount = computed(() => allPreparations.value.filter(p => p.hasTCMProfile).length)
 const westernCount = computed(() => allPreparations.value.filter(p => p.hasWesternProfile).length)
 const ayurvedaCount = computed(() => allPreparations.value.filter(p => p.hasAyurvedaProfile).length)
+const persianCount = computed(() => allPreparations.value.filter(p => p.hasPersianProfile).length)
+const mongolianCount = computed(() => allPreparations.value.filter(p => p.hasMongolianProfile).length)
+const modernCount = computed(() => dataset.getSystemStats().modern)
+
+// Determine which filters to show based on selected systems
+const selectedSystems = computed(() => {
+  const systems = []
+  if (filters.system.tcm) systems.push('tcm')
+  if (filters.system.western) systems.push('western')
+  if (filters.system.ayurveda) systems.push('ayurveda')
+  if (filters.system.persian) systems.push('persian')
+  if (filters.system.mongolian) systems.push('mongolian')
+  if (filters.system.modern) systems.push('modern')
+  return systems
+})
+
+// Show TCM filters if TCM is selected OR no system is selected
+const showTCMFilters = computed(() => {
+  return filters.system.tcm || selectedSystems.value.length === 0
+})
+
+// Show Western filters if Western is selected OR no system is selected
+const showWesternFilters = computed(() => {
+  return filters.system.western || selectedSystems.value.length === 0
+})
 
 // Active filter count
 const activeFilterCount = computed(() => {
