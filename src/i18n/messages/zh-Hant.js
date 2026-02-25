@@ -19,7 +19,7 @@ export default {
     heroSubtitle: '藥用植物百科全書',
     heroDescription: '全面的藥用植物、草藥、維他命、礦物質及營養素資源——結合傳統智慧與現代科學研究。',
     exploreHerbs: '探索製劑',
-    browseByTradition: '按傳統醫學瀏覽',
+    browseBySystem: '按醫學體系瀏覽',
     browseByProperty: '按特性瀏覽',
     categoriesTitle: '按傳統醫學瀏覽',
     aboutTitle: '關於 Herbapedia',
@@ -301,6 +301,8 @@ export default {
     title: '醫學體系',
     subtitle: '探索世界各地的傳統醫學體系',
     profiles: '個檔案',
+    preparations: '製劑',
+    substances: '物質',
     referenceData: '項參考',
     aboutTitle: '關於傳統醫學體系',
     aboutText: '傳統醫學體系在不同文化中發展了數千年。每個體系都有其獨特的健康、疾病和治療理解框架。Herbapedia根據五大主要體系記錄製劑：傳統中醫、西方草藥學、阿育吠陀、波斯/尤納尼醫學和蒙古傳統醫學。',
@@ -326,7 +328,8 @@ export default {
     },
     modern: {
       name: '現代醫學',
-      description: '當代營養和藥物物質，包括維生素、礦物質、氨基酸及其他經現代科學研究支持的生物活性化合物。'
+      description: '當代營養和藥物物質，包括維生素、礦物質、氨基酸及其他經現代科學研究支持的生物活性化合物。',
+      substances: '物質'
     },
     // New keys
     preparationsWithProfile: '使用此檔案的製劑',

@@ -19,7 +19,7 @@ export default {
     heroSubtitle: '药用植物百科全书',
     heroDescription: '全面的药用植物、草药、维生素、矿物质及营养素资源——结合传统智慧与现代科学研究。',
     exploreHerbs: '探索制剂',
-    browseByTradition: '按传统医学浏览',
+    browseBySystem: '按医学体系浏览',
     browseByProperty: '按特性浏览',
     categoriesTitle: '按传统医学浏览',
     aboutTitle: '关于 Herbapedia',
@@ -302,6 +302,8 @@ export default {
     title: '医学体系',
     subtitle: '探索世界各地的传统医学体系',
     profiles: '个档案',
+    preparations: '制剂',
+    substances: '物质',
     referenceData: '项参考',
     aboutTitle: '关于传统医学体系',
     aboutText: '传统医学体系在不同文化中发展了数千年。每个体系都有其独特的健康、疾病和治疗理解框架。Herbapedia根据五大主要体系记录制剂：传统中医、西方草药学、阿育吠陀、波斯/尤纳尼医学和蒙古传统医学。',
@@ -324,6 +326,11 @@ export default {
     mongolian: {
       name: '蒙古传统医学',
       description: '受藏医影响的传统治疗体系，关注三根能量和元素平衡。'
+    },
+    modern: {
+      name: '现代医学',
+      description: '当代营养和药物物质，包括维生素、矿物质、氨基酸及其他经现代科学研究支持的生物活性化合物。',
+      substances: '物质'
     },
     // New keys
     preparationsWithProfile: '使用此档案的制剂',

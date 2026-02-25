@@ -24,11 +24,31 @@
       </div>
     </section>
 
-    <!-- Browse by Tradition -->
+    <!-- Browse by System -->
     <section class="traditions">
       <div class="container">
-        <h2 class="traditions__title">{{ t('home.browseByTradition') }}</h2>
+        <h2 class="traditions__title">{{ t('home.browseBySystem') }}</h2>
         <div class="traditions__grid">
+          <!-- Modern Medicine - First -->
+          <GlassCard
+            hoverable
+            padding="lg"
+            class="traditions__card"
+          >
+            <router-link :to="localePath('/preparations?system=modern')" class="tradition-card">
+              <div class="tradition-card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              </div>
+              <h3 class="tradition-card__title">{{ t('home.traditionModern') }}</h3>
+              <p class="tradition-card__subtitle">Modern Medicine</p>
+              <p class="tradition-card__count">{{ modernCount }} {{ t('common.items') }}</p>
+            </router-link>
+          </GlassCard>
+
+          <!-- TCM -->
           <GlassCard
             hoverable
             padding="lg"
@@ -82,6 +102,63 @@
               <h3 class="tradition-card__title">{{ t('home.traditionAyurveda') }}</h3>
               <p class="tradition-card__subtitle">आयुर्वेद</p>
               <p class="tradition-card__count">{{ ayurvedaCount }} {{ t('common.items') }}</p>
+            </router-link>
+          </GlassCard>
+
+          <GlassCard
+            hoverable
+            padding="lg"
+            class="traditions__card"
+          >
+            <router-link :to="localePath('/systems/modern')" class="tradition-card">
+              <div class="tradition-card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="3" y="3" width="18" height="18" rx="3" />
+                  <circle cx="12" cy="12" r="4" fill="currentColor" opacity="0.2"/>
+                  <path d="M12 8v4h2M4" stroke-linecap="round"/>
+                  <path d="M8 12h8v-4l4 2-4 2 4h8" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h3 class="tradition-card__title">{{ t('systems.modern.name') }}</h3>
+              <p class="tradition-card__subtitle">Modern Medicine</p>
+              <p class="tradition-card__count">{{ modernCount }} {{ t('common.items') }}</p>
+            </router-link>
+          </GlassCard>
+
+          <GlassCard
+            hoverable
+            padding="lg"
+            class="traditions__card"
+          >
+            <router-link :to="localePath('/systems/persian')" class="tradition-card">
+              <div class="tradition-card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 3a6 6 0 0 0-6 6c0 3.5 6 12 6 12s6-8.5 6-12a6 6 0 0 0-6-6z"/>
+                  <circle cx="12" cy="9" r="2" fill="currentColor" opacity="0.3"/>
+                </svg>
+              </div>
+              <h3 class="tradition-card__title">{{ t('systems.persian.name') }}</h3>
+              <p class="tradition-card__subtitle">طب یونانی / Unani</p>
+              <p class="tradition-card__count">{{ persianCount }} {{ t('common.items') }}</p>
+            </router-link>
+          </GlassCard>
+
+          <GlassCard
+            hoverable
+            padding="lg"
+            class="traditions__card"
+          >
+            <router-link :to="localePath('/systems/mongolian')" class="tradition-card">
+              <div class="tradition-card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                  <path d="M2 17l10 5 10-5"/>
+                  <path d="M2 12l10 5 10-5"/>
+                </svg>
+              </div>
+              <h3 class="tradition-card__title">{{ t('systems.mongolian.name') }}</h3>
+              <p class="tradition-card__subtitle">Монгол эмнэлэг / Tibetan</p>
+              <p class="tradition-card__count">{{ mongolianCount }} {{ t('common.items') }}</p>
             </router-link>
           </GlassCard>
         </div>
@@ -199,6 +276,12 @@ const { tcmNatures, tcmFlavors, westernActions } = useFilterOptions()
 const tcmCount = computed(() => allPreparations.value.filter(p => p.hasTCMProfile).length)
 const westernCount = computed(() => allPreparations.value.filter(p => p.hasWesternProfile).length)
 const ayurvedaCount = computed(() => allPreparations.value.filter(p => p.hasAyurvedaProfile).length)
+const persianCount = computed(() => allPreparations.value.filter(p => p.hasPersianProfile).length)
+const mongolianCount = computed(() => allPreparations.value.filter(p => p.hasMongolianProfile).length)
+const modernCount = computed(() => {
+  const modernProfiles = dataset.getAllModernProfiles()
+  return modernProfiles.size
+})
 
 // Get localized system names from dataset
 const tcmSystemName = computed(() => {

@@ -19,7 +19,7 @@ export default {
     heroSubtitle: 'Medicinal Plants Encyclopedia',
     heroDescription: 'A comprehensive resource of medicinal plants, herbs, vitamins, minerals, and nutrients - bridging traditional wisdom with modern scientific research.',
     exploreHerbs: 'Explore Preparations',
-    browseByTradition: 'Browse by Tradition',
+    browseBySystem: 'Browse by System',
     browseByProperty: 'Browse by Property',
     categoriesTitle: 'Browse by Tradition',
     aboutTitle: 'About Herbapedia',
@@ -301,6 +301,8 @@ export default {
     title: 'Medicine Systems',
     subtitle: 'Explore traditional medicine systems from around the world',
     profiles: 'profiles',
+    preparations: 'Preparations',
+    substances: 'Substances',
     referenceData: 'Reference Data',
     items: 'items',
     viewAll: 'View all',
@@ -332,7 +334,8 @@ export default {
     },
     modern: {
       name: 'Modern Medicine',
-      description: 'Contemporary nutritional and pharmaceutical substances including vitamins, minerals, amino acids, and other bioactive compounds supported by modern scientific research.'
+      description: 'Contemporary nutritional and pharmaceutical substances including vitamins, minerals, amino acids, and other bioactive compounds supported by modern scientific research.',
+      substances: 'Substances'
     }
   },
   // Sources
