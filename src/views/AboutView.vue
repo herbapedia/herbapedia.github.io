@@ -33,6 +33,85 @@
           <p>{{ t('about.approach.text') }}</p>
         </section>
 
+        <!-- Ontology Documentation -->
+        <section class="about-section">
+          <h2>{{ t('about.ontology.title') }}</h2>
+          <p>{{ t('about.ontology.intro') }}</p>
+
+          <h3>{{ t('about.ontology.coreEntity') }}</h3>
+          <p>{{ t('about.ontology.coreEntityDesc') }}</p>
+
+          <h3>{{ t('about.ontology.sourceMaterials') }}</h3>
+          <p>{{ t('about.ontology.sourceMaterialsDesc') }}</p>
+          <ul class="ontology-list">
+            <li><code>botany:PlantSpecies</code> - {{ t('about.ontology.sourcePlant') }}</li>
+            <li><code>herbapedia:ZoologicalSource</code> - {{ t('about.ontology.sourceAnimal') }}</li>
+            <li><code>herbapedia:MineralSource</code> - {{ t('about.ontology.sourceMineral') }}</li>
+            <li><code>herbapedia:ChemicalSource</code> - {{ t('about.ontology.sourceChemical') }}</li>
+          </ul>
+
+          <h3>{{ t('about.ontology.profiles') }}</h3>
+          <p>{{ t('about.ontology.profilesDesc') }}</p>
+          <ul class="ontology-list">
+            <li><code>tcm:TCMProfile</code> - {{ t('about.ontology.profileTCM') }}</li>
+            <li><code>western:WesternHerbalProfile</code> - {{ t('about.ontology.profileWestern') }}</li>
+            <li><code>ayurveda:AyurvedaProfile</code> - {{ t('about.ontology.profileAyurveda') }}</li>
+            <li><code>persian:PersianProfile</code> - {{ t('about.ontology.profilePersian') }}</li>
+            <li><code>mongolian:MongolianProfile</code> - {{ t('about.ontology.profileMongolian') }}</li>
+          </ul>
+
+          <h3>{{ t('about.ontology.referenceData') }}</h3>
+          <p>{{ t('about.ontology.referenceDataDesc') }}</p>
+          <ul class="ontology-list">
+            <li><strong>TCM:</strong> <code>tcm:Meridian</code>, <code>tcm:Nature</code>, <code>tcm:Flavor</code>, <code>tcm:Category</code></li>
+            <li><strong>Western:</strong> <code>western:Action</code>, <code>western:Organ</code>, <code>western:System</code></li>
+            <li><strong>Ayurveda:</strong> <code>ayurveda:Rasa</code>, <code>ayurveda:Guna</code>, <code>ayurveda:Virya</code>, <code>ayurveda:Vipaka</code></li>
+            <li><strong>Persian:</strong> <code>persian:Temperament</code>, <code>persian:Element</code></li>
+            <li><strong>Mongolian:</strong> <code>mongolian:Element</code>, <code>mongolian:Root</code>, <code>mongolian:Taste</code></li>
+          </ul>
+
+          <h3>{{ t('about.ontology.relationships') }}</h3>
+          <p>{{ t('about.ontology.relationshipsDesc') }}</p>
+          <div class="code-block">
+            <pre><code>HerbalPreparation
+├── derivedFrom → SourceMaterial (PlantSpecies | ZoologicalSource | ...)
+├── hasTCMProfile → TCMProfile
+│   ├── hasNature → tcm:Nature
+│   ├── hasFlavor → tcm:Flavor[]
+│   ├── entersMeridian → tcm:Meridian[]
+│   └── hasCategory → tcm:Category
+├── hasWesternProfile → WesternHerbalProfile
+│   ├── hasAction → western:Action[]
+│   └── hasOrganAffinity → western:Organ[]
+├── hasAyurvedaProfile → AyurvedaProfile
+│   ├── hasRasa → ayurveda:Rasa[]
+│   ├── hasGuna → ayurveda:Guna[]
+│   ├── hasVirya → ayurveda:Virya
+│   └── hasVipaka → ayurveda:Vipaka
+├── hasPersianProfile → PersianProfile
+│   └── hasTemperament → persian:Temperament
+└── hasMongolianProfile → MongolianProfile
+    ├── hasElement → mongolian:Element[]
+    └── hasTaste → mongolian:Taste[]</code></pre>
+          </div>
+
+          <h3>{{ t('about.ontology.i18n') }}</h3>
+          <p>{{ t('about.ontology.i18nDesc') }}</p>
+          <div class="code-block">
+            <pre><code>{
+  "@id": "meridian/lung",
+  "prefLabel": {
+    "en": "Lung Meridian",
+    "zh-Hant": "肺經",
+    "zh-Hans": "肺经"
+  }
+}</code></pre>
+          </div>
+
+          <h3>{{ t('about.ontology.serialization') }}</h3>
+          <p>{{ t('about.ontology.serializationDesc') }}</p>
+        </section>
+
         <section class="about-section">
           <h2>{{ t('disclaimer.title') }}</h2>
           <p>{{ t('disclaimer.text') }}</p>
@@ -78,6 +157,12 @@ const { t } = useI18n()
   margin-bottom: var(--spacing-md);
 }
 
+.about-section h3 {
+  font-size: var(--font-size-lg);
+  margin: var(--spacing-lg) 0 var(--spacing-sm);
+  color: var(--color-accent-dark);
+}
+
 .about-section p {
   line-height: var(--line-height-relaxed);
   margin-bottom: var(--spacing-md);
@@ -112,5 +197,49 @@ const { t } = useI18n()
 .about-section a {
   color: var(--color-primary);
   font-weight: var(--font-weight-medium);
+}
+
+.ontology-list {
+  background: var(--color-surface-alt);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  margin: var(--spacing-md) 0;
+}
+
+.ontology-list li {
+  padding-left: 0;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+}
+
+.ontology-list li::before {
+  display: none;
+}
+
+.ontology-list code {
+  background: var(--color-primary);
+  color: white;
+  padding: 0.1em 0.4em;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+}
+
+.code-block {
+  background: var(--color-surface-alt);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  overflow-x: auto;
+  margin: var(--spacing-md) 0;
+}
+
+.code-block pre {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+}
+
+.code-block code {
+  color: var(--color-text);
 }
 </style>

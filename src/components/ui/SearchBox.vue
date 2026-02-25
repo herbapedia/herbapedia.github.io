@@ -14,7 +14,7 @@
         @input="handleInput"
         @keydown="handleKeydown"
         @focus="handleFocus"
-        aria-label="Search herbs"
+        aria-label="Search preparations"
         autocomplete="off"
       />
       <button
@@ -58,7 +58,10 @@
               <span v-if="result.scientificName" class="search-result-scientific">
                 {{ result.scientificName }}
               </span>
-              <span class="search-result-category">{{ getCategoryLabel(result.category) }}</span>
+              <div class="search-result-badges">
+                <span v-if="result.hasTCM" class="search-result-badge search-result-badge--tcm">TCM</span>
+                <span v-if="result.hasWestern" class="search-result-badge search-result-badge--western">W</span>
+              </div>
             </div>
           </li>
         </ul>
@@ -72,17 +75,18 @@ import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { DEFAULT_LOCALE } from '@/i18n/locales'
+import { useAllPreparations, useSourcePlant, usePreparationLocalizer } from '@/composables/useHerbData'
 
 const props = defineProps({
   placeholder: {
     type: String,
-    default: 'Search herbs...'
+    default: 'Search preparations...'
   }
 })
 
 const emit = defineEmits(['search', 'select'])
 
-const { t, locale } = useI18n()
+const { locale } = useI18n()
 const router = useRouter()
 
 const searchQuery = ref('')
@@ -93,62 +97,28 @@ const searchInput = ref(null)
 const dropdown = ref(null)
 const dropdownStyle = ref({})
 
-// Import all herb data for search
-const herbsModulesEn = import.meta.glob('/src/content/herbs/*/en.yaml', { eager: true })
-const herbsModulesZhHant = import.meta.glob('/src/content/herbs/*/zh-Hant.yaml', { eager: true })
-const herbsModulesZhHans = import.meta.glob('/src/content/herbs/*/zh-Hans.yaml', { eager: true })
-const imageModules = import.meta.glob('/src/content/herbs/*/images/*.jpg', { eager: true, as: 'url' })
+// Get all preparations
+const allPreparations = useAllPreparations()
+const localizer = usePreparationLocalizer()
 
-// Build search index
-const searchIndex = ref([])
+// Build search index from preparations
+const searchIndex = computed(() => {
+  return allPreparations.value.map(prep => {
+    const slug = extractSlug(prep)
+    const plant = useSourcePlant(slug)
 
-function buildSearchIndex() {
-  const index = []
-  let modules
-
-  switch (locale.value) {
-    case 'zh-Hant':
-      modules = herbsModulesZhHant
-      break
-    case 'zh-Hans':
-      modules = herbsModulesZhHans
-      break
-    default:
-      modules = herbsModulesEn
-  }
-
-  for (const [path, module] of Object.entries(modules)) {
-    const data = module?.default || module
-    if (data && data.title) {
-      const slugMatch = path.match(/\/([^/]+)\/(?:en|zh-Hant|zh-Hans)\.yaml$/)
-      const slug = slugMatch ? slugMatch[1] : ''
-
-      // Get image
-      let image = null
-      const imagePath = `/src/content/herbs/${slug}/images/${slug}.jpg`
-      if (imageModules[imagePath]) {
-        image = imageModules[imagePath]
-      }
-
-      index.push({
-        slug,
-        title: data.title,
-        scientificName: data.scientific_name || '',
-        category: data.category,
-        image,
-        // Create searchable text
-        searchText: `${data.title} ${data.scientific_name || ''} ${slug.replace(/-/g, ' ')}`.toLowerCase()
-      })
+    return {
+      slug,
+      title: localizer.getName(prep) || slug,
+      scientificName: plant.value?.scientificName || '',
+      image: prep.image || plant.value?.image || null,
+      hasTCM: !!prep.hasTCMProfile,
+      hasWestern: !!prep.hasWesternProfile,
+      hasAyurveda: !!prep.hasAyurvedaProfile,
+      searchText: `${localizer.getName(prep) || ''} ${plant.value?.scientificName || ''} ${slug.replace(/-/g, ' ')}`.toLowerCase()
     }
-  }
-
-  searchIndex.value = index
-}
-
-// Rebuild index when locale changes
-watch(locale, () => {
-  buildSearchIndex()
-}, { immediate: true })
+  })
+})
 
 // Filter results
 const filteredResults = computed(() => {
@@ -165,16 +135,11 @@ const filteredResults = computed(() => {
     .slice(0, 10) // Limit to 10 results
 })
 
-// Category labels
-function getCategoryLabel(category) {
-  const labels = {
-    'chinese-herbs': t('categories.chineseHerbs'),
-    'western-herbs': t('categories.westernHerbs'),
-    'vitamins': t('categories.vitamins'),
-    'minerals': t('categories.minerals'),
-    'nutrients': t('categories.nutrients')
-  }
-  return labels[category] || category
+// Helper to extract slug
+function extractSlug(prep) {
+  if (!prep?.['@id']) return ''
+  const parts = prep['@id'].split('/')
+  return parts[parts.length - 1] || ''
 }
 
 // Highlight matching text
@@ -271,8 +236,8 @@ function selectResult(result) {
   activeIndex.value = -1
   emit('select', result)
 
-  // Navigate to herb page
-  const path = localePath(`/herbs/${result.category}/${result.slug}`)
+  // Navigate to preparation page
+  const path = localePath(`/preparations/${result.slug}`)
   router.push(path)
 }
 
@@ -455,8 +420,26 @@ onUnmounted(() => {
   white-space: nowrap;
 }
 
-.search-result-category {
-  font-size: var(--font-size-xs);
+.search-result-badges {
+  display: flex;
+  gap: 4px;
+}
+
+.search-result-badge {
+  font-size: 10px;
+  font-weight: var(--font-weight-semibold);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+}
+
+.search-result-badge--tcm {
+  background: rgba(34, 139, 34, 0.15);
   color: var(--color-primary);
+}
+
+.search-result-badge--western {
+  background: rgba(59, 130, 246, 0.15);
+  color: #2563eb;
 }
 </style>

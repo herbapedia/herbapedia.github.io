@@ -118,80 +118,77 @@ export default defineConfig({
       const staticRoutes = paths.filter(p => !p.includes(':'))
       const allRoutes = [...staticRoutes]
 
-      // Categories
-      const categories = ['chinese-herbs', 'western-herbs', 'vitamins', 'minerals', 'nutrients']
-
-      // Use JSON-LD data from data-herbapedia
       const dataDir = getDataDir()
-      const plantsDir = path.join(dataDir, 'entities/plants')
-      const tcmDir = path.join(dataDir, 'systems/tcm/herbs')
 
-      // Map TCM profiles to their plants
-      const tcmToPlantMap = new Map()
+      // =========================================================================
+      // PREPARATION-CENTRIC ROUTES (New Architecture)
+      // =========================================================================
 
-      if (fs.existsSync(tcmDir)) {
-        const tcmSlugs = fs.readdirSync(tcmDir, { withFileTypes: true })
+      // Read preparation entities and generate routes
+      const preparationsDir = path.join(dataDir, 'entities/preparations')
+
+      if (fs.existsSync(preparationsDir)) {
+        const prepSlugs = fs.readdirSync(preparationsDir, { withFileTypes: true })
           .filter(dirent => dirent.isDirectory())
           .map(dirent => dirent.name)
 
-        for (const tcmSlug of tcmSlugs) {
-          const profilePath = path.join(tcmDir, tcmSlug, 'profile.jsonld')
-          if (fs.existsSync(profilePath)) {
-            try {
-              const content = fs.readFileSync(profilePath, 'utf8')
-              const profile = JSON.parse(content)
-              if (profile.derivedFromPlant && profile.derivedFromPlant['@id']) {
-                const plantRef = profile.derivedFromPlant['@id']
-                  .replace('plant/', '')
-                  .replace('#root', '')
-                  .replace('#leaf', '')
-                tcmToPlantMap.set(plantRef, tcmSlug)
-              }
-            } catch (e) {
-              // Skip invalid profiles
-            }
-          }
+        for (const slug of prepSlugs) {
+          // Add routes for each locale
+          allRoutes.push(`/preparations/${slug}`)
+          allRoutes.push(`/zh-Hant/preparations/${slug}`)
+          allRoutes.push(`/zh-Hans/preparations/${slug}`)
         }
       }
 
-      // Read plant entities and generate routes
+      // =========================================================================
+      // BOTANICAL SOURCE ROUTES (Ontology Browser)
+      // =========================================================================
+
+      // Read plant species entities and generate routes
+      const plantsDir = path.join(dataDir, 'entities/botanical/species')
+
       if (fs.existsSync(plantsDir)) {
         const plantSlugs = fs.readdirSync(plantsDir, { withFileTypes: true })
           .filter(dirent => dirent.isDirectory())
           .map(dirent => dirent.name)
 
         for (const slug of plantSlugs) {
-          // Determine category based on plant slug patterns
-          let category = 'western-herbs'
-          if (tcmToPlantMap.has(slug)) {
-            category = 'chinese-herbs'
-          } else if (slug.includes('vitamin-')) {
-            category = 'vitamins'
-          } else if (['calcium', 'copper', 'iodine', 'iron', 'magnesium', 'manganese', 'potassium', 'selenium', 'zinc'].includes(slug)) {
-            category = 'minerals'
-          } else if (['choline', 'chondroitin', 'glucosamine', 'inositol', 'lecithin', 'lysine', 'melatonin', 'methionine', 'capigen', 'ceramides', 'chitosan', 'cysteine', 'glycerin', 'glycine', 'linolenic'].some(n => slug.includes(n))) {
-            category = 'nutrients'
-          }
-
-          // Add routes for each locale
-          allRoutes.push(`/herbs/${category}/${slug}`)
-          allRoutes.push(`/zh-Hant/herbs/${category}/${slug}`)
-          allRoutes.push(`/zh-Hans/herbs/${category}/${slug}`)
+          // Add routes for each locale (new path: /sources/botanical/:slug)
+          allRoutes.push(`/sources/botanical/${slug}`)
+          allRoutes.push(`/zh-Hant/sources/botanical/${slug}`)
+          allRoutes.push(`/zh-Hans/sources/botanical/${slug}`)
         }
       }
 
-      // Add category routes for each locale
-      categories.forEach(cat => {
-        allRoutes.push(`/herbs/${cat}`)
-        allRoutes.push(`/zh-Hant/herbs/${cat}`)
-        allRoutes.push(`/zh-Hans/herbs/${cat}`)
-      })
+      // =========================================================================
+      // ADDITIONAL ROUTES
+      // =========================================================================
 
-      // Add locale-specific home and about pages
+      // Add locale-specific home, about, basics pages
       allRoutes.push('/zh-Hant')
       allRoutes.push('/zh-Hant/about')
+      allRoutes.push('/zh-Hant/basics')
       allRoutes.push('/zh-Hans')
       allRoutes.push('/zh-Hans/about')
+      allRoutes.push('/zh-Hans/basics')
+
+      // Add preparations index for each locale
+      allRoutes.push('/preparations')
+      allRoutes.push('/zh-Hant/preparations')
+      allRoutes.push('/zh-Hans/preparations')
+
+      // Add sources index and botanical sub-index for each locale
+      allRoutes.push('/sources')
+      allRoutes.push('/zh-Hant/sources')
+      allRoutes.push('/zh-Hans/sources')
+      allRoutes.push('/sources/botanical')
+      allRoutes.push('/zh-Hant/sources/botanical')
+      allRoutes.push('/zh-Hans/sources/botanical')
+
+      // Add systems index for each locale
+      allRoutes.push('/systems')
+      allRoutes.push('/zh-Hant/systems')
+      allRoutes.push('/zh-Hans/systems')
 
       return allRoutes
     }

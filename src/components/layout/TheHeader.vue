@@ -12,11 +12,13 @@
 
       <nav class="header__nav" :class="{ 'header__nav--open': mobileMenuOpen }">
         <router-link :to="localePath('/')" class="header__link" @click="closeMobileMenu">{{ t('nav.home') }}</router-link>
-        <router-link :to="localePath('/herbs')" class="header__link" @click="closeMobileMenu">{{ t('nav.herbs') }}</router-link>
-        <router-link :to="localePath('/basics')" class="header__link" @click="closeMobileMenu">{{ t('nav.basics') }}</router-link>
+        <span class="header__divider"></span>
+        <router-link :to="localePath('/preparations')" class="header__link" @click="closeMobileMenu">{{ t('nav.preparations') }}</router-link>
+        <router-link :to="localePath('/sources')" class="header__link" @click="closeMobileMenu">{{ t('nav.sources') }}</router-link>
+        <router-link :to="localePath('/systems')" class="header__link" @click="closeMobileMenu">{{ t('nav.systems') }}</router-link>
+        <span class="header__divider"></span>
         <router-link :to="localePath('/about')" class="header__link" @click="closeMobileMenu">{{ t('nav.about') }}</router-link>
-        <a href="https://www.sipm.org/standards/" class="header__link header__link--external" @click="closeMobileMenu">{{ t('nav.standards') }}</a>
-        <a href="https://www.sipm.org/" class="header__link header__link--external" @click="closeMobileMenu">{{ t('nav.sipmHome') }}</a>
+        <a href="https://www.sipm.org/" class="header__link header__link--external" @click="closeMobileMenu">SIPM</a>
       </nav>
 
       <div class="header__actions">
@@ -102,8 +104,16 @@ const localePath = (path) => {
 
 .header__nav {
   display: flex;
-  gap: var(--spacing-xl);
+  align-items: center;
+  gap: var(--spacing-lg);
   margin-right: var(--spacing-lg);
+}
+
+.header__divider {
+  width: 1px;
+  height: 20px;
+  background: var(--color-border);
+  margin: 0 var(--spacing-xs);
 }
 
 .header__link {

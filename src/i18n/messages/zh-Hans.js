@@ -2,6 +2,11 @@ export default {
   // Navigation
   nav: {
     home: '首页',
+    preparations: '制剂',
+    sources: '来源',
+    plants: '植物',
+    systems: '医学体系',
+    compounds: '化合物',
     herbs: '草药',
     basics: '基础知识',
     about: '关于',
@@ -13,12 +18,18 @@ export default {
     heroTitle: 'Herbapedia',
     heroSubtitle: '药用植物百科全书',
     heroDescription: '全面的药用植物、草药、维生素、矿物质及营养素资源——结合传统智慧与现代科学研究。',
-    exploreHerbs: '探索草药',
-    categoriesTitle: '分类',
+    exploreHerbs: '探索制剂',
+    browseByTradition: '按传统医学浏览',
+    browseByProperty: '按特性浏览',
+    categoriesTitle: '按传统医学浏览',
     aboutTitle: '关于 Herbapedia',
     aboutP1: 'Herbapedia 是由国际植物医学学会（SIPM）开发的综合百科全书，旨在提供准确、循证的药用植物和天然健康补充品信息。',
     aboutP2: '我们的数据库涵盖传统中药、西方草药、维生素、矿物质和必需营养素——结合古老智慧与现代科学研究。',
-    learnMore: '了解更多关于 SIPM'
+    learnMore: '了解更多关于 SIPM',
+    traditionTCM: '传统中医',
+    traditionWestern: '西方草药',
+    traditionAyurveda: '阿育吠陀',
+    browsePreparations: '浏览制剂'
   },
   // Categories
   categories: {
@@ -28,6 +39,146 @@ export default {
     vitamins: '维生素',
     minerals: '矿物质',
     nutrients: '营养素'
+  },
+  // Preparations
+  preparations: {
+    browseCount: '浏览 {count} 种药用制剂',
+    searchPlaceholder: '按名称或学名搜寻制剂...',
+    filters: '筛选',
+    systemProfiles: '系统归类',
+    tcmProperties: '中医特性',
+    westernProperties: '西方特性',
+    clearAll: '清除全部',
+    all: '全部',
+    applyFilters: '应用筛选',
+    showingResults: '显示 {count} / {total} 种制剂',
+    noResults: '没有符合筛选条件的制剂。请尝试调整搜寻条件。',
+    botanicalSource: '植物来源',
+    zoologicalSource: '动物来源',
+    mineralSource: '矿物来源',
+    chemicalSource: '化学来源',
+    sourceMaterial: '来源物料',
+    scientificName: '学名',
+    family: '科',
+    genus: '属',
+    relatedPreparations: '相关制剂',
+    allergens: '致敏原',
+    pregnancySafety: '孕期安全',
+    drugInteractions: '药物相互作用',
+    notFound: '数据库中找不到请求的制剂。',
+    backToPreparations: '返回制剂',
+    tcm: '中医',
+    western: '西方',
+    ayurveda: '阿育吠陀',
+    persian: '波斯',
+    mongolian: '蒙古',
+    ayurvedaComingSoon: '阿育吠陀资料即将推出。',
+    natureHot: '热',
+    natureWarm: '温',
+    natureNeutral: '平',
+    natureCool: '凉',
+    natureCold: '寒',
+    viewPlantProfile: '查看植物档案',
+    preparationsFromPlant: '此植物有 {count} 种制剂',
+    // Preparation Information
+    preparationInfo: '制剂信息',
+    preparationDetails: '制备详情',
+    appearance: '外观特征',
+    storageRequirements: '储存要求',
+    shelfLife: '保质期',
+    // Common Usage
+    commonUsage: '常见用途',
+    culinaryUse: '烹饪用途',
+    aromatherapyUse: '芳香疗法',
+    cosmeticUse: '美容用途',
+    industrialUse: '工业用途',
+    // Safety
+    warnings: '警告',
+    // TCM Profile
+    classicalReference: '典籍记载',
+    quote: '原文',
+    dosageEffect: '剂量效应',
+    smallDose: '小剂量',
+    mediumDose: '中剂量',
+    largeDose: '大剂量',
+    comparisonNotes: '对比说明',
+    incompatibilities: '配伍禁忌',
+    // Form and Preparation
+    form: '剂型',
+    preparationMethod: '制备方法'
+  },
+  // Plants
+  plants: {
+    title: '植物',
+    browseCount: '浏览 {count} 种植物',
+    searchPlaceholder: '按名称或学名搜寻植物...',
+    allPlants: '全部植物',
+    withPreparations: '有制剂',
+    showingResults: '找到 {count} 个结果 "{query}"',
+    noResults: '没有找到符合搜寻条件的植物。',
+    species: '物种',
+    family: '科',
+    genus: '属',
+    parts: '植物部位',
+    description: '植物描述',
+    preparationsFromPlant: '由此植物制备的制剂',
+    noPreparations: '暂时没有由此植物制备的制剂。',
+    notFound: '数据库中找不到请求的植物。',
+    backToPlants: '返回植物',
+    preparations: '种制剂',
+    noImage: '暂无图片',
+    // DNA Barcode
+    dnaBarcode: 'DNA条形码',
+    identificationConfidence: '鉴定置信度',
+    canDetectAdulterants: '可检测掺假物',
+    // Chemical Profile
+    chemicalProfile: '化学成分',
+    totalVolatileOil: '总挥发油',
+    analyticalMethod: '分析方法',
+    qualityGrade: '质量等级',
+    chemicalComponents: '化学成分',
+    // Taxonomy
+    taxonomy: '分类学',
+    kingdom: '界',
+    phylum: '门',
+    class: '纲',
+    order: '目',
+    // Distribution
+    distributionAndHabitat: '分布与生境',
+    origin: '原产地',
+    habitat: '生境',
+    distribution: '地理分布',
+    // Characteristics
+    characteristics: '植物特性',
+    growthForm: '生长型',
+    lifecycle: '生命周期',
+    growthForms: {
+      herb: '草本',
+      shrub: '灌木',
+      tree: '乔木',
+      vine: '藤本',
+      climber: '攀援植物',
+      epiphyte: '附生植物',
+      aquatic: '水生植物'
+    },
+    lifecycles: {
+      annual: '一年生',
+      biennial: '二年生',
+      perennial: '多年生'
+    },
+    // Conservation
+    conservationStatus: '保护状况',
+    conservationStatuses: {
+      LC: '无危',
+      NT: '近危',
+      VU: '易危',
+      EN: '濒危',
+      CR: '极危',
+      EW: '野外灭绝',
+      EX: '灭绝',
+      DD: '数据缺乏',
+      NE: '未评估'
+    }
   },
   // Herb detail sections
   sections: {
@@ -54,22 +205,252 @@ export default {
     meridian: '归经',
     category: '分类',
     pinyin: '拼音',
-    actions: '作用'
+    actions: '作用',
+    natures: '药性',
+    flavors: '五味',
+    meridians: '归经',
+    categories: '分类'
   },
   // Western properties
   western: {
     properties: '西方草药',
     actions: '作用',
     organAffinities: '归经',
+    organs: '归经',
+    systems: '身体系统',
     scientificName: '学名',
     history: '历史',
     traditionalUsage: '传统用途',
     modernResearch: '现代研究'
   },
+  // Ayurveda properties
+  ayurveda: {
+    properties: '阿育吠陀',
+    sanskrit: '梵文',
+    hindiName: '印地语名称',
+    rasa: '味 (Rasa)',
+    guna: '性质 (Guna)',
+    virya: '效能 (Virya)',
+    vipaka: '后味 (Vipaka)',
+    dosha: '三能影响',
+    doshas: '三能',
+    karma: '作用 (Karma)',
+    karmas: '作用',
+    mahabhutas: '五大元素',
+    rasas: '味 (Rasa)',
+    gunas: '性质 (Guna)',
+    viryas: '效能 (Virya)',
+    vipakas: '后味 (Vipaka)',
+    categories: '分类',
+    prabhavas: '特异作用 (Prabhava)',
+    category: '阿育吠陀分类',
+    anupana: '佐药 (Anupana)',
+    anupanaDesc: '作为载体以增强吸收和疗效的物质',
+    sevanaKala: '服用时机 (Sevana Kala)',
+    sevanaKalaDesc: '服用此制剂的最佳时间',
+    formulations: '经典配方',
+    formulationUse: '用途'
+  },
+  // Persian (Unani) properties
+  persian: {
+    properties: '波斯医学 (尤纳尼)',
+    name: '波斯名称',
+    arabicName: '阿拉伯名称',
+    temperament: '体质 (Mizaj)',
+    temperaments: '体质',
+    elements: '元素',
+    degrees: '程度',
+    actions: '作用',
+    affectedOrgans: '作用器官',
+    mizajConstituents: '体质成分',
+    corrective: '矫正药 (Musleh)',
+    correctiveDesc: '纠正不良影响的物质',
+    substitute: '替代药 (Badal)',
+    substituteDesc: '原药不可用时的替代品',
+    dosageForm: '剂型',
+    adverseEffects: '不良反应',
+    classicalReferences: '古典文献',
+    nomadicUsage: '游牧用法'
+  },
+  // Mongolian Traditional Medicine properties
+  mongolian: {
+    properties: '蒙古传统医学',
+    name: '蒙古名称',
+    tibetanWylie: '藏文 (威利转写)',
+    elements: '元素',
+    roots: '三根',
+    tastes: '味道',
+    potency: '效能',
+    potencies: '效能',
+    therapeuticClass: '治疗分类',
+    preparationMethods: '制备方法',
+    formulations: '经典配方',
+    formulationUse: '用途',
+    classicalReferences: '古典文献',
+    nomadicUsage: '游牧用法'
+  },
+  // Herbal vocabulary (general)
+  herbal: {
+    title: '草药剂型',
+    subtitle: '草药制剂的标准形式和加工方法',
+    forms: '制剂形式',
+    methods: '制备方法'
+  },
+  // Systems
+  systems: {
+    title: '医学体系',
+    subtitle: '探索世界各地的传统医学体系',
+    profiles: '个档案',
+    referenceData: '项参考',
+    aboutTitle: '关于传统医学体系',
+    aboutText: '传统医学体系在不同文化中发展了数千年。每个体系都有其独特的健康、疾病和治疗理解框架。Herbapedia根据五大主要体系记录制剂：传统中医、西方草药学、阿育吠陀、波斯/尤纳尼医学和蒙古传统医学。',
+    tcm: {
+      name: '传统中医',
+      description: '最古老的连续医学传统之一，基于阴阳、气和五行概念。草药按其性质、味道和归经分类。'
+    },
+    western: {
+      name: '西方草药学',
+      description: '欧洲和地中海草药传统，强调循证实践、器官系统亲和力和整体健康方法。'
+    },
+    ayurveda: {
+      name: '阿育吠陀',
+      description: '古印度医学体系，基于平衡三大体质（Vata、Pitta、Kapha）。草药按味（rasa）、效能和消化后作用分类。'
+    },
+    persian: {
+      name: '波斯/尤纳尼医学',
+      description: '希腊阿拉伯医学传统，强调体质和四体液平衡。广泛实践于南亚和中东。'
+    },
+    mongolian: {
+      name: '蒙古传统医学',
+      description: '受藏医影响的传统治疗体系，关注三根能量和元素平衡。'
+    },
+    // New keys
+    preparationsWithProfile: '使用此档案的制剂',
+    noPreparations: '尚无使用此档案的制剂',
+    andMore: '还有 {count} 个',
+    items: '项',
+    viewAll: '查看全部'
+  },
+  // Sources
+  sources: {
+    title: '来源物料',
+    subtitle: '探索药用制剂的来源 - 植物、动物、矿物和化学物质',
+    entities: '个实体',
+    searchPlaceholder: '按名称搜索来源物料...',
+    browseCount: '浏览 {count} 个来源物料',
+    aboutTitle: '关于来源物料',
+    aboutText: '药用制剂源自各种来源物料。植物来源（植物、真菌、藻类）构成最大的类别，但动物来源物质（如来自甲壳类外壳的甲壳素）、矿物化合物（如锌和钙）以及合成化学物质（如维生素）也是治疗制剂的重要来源。',
+    botanical: '植物来源',
+    botanicalDesc: '药用植物。传统草药的主要来源。',
+    fungi: '真菌来源',
+    fungiDesc: '药用蘑菇和真菌，如灵芝、冬虫夏草和云芝。',
+    algae: '藻类来源',
+    algaeDesc: '药用藻类和蓝藻，如螺旋藻和小球藻。',
+    zoological: '动物来源',
+    zoologicalDesc: '动物来源物质，如来自甲壳类外壳的甲壳素、鱼油和其他动物提取物。',
+    mineral: '矿物来源',
+    mineralDesc: '天然存在的矿物及其化合物，包括锌、钙、镁和其他必需元素。',
+    mineralAbout: '关于矿物来源',
+    mineralAboutText: '矿物来源包括用于传统和现代医学的天然元素和化合物。这些包括锌、钙、镁等必需矿物质，以及对人体健康至关重要的微量元素。',
+    chemical: '化学来源',
+    chemicalDesc: '合成或分离的化合物，包括维生素、氨基酸和其他生物活性分子。'
+  },
   // Chemical compounds
   compounds: {
     title: '化学成分',
-    note: '这些活性化合物有助于草药的治疗特性。目前仍在研究中以充分了解其作用机制。'
+    subtitle: '药用植物中发现的活性化合物',
+    browseCount: '浏览 {count} 种化学成分',
+    searchPlaceholder: '按名称或分子式搜索...',
+    showingResults: '找到 {count} 个结果 "{query}"',
+    noResults: '没有找到符合搜索条件的化合物。',
+    compound: '化合物',
+    note: '这些活性化合物有助于草药的治疗特性。目前仍在研究中以充分了解其作用机制。',
+    foundIn: '存在于植物',
+    noPlants: '尚无含有此化合物的植物记录。',
+    notFound: '数据库中找不到请求的化合物。',
+    backToCompounds: '返回化合物列表',
+    identifiers: '化学标识符',
+    molecularFormula: '分子式',
+    molecularWeight: '分子量',
+    casNumber: 'CAS 号',
+    chebiID: 'ChEBI ID',
+    pubchemCID: 'PubChem CID',
+    inchiKey: 'InChI Key',
+    inchi: 'InChI',
+    smiles: 'SMILES',
+    compoundClass: '化合物类别',
+    pharmacology: '药理作用',
+    iupacName: 'IUPAC 名称',
+    synonyms: '别名',
+    bioavailability: '生物利用度',
+    safetyData: '安全数据',
+    ld50: '半数致死量',
+    toxicity: '毒性',
+    warnings: '警告'
+  },
+  // Plant Parts
+  plantParts: {
+    title: '植物部位',
+    subtitle: '用于草药制剂的药用植物特定部位',
+    browseCount: '浏览 {count} 个植物部位',
+    searchPlaceholder: '搜索植物部位...',
+    allParts: '所有部位',
+    showingResults: '找到 {count} 个结果 "{query}"',
+    noResults: '没有找到符合搜索条件的植物部位。',
+    part: '植物部位',
+    partOf: '来自',
+    species: '来源物种',
+    preparationsFromPart: '使用此部位的制剂',
+    notFound: '找不到请求的植物部位。',
+    backToParts: '返回植物部位',
+    roots: '根',
+    rhizomes: '根茎',
+    leaves: '叶',
+    flowers: '花',
+    fruits: '果实',
+    seeds: '种子',
+    bulbs: '鳞茎',
+    barks: '树皮',
+    stems: '茎'
+  },
+  // DNA Barcodes
+  dnaBarcodes: {
+    title: 'DNA条形码',
+    subtitle: '用于物种鉴定和鉴定的DNA序列数据',
+    searchPlaceholder: '按名称、物种或区域搜索条形码...',
+    showingResults: '找到 {count} 个结果 "{query}"',
+    barcode: 'DNA条形码',
+    identification: '鉴定',
+    level: '鉴定级别',
+    confidence: '置信度',
+    method: '方法',
+    sequences: 'DNA序列',
+    viewFullSequence: '查看完整序列',
+    hideFullSequence: '隐藏完整序列',
+    copySequence: '复制序列',
+    sequenceCopied: '序列已复制！',
+    adulterantDetection: '掺假检测',
+    canDetect: '此条形码可检测以下掺假物',
+    voucheredSpecimen: '凭证标本',
+    herbarium: '植物馆',
+    collector: '采集者',
+    location: '采集地点',
+    viewSpecies: '查看源物种',
+    disclaimer: 'DNA条形码用于物种鉴定和质量控制。结果应由专业人员解释。',
+    notFound: '找不到请求的DNA条形码。',
+    backToBarcodes: '返回DNA条形码',
+    noResults: '没有可用的DNA条形码。'
+  },
+  // Formulas
+  formulas: {
+    title: '专利配方',
+    subtitle: '专利混合配方和成分',
+    formula: '配方',
+    ingredients: '成分',
+    ingredientsNote: '此配方包含以下成分：',
+    notFound: '找不到请求的配方。',
+    backToFormulas: '返回配方',
+    noResults: '没有可用的配方。'
   },
   // Related herbs
   relatedHerbs: {
@@ -88,6 +469,7 @@ export default {
     title: '外部链接',
     wikidata: '维基数据',
     gbif: '全球生物多样性信息机构',
+    ncbi: 'NCBI 分类',
     wikipedia: '维基百科'
   },
   // Disclaimer
@@ -99,9 +481,9 @@ export default {
   common: {
     items: '项',
     notFound: '找不到',
-    herbNotFound: '数据库中找不到请求的草药。',
-    backToHerbs: '返回草药',
-    noHerbsFound: '此分类中没有找到草药。',
+    herbNotFound: '数据库中找不到请求的制剂。',
+    backToHerbs: '返回制剂',
+    noHerbsFound: '没有找到制剂。',
     browseCollection: '浏览我们的药用植物、草药、维生素、矿物质和营养素收藏'
   },
   // Language
@@ -138,6 +520,33 @@ export default {
       title: '关于SIPM',
       text: '国际植物医学学会（SIPM）致力于推进全球对药用植物的科学理解和负责任使用。',
       link: '访问SIPM网站'
+    },
+    ontology: {
+      title: '本体架构',
+      intro: 'Herbapedia 采用以制剂为中心的本体结构，HerbalPreparation（药用制剂）为核心实体。本文档为开发者和数据架构师描述数据模型。',
+      coreEntity: '核心实体：HerbalPreparation（药用制剂）',
+      coreEntityDesc: 'HerbalPreparation 实体代表已加工、可供治疗使用的药用材料。它作为枢纽，连接来源物料（植物、动物、矿物）与各医学体系的治疗档案（中医、西方草药、阿育吠陀等）。',
+      sourceMaterials: '来源物料',
+      sourceMaterialsDesc: '制剂可源自四种类型的来源物料：',
+      sourcePlant: '植物来源 - 药用植物、真菌、藻类',
+      sourceAnimal: '动物来源 - 甲壳素（甲壳类外壳）、鳕鱼肝油等',
+      sourceMineral: '矿物来源 - 锌、钙、镁化合物',
+      sourceChemical: '化学来源 - 合成维生素、分离化合物',
+      profiles: '医学体系档案',
+      profilesDesc: '每个制剂可有一个或多个体系档案，根据不同传统医学体系描述其治疗特性：',
+      profileTCM: '传统中医档案 - 药性、五味、归经、分类',
+      profileWestern: '西方草药档案 - 药理作用、器官亲和力',
+      profileAyurveda: '阿育吠陀档案 - 味、性质、效能、消化后作用、三能影响',
+      profilePersian: '波斯/尤纳尼档案 - 体质和元素',
+      profileMongolian: '蒙古传统医学档案 - 元素、三根、味道',
+      referenceData: '参考数据',
+      referenceDataDesc: '每个医学体系定义自己的参考术语分类法，带有多语言标签：',
+      relationships: '实体关系',
+      relationshipsDesc: '本体使用 RDF 风格的关系连接实体：',
+      i18n: '国际化（i18n）',
+      i18nDesc: '所有本体术语使用 SKOS prefLabel 进行多语言支持。标签存储在数据库，而非应用程序代码中：',
+      serialization: '序列化格式',
+      serializationDesc: "所有数据以 JSON-LD 格式存储，具有适当的 {'@'}context 以实现语义互操作性。{'@'}context 文件定义 tcm:、ayurveda:、western:、persian:、mongolian: 和 botany: 词汇的前缀。"
     }
   },
   // Basics page
@@ -218,5 +627,46 @@ export default {
       goal3: '通过民族植物学研究和植物化学分析支持药物发现',
       goal4: '促进传统医学从业者与现代医疗系统之间的合作'
     }
+  },
+  // Reference data
+  reference: {
+    preparations: '个制剂',
+    noPreparations: '没有制剂使用此数值',
+    noItems: '没有找到参考项目',
+    notFound: '找不到参考数据',
+    backToList: '返回列表',
+    usingPreparations: '使用此数值的制剂',
+    // TCM
+    naturesDesc: '按药物对身体的热效应分类',
+    flavorsDesc: '五味及其相应的脏腑关系',
+    meridiansDesc: '草药被认为影响的能量通道',
+    categoriesDesc: '中药的功能分类',
+    tcmActionsDesc: '传统中医的治疗作用',
+    // Western
+    actionsDesc: '草药的药理作用',
+    organsDesc: '草药主要影响的脏器和系统',
+    systemsDesc: '草药影响的身体系统',
+    // Ayurveda
+    rasaDesc: '阿育吠陀的六味',
+    gunaDesc: '物质的二十种属性',
+    viryaDesc: '热或冷的效能',
+    vipakaDesc: '消化后作用',
+    doshasDesc: '阿育吠陀的三种体质类型',
+    karmasDesc: '阿育吠陀的治疗作用',
+    mahabhutasDesc: '阿育吠陀的五大元素',
+    ayurvedaCategoriesDesc: '阿育吠陀草药按治疗作用的分类',
+    prabhavasDesc: '无法从其他属性预测的草药特异作用',
+    // Persian
+    temperamentsDesc: '尤纳尼医学中的四种体质',
+    persianElementsDesc: '波斯医学中的四元素',
+    degreesDesc: '波斯医学中的强度等级',
+    // Mongolian
+    elementsDesc: '蒙古医学中的五元素',
+    tastesDesc: '蒙古医学中的六味',
+    rootsDesc: '蒙古医学中的三根能量',
+    potenciesDesc: '蒙古医学中的治疗效能',
+    // Herbal vocabulary
+    formsDesc: '草药制剂的物理形式，如粉末、胶囊、酊剂等',
+    methodsDesc: '草药材料的加工方法，如干燥、蒸制、炒制等'
   }
 }

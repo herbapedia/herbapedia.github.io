@@ -1,343 +1,109 @@
 /**
- * Herbapedia JSON-LD Data Composable
+ * Herbapedia Data Composable (v2 Architecture)
  *
- * Provides herbs, categories, and search functionality using the
- * HerbapediaDataset API.
+ * Preparation-centric data access. HerbalPreparation is the central entity.
  *
- * This composable wraps the dataset API with Vue reactivity and i18n helpers.
+ * Navigation:
+ *   Preparation → Botanical Source (PlantSpecies)
+ *   Preparation → System Profiles (TCM, Western, etc.)
+ *   Preparation → Related Preparations
  */
 
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { dataset } from '@/api/dataset'
 
-// Category mapping from TCM category ID to site category
-const TCM_CATEGORY_MAP = {
-  'tonify-qi': 'chinese-herbs',
-  'tonify-blood': 'chinese-herbs',
-  'tonify-yin': 'chinese-herbs',
-  'tonify-yang': 'chinese-herbs',
-  'clear-heat': 'chinese-herbs',
-  'drain-damp': 'chinese-herbs',
-  'transform-phlegm': 'chinese-herbs',
-  'regulate-qi': 'chinese-herbs',
-  'invigorate-blood': 'chinese-herbs',
-  'calm-spirit': 'chinese-herbs',
-  'aromatize': 'chinese-herbs',
-  'tonify-qi-and-yin': 'chinese-herbs',
-  'digestion': 'chinese-herbs',
-  'external': 'chinese-herbs',
-  'reduce-swelling': 'chinese-herbs',
-  'stop-bleeding': 'chinese-herbs',
-}
+// ============================================================================
+// Localization Helpers
+// ============================================================================
 
-/**
- * Get localized value from language map
- */
 function getLocalizedValue(langMap, locale, fallbackLocale = 'en') {
   if (!langMap) return null
   if (typeof langMap === 'string') return langMap
   if (typeof langMap === 'object') {
-    // Try exact match first
     if (langMap[locale]) return langMap[locale]
-    // Fallback to other variants
     if (locale.startsWith('zh-H') && langMap['zh-Hant']) return langMap['zh-Hant']
     if (locale.startsWith('zh-') && langMap['zh-Hans']) return langMap['zh-Hans']
-    if (locale === 'zh-Hant' && langMap['zh-Hans']) return langMap['zh-Hans']
-    if (locale === 'zh-Hans' && langMap['zh-Hant']) return langMap['zh-Hant']
-    // Fallback to English
     if (langMap[fallbackLocale]) return langMap[fallbackLocale]
-    // Return first value
     const keys = Object.keys(langMap)
     if (keys.length > 0) return langMap[keys[0]]
   }
   return null
 }
 
-/**
- * Build merged cache from dataset
- */
-function buildMergedCache() {
-  const mergedCache = new Map()
-  const categoryCache = new Map()
+// ============================================================================
+// Preparation Queries (PRIMARY)
+// ============================================================================
 
-  const plants = dataset.getAllPlants()
-
-  for (const plant of plants) {
-    const slug = plant['@id'].replace('botanical/species/', '')
-
-    // Get all profiles for this plant
-    const profiles = dataset.getAllProfilesForPlant(slug)
-    const tcmProfile = profiles.tcm
-    const westernProfile = profiles.western
-
-    // Determine category - TYPE first, then system profiles
-    // The hierarchy: Vitamins > Minerals > Nutrients > Herbs (by system)
-    let category = 'western-herbs'
-    let herbType = 'plant'
-
-    // First, determine the TYPE of entity
-    const isVitamin = slug.includes('vitamin-') || slug.startsWith('vitamin-')
-    const isMineral = ['calcium', 'copper', 'iodine', 'iron', 'magnesium', 'manganese', 'potassium', 'selenium', 'zinc'].includes(slug)
-    const isNutrient = ['choline', 'chondroitin-sulfate', 'glucosamine-sulfate', 'inositol', 'lecithin', 'lysine', 'melatonin', 'methionine', 'capigen', 'ceramides', 'chitosan', 'cysteine-hci', 'glycerin', 'glycine', 'linolenic-acid', 'omega-3', 'omega-6', 'omega-9', 'paba', 'phospholipids', 'squalene'].some(n => slug.includes(n) || slug === n)
-
-    if (isVitamin) {
-      category = 'vitamins'
-      herbType = 'vitamin'
-    } else if (isMineral) {
-      category = 'minerals'
-      herbType = 'mineral'
-    } else if (isNutrient) {
-      category = 'nutrients'
-      herbType = 'nutrient'
-    } else if (tcmProfile) {
-      // Herbs with TCM profile → Chinese Herbs
-      herbType = 'tcm-herb'
-      const categoryRef = tcmProfile.hasCategory
-      if (categoryRef && typeof categoryRef === 'object' && categoryRef['@id']) {
-        const categoryId = categoryRef['@id'].replace('tcm/category/', '')
-        category = TCM_CATEGORY_MAP[categoryId] || 'chinese-herbs'
-      } else {
-        category = 'chinese-herbs'
-      }
-    } else if (westernProfile) {
-      // Herbs with only Western profile → Western Herbs
-      herbType = 'western-herb'
-      category = 'western-herbs'
-    } else {
-      // Plants without any system profile → still Western Herbs (default)
-      herbType = 'plant'
-      category = 'western-herbs'
-    }
-
-    // Merge plant and system data
-    const merged = {
-      slug,
-      category,
-      type: herbType,
-
-      // Plant data
-      name: plant.name || {},
-      commonName: plant.commonName || {},
-      scientificName: plant.scientificName || null,
-      family: plant.family || null,
-      genus: plant.genus || null,
-      species: plant.species || null,
-      botanicalDescription: plant.botanicalDescription || {},
-      description: plant.description || {},
-      geographicalDistribution: plant.geographicalDistribution || {},
-      hasPart: plant.hasParts || [],
-      containsChemical: plant.containsChemical || [],
-      image: plant.image ? `/@herbapedia/data/${plant.image}` : null,
-
-      // TCM profile data
-      tcmSlug: tcmProfile ? (tcmProfile['@id'].replace('tcm/profile/', '')) : null,
-      pinyin: tcmProfile?.pinyin || null,
-      chineseName: tcmProfile?.chineseName || null,
-      hasCategory: tcmProfile?.hasCategory || null,
-      hasNature: tcmProfile?.hasNature || null,
-      hasFlavor: tcmProfile?.hasFlavor || [],
-      entersMeridian: tcmProfile?.entersMeridian || [],
-      actions: tcmProfile?.actions || [],
-      indications: tcmProfile?.indications || [],
-      contraindications: tcmProfile?.contraindications || {},
-      dosage: tcmProfile?.dosage || {},
-      preparation: tcmProfile?.preparation || {},
-
-      // System-scoped content - TCM
-      tcmHistory: tcmProfile?.tcmHistory || {},
-      tcmTraditionalUsage: tcmProfile?.tcmTraditionalUsage || {},
-      tcmModernResearch: tcmProfile?.tcmModernResearch || {},
-      tcmFunctions: tcmProfile?.tcmFunctions || {},
-      tcmBotanicalSource: tcmProfile?.tcmBotanicalSource || {},
-      tcmClassicalReference: tcmProfile?.tcmClassicalReference || {},
-      tcmSafetyConsideration: tcmProfile?.tcmSafetyConsideration || {},
-
-      // System-scoped content - Western
-      westernSlug: westernProfile ? (westernProfile['@id'].replace('western/profile/', '')) : null,
-      hasAction: westernProfile?.hasAction || [],
-      hasOrganAffinity: westernProfile?.hasOrganAffinity || [],
-      westernHistory: westernProfile?.westernHistory || {},
-      westernTraditionalUsage: westernProfile?.westernTraditionalUsage || {},
-      westernModernResearch: westernProfile?.westernModernResearch || {},
-      westernConstituents: westernProfile?.westernConstituents || {},
-
-      sameAs: [...(plant.sameAs || [])],
-      source: plant.source || null
-    }
-
-    mergedCache.set(slug, merged)
-
-    // Build category index
-    if (!categoryCache.has(category)) {
-      categoryCache.set(category, [])
-    }
-    categoryCache.get(category).push(merged)
-  }
-
-  return { mergedCache, categoryCache }
+export function useAllPreparations() {
+  return computed(() => dataset.getAllPreparations())
 }
 
-// Build caches on module load
-const { mergedCache, categoryCache } = buildMergedCache()
-
-/**
- * Get all herbs
- */
-export function useAllHerbs() {
-  return computed(() => Array.from(mergedCache.values()))
-}
-
-/**
- * Get herbs by category
- */
-export function useHerbsByCategory(category) {
+export function usePreparation(slug) {
   return computed(() => {
-    const cat = typeof category === 'object' && 'value' in category ? category.value : category
-    return categoryCache.get(cat) || []
+    const s = typeof slug === 'object' && 'value' in slug ? slug.value : slug
+    return dataset.getPreparation(s) || null
   })
 }
 
-/**
- * Get a single herb by slug
- */
-export function useHerb(slug) {
-  return computed(() => mergedCache.get(slug) || null)
-}
-
-/**
- * Get category statistics
- */
-export function useCategoryStats() {
-  const stats = {}
-  categoryCache.forEach((herbs, category) => {
-    stats[category] = herbs.length
-  })
-  return stats
-}
-
-/**
- * Search herbs by name or scientific name
- */
-export function useHerbSearch(query) {
+export function usePreparationsByPlant(plantSlug) {
   return computed(() => {
-    if (!query.value) return []
-
-    const searchTerm = query.value.toLowerCase()
-    return Array.from(mergedCache.values()).filter(herb => {
-      const name = getLocalizedValue(herb.name, 'en', 'en') || ''
-      const scientificName = herb.scientificName || ''
-      const pinyin = herb.pinyin || ''
-
-      return name.toLowerCase().includes(searchTerm) ||
-        scientificName.toLowerCase().includes(searchTerm) ||
-        pinyin.toLowerCase().includes(searchTerm)
-    })
+    const s = typeof plantSlug === 'object' && 'value' in plantSlug ? plantSlug.value : plantSlug
+    return dataset.getPreparationsByPlant(s)
   })
 }
 
-/**
- * Category labels (localized)
- */
-export const categoryLabels = {
-  'chinese-herbs': { en: 'Chinese Herbs', 'zh-Hant': '中藥', 'zh-Hans': '中药' },
-  'western-herbs': { en: 'Western Herbs', 'zh-Hant': '西方草本', 'zh-Hans': '西方草本' },
-  'vitamins': { en: 'Vitamins', 'zh-Hant': '維生素', 'zh-Hans': '维生素' },
-  'minerals': { en: 'Minerals', 'zh-Hant': '礦物質', 'zh-Hans': '矿物质' },
-  'nutrients': { en: 'Nutrients', 'zh-Hant': '營養素', 'zh-Hans': '营养素' }
-}
-
-/**
- * Get all categories with counts
- */
-export function useCategories() {
-  return computed(() => Object.entries(categoryLabels).map(([slug, title]) => ({
-    slug,
-    title,
-    count: categoryCache.get(slug)?.length || 0
-  })))
-}
-
-/**
- * Get localized name for a herb
- */
-export function useLocalizedHerbName() {
-  const { locale } = useI18n()
-
-  return computed(() => (herb) => {
-    if (!herb) return null
-    return getLocalizedValue(herb.name, locale.value) ||
-           getLocalizedValue(herb.name, 'en') ||
-           herb.slug
+export function usePreparationsByTCMCategory(category) {
+  return computed(() => {
+    const c = typeof category === 'object' && 'value' in category ? category.value : category
+    return dataset.getPreparationsByTCMCategory(c)
   })
 }
 
-/**
- * Composable for localized herb display
- */
-export function useHerbLocalizer() {
-  const { locale } = useI18n()
-
-  return {
-    getName: (herb) => {
-      if (!herb) return null
-      return getLocalizedValue(herb.name, locale.value)
-    },
-
-    getCommonName: (herb) => {
-      if (!herb) return null
-      return getLocalizedValue(herb.commonName, locale.value)
-    },
-
-    getDescription: (herb) => {
-      if (!herb) return null
-      return getLocalizedValue(herb.description, locale.value)
-    },
-
-    getTcmHistory: (herb) => {
-      if (!herb) return null
-      return getLocalizedValue(herb.tcmHistory, locale.value)
-    },
-
-    getTcmTraditionalUsage: (herb) => {
-      if (!herb) return null
-      return getLocalizedValue(herb.tcmTraditionalUsage, locale.value)
-    },
-
-    getTcmModernResearch: (herb) => {
-      if (!herb) return null
-      return getLocalizedValue(herb.tcmModernResearch, locale.value)
-    },
-
-    getTcmFunctions: (herb) => {
-      if (!herb) return null
-      return getLocalizedValue(herb.tcmFunctions, locale.value)
-    },
-
-    getWesternHistory: (herb) => {
-      if (!herb) return null
-      return getLocalizedValue(herb.westernHistory, locale.value)
-    },
-
-    getWesternTraditionalUsage: (herb) => {
-      if (!herb) return null
-      return getLocalizedValue(herb.westernTraditionalUsage, locale.value)
-    },
-
-    getWesternModernResearch: (herb) => {
-      if (!herb) return null
-      return getLocalizedValue(herb.westernModernResearch, locale.value)
-    },
-
-    getCategoryLabel: (categorySlug) => {
-      return getLocalizedValue(categoryLabels[categorySlug], locale.value)
-    }
-  }
+export function useRelatedPreparations(slug) {
+  return computed(() => {
+    const s = typeof slug === 'object' && 'value' in slug ? slug.value : slug
+    return dataset.getRelatedPreparations(s)
+  })
 }
 
-/**
- * Get TCM reference data with lookup helpers
- */
+// ============================================================================
+// Profile Queries
+// ============================================================================
+
+export function useProfilesForPreparation(slug) {
+  return computed(() => {
+    const s = typeof slug === 'object' && 'value' in slug ? slug.value : slug
+    return dataset.getProfilesForPreparation(s)
+  })
+}
+
+// ============================================================================
+// Botanical Queries
+// ============================================================================
+
+export function useAllPlants() {
+  return computed(() => dataset.getAllPlants())
+}
+
+export function usePlant(slug) {
+  return computed(() => {
+    const s = typeof slug === 'object' && 'value' in slug ? slug.value : slug
+    return dataset.getPlantSpecies(s) || null
+  })
+}
+
+export function useSourcePlant(prepSlug) {
+  return computed(() => {
+    const s = typeof prepSlug === 'object' && 'value' in prepSlug ? prepSlug.value : prepSlug
+    return dataset.getSourcePlant(s)
+  })
+}
+
+// ============================================================================
+// Reference Data Hooks
+// ============================================================================
+
 export function useTcmReferences() {
   const { locale } = useI18n()
 
@@ -347,15 +113,19 @@ export function useTcmReferences() {
   const categories = ref(dataset.getAllCategories())
 
   function getLabel(item) {
-    if (!item || !item.prefLabel) return null
-    return getLocalizedValue(item.prefLabel, locale.value)
+    if (!item) return null
+    // Check both prefLabel and name fields
+    const labelMap = item.prefLabel || item.name
+    if (!labelMap) return null
+    return getLocalizedValue(labelMap, locale.value)
   }
 
   function getNatureLabel(natureRef) {
     if (!natureRef) return null
     const id = typeof natureRef === 'object' ? natureRef['@id'] : natureRef
     const item = dataset.getNature(id)
-    return item ? getLabel(item) : id
+    const label = item ? getLabel(item) : null
+    return label || id
   }
 
   function getFlavorLabels(flavorRefs) {
@@ -363,7 +133,8 @@ export function useTcmReferences() {
     return flavorRefs.map(ref => {
       const id = typeof ref === 'object' ? ref['@id'] : ref
       const item = dataset.getFlavor(id)
-      return item ? { id, label: getLabel(item) } : { id, label: id }
+      const label = item ? getLabel(item) : null
+      return { id, label: label || id }
     })
   }
 
@@ -372,7 +143,8 @@ export function useTcmReferences() {
     return meridianRefs.map(ref => {
       const id = typeof ref === 'object' ? ref['@id'] : ref
       const item = dataset.getMeridian(id)
-      return item ? { id, label: getLabel(item) } : { id, label: id }
+      const label = item ? getLabel(item) : null
+      return { id, label: label || id }
     })
   }
 
@@ -380,7 +152,8 @@ export function useTcmReferences() {
     if (!categoryRef) return null
     const id = typeof categoryRef === 'object' ? categoryRef['@id'] : categoryRef
     const item = dataset.getCategory(id)
-    return item ? getLabel(item) : id
+    const label = item ? getLabel(item) : null
+    return label || id
   }
 
   return {
@@ -395,9 +168,6 @@ export function useTcmReferences() {
   }
 }
 
-/**
- * Get Western herbalism reference data with lookup helpers
- */
 export function useWesternReferences() {
   const { locale } = useI18n()
 
@@ -405,8 +175,11 @@ export function useWesternReferences() {
   const organs = ref(dataset.getAllOrgans())
 
   function getLabel(item) {
-    if (!item || !item.prefLabel) return null
-    return getLocalizedValue(item.prefLabel, locale.value)
+    if (!item) return null
+    // Check both prefLabel and name fields
+    const labelMap = item.prefLabel || item.name
+    if (!labelMap) return null
+    return getLocalizedValue(labelMap, locale.value)
   }
 
   function getActionLabels(actionRefs) {
@@ -414,7 +187,8 @@ export function useWesternReferences() {
     return actionRefs.map(ref => {
       const id = typeof ref === 'object' ? ref['@id'] : ref
       const item = dataset.getAction(id)
-      return item ? { id, label: getLabel(item) } : { id, label: id }
+      const label = item ? getLabel(item) : null
+      return { id, label: label || id }
     })
   }
 
@@ -423,7 +197,8 @@ export function useWesternReferences() {
     return organRefs.map(ref => {
       const id = typeof ref === 'object' ? ref['@id'] : ref
       const item = dataset.getOrgan(id)
-      return item ? { id, label: getLabel(item) } : { id, label: id }
+      const label = item ? getLabel(item) : null
+      return { id, label: label || id }
     })
   }
 
@@ -435,9 +210,6 @@ export function useWesternReferences() {
   }
 }
 
-/**
- * Get Chemical Compounds reference data with lookup helpers
- */
 export function useChemicalReferences() {
   const { locale } = useI18n()
 
@@ -452,7 +224,6 @@ export function useChemicalReferences() {
       let description = null
 
       if (compound) {
-        // Chemical entities use 'name' not 'prefLabel'
         if (compound.name) {
           label = getLocalizedValue(compound.name, locale.value)
         }
@@ -460,7 +231,6 @@ export function useChemicalReferences() {
           description = getLocalizedValue(compound.description, locale.value)
         }
       } else {
-        // Fallback: extract slug from ID for display
         const parts = id.split('/')
         label = parts[parts.length - 1] || id
       }
@@ -469,99 +239,110 @@ export function useChemicalReferences() {
     })
   }
 
+  return { getCompoundLabels }
+}
+
+// ============================================================================
+// Localization Helpers for Preparations
+// ============================================================================
+
+export function usePreparationLocalizer() {
+  const { locale } = useI18n()
+
+  // Category labels for legacy navigation
+  const categoryLabels = {
+    'chinese-herbs': { en: 'Chinese Herbs', 'zh-Hant': '中藥', 'zh-Hans': '中药' },
+    'western-herbs': { en: 'Western Herbs', 'zh-Hant': '西方草本', 'zh-Hans': '西方草本' },
+    'vitamins': { en: 'Vitamins', 'zh-Hant': '維生素', 'zh-Hans': '维生素' },
+    'minerals': { en: 'Minerals', 'zh-Hant': '礦物質', 'zh-Hans': '矿物质' },
+    'nutrients': { en: 'Nutrients', 'zh-Hant': '營養素', 'zh-Hans': '营养素' },
+    'preparations': { en: 'All Preparations', 'zh-Hant': '所有製劑', 'zh-Hans': '所有制剂' }
+  }
+
   return {
-    getCompoundLabels
+    getName: (prep) => {
+      if (!prep) return null
+      return getLocalizedValue(prep.name, locale.value)
+    },
+
+    getDescription: (prep) => {
+      if (!prep) return null
+      return getLocalizedValue(prep.description, locale.value)
+    },
+
+    getCommonName: (prep) => {
+      if (!prep) return null
+      // Common name is on the source plant, need to look it up
+      const plant = dataset.getSourcePlant(extractSlug(prep))
+      if (plant?.commonName) {
+        return getLocalizedValue(plant.commonName, locale.value)
+      }
+      return null
+    },
+
+    getCategoryLabel: (categorySlug) => {
+      const labels = categoryLabels[categorySlug]
+      if (!labels) return categorySlug
+      return labels[locale.value] || labels['en'] || categorySlug
+    },
+
+    getTCMHistory: (profile) => {
+      if (!profile) return null
+      return getLocalizedValue(profile.tcmHistory, locale.value)
+    },
+
+    getTCMTraditionalUsage: (profile) => {
+      if (!profile) return null
+      return getLocalizedValue(profile.tcmTraditionalUsage, locale.value)
+    },
+
+    getTCMModernResearch: (profile) => {
+      if (!profile) return null
+      return getLocalizedValue(profile.tcmModernResearch, locale.value)
+    },
+
+    getTCMFunctions: (profile) => {
+      if (!profile) return null
+      return getLocalizedValue(profile.tcmFunctions, locale.value)
+    },
+
+    getWesternHistory: (profile) => {
+      if (!profile) return null
+      return getLocalizedValue(profile.westernHistory, locale.value)
+    },
+
+    getWesternTraditionalUsage: (profile) => {
+      if (!profile) return null
+      return getLocalizedValue(profile.westernTraditionalUsage, locale.value)
+    },
+
+    getWesternModernResearch: (profile) => {
+      if (!profile) return null
+      return getLocalizedValue(profile.westernModernResearch, locale.value)
+    }
   }
 }
 
-/**
- * Find related herbs based on shared compounds, TCM category, or western actions
- */
-export function useRelatedHerbs(currentHerb, limit = 5) {
-  const { locale } = useI18n()
+// Helper to extract slug from preparation
+function extractSlug(prep) {
+  if (!prep?.['@id']) return null
+  const parts = prep['@id'].split('/')
+  return parts[parts.length - 1] || ''
+}
 
-  return computed(() => {
-    if (!currentHerb) return []
+// ============================================================================
+// Statistics
+// ============================================================================
 
-    const relatedHerbs = []
-    const currentSlug = currentHerb.slug
+export function useDatasetStats() {
+  return dataset.getCounts()
+}
 
-    // Get current herb's compound IDs
-    const currentCompoundIds = new Set(
-      (currentHerb.containsChemical || []).map(c =>
-        typeof c === 'object' ? c['@id'] : c
-      )
-    )
-
-    // Get current herb's TCM category
-    const currentCategory = currentHerb.hasCategory
-      ? (typeof currentHerb.hasCategory === 'object'
-          ? currentHerb.hasCategory['@id']
-          : currentHerb.hasCategory)
-      : null
-
-    // Get current herb's western action IDs
-    const currentActionIds = new Set(
-      (currentHerb.hasAction || []).map(a =>
-        typeof a === 'object' ? a['@id'] : a
-      )
-    )
-
-    // Score each herb
-    for (const [slug, herb] of mergedCache) {
-      if (slug === currentSlug) continue
-
-      let score = 0
-      let matchReasons = []
-
-      // Check shared compounds
-      const herbCompoundIds = (herb.containsChemical || []).map(c =>
-        typeof c === 'object' ? c['@id'] : c
-      )
-      const sharedCompounds = herbCompoundIds.filter(id => currentCompoundIds.has(id))
-      if (sharedCompounds.length > 0) {
-        score += sharedCompounds.length * 3
-        matchReasons.push({ type: 'compounds', count: sharedCompounds.length })
-      }
-
-      // Check TCM category match
-      if (currentCategory && herb.hasCategory) {
-        const herbCategory = typeof herb.hasCategory === 'object'
-          ? herb.hasCategory['@id']
-          : herb.hasCategory
-        if (herbCategory === currentCategory) {
-          score += 2
-          matchReasons.push({ type: 'category' })
-        }
-      }
-
-      // Check shared western actions
-      const herbActionIds = (herb.hasAction || []).map(a =>
-        typeof a === 'object' ? a['@id'] : a
-      )
-      const sharedActions = herbActionIds.filter(id => currentActionIds.has(id))
-      if (sharedActions.length > 0) {
-        score += sharedActions.length
-        matchReasons.push({ type: 'actions', count: sharedActions.length })
-      }
-
-      if (score > 0) {
-        relatedHerbs.push({
-          herb,
-          score,
-          matchReasons
-        })
-      }
-    }
-
-    // Sort by score (highest first), then by name
-    relatedHerbs.sort((a, b) => {
-      if (b.score !== a.score) return b.score - a.score
-      const nameA = getLocalizedValue(a.herb.name, locale.value) || a.herb.slug
-      const nameB = getLocalizedValue(b.herb.name, locale.value) || b.herb.slug
-      return nameA.localeCompare(nameB)
-    })
-
-    return relatedHerbs.slice(0, limit)
-  })
+export function useCategoryStats() {
+  const stats = dataset.getCounts()
+  return {
+    preparations: stats.preparations,
+    tcm: stats.tcmProfiles,
+    western: stats.westernProfiles
+  }
 }
