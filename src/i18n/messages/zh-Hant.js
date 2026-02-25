@@ -327,6 +327,7 @@ export default {
     preparationsWithProfile: '使用此檔案的製劑',
     noPreparations: '尚無使用此檔案的製劑',
     andMore: '還有 {count} 個',
+    aboutSystem: '關於{system}',
     items: '項',
     viewAll: '查看全部'
   },
@@ -352,7 +353,21 @@ export default {
     mineralAbout: '關於礦物來源',
     mineralAboutText: '礦物來源包括用於傳統和現代醫學的天然元素和化合物。這些包括鋅、鈣、鎂等必需礦物質，以及對人體健康至關重要的微量元素。',
     chemical: '化學來源',
-    chemicalDesc: '合成或分離的化合物，包括維生素、氨基酸和其他生物活性分子。'
+    chemicalDesc: '合成或分離的化合物，包括維生素、氨基酸和其他生物活性分子。',
+    // Source detail page
+    preparationsFromSource: '由此來源製備的製劑',
+    description: '描述',
+    animalOrigin: '動物來源',
+    animalName: '動物名稱',
+    animalScientificName: '學名',
+    animalPart: '動物部位',
+    chemicalProperties: '化學特性',
+    chemicalFormula: '化學式',
+    synthesis: '合成狀態',
+    synthesized: '人工合成',
+    natural: '天然來源',
+    sourceNotFound: '數據庫中找不到請求的來源物料。',
+    backToSources: '返回來源物料'
   },
   // Chemical compounds
   compounds: {

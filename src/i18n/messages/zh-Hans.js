@@ -328,6 +328,7 @@ export default {
     preparationsWithProfile: '使用此档案的制剂',
     noPreparations: '尚无使用此档案的制剂',
     andMore: '还有 {count} 个',
+    aboutSystem: '关于{system}',
     items: '项',
     viewAll: '查看全部'
   },
@@ -353,7 +354,21 @@ export default {
     mineralAbout: '关于矿物来源',
     mineralAboutText: '矿物来源包括用于传统和现代医学的天然元素和化合物。这些包括锌、钙、镁等必需矿物质，以及对人体健康至关重要的微量元素。',
     chemical: '化学来源',
-    chemicalDesc: '合成或分离的化合物，包括维生素、氨基酸和其他生物活性分子。'
+    chemicalDesc: '合成或分离的化合物，包括维生素、氨基酸和其他生物活性分子。',
+    // Source detail page
+    preparationsFromSource: '由此来源制备的制剂',
+    description: '描述',
+    animalOrigin: '动物来源',
+    animalName: '动物名称',
+    animalScientificName: '学名',
+    animalPart: '动物部位',
+    chemicalProperties: '化学特性',
+    chemicalFormula: '化学式',
+    synthesis: '合成状态',
+    synthesized: '人工合成',
+    natural: '天然来源',
+    sourceNotFound: '数据库中找不到请求的来源物料。',
+    backToSources: '返回来源物料'
   },
   // Chemical compounds
   compounds: {

@@ -71,7 +71,7 @@
               </div>
               <div class="preparation-card-mini__content">
                 <h4 class="preparation-card-mini__name">{{ getPrepName(prep) }}</h4>
-                <p v-if="prep.form" class="preparation-card-mini__form">{{ prep.form }}</p>
+                <p v-if="getFormLabel(prep)" class="preparation-card-mini__form">{{ getFormLabel(prep) }}</p>
                 <div class="preparation-card-mini__badges">
                   <span v-if="prep.hasTCMProfile" class="prep-badge prep-badge--tcm">TCM</span>
                   <span v-if="prep.hasWesternProfile" class="prep-badge prep-badge--western">W</span>
@@ -319,7 +319,24 @@ function getImage(prep) {
   // Image comes from source plant, not from preparation
   const slug = getSlug(prep)
   const plant = useSourcePlant(slug)
-  return plant.value?.image || null
+  const img = plant.value?.image
+  if (!img) return null
+  return img.startsWith('/@herbapedia') ? img : `/${img}`
+}
+
+function getFormLabel(prep) {
+  if (!prep?.form) return null
+  const formId = prep.form['@id'] || prep.form
+  if (!formId) return null
+  // Extract form name from @id
+  const slug = formId.split('/').pop()
+  // Get form from dataset
+  const form = dataset.getHerbalForm(slug)
+  if (form?.name) {
+    return form.name[locale.value] || form.name.en || slug
+  }
+  // Fallback to formatted slug
+  return slug?.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
 }
 </script>
 

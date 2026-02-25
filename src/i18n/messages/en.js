@@ -307,6 +307,7 @@ export default {
     preparationsWithProfile: 'Preparations with this Profile',
     noPreparations: 'No preparations with this profile yet',
     andMore: 'and {count} more',
+    aboutSystem: 'About {system}',
     aboutTitle: 'About Traditional Medicine Systems',
     aboutText: 'Traditional medicine systems have developed over thousands of years across different cultures. Each system has its own unique framework for understanding health, disease, and treatment. Herbapedia documents preparations according to five major systems: Traditional Chinese Medicine, Western Herbalism, Ayurveda, Persian/Unani Medicine, and Mongolian Traditional Medicine.',
     tcm: {
@@ -352,7 +353,22 @@ export default {
     mineralAbout: 'About Mineral Sources',
     mineralAboutText: 'Mineral sources include naturally occurring elements and compounds used in traditional and modern medicine. These include essential minerals like zinc, calcium, magnesium, and trace elements that play vital roles in human health.',
     chemical: 'Chemical Sources',
-    chemicalDesc: 'Synthesized or isolated compounds including vitamins, amino acids, and other bioactive molecules.'
+    chemicalDesc: 'Synthesized or isolated compounds including vitamins, amino acids, and other bioactive molecules.',
+    // Source detail page
+    preparationsFromSource: 'Preparations from this Source',
+    noPreparations: 'No preparations from this source yet',
+    description: 'Description',
+    animalOrigin: 'Animal Origin',
+    animalName: 'Animal Name',
+    animalScientificName: 'Scientific Name',
+    animalPart: 'Animal Part',
+    chemicalProperties: 'Chemical Properties',
+    chemicalFormula: 'Chemical Formula',
+    synthesis: 'Synthesis',
+    synthesized: 'Synthesized',
+    natural: 'Natural',
+    sourceNotFound: 'Source not found',
+    backToSources: 'Back to Sources'
   },
   // Chemical compounds
   compounds: {
