@@ -113,9 +113,9 @@ const systemConfigs = {
     icon: '🪷',
     nameKey: 'systems.ayurveda.name'
   },
-  persian: {
+  unani: {
     icon: '🌙',
-    nameKey: 'systems.persian.name'
+    nameKey: 'systems.unani.name'
   },
   mongolian: {
     icon: '🏔️',
@@ -303,9 +303,9 @@ const referenceTypes = {
       return profile.hasPrabhava.map(p => p['@id'] || p)
     }
   },
-  // Persian
+  // Unani
   temperaments: {
-    name: t('persian.temperaments') || 'Temperaments',
+    name: t('unani.temperaments') || 'Temperaments',
     description: t('reference.temperamentsDesc') || 'Four temperaments in Unani medicine',
     getItems: () => dataset.getAllTemperaments(),
     getValue: (profile) => {
@@ -314,19 +314,19 @@ const referenceTypes = {
       return temp
     }
   },
-  'persian-elements': {
-    name: t('persian.elements') || 'Elements',
-    description: t('reference.persianElementsDesc') || 'Four elements in Persian medicine',
-    getItems: () => dataset.getAllPersianElements(),
+  'unani-elements': {
+    name: t('unani.elements') || 'Elements',
+    description: t('reference.unaniElementsDesc') || 'Four elements in Unani medicine',
+    getItems: () => dataset.getAllUnaniElements(),
     getValue: (profile) => {
       if (!profile?.hasElement) return []
       return profile.hasElement.map(e => e['@id'] || e)
     }
   },
   degrees: {
-    name: t('persian.degrees') || 'Degrees',
-    description: t('reference.degreesDesc') || 'Intensity degrees in Persian medicine',
-    getItems: () => dataset.getAllPersianDegrees(),
+    name: t('unani.degrees') || 'Degrees',
+    description: t('reference.degreesDesc') || 'Intensity degrees in Unani medicine',
+    getItems: () => dataset.getAllUnaniDegrees(),
     getValue: (profile) => {
       if (!profile?.temperamentDegree) return null
       return profile.temperamentDegree
@@ -439,11 +439,11 @@ const referenceItems = computed(() => {
 
     // Get profile cache based on system
     let profileCache
-    if (system.value === 'tcm') profileCache = dataset.tcmCache
-    else if (system.value === 'western') profileCache = dataset.westernCache
-    else if (system.value === 'ayurveda') profileCache = dataset.ayurvedaCache
-    else if (system.value === 'persian') profileCache = dataset.persianCache
-    else if (system.value === 'mongolian') profileCache = dataset.mongolianCache
+    if (system.value === 'tcm') profileCache = dataset.getAllTCMProfiles()
+    else if (system.value === 'western') profileCache = dataset.getAllWesternProfiles()
+    else if (system.value === 'ayurveda') profileCache = dataset.getAllAyurvedaProfiles()
+    else if (system.value === 'unani') profileCache = dataset.getAllUnaniProfiles()
+    else if (system.value === 'mongolian') profileCache = dataset.getAllMongolianProfiles()
 
     if (!profileCache) return { id: itemId, slug, label, translations, preparations: [] }
 
@@ -453,7 +453,7 @@ const referenceItems = computed(() => {
       if (system.value === 'tcm') profileRef = prep.hasTCMProfile
       else if (system.value === 'western') profileRef = prep.hasWesternProfile
       else if (system.value === 'ayurveda') profileRef = prep.hasAyurvedaProfile
-      else if (system.value === 'persian') profileRef = prep.hasPersianProfile
+      else if (system.value === 'unani') profileRef = prep.hasUnaniProfile
       else if (system.value === 'mongolian') profileRef = prep.hasMongolianProfile
 
       if (!profileRef) return
@@ -540,7 +540,7 @@ function goToPrep(prep) {
 .reference-hero--tcm { background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(34, 197, 94, 0.02) 100%); }
 .reference-hero--western { background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.02) 100%); }
 .reference-hero--ayurveda { background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(249, 115, 22, 0.02) 100%); }
-.reference-hero--persian { background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(139, 92, 246, 0.02) 100%); }
+.reference-hero--unani { background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(139, 92, 246, 0.02) 100%); }
 .reference-hero--mongolian { background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(6, 182, 212, 0.02) 100%); }
 
 .reference-hero__icon {
@@ -643,7 +643,7 @@ function goToPrep(prep) {
 .prep-chip--tcm { background: rgba(34, 197, 94, 0.15); color: #166534; }
 .prep-chip--western { background: rgba(59, 130, 246, 0.15); color: #1e40af; }
 .prep-chip--ayurveda { background: rgba(249, 115, 22, 0.15); color: #c2410c; }
-.prep-chip--persian { background: rgba(139, 92, 246, 0.15); color: #6b21a8; }
+.prep-chip--unani { background: rgba(139, 92, 246, 0.15); color: #6b21a8; }
 .prep-chip--mongolian { background: rgba(6, 182, 212, 0.15); color: #0e7490; }
 .prep-chip--more { background: var(--color-surface-alt); color: var(--color-text-light); cursor: default; }
 

@@ -10,7 +10,7 @@
  * - western: Western-specific filters (action, organ)
  */
 
-import { ref, reactive, computed, watch } from 'vue'
+import { ref, reactive, computed, watch, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { dataset } from '@/api/dataset'
@@ -26,28 +26,56 @@ export function useFilters() {
   const route = useRoute()
   const router = useRouter()
 
-  // Reactive filter state
+  // Reactive filter state - supports all 6 systems
   const filters = reactive({
     search: '',
     system: {
       tcm: false,
       western: false,
-      ayurveda: false
+      ayurveda: false,
+      unani: false,
+      mongolian: false,
+      modern: false
     },
+    // TCM properties
     tcm: {
-      nature: null,      // 'hot', 'warm', 'neutral', 'cool', 'cold'
-      flavor: null,      // 'pungent', 'sweet', 'sour', 'bitter', 'salty'
-      meridian: null,    // 'lung', 'spleen', 'stomach', etc.
-      category: null     // 'release-exterior', 'warm-interior', etc.
+      nature: null,
+      flavor: null,
+      meridian: null,
+      category: null
     },
+    // Western properties
     western: {
-      action: null,      // 'carminative', 'anti-inflammatory', etc.
-      organ: null        // 'digestive', 'nervous', 'circulatory', etc.
+      action: null,
+      organ: null
+    },
+    // Ayurveda properties
+    ayurveda: {
+      rasa: null,
+      guna: null,
+      virya: null,
+      vipaka: null,
+      dosha: null,
+      karma: null
+    },
+    // Unani properties
+    unani: {
+      temperament: null,
+      element: null
+    },
+    // Mongolian properties
+    mongolian: {
+      element: null,
+      taste: null,
+      root: null
     }
   })
 
   // Track if we've initialized from URL
   const initialized = ref(false)
+
+  // Track if we're currently updating the URL (to prevent watch loop)
+  const isUpdatingUrl = ref(false)
 
   // ============================================================================
   // URL Query Param Sync
@@ -70,6 +98,9 @@ export function useFilters() {
       filters.system.tcm = systems.includes('tcm')
       filters.system.western = systems.includes('western')
       filters.system.ayurveda = systems.includes('ayurveda')
+      filters.system.unani = systems.includes('unani')
+      filters.system.mongolian = systems.includes('mongolian')
+      filters.system.modern = systems.includes('modern')
     }
 
     // TCM filters
@@ -81,6 +112,23 @@ export function useFilters() {
     // Western filters
     if (query.action) filters.western.action = String(query.action)
     if (query.organ) filters.western.organ = String(query.organ)
+
+    // Ayurveda filters
+    if (query.rasa) filters.ayurveda.rasa = String(query.rasa)
+    if (query.guna) filters.ayurveda.guna = String(query.guna)
+    if (query.virya) filters.ayurveda.virya = String(query.virya)
+    if (query.vipaka) filters.ayurveda.vipaka = String(query.vipaka)
+    if (query.dosha) filters.ayurveda.dosha = String(query.dosha)
+    if (query.karma) filters.ayurveda.karma = String(query.karma)
+
+    // Unani filters
+    if (query.temperament) filters.unani.temperament = String(query.temperament)
+    if (query.unaniElement) filters.unani.element = String(query.unaniElement)
+
+    // Mongolian filters
+    if (query.mongolianElement) filters.mongolian.element = String(query.mongolianElement)
+    if (query.mongolianTaste) filters.mongolian.taste = String(query.mongolianTaste)
+    if (query.mongolianRoot) filters.mongolian.root = String(query.mongolianRoot)
   }
 
   /**
@@ -99,6 +147,9 @@ export function useFilters() {
     if (filters.system.tcm) systems.push('tcm')
     if (filters.system.western) systems.push('western')
     if (filters.system.ayurveda) systems.push('ayurveda')
+    if (filters.system.unani) systems.push('unani')
+    if (filters.system.mongolian) systems.push('mongolian')
+    if (filters.system.modern) systems.push('modern')
     if (systems.length > 0) {
       query.system = systems.join(',')
     }
@@ -113,6 +164,23 @@ export function useFilters() {
     if (filters.western.action) query.action = filters.western.action
     if (filters.western.organ) query.organ = filters.western.organ
 
+    // Ayurveda filters
+    if (filters.ayurveda.rasa) query.rasa = filters.ayurveda.rasa
+    if (filters.ayurveda.guna) query.guna = filters.ayurveda.guna
+    if (filters.ayurveda.virya) query.virya = filters.ayurveda.virya
+    if (filters.ayurveda.vipaka) query.vipaka = filters.ayurveda.vipaka
+    if (filters.ayurveda.dosha) query.dosha = filters.ayurveda.dosha
+    if (filters.ayurveda.karma) query.karma = filters.ayurveda.karma
+
+    // Unani filters
+    if (filters.unani.temperament) query.temperament = filters.unani.temperament
+    if (filters.unani.element) query.unaniElement = filters.unani.element
+
+    // Mongolian filters
+    if (filters.mongolian.element) query.mongolianElement = filters.mongolian.element
+    if (filters.mongolian.taste) query.mongolianTaste = filters.mongolian.taste
+    if (filters.mongolian.root) query.mongolianRoot = filters.mongolian.root
+
     return query
   }
 
@@ -120,8 +188,13 @@ export function useFilters() {
    * Update URL with current filters
    */
   function updateUrl() {
+    isUpdatingUrl.value = true
     const query = buildQueryParams()
     router.replace({ query })
+    // Reset flag after the navigation is complete
+    nextTick(() => {
+      isUpdatingUrl.value = false
+    })
   }
 
   /**
@@ -142,10 +215,15 @@ export function useFilters() {
     filters.system.tcm = false
     filters.system.western = false
     filters.system.ayurveda = false
+    filters.system.unani = false
+    filters.system.mongolian = false
+    filters.system.modern = false
+    // TCM
     filters.tcm.nature = null
     filters.tcm.flavor = null
     filters.tcm.meridian = null
     filters.tcm.category = null
+    // Western
     filters.western.action = null
     filters.western.organ = null
     updateUrl()
@@ -160,6 +238,9 @@ export function useFilters() {
       filters.system.tcm ||
       filters.system.western ||
       filters.system.ayurveda ||
+      filters.system.unani ||
+      filters.system.mongolian ||
+      filters.system.modern ||
       filters.tcm.nature ||
       filters.tcm.flavor ||
       filters.tcm.meridian ||
@@ -177,6 +258,11 @@ export function useFilters() {
    * Apply filters to preparations list
    */
   function applyFilters(preparations) {
+    // Check if any system filter is active
+    const hasSystemFilter = filters.system.tcm || filters.system.western ||
+                            filters.system.ayurveda || filters.system.unani ||
+                            filters.system.mongolian || filters.system.modern
+
     return preparations.filter(prep => {
       // Search filter - match against name and scientific name
       if (filters.search) {
@@ -186,13 +272,21 @@ export function useFilters() {
         if (!nameMatch && !sciMatch) return false
       }
 
-      // System profile filters
-      if (filters.system.tcm && !prep.hasTCMProfile) return false
-      if (filters.system.western && !prep.hasWesternProfile) return false
-      if (filters.system.ayurveda && !prep.hasAyurvedaProfile) return false
+      // System profile filters - only filter if at least one system is selected
+      if (hasSystemFilter) {
+        const matchesAnySystem =
+          (filters.system.tcm && prep.hasTCMProfile) ||
+          (filters.system.western && prep.hasWesternProfile) ||
+          (filters.system.ayurveda && prep.hasAyurvedaProfile) ||
+          (filters.system.unani && prep.hasUnaniProfile) ||
+          (filters.system.mongolian && prep.hasMongolianProfile) ||
+          (filters.system.modern && prep.hasModernProfile)
 
-      // TCM property filters
-      if (filters.tcm.nature || filters.tcm.flavor || filters.tcm.meridian || filters.tcm.category) {
+        if (!matchesAnySystem) return false
+      }
+
+      // TCM property filters - only apply if TCM system is selected
+      if (filters.system.tcm && (filters.tcm.nature || filters.tcm.flavor || filters.tcm.meridian || filters.tcm.category)) {
         const tcmProfile = resolveTCMProfile(prep)
         if (!tcmProfile) return false
 
@@ -204,7 +298,6 @@ export function useFilters() {
             return false
           }
         }
-
         if (filters.tcm.flavor) {
           const flavors = tcmProfile.hasFlavor || []
           const hasFlavor = flavors.some(f => {
@@ -215,7 +308,6 @@ export function useFilters() {
           })
           if (!hasFlavor) return false
         }
-
         if (filters.tcm.meridian) {
           const meridians = tcmProfile.entersMeridian || []
           const hasMeridian = meridians.some(m => {
@@ -226,7 +318,6 @@ export function useFilters() {
           })
           if (!hasMeridian) return false
         }
-
         if (filters.tcm.category) {
           const catId = tcmProfile.hasCategory?.['@id'] || tcmProfile.hasCategory
           if (catId !== `tcm/category/${filters.tcm.category}` &&
@@ -237,8 +328,8 @@ export function useFilters() {
         }
       }
 
-      // Western property filters
-      if (filters.western.action || filters.western.organ) {
+      // Western property filters - only apply if Western system is selected
+      if (filters.system.western && (filters.western.action || filters.western.organ)) {
         const westernProfile = resolveWesternProfile(prep)
         if (!westernProfile) return false
 
@@ -252,7 +343,6 @@ export function useFilters() {
           })
           if (!hasAction) return false
         }
-
         if (filters.western.organ) {
           const organs = westernProfile.hasOrganAffinity || []
           const hasOrgan = organs.some(o => {
@@ -277,11 +367,14 @@ export function useFilters() {
   watch(
     () => route.query,
     () => {
-      if (initialized.value) {
-        // Reset and re-parse
-        clearFilters()
-        parseQueryParams()
-      }
+      // Skip if this is our own URL update
+      if (isUpdatingUrl.value) return
+      // Skip if not initialized yet
+      if (!initialized.value) return
+
+      // Reset and re-parse (for browser back/forward navigation)
+      clearFilters()
+      parseQueryParams()
     },
     { deep: true }
   )
@@ -341,66 +434,215 @@ function resolveWesternProfile(prep) {
 export function useFilterOptions() {
   const { locale } = useI18n()
 
-  // TCM options
-  const tcmNatures = [
-    { value: 'hot', label: 'Hot' },
-    { value: 'warm', label: 'Warm' },
-    { value: 'neutral', label: 'Neutral' },
-    { value: 'cool', label: 'Cool' },
-    { value: 'cold', label: 'Cold' }
-  ]
+  // Get TCM Thermal Natures from dataset
+  const tcmNatures = computed(() => {
+    const natures = dataset.getAllNatures()
+    if (!natures || natures.length === 0) return []
+    return natures.map(n => {
+      const id = n['@id']
+      const slug = extractSlugFromId(id)
+      return {
+        value: slug,
+        label: getLocalizedLabel(n, locale.value)
+      }
+    })
+  })
 
-  const tcmFlavors = [
-    { value: 'pungent', label: 'Pungent' },
-    { value: 'sweet', label: 'Sweet' },
-    { value: 'sour', label: 'Sour' },
-    { value: 'bitter', label: 'Bitter' },
-    { value: 'salty', label: 'Salty' }
-  ]
+  // Get TCM Flavors from dataset
+  const tcmFlavors = computed(() => {
+    const flavors = dataset.getAllFlavors()
+    if (!flavors || flavors.length === 0) return []
+    return flavors.map(f => {
+      const id = f['@id']
+      const slug = extractSlugFromId(id)
+      return {
+        value: slug,
+        label: getLocalizedLabel(f, locale.value)
+      }
+    })
+  })
 
   // Get TCM categories from dataset
   const tcmCategories = computed(() => {
     const categories = dataset.getAllCategories()
-    return categories.map(cat => ({
-      value: extractSlugFromId(cat['@id']),
-      label: getLocalizedLabel(cat, locale.value)
-    }))
+    if (!categories || categories.length === 0) return []
+    return categories.map(cat => {
+      const id = cat['@id']
+      const slug = extractSlugFromId(id)
+      return {
+        value: slug,
+        label: getLocalizedLabel(cat, locale.value)
+      }
+    })
   })
 
   // Get TCM meridians from dataset
   const tcmMeridians = computed(() => {
     const meridians = dataset.getAllMeridians()
-    return meridians.map(m => ({
-      value: extractSlugFromId(m['@id']),
-      label: getLocalizedLabel(m, locale.value)
-    }))
+    if (!meridians || meridians.length === 0) return []
+    return meridians.map(m => {
+      const id = m['@id']
+      const slug = extractSlugFromId(id)
+      return {
+        value: slug,
+        label: getLocalizedLabel(m, locale.value)
+      }
+    })
   })
 
   // Get Western actions from dataset
   const westernActions = computed(() => {
     const actions = dataset.getAllActions()
-    return actions.map(a => ({
-      value: extractSlugFromId(a['@id']),
-      label: getLocalizedLabel(a, locale.value)
-    }))
+    if (!actions || actions.length === 0) return []
+    return actions.map(a => {
+      const id = a['@id']
+      const slug = extractSlugFromId(id)
+      return {
+        value: slug,
+        label: getLocalizedLabel(a, locale.value)
+      }
+    })
   })
 
   // Get Western organs from dataset
   const westernOrgans = computed(() => {
     const organs = dataset.getAllOrgans()
-    return organs.map(o => ({
-      value: extractSlugFromId(o['@id']),
-      label: getLocalizedLabel(o, locale.value)
+    if (!organs || organs.length === 0) return []
+    return organs.map(o => {
+      const id = o['@id']
+      const slug = extractSlugFromId(id)
+      return {
+        value: slug,
+        label: getLocalizedLabel(o, locale.value)
+      }
+    })
+  })
+
+  // Ayurveda filter options
+  const ayurvedaRasas = computed(() => {
+    const items = dataset.getAllRasas()
+    if (!items || items.length === 0) return []
+    return items.map(item => ({
+      value: extractSlugFromId(item['@id']),
+      label: getLocalizedLabel(item, locale.value)
+    }))
+  })
+
+  const ayurvedaGunas = computed(() => {
+    const items = dataset.getAllGunas()
+    if (!items || items.length === 0) return []
+    return items.map(item => ({
+      value: extractSlugFromId(item['@id']),
+      label: getLocalizedLabel(item, locale.value)
+    }))
+  })
+
+  const ayurvedaViryas = computed(() => {
+    const items = dataset.getAllViryas()
+    if (!items || items.length === 0) return []
+    return items.map(item => ({
+      value: extractSlugFromId(item['@id']),
+      label: getLocalizedLabel(item, locale.value)
+    }))
+  })
+
+  const ayurvedaVipakas = computed(() => {
+    const items = dataset.getAllVipakas()
+    if (!items || items.length === 0) return []
+    return items.map(item => ({
+      value: extractSlugFromId(item['@id']),
+      label: getLocalizedLabel(item, locale.value)
+    }))
+  })
+
+  const ayurvedaDoshas = computed(() => {
+    const items = dataset.getAllDoshas()
+    if (!items || items.length === 0) return []
+    return items.map(item => ({
+      value: extractSlugFromId(item['@id']),
+      label: getLocalizedLabel(item, locale.value)
+    }))
+  })
+
+  const ayurvedaKarmas = computed(() => {
+    const items = dataset.getAllKarmas()
+    if (!items || items.length === 0) return []
+    return items.map(item => ({
+      value: extractSlugFromId(item['@id']),
+      label: getLocalizedLabel(item, locale.value)
+    }))
+  })
+
+  // Unani filter options
+  const unaniTemperaments = computed(() => {
+    const items = dataset.getAllTemperaments()
+    if (!items || items.length === 0) return []
+    return items.map(item => ({
+      value: extractSlugFromId(item['@id']),
+      label: getLocalizedLabel(item, locale.value)
+    }))
+  })
+
+  const unaniElements = computed(() => {
+    const items = dataset.getAllUnaniElements()
+    if (!items || items.length === 0) return []
+    return items.map(item => ({
+      value: extractSlugFromId(item['@id']),
+      label: getLocalizedLabel(item, locale.value)
+    }))
+  })
+
+  // Mongolian filter options
+  const mongolianElements = computed(() => {
+    const items = dataset.getAllMongolianElements()
+    if (!items || items.length === 0) return []
+    return items.map(item => ({
+      value: extractSlugFromId(item['@id']),
+      label: getLocalizedLabel(item, locale.value)
+    }))
+  })
+
+  const mongolianTastes = computed(() => {
+    const items = dataset.getAllMongolianTastes()
+    if (!items || items.length === 0) return []
+    return items.map(item => ({
+      value: extractSlugFromId(item['@id']),
+      label: getLocalizedLabel(item, locale.value)
+    }))
+  })
+
+  const mongolianRoots = computed(() => {
+    const items = dataset.getAllMongolianRoots()
+    if (!items || items.length === 0) return []
+    return items.map(item => ({
+      value: extractSlugFromId(item['@id']),
+      label: getLocalizedLabel(item, locale.value)
     }))
   })
 
   return {
+    // TCM
     tcmNatures,
     tcmFlavors,
     tcmCategories,
     tcmMeridians,
+    // Western
     westernActions,
-    westernOrgans
+    westernOrgans,
+    // Ayurveda
+    ayurvedaRasas,
+    ayurvedaGunas,
+    ayurvedaViryas,
+    ayurvedaVipakas,
+    ayurvedaDoshas,
+    ayurvedaKarmas,
+    // Unani
+    unaniTemperaments,
+    unaniElements,
+    // Mongolian
+    mongolianElements,
+    mongolianTastes,
+    mongolianRoots
   }
 }
 

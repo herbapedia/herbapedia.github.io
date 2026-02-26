@@ -1,7 +1,24 @@
-name: Deploy to GitHub Pages
+name: Build and Deploy
+
+# Herbapedia Site CI/CD
+#
+# This workflow builds and deploys the Herbapedia static site.
+# It depends on the data-herbapedia repository for source data.
+#
+# Architecture:
+#   1. Checkout site repo (this repo)
+#   2. Checkout data repo (herbapedia/data-herbapedia)
+#   3. Build site using Vite + vite-ssg
+#   4. Deploy to GitHub Pages
+#
+# Future: Add Knowledge Graph build step when data-herbapedia graph API is ready
+#   - Run: pnpm --filter @herbapedia/data build-graph
+#   - This will output to data-herbapedia/api/v1/
 
 on:
   push:
+    branches: [main]
+  pull_request:
     branches: [main]
   workflow_dispatch:
 
@@ -11,8 +28,8 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
-  cancel-in-progress: false
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -48,24 +65,43 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build
+      # Future: Uncomment when data-herbapedia graph build is ready
+      # - name: Build Knowledge Graph
+      #   run: pnpm --filter @herbapedia/data build-graph
+      #   # Outputs to data-herbapedia/api/v1/
+
+      - name: Build site
         run: pnpm --filter @herbapedia/site build
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
+          name: dist
           path: ./herbapedia/dist
+          retention-days: 1
 
   deploy:
+    if: github.ref == github.event.repository.default_branch
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: ./dist
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

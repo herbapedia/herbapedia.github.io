@@ -1,0 +1,32 @@
+{
+  "american-ginseng": {
+    "zh-HK": {
+      "history": "此藥草原產於北美東部和加拿大，傳統上為美洲原住民所使用，現今亦在中國和法國栽培。其分叉狀根部於成熟時採收，通常需時三至四年。本品首載於《本草從新》。",
+      "modern_usage": "人參屬於適應原（即能增強人體抵抗壓力能力的物質），具有抗癌及抗氧化特性。臨床研究亦顯示花旗參具有顯著的抗疲勞及抗利尿作用。"
+    },
+    "zh-CN": {
+      "history": "此草药原产于北美东部和加拿大，传统上为美洲原住民所使用，现今亦在中国和法国栽培。其分叉状根部于成熟时采收，通常需时三至四年。本品首载于《本草从新》。",
+      "modern_usage": "人参属于适应原（即能增强人体抵抗压力能力的物质），具有抗癌及抗氧化特性。临床研究亦显示西洋参具有显著的抗疲劳及抗利尿作用。"
+    }
+  },
+  "asparagus-root": {
+    "zh-HK": {
+      "history": "首載於《神農本草經》。",
+      "introduction": "取自天門冬 Asparagus cochinchinensis (Lour.) Merr. 的根部。"
+    },
+    "zh-CN": {
+      "history": "首载于《神农本草经》。",
+      "introduction": "取自天门冬 Asparagus cochinchinensis (Lour.) Merr. 的根部。"
+    }
+  },
+  "baizhu": {
+    "zh-HK": {
+      "introduction": "菊科植物白朮 Atractylodes macrocephala Koidz. 的根莖。",
+      "modern_usage": "白朮已在臨床試驗中用於治療便秘、腹瀉、肝臟疾病、頭暈及多涎症，效果良好。"
+    },
+    "zh-CN": {
+      "introduction": "菊科植物白术 Atractylodes macrocephala Koidz. 的根茎。",
+      "modern_usage": "白术已在临床试验中用于治疗便秘、腹泻、肝脏疾病、头晕及多涎症，效果良好。"
+    }
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "american-ginseng": {
+    "zh-HK": {
+      "history": "此藥草原產於北美東部和加拿大，傳統上為美洲原住民所使用，現今亦在中國和法國栽培。其分叉狀根部於成熟時採收，通常需時三至四年。本品首載於《本草從新》。",
+      "modern_usage": "人參屬於適應原（即能增強人體抵抗壓力能力的物質），具有抗癌及抗氧化特性。臨床研究亦顯示花旗參具有顯著的抗疲勞及抗利尿作用。"
+    },
+    "zh-CN": {
+      "history": "此草药原产于北美东部和加拿大，传统上为美洲原住民所使用，现今亦在中国和法国栽培。其分叉状根部于成熟时采收，通常需时三至四年。本品首载于《本草从新》。",
+      "modern_usage": "人参属于适应原（即能增强人体抵抗压力能力的物质），具有抗癌及抗氧化特性。临床研究亦显示西洋参具有显著的抗疲劳及抗利尿作用。"
+    }
+  },
+  "asparagus-root": {
+    "zh-HK": {
+      "history": "首載於《神農本草經》。",
+      "introduction": "取自天門冬 Asparagus cochinchinensis (Lour.) Merr. 的根部。"
+    },
+    "zh-CN": {
+      "history": "首载于《神农本草经》。",
+      "introduction": "取自天门冬 Asparagus cochinchinensis (Lour.) Merr. 的根部。"
+    }
+  },
+  "baizhu": {
+    "zh-HK": {
+      "introduction": "菊科植物白朮 Atractylodes macrocephala Koidz. 的根莖。",
+      "modern_usage": "白朮已在臨床試驗中用於治療便秘、腹瀉、肝臟疾病、頭暈及多涎症，效果良好。"
+    },
+    "zh-CN": {
+      "introduction": "菊科植物白术 Atractylodes macrocephala Koidz. 的根茎。",
+      "modern_usage": "白术已在临床试验中用于治疗便秘、腹泻、肝脏疾病、头晕及多涎症，效果良好。"
+    }
+  },
+  "baiziren": {
+    "zh-HK": {
+      "introduction": "柏科植物側柏 Biota orientalis (L.) Endl. 的種子（去種皮）。"
+    },
+    "zh-CN": {
+      "introduction": "柏科植物侧柏 Biota orientalis (L.) Endl. 的种子（去种皮）。"
+    }
+  },
+  "balm-mint-oil": {
+    "zh-HK": {
+      "modern_usage": "香蜂草，常稱為檸檬香蜂草，因其清新宜人的薄荷柑橘香氣而廣泛應用於香水及化妝品中。"
+    },
+    "zh-CN": {
+      "modern_usage": "香蜂草，常称为柠檬香蜂草，因其清新宜人的薄荷柑橘香气而广泛应用于香水及化妆品中。"
+    }
+  },
+  "barley": {
+    "zh-HK": {
+      "history": "首載於《本草綱目》。",
+      "modern_usage": "整粒大麥種子及其製品正被研究作為糖尿病、高膽固醇及肥胖症的潛在治療方法。"
+    },
+    "zh-CN": {
+      "history": "首载于《本草纲目》。",
+      "modern_usage": "整粒大麦种子及其制品正被研究作为糖尿病、高胆固醇及肥胖症的潜在治疗方法。"
+    }
+  },
+  "beishashen": {
+    "zh-HK": {
+      "history": "首載於《神農本草經》。",
+      "introduction": "繖形科植物珊瑚菜 Glehnia littoralis F. Schmidt ex Miq. 的根部。"
+    },
+    "zh-CN": {
+      "history": "首载于《神农本草经》。",
+      "introduction": "伞形科植物珊瑚菜 Glehnia littoralis F. Schmidt ex Miq. 的根部。"
+    }
+  },
+  "bilberry": {
+    "zh-HK": {
+      "history": "歐洲越橘在歐洲醫學中的應用已近千年，主要用於治療胃部疾病和腹瀉。其果實含有單寧，這類物質同時具有消炎和收斂（收縮和緊緻組織）的作用，被認為是其舒緩胃部問題的原因。歐洲越橘的葉片在傳統上亦被用於治療糖尿病。"
+    },
+    "zh-CN": {
+      "history": "欧洲越橘在欧洲医学中的应用已近千年，主要用于治疗胃部疾病和腹泻。其果实含有单宁，这类物质同时具有消炎和收敛（收缩和紧致组织）的作用，被认为是其舒缓胃部问题的原因。欧洲越橘的叶片在传统上亦被用于治疗糖尿病。"
+    }
+  },
+  "birds-nest": {
+    "zh-HK": {
+      "history": "首載於《本草綱目》。",
+      "introduction": "雨燕科（Apodidae）金絲燕屬（Collocalia spp.）的巢。",
+      "modern_usage": "燕窩含有豐富的水溶性醣蛋白，能促進免疫系統內的細胞生長和分裂。"
+    },
+    "zh-CN": {
+      "history": "首载于《本草纲目》。",
+      "introduction": "雨燕科（Apodidae）金丝燕属（Collocalia spp.）的巢。",
+      "modern_usage": "燕窝含有丰富的水溶性糖蛋白，能促进免疫系统内的细胞生长和分裂。"
+    }
+  },
+  "black-sesame-seed": {
+    "zh-HK": {
+      "history": "首載於《神農本草經》。",
+      "introduction": "胡麻科植物芝麻 Sesamum indicum L. 的種子。"
+    },
+    "zh-CN": {
+      "history": "首载于《神农本草经》。",
+      "introduction": "胡麻科植物芝麻 Sesamum indicum L. 的种子。"
+    }
+  }
+}

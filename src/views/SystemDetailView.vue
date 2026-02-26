@@ -19,7 +19,7 @@
         <section class="system-stats">
           <div class="system-stat">
             <span class="system-stat__value">{{ profileCount }}</span>
-            <span class="system-stat__label">{{ t('systems.preparations') }}</span>
+            <span class="system-stat__label">{{ system === 'modern' ? t('modern.substances') : t('systems.preparations') }}</span>
           </div>
           <div class="system-stat">
             <span class="system-stat__value">{{ referenceDataCount }}</span>
@@ -65,8 +65,8 @@
           </div>
         </section>
 
-        <!-- Preparations with this profile -->
-        <section class="system-section">
+        <!-- Preparations with this profile (Traditional systems) -->
+        <section v-if="system !== 'modern'" class="system-section">
           <h2 class="section-title">{{ t('systems.preparationsWithProfile') }}</h2>
           <div v-if="preparations.length > 0" class="preparations-grid">
             <router-link
@@ -99,6 +99,31 @@
           </div>
           <div v-if="preparations.length > 12" class="preparations-more">
             <p>{{ t('systems.andMore', { count: preparations.length - 12 }) }}</p>
+          </div>
+        </section>
+
+        <!-- Modern Substances (Modern Medicine only) -->
+        <section v-else class="system-section">
+          <h2 class="section-title">{{ t('modern.substances') }}</h2>
+          <div class="substances-grid">
+            <div
+              v-for="substance in modernSubstances.slice(0, 24)"
+              :key="substance['@id']"
+              class="substance-card"
+            >
+              <div class="substance-card__icon">
+                {{ getSubstanceIcon(substance) }}
+              </div>
+              <div class="substance-card__content">
+                <h4 class="substance-card__name">{{ getSubstanceName(substance) }}</h4>
+                <p v-if="substance.substanceType" class="substance-card__type">
+                  {{ substance.substanceType }}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div v-if="modernSubstances.length > 24" class="preparations-more">
+            <p>{{ t('systems.andMore', { count: modernSubstances.length - 24 }) }}</p>
           </div>
         </section>
 
@@ -162,12 +187,12 @@ const systemConfigs = {
     description: 'Ancient Indian medical system based on three doshas: Vata, Pitta, Kapha',
     aboutText: 'Ayurveda is a 5,000-year-old system of natural healing from India. It is based on the concept of three doshas (Vata, Pitta, Kapha) that govern physiological activity. Ayurvedic medicine classifies herbs by their taste (rasa), qualities (guna), potency (virya), and post-digestive effect (vipaka).'
   },
-  persian: {
+  unani: {
     icon: '🌙',
-    name: 'Persian Medicine',
+    name: 'Unani Medicine',
     nativeName: 'طب یونانی / Unani Medicine',
     description: 'Greco-Arabic medical tradition based on four humors and temperaments',
-    aboutText: 'Persian Medicine (also known as Unani Medicine) originated from ancient Greek medicine and was developed by Arab and Persian physicians. It is based on the theory of four humors and four temperaments (Hot, Cold, Wet, Dry). Treatments aim to restore balance through diet, lifestyle, and herbal remedies.'
+    aboutText: 'Unani Medicine (also known as Greco-Arabic medicine) originated from ancient Greek medicine and was developed by Arab and Persian physicians. It is based on the theory of four humors and four temperaments (Hot, Cold, Wet, Dry). Treatments aim to restore balance through diet, lifestyle, and herbal remedies.'
   },
   mongolian: {
     icon: '🏔️',
@@ -175,6 +200,13 @@ const systemConfigs = {
     nativeName: 'Монгол эмнэлэг / Traditional Tibetan Medicine',
     description: 'Central Asian medical system integrating Tibetan and Mongolian traditions',
     aboutText: 'Mongolian Traditional Medicine is a syncretic system combining Tibetan Buddhist medicine with indigenous Mongolian practices. It is based on the theory of three roots (Heyi, Xila, Badagan) similar to the Ayurvedic doshas. The system uses five elements and six tastes to classify medicinal substances.'
+  },
+  modern: {
+    icon: '💊',
+    name: 'Modern Medicine',
+    nativeName: 'Evidence-Based Nutrition & Pharmacology',
+    description: 'Contemporary nutritional and pharmaceutical substances supported by scientific research',
+    aboutText: 'Modern Medicine encompasses vitamins, minerals, amino acids, nutraceuticals, and other bioactive compounds backed by clinical research. This system provides evidence-based profiles including regulatory status, pharmacokinetics, and clinical applications for substances used in contemporary healthcare and supplementation.'
   }
 }
 
@@ -355,34 +387,34 @@ const referenceCategories = computed(() => {
         }))
       })
     }
-  } else if (system.value === 'persian') {
+  } else if (system.value === 'unani') {
     categories.push({
       id: 'temperaments',
-      name: t('persian.temperaments') || 'Temperaments',
+      name: t('unani.temperaments') || 'Temperaments',
       items: dataset.getAllTemperaments().map(item => ({
         id: item['@id'],
         label: item.prefLabel?.[locale.value] || item.prefLabel?.en || extractLabel(item['@id'])
       }))
     })
-    // Add Persian Elements
-    const persianElements = dataset.getAllPersianElements()
-    if (persianElements.length > 0) {
+    // Add Unani Elements
+    const unaniElements = dataset.getAllUnaniElements()
+    if (unaniElements.length > 0) {
       categories.push({
-        id: 'persian-elements',
-        name: t('persian.elements') || 'Elements',
-        items: persianElements.map(item => ({
+        id: 'unani-elements',
+        name: t('unani.elements') || 'Elements',
+        items: unaniElements.map(item => ({
           id: item['@id'],
           label: item.prefLabel?.[locale.value] || item.prefLabel?.en || extractLabel(item['@id'])
         }))
       })
     }
-    // Add Persian Degrees
-    const persianDegrees = dataset.getAllPersianDegrees()
-    if (persianDegrees.length > 0) {
+    // Add Unani Degrees
+    const unaniDegrees = dataset.getAllUnaniDegrees()
+    if (unaniDegrees.length > 0) {
       categories.push({
         id: 'degrees',
-        name: t('persian.degrees') || 'Degrees',
-        items: persianDegrees.map(item => ({
+        name: t('unani.degrees') || 'Degrees',
+        items: unaniDegrees.map(item => ({
           id: item['@id'],
           label: item.prefLabel?.[locale.value] || item.prefLabel?.en || extractLabel(item['@id'])
         }))
@@ -429,6 +461,17 @@ const referenceCategories = computed(() => {
         }))
       })
     }
+  } else if (system.value === 'modern') {
+    // Modern medicine reference categories - to be added
+    // For now, show basic info about available substances
+    categories.push({
+      id: 'substances',
+      name: t('modern.substances') || 'Substances',
+      items: Array.from(dataset.getAllModernProfiles().values()).map(item => ({
+        id: item['@id'],
+        label: item.name?.[locale.value] || item.name?.en || extractLabel(item['@id'])
+      }))
+    })
   }
 
   return categories
@@ -438,7 +481,7 @@ const referenceDataCount = computed(() => {
   return referenceCategories.value.reduce((sum, cat) => sum + cat.items.length, 0)
 })
 
-// Preparations with this profile
+// Preparations with this profile (for traditional systems)
 const preparations = computed(() => {
   const allPreps = dataset.getAllPreparations()
 
@@ -448,12 +491,18 @@ const preparations = computed(() => {
     return allPreps.filter(p => p.hasWesternProfile)
   } else if (system.value === 'ayurveda') {
     return allPreps.filter(p => p.hasAyurvedaProfile)
-  } else if (system.value === 'persian') {
-    return allPreps.filter(p => p.hasPersianProfile)
+  } else if (system.value === 'unani') {
+    return allPreps.filter(p => p.hasUnaniProfile)
   } else if (system.value === 'mongolian') {
     return allPreps.filter(p => p.hasMongolianProfile)
   }
   return []
+})
+
+// Modern substances (for Modern Medicine system)
+const modernSubstances = computed(() => {
+  if (system.value !== 'modern') return []
+  return Array.from(dataset.getAllModernProfiles().values())
 })
 
 // Helper functions
@@ -485,6 +534,25 @@ function getImage(prep) {
   const s = getSlug(prep)
   const plant = useSourcePlant(s)
   return plant.value?.image || null
+}
+
+// Modern substance helpers
+function getSubstanceName(substance) {
+  if (!substance?.name) return extractLabel(substance?.['@id'])
+  if (typeof substance.name === 'string') return substance.name
+  return substance.name[locale.value] || substance.name.en || Object.values(substance.name)[0] || extractLabel(substance['@id'])
+}
+
+function getSubstanceIcon(substance) {
+  const type = substance.substanceType?.toLowerCase() || ''
+  if (type.includes('vitamin')) return '💊'
+  if (type.includes('mineral')) return '🧪'
+  if (type.includes('amino')) return '⚗️'
+  if (type.includes('fatty') || type.includes('omega')) return '🐟'
+  if (type.includes('nutraceutical')) return '🧬'
+  if (type.includes('probiotic')) return '🦠'
+  if (type.includes('enzyme')) return '🔬'
+  return '💎'
 }
 </script>
 
@@ -524,8 +592,9 @@ function getImage(prep) {
 .system-hero--tcm { background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(34, 197, 94, 0.02) 100%); }
 .system-hero--western { background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.02) 100%); }
 .system-hero--ayurveda { background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(249, 115, 22, 0.02) 100%); }
-.system-hero--persian { background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(139, 92, 246, 0.02) 100%); }
+.system-hero--unani { background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(139, 92, 246, 0.02) 100%); }
 .system-hero--mongolian { background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(6, 182, 212, 0.02) 100%); }
+.system-hero--modern { background: linear-gradient(135deg, rgba(236, 72, 153, 0.1) 0%, rgba(236, 72, 153, 0.02) 100%); }
 
 .system-hero__icon {
   font-size: 3rem;
@@ -657,8 +726,9 @@ function getImage(prep) {
 .reference-tag--tcm { background: rgba(34, 197, 94, 0.15); color: #166534; }
 .reference-tag--western { background: rgba(59, 130, 246, 0.15); color: #1e40af; }
 .reference-tag--ayurveda { background: rgba(249, 115, 22, 0.15); color: #c2410c; }
-.reference-tag--persian { background: rgba(139, 92, 246, 0.15); color: #6b21a8; }
+.reference-tag--unani { background: rgba(139, 92, 246, 0.15); color: #6b21a8; }
 .reference-tag--mongolian { background: rgba(6, 182, 212, 0.15); color: #0e7490; }
+.reference-tag--modern { background: rgba(236, 72, 153, 0.15); color: #9d174d; }
 .reference-tag--more { background: var(--color-border); color: var(--color-text-light); }
 
 /* Preparations Grid */
@@ -735,6 +805,54 @@ function getImage(prep) {
   color: var(--color-text-light);
 }
 
+/* Substances Grid (Modern Medicine) */
+.substances-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.substance-card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: var(--color-background);
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.substance-card:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.substance-card__icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.substance-card__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.substance-card__name {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.substance-card__type {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-light);
+  margin: var(--spacing-xs) 0 0;
+}
+
 /* About Section */
 .system-section--about p {
   line-height: var(--line-height-relaxed);
@@ -765,6 +883,10 @@ function getImage(prep) {
   }
 
   .preparations-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .substances-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }

@@ -30,3 +30,6 @@ temp/
 # Downloaded images (optional - uncomment if you don't want to track them)
 # public/images/herbs/*.jpg
 # public/images/herbs/*.png
+.json
+CLAUDE.md
+TODO*

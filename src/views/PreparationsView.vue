@@ -76,10 +76,22 @@
               <input type="checkbox" v-model="filters.system.ayurveda" @change="handleFilterChange" />
               <span class="filter-checkbox__label">Ayurveda ({{ ayurvedaCount }})</span>
             </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" v-model="filters.system.unani" @change="handleFilterChange" />
+              <span class="filter-checkbox__label">Unani ({{ unaniCount }})</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" v-model="filters.system.mongolian" @change="handleFilterChange" />
+              <span class="filter-checkbox__label">Mongolian ({{ mongolianCount }})</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" v-model="filters.system.modern" @change="handleFilterChange" />
+              <span class="filter-checkbox__label">Modern ({{ modernCount }})</span>
+            </label>
           </div>
 
           <!-- TCM Filters -->
-          <div class="filter-group">
+          <div v-if="showTCMFilters" class="filter-group">
             <h4 class="filter-group__title">{{ t('preparations.tcmProperties') }}</h4>
 
             <div class="filter-select">
@@ -114,7 +126,7 @@
           </div>
 
           <!-- Western Filters -->
-          <div class="filter-group">
+          <div v-if="showWesternFilters" class="filter-group">
             <h4 class="filter-group__title">{{ t('preparations.westernProperties') }}</h4>
 
             <div class="filter-select">
@@ -133,6 +145,131 @@
                 <option :value="null">{{ t('preparations.all') }}</option>
                 <option v-for="organ in westernOrgans" :key="organ.value" :value="organ.value">
                   {{ organ.label }}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Ayurveda Filters -->
+          <div v-if="showAyurvedaFilters" class="filter-group">
+            <h4 class="filter-group__title">{{ t('ayurveda.properties') }}</h4>
+
+            <div class="filter-select">
+              <label>{{ t('ayurveda.rasa') }}</label>
+              <select v-model="filters.ayurveda.rasa" @change="handleFilterChange">
+                <option :value="null">{{ t('preparations.all') }}</option>
+                <option v-for="rasa in ayurvedaRasas" :key="rasa.value" :value="rasa.value">
+                  {{ rasa.label }}
+                </option>
+              </select>
+            </div>
+
+            <div class="filter-select">
+              <label>{{ t('ayurveda.guna') }}</label>
+              <select v-model="filters.ayurveda.guna" @change="handleFilterChange">
+                <option :value="null">{{ t('preparations.all') }}</option>
+                <option v-for="guna in ayurvedaGunas" :key="guna.value" :value="guna.value">
+                  {{ guna.label }}
+                </option>
+              </select>
+            </div>
+
+            <div class="filter-select">
+              <label>{{ t('ayurveda.virya') }}</label>
+              <select v-model="filters.ayurveda.virya" @change="handleFilterChange">
+                <option :value="null">{{ t('preparations.all') }}</option>
+                <option v-for="virya in ayurvedaViryas" :key="virya.value" :value="virya.value">
+                  {{ virya.label }}
+                </option>
+              </select>
+            </div>
+
+            <div class="filter-select">
+              <label>{{ t('ayurveda.vipaka') }}</label>
+              <select v-model="filters.ayurveda.vipaka" @change="handleFilterChange">
+                <option :value="null">{{ t('preparations.all') }}</option>
+                <option v-for="vipaka in ayurvedaVipakas" :key="vipaka.value" :value="vipaka.value">
+                  {{ vipaka.label }}
+                </option>
+              </select>
+            </div>
+
+            <div class="filter-select">
+              <label>{{ t('ayurveda.dosha') }}</label>
+              <select v-model="filters.ayurveda.dosha" @change="handleFilterChange">
+                <option :value="null">{{ t('preparations.all') }}</option>
+                <option v-for="dosha in ayurvedaDoshas" :key="dosha.value" :value="dosha.value">
+                  {{ dosha.label }}
+                </option>
+              </select>
+            </div>
+
+            <div class="filter-select">
+              <label>{{ t('ayurveda.karma') }}</label>
+              <select v-model="filters.ayurveda.karma" @change="handleFilterChange">
+                <option :value="null">{{ t('preparations.all') }}</option>
+                <option v-for="karma in ayurvedaKarmas" :key="karma.value" :value="karma.value">
+                  {{ karma.label }}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Unani Filters -->
+          <div v-if="showUnaniFilters" class="filter-group">
+            <h4 class="filter-group__title">{{ t('unani.properties') }}</h4>
+
+            <div class="filter-select">
+              <label>{{ t('unani.temperament') }}</label>
+              <select v-model="filters.unani.temperament" @change="handleFilterChange">
+                <option :value="null">{{ t('preparations.all') }}</option>
+                <option v-for="temp in unaniTemperaments" :key="temp.value" :value="temp.value">
+                  {{ temp.label }}
+                </option>
+              </select>
+            </div>
+
+            <div class="filter-select">
+              <label>{{ t('unani.elements') }}</label>
+              <select v-model="filters.unani.element" @change="handleFilterChange">
+                <option :value="null">{{ t('preparations.all') }}</option>
+                <option v-for="elem in unaniElements" :key="elem.value" :value="elem.value">
+                  {{ elem.label }}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Mongolian Filters -->
+          <div v-if="showMongolianFilters" class="filter-group">
+            <h4 class="filter-group__title">{{ t('mongolian.properties') }}</h4>
+
+            <div class="filter-select">
+              <label>{{ t('mongolian.elements') }}</label>
+              <select v-model="filters.mongolian.element" @change="handleFilterChange">
+                <option :value="null">{{ t('preparations.all') }}</option>
+                <option v-for="elem in mongolianElements" :key="elem.value" :value="elem.value">
+                  {{ elem.label }}
+                </option>
+              </select>
+            </div>
+
+            <div class="filter-select">
+              <label>{{ t('mongolian.tastes') }}</label>
+              <select v-model="filters.mongolian.taste" @change="handleFilterChange">
+                <option :value="null">{{ t('preparations.all') }}</option>
+                <option v-for="taste in mongolianTastes" :key="taste.value" :value="taste.value">
+                  {{ taste.label }}
+                </option>
+              </select>
+            </div>
+
+            <div class="filter-select">
+              <label>{{ t('mongolian.roots') }}</label>
+              <select v-model="filters.mongolian.root" @change="handleFilterChange">
+                <option :value="null">{{ t('preparations.all') }}</option>
+                <option v-for="root in mongolianRoots" :key="root.value" :value="root.value">
+                  {{ root.label }}
                 </option>
               </select>
             </div>
@@ -196,6 +333,7 @@ import PreparationCard from '@/components/ui/PreparationCard.vue'
 import { DEFAULT_LOCALE } from '@/i18n/locales'
 import { useAllPreparations, useSourcePlant, usePreparationLocalizer } from '@/composables/useHerbData'
 import { useFilters, useFilterOptions } from '@/composables/useFilters'
+import { dataset } from '@/api/dataset'
 
 const { t, locale } = useI18n()
 const route = useRoute()
@@ -209,7 +347,18 @@ const localizer = usePreparationLocalizer()
 
 // Filter system
 const { filters, initFromUrl, updateUrl, clearFilters, hasActiveFilters, applyFilters } = useFilters()
-const { tcmNatures, tcmFlavors, tcmMeridians, westernActions, westernOrgans } = useFilterOptions()
+const {
+  // TCM
+  tcmNatures, tcmFlavors, tcmMeridians,
+  // Western
+  westernActions, westernOrgans,
+  // Ayurveda
+  ayurvedaRasas, ayurvedaGunas, ayurvedaViryas, ayurvedaVipakas, ayurvedaDoshas, ayurvedaKarmas,
+  // Unani
+  unaniTemperaments, unaniElements,
+  // Mongolian
+  mongolianElements, mongolianTastes, mongolianRoots
+} = useFilterOptions()
 
 // Mobile filter sidebar state
 const mobileFiltersOpen = ref(false)
@@ -231,6 +380,37 @@ const localePath = (path) => {
 const tcmCount = computed(() => allPreparations.value.filter(p => p.hasTCMProfile).length)
 const westernCount = computed(() => allPreparations.value.filter(p => p.hasWesternProfile).length)
 const ayurvedaCount = computed(() => allPreparations.value.filter(p => p.hasAyurvedaProfile).length)
+const unaniCount = computed(() => allPreparations.value.filter(p => p.hasUnaniProfile).length)
+const mongolianCount = computed(() => allPreparations.value.filter(p => p.hasMongolianProfile).length)
+const modernCount = computed(() => dataset.getSystemStats().modern)
+
+// Determine which filters to show based on selected systems
+// If no system is selected, show ALL filters. If any system(s) selected, show only those.
+const hasAnySystemSelected = computed(() => {
+  return filters.system.tcm || filters.system.western ||
+         filters.system.ayurveda || filters.system.unani ||
+         filters.system.mongolian || filters.system.modern
+})
+
+const showTCMFilters = computed(() => {
+  return !hasAnySystemSelected.value || filters.system.tcm
+})
+
+const showWesternFilters = computed(() => {
+  return !hasAnySystemSelected.value || filters.system.western
+})
+
+const showAyurvedaFilters = computed(() => {
+  return !hasAnySystemSelected.value || filters.system.ayurveda
+})
+
+const showUnaniFilters = computed(() => {
+  return !hasAnySystemSelected.value || filters.system.unani
+})
+
+const showMongolianFilters = computed(() => {
+  return !hasAnySystemSelected.value || filters.system.mongolian
+})
 
 // Active filter count
 const activeFilterCount = computed(() => {

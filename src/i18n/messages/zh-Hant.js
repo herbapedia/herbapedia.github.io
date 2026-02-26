@@ -19,7 +19,7 @@ export default {
     heroSubtitle: '藥用植物百科全書',
     heroDescription: '全面的藥用植物、草藥、維他命、礦物質及營養素資源——結合傳統智慧與現代科學研究。',
     exploreHerbs: '探索製劑',
-    browseByTradition: '按傳統醫學瀏覽',
+    browseBySystem: '按醫學體系瀏覽',
     browseByProperty: '按特性瀏覽',
     categoriesTitle: '按傳統醫學瀏覽',
     aboutTitle: '關於 Herbapedia',
@@ -29,6 +29,7 @@ export default {
     traditionTCM: '傳統中醫',
     traditionWestern: '西方草藥',
     traditionAyurveda: '阿育吠陀',
+    traditionModern: '現代醫學',
     browsePreparations: '瀏覽製劑'
   },
   // Categories
@@ -70,8 +71,9 @@ export default {
     tcm: '中醫',
     western: '西方',
     ayurveda: '阿育吠陀',
-    persian: '波斯',
+    unani: '波斯',
     mongolian: '蒙古',
+    modern: '現代',
     ayurvedaComingSoon: '阿育吠陀資料即將推出。',
     natureHot: '熱',
     natureWarm: '溫',
@@ -251,10 +253,10 @@ export default {
     formulations: '經典配方',
     formulationUse: '用途'
   },
-  // Persian (Unani) properties
-  persian: {
-    properties: '波斯醫學 (尤納尼)',
-    name: '波斯名稱',
+  // Unani (Unani) properties
+  unani: {
+    properties: '尤納尼醫學',
+    name: '尤納尼名稱',
     temperament: '體質 (Mizaj)',
     temperaments: '體質',
     elements: '元素',
@@ -300,6 +302,8 @@ export default {
     title: '醫學體系',
     subtitle: '探索世界各地的傳統醫學體系',
     profiles: '個檔案',
+    preparations: '製劑',
+    substances: '物質',
     referenceData: '項參考',
     aboutTitle: '關於傳統醫學體系',
     aboutText: '傳統醫學體系在不同文化中發展了數千年。每個體系都有其獨特的健康、疾病和治療理解框架。Herbapedia根據五大主要體系記錄製劑：傳統中醫、西方草藥學、阿育吠陀、波斯/尤納尼醫學和蒙古傳統醫學。',
@@ -315,13 +319,18 @@ export default {
       name: '阿育吠陀',
       description: '古印度醫學體系，基於平衡三大體質（Vata、Pitta、Kapha）。草藥按味、效能和消化後作用分類。'
     },
-    persian: {
-      name: '波斯/尤納尼醫學',
+    unani: {
+      name: '尤納尼醫學',
       description: '希臘阿拉伯醫學傳統，強調體質和四體液平衡。廣泛實踐於南亞和中東。'
     },
     mongolian: {
       name: '蒙古傳統醫學',
       description: '受藏醫影響的傳統治療體系，關注三根能量和元素平衡。'
+    },
+    modern: {
+      name: '現代醫學',
+      description: '當代營養和藥物物質，包括維生素、礦物質、氨基酸及其他經現代科學研究支持的生物活性化合物。',
+      substances: '物質'
     },
     // New keys
     preparationsWithProfile: '使用此檔案的製劑',
@@ -551,7 +560,7 @@ export default {
       profileTCM: '傳統中醫檔案 - 藥性、五味、歸經、分類',
       profileWestern: '西方草藥檔案 - 藥理作用、器官親和力',
       profileAyurveda: '阿育吠陀檔案 - 味、性質、效能、消化後作用、三能影響',
-      profilePersian: '波斯/尤納尼檔案 - 體質和元素',
+      profileUnani: '波斯/尤納尼檔案 - 體質和元素',
       profileMongolian: '蒙古傳統醫學檔案 - 元素、三根、味道',
       referenceData: '參考數據',
       referenceDataDesc: '每個醫學體系定義自己的參考術語分類法，帶有多語言標籤：',
@@ -560,7 +569,7 @@ export default {
       i18n: '國際化（i18n）',
       i18nDesc: '所有本體術語使用 SKOS prefLabel 進行多語言支援。標籤存儲在數據庫，而非應用程式碼中：',
       serialization: '序列化格式',
-      serializationDesc: "所有數據以 JSON-LD 格式存儲，具有適當的 {'@'}context 以實現語義互操作性。{'@'}context 文件定義 tcm:、ayurveda:、western:、persian:、mongolian: 和 botany: 詞彙的前綴。"
+      serializationDesc: "所有數據以 JSON-LD 格式存儲，具有適當的 {'@'}context 以實現語義互操作性。{'@'}context 文件定義 tcm:、ayurveda:、western:、unani:、mongolian: 和 botany: 詞彙的前綴。"
     }
   },
   // Basics page
@@ -670,9 +679,9 @@ export default {
     mahabhutasDesc: '阿育吠陀的五大元素',
     ayurvedaCategoriesDesc: '阿育吠陀草藥按治療作用的分類',
     prabhavasDesc: '無法從其他屬性預測的草藥特異作用',
-    // Persian
+    // Unani
     temperamentsDesc: '尤納尼醫學中的四種體質',
-    persianElementsDesc: '波斯醫學中的四元素',
+    unaniElementsDesc: '波斯醫學中的四元素',
     degreesDesc: '波斯醫學中的強度等級',
     // Mongolian
     elementsDesc: '蒙古醫學中的五元素',

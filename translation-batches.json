@@ -1,0 +1,2493 @@
+[
+  {
+    "batchNumber": 1,
+    "start": 1,
+    "end": 10,
+    "herbs": [
+      {
+        "slug": "american-ginseng",
+        "englishTitle": "American Ginseng",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/american-ginseng",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "The herb is native to eastern North America and Canada and has traditionally been used by native American Indians, but today it is also cultivated in China and France. The forked roots are harvested when ripe, usually after three to four years. It first appeared in the Thoroughly Revised Materia Medica.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Ginseng is an adaptogen (a product that increases the body's resistance to stress), with anticarcinogenic and antioxidant properties. Clinical studies also show American Ginseng has significant anti-fatigue and anti-diuretic effects.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "The herb is native to eastern North America and Canada and has traditionally been used by native American Indians, but today it is also cultivated in China and France. The forked roots are harvested when ripe, usually after three to four years. It first appeared in the Thoroughly Revised Materia Medica.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Ginseng is an adaptogen (a product that increases the body's resistance to stress), with anticarcinogenic and antioxidant properties. Clinical studies also show American Ginseng has significant anti-fatigue and anti-diuretic effects.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "asparagus-root",
+        "englishTitle": "Asparagus Root",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/asparagus-root",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "introduction",
+              "englishContent": "From the roots of Asparagus cochinchinensis (Lour.) Merr.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "introduction",
+              "englishContent": "From the roots of Asparagus cochinchinensis (Lour.) Merr.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "baizhu",
+        "englishTitle": "Baizhu",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/baizhu",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "introduction",
+              "englishContent": "Rhizome of Atactylodes macrocephala Koidz, family Compositae.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Baizhu has been used in clinical trials to treat constipation, diarrhea, liver disorders, dizziness and excessive salivation with good results.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "introduction",
+              "englishContent": "Rhizome of Atactylodes macrocephala Koidz, family Compositae.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Baizhu has been used in clinical trials to treat constipation, diarrhea, liver disorders, dizziness and excessive salivation with good results.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "baiziren",
+        "englishTitle": "Baiziren",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/baiziren",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "introduction",
+              "englishContent": "The seed (without the spermoderm) of Biota orientalis (L.) Endl. Family Cupressaceae.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "introduction",
+              "englishContent": "The seed (without the spermoderm) of Biota orientalis (L.) Endl. Family Cupressaceae.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "balm-mint-oil",
+        "englishTitle": "Balm mint oil",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/balm-mint-oil",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Balm mint, also frequently known as lemon balm, is widely used in perfumery and cosmetics because of its pleasant minty citrus smell.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Balm mint, also frequently known as lemon balm, is widely used in perfumery and cosmetics because of its pleasant minty citrus smell.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "barley",
+        "englishTitle": "Barley",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/barley",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Grand Materia Medica.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Whole barley seeds and products made from them are being investigated as possible treatments for diabetes, high cholesterol and obesity.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Grand Materia Medica.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Whole barley seeds and products made from them are being investigated as possible treatments for diabetes, high cholesterol and obesity.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "beishashen",
+        "englishTitle": "Beishashen",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/beishashen",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "introduction",
+              "englishContent": "The root of Glehnia littoralis F. Schmidt ex Miq., family Ubelliferae.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "introduction",
+              "englishContent": "The root of Glehnia littoralis F. Schmidt ex Miq., family Ubelliferae.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "bilberry",
+        "englishTitle": "Bilberry",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/bilberry",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "Bilberry has been used in European medicine for nearly a thousand years, primarily to treat gastric disorders and diarrhea. The fruit contains tannins, substances that act as both an anti-inflammatory and an astringent (constricting and tightening tissues), which is thought to be the reason for their ability to soothe stomach problems. The leaves of the bilberry plant were also traditionally used to treat diabetes.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "Bilberry has been used in European medicine for nearly a thousand years, primarily to treat gastric disorders and diarrhea. The fruit contains tannins, substances that act as both an anti-inflammatory and an astringent (constricting and tightening tissues), which is thought to be the reason for their ability to soothe stomach problems. The leaves of the bilberry plant were also traditionally used to treat diabetes.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "birds-nest",
+        "englishTitle": "Bird&#039;s Nest",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/birds-nest",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in the Thoroughly Revised Materia Medica.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in the Thoroughly Revised Materia Medica.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "black-sesame-seed",
+        "englishTitle": "Black Sesame Seed",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/black-sesame-seed",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "It possesses anti-ageing and antiadrenergic activities, and can be used for the treatment of hyperglycemia.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "It possesses anti-ageing and antiadrenergic activities, and can be used for the treatment of hyperglycemia.\n"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "batchNumber": 2,
+    "start": 11,
+    "end": 20,
+    "herbs": [
+      {
+        "slug": "blueberry",
+        "englishTitle": "Blueberry",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/blueberry",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Blueberries have also been found to contain resveratrol, a potential anti-cancer agent.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Blueberries have also been found to contain resveratrol, a potential anti-cancer agent.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "borage-extract",
+        "englishTitle": "Borage Extract",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/borage-extract",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "introduction",
+              "englishContent": "Borago officinalis L.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Oil extracted from borage seeds, sold as starflower oil and available in capsule form, contains high levels of gamma linolenic acid and may regulate the metabolism and the hormonal system. It is considered by many naturopathic practitioners to be a good remedy for premenstrual and menopause symptoms.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "introduction",
+              "englishContent": "Borago officinalis L.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Oil extracted from borage seeds, sold as starflower oil and available in capsule form, contains high levels of gamma linolenic acid and may regulate the metabolism and the hormonal system. It is considered by many naturopathic practitioners to be a good remedy for premenstrual and menopause symptoms.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "cangzhu",
+        "englishTitle": "Cangzhu",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/cangzhu",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "introduction",
+              "englishContent": "From the rhizome of Atractylodes lancea (Thunb.) DC. or A. chinensis (DC. ) Koidz., family Compositae.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Cangzhu has been found to have hepatoprotective, antidiabetic, antibiotic, cardiovascular, gastrointestinal and genitourinary benefits in pharmacological studies.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "introduction",
+              "englishContent": "From the rhizome of Atractylodes lancea (Thunb.) DC. or A. chinensis (DC. ) Koidz., family Compositae.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Cangzhu has been found to have hepatoprotective, antidiabetic, antibiotic, cardiovascular, gastrointestinal and genitourinary benefits in pharmacological studies.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "capigen",
+        "englishTitle": "Capigen®",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/capigen",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "A key ingredient in hair regenerating treatments including Vita Hair Tonic.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "A key ingredient in hair regenerating treatments including Vita Hair Tonic.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "cardamom",
+        "englishTitle": "Cardamom",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/cardamom",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Origins of the Materia Medica.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Origins of the Materia Medica.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "ceramides",
+        "englishTitle": "Ceramides",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/ceramides",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "Ceramides are bioactive molecules in the skin's epidermis. They form a barrier, protecting against water loss and blocking pollutants, and thus play a key role in keeping skin young and healthy looking. However, with age and environmental exposure, ceramides may be lost, resulting in dryness, fine lines and a rough complexion. Ceramides are a key ingredient in anti-aging and other high-tech beauty creams.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "Ceramides are bioactive molecules in the skin's epidermis. They form a barrier, protecting against water loss and blocking pollutants, and thus play a key role in keeping skin young and healthy looking. However, with age and environmental exposure, ceramides may be lost, resulting in dryness, fine lines and a rough complexion. Ceramides are a key ingredient in anti-aging and other high-tech beauty creams.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "changpu",
+        "englishTitle": "Changpu",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/changpu",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "The herb has been found effective in preventing seizures and convulsions in clinical studies. Pharmacological studies have also confirmed its ability to suppress the central nervous system and enhance memory.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "The herb has been found effective in preventing seizures and convulsions in clinical studies. Pharmacological studies have also confirmed its ability to suppress the central nervous system and enhance memory.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "chinese-angelica-or-dong-quai",
+        "englishTitle": "Chinese Angelica or Dong Quai",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/chinese-angelica-or-dong-quai",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Chinese angelica is one of the few good non-animal sources of Vitamin B12, making it an alternative supplement for vegetarians. It has analgesic, anti-inflammatory, antispasmodic and sedative effects. The plant's phytochemicals consist of coumarins, phytosterols, polysaccharides, ferulate, and flavonoids. It has been used in clinical studies to treat conditions including coughing, pain, liver disease, insomnia and skin disorders with good results.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Chinese angelica is one of the few good non-animal sources of Vitamin B12, making it an alternative supplement for vegetarians. It has analgesic, anti-inflammatory, antispasmodic and sedative effects. The plant's phytochemicals consist of coumarins, phytosterols, polysaccharides, ferulate, and flavonoids. It has been used in clinical studies to treat conditions including coughing, pain, liver disease, insomnia and skin disorders with good results.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "chinese-bellflower",
+        "englishTitle": "Chinese Bellflower",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/chinese-bellflower",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "introduction",
+              "englishContent": "Root of Platycodon grandiflorum (Jacq.) A. DC., family Campanulaceae. It can be prepared by baking in honey.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "introduction",
+              "englishContent": "Root of Platycodon grandiflorum (Jacq.) A. DC., family Campanulaceae. It can be prepared by baking in honey.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "chinese-mugwort-leaf",
+        "englishTitle": "Chinese Mugwort Leaf",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/chinese-mugwort-leaf",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Miscellaneous Records of Famous Physicians.\n"
+            },
+            {
+              "field": "introduction",
+              "englishContent": "Comes from the dried leaf of Artemisiae argyi Levl. et Vant, family compositae.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Miscellaneous Records of Famous Physicians.\n"
+            },
+            {
+              "field": "introduction",
+              "englishContent": "Comes from the dried leaf of Artemisiae argyi Levl. et Vant, family compositae.\n"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "batchNumber": 3,
+    "start": 21,
+    "end": 30,
+    "herbs": [
+      {
+        "slug": "chinese-rhubarb-root",
+        "englishTitle": "Chinese rhubarb root",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/chinese-rhubarb-root",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Dahuang has many proven pharmacological effects. It contains the substances sennoside A, aloe-emodin and rhein, which account for its strong purgative properties. It also has hepatoprotective properties, is haemostatic, antibiotic, and has an effect on the cardiovascular system. It has been used with good results to treat nephropathy, upper gastrointestinal bleeding, constipation, hepatitis and other conditions.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Dahuang has many proven pharmacological effects. It contains the substances sennoside A, aloe-emodin and rhein, which account for its strong purgative properties. It also has hepatoprotective properties, is haemostatic, antibiotic, and has an effect on the cardiovascular system. It has been used with good results to treat nephropathy, upper gastrointestinal bleeding, constipation, hepatitis and other conditions.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "chitosan",
+        "englishTitle": "Chitosan",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/chitosan",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "Chitosan is made commercially from chitin, the structural element in the exoskeleton of crustaceans, and is used as a so-called fat magnet. It has the capability of attracting fat from the digestive system and expelling it from the body so that users can lose weight without eating less.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Chitosan's properties enable it to rapidly clot blood, and it has recently gained approval in the USA for use in bandages and other haemostatic agents. One brand of chitosan-containing bandages was able to quickly stop bleeding in tests conducted by the US Marines, resulting in a 100% survival rate from otherwise lethal arterial wounds.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "Chitosan is made commercially from chitin, the structural element in the exoskeleton of crustaceans, and is used as a so-called fat magnet. It has the capability of attracting fat from the digestive system and expelling it from the body so that users can lose weight without eating less.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Chitosan's properties enable it to rapidly clot blood, and it has recently gained approval in the USA for use in bandages and other haemostatic agents. One brand of chitosan-containing bandages was able to quickly stop bleeding in tests conducted by the US Marines, resulting in a 100% survival rate from otherwise lethal arterial wounds.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "chrysanthemum",
+        "englishTitle": "Chrysanthemum",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/chrysanthemum",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "introduction",
+              "englishContent": "Capitulum of Chrysanthemum morifolium Ramat., family Compositae.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "The decoction of the herb has been found to dilate the coronary arteries, thus increase blood flow. The herb can also inhibit the growth of Staphylococcus aureus, Shigella dysenteriae and nine different skin fungi. It can also help the body to fight the flu virus and leptospirae.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "introduction",
+              "englishContent": "Capitulum of Chrysanthemum morifolium Ramat., family Compositae.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "The decoction of the herb has been found to dilate the coronary arteries, thus increase blood flow. The herb can also inhibit the growth of Staphylococcus aureus, Shigella dysenteriae and nine different skin fungi. It can also help the body to fight the flu virus and leptospirae.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "chuanxiong",
+        "englishTitle": "Chuanxiong",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/chuanxiong",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "introduction",
+              "englishContent": "The rhizome of Ligusticum chuanxiong Hort., family Umbelliferae.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Chuanxiong contains the compound ligustrazine, which has been used to treat conditions including renal failure, lung diseases with fibrosis and strokes, due to its anti-inflammatory and antioxidant properties.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "introduction",
+              "englishContent": "The rhizome of Ligusticum chuanxiong Hort., family Umbelliferae.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Chuanxiong contains the compound ligustrazine, which has been used to treat conditions including renal failure, lung diseases with fibrosis and strokes, due to its anti-inflammatory and antioxidant properties.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "corn-silk",
+        "englishTitle": "Corn Silk",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/corn-silk",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "Corn Silk has long been used in North American folk medicine to treat urinary conditions including inflammation of the bladder and painful urination.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "Corn Silk has long been used in North American folk medicine to treat urinary conditions including inflammation of the bladder and painful urination.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "cysteine-hci",
+        "englishTitle": "Cysteine (HCI)",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/cysteine-hci",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "As a key constituent of glutathione, cysteine has many important physiological functions. Glutathione, formed from cysteine, glutamic acid and glycine, is found in all human tissues, with the highest concentrations in the liver and eyes. Glutathione is a potent antioxidant, protecting fatty tissues from the damaging effects of free radicals. The antioxidant activity of glutathione is attributed specifically to the presence of cysteine in the compound. Cysteine also has the ability to break down proteins found in mucus that settles in the lungs. As a result, this amino acid may be useful in the treatment of bronchitis and other respiratory problems.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "As a key constituent of glutathione, cysteine has many important physiological functions. Glutathione, formed from cysteine, glutamic acid and glycine, is found in all human tissues, with the highest concentrations in the liver and eyes. Glutathione is a potent antioxidant, protecting fatty tissues from the damaging effects of free radicals. The antioxidant activity of glutathione is attributed specifically to the presence of cysteine in the compound. Cysteine also has the ability to break down proteins found in mucus that settles in the lungs. As a result, this amino acid may be useful in the treatment of bronchitis and other respiratory problems.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "dangshen",
+        "englishTitle": "Dangshen",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/dangshen",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Thoroughly Revised Materia Medica.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Dangshen is an adaptogenic, meaning it has both stimulating and inhibiting effects on the central nervous system. It is also able to treat and prevent peptic ulcers, stimulate the immune system and temporarily lower blood pressure.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Thoroughly Revised Materia Medica.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Dangshen is an adaptogenic, meaning it has both stimulating and inhibiting effects on the central nervous system. It is also able to treat and prevent peptic ulcers, stimulate the immune system and temporarily lower blood pressure.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "danshen",
+        "englishTitle": "Danshen",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/danshen",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Danshen has several pharmacological properties. It is an anticoagulant, antibiotic, hepaprotective, a sedative, and can dilate the coronary arteries. It has been used in clinical studies to treat conditions including chronic hepatitis, coronary artery disease, thrombosis and insomnia with good results.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Danshen has several pharmacological properties. It is an anticoagulant, antibiotic, hepaprotective, a sedative, and can dilate the coronary arteries. It has been used in clinical studies to treat conditions including chronic hepatitis, coronary artery disease, thrombosis and insomnia with good results.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "deer-antler",
+        "englishTitle": "Deer Antler",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/deer-antler",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Deer horn contains pantocrine, which has been shown to enhance the healing of chronic wounds, ulcerations, bone fractures and act as a general tonic to improve sleep, appetite, overcome fatigue and increase red blood cell count.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Deer horn contains pantocrine, which has been shown to enhance the healing of chronic wounds, ulcerations, bone fractures and act as a general tonic to improve sleep, appetite, overcome fatigue and increase red blood cell count.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "dihuang",
+        "englishTitle": "Dihuang",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/dihuang",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Dihuang has anti-inflammatory properties and affects the endocrine system, as shown by pharmacological studies.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Dihuang has anti-inflammatory properties and affects the endocrine system, as shown by pharmacological studies.\n"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "batchNumber": 4,
+    "start": 31,
+    "end": 40,
+    "herbs": [
+      {
+        "slug": "duhuo",
+        "englishTitle": "Duhuo",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/duhuo",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "introduction",
+              "englishContent": "Doubleteeth Pubescent Angelica Root.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "introduction",
+              "englishContent": "Doubleteeth Pubescent Angelica Root.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "duzhong",
+        "englishTitle": "Duzhong",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/duzhong",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "introduction",
+              "englishContent": "The bark of Eucommia ulmoides Oliv., family Eucommiaceae.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "introduction",
+              "englishContent": "The bark of Eucommia ulmoides Oliv., family Eucommiaceae.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "evodia-fruit",
+        "englishTitle": "Evodia Fruit",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/evodia-fruit",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "fangfeng",
+        "englishTitle": "Fangfeng",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/fangfeng",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "introduction",
+              "englishContent": "The root of Saposhnikovia divaricata (Turez.) Schischk., family Umbelliferae.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "introduction",
+              "englishContent": "The root of Saposhnikovia divaricata (Turez.) Schischk., family Umbelliferae.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "fangji",
+        "englishTitle": "Fangji",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/fangji",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Fangji has been used in studies to treat patients suffering from hypertension, coronary artery disorders, silicosis and lung cancer with good results.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Fangji has been used in studies to treat patients suffering from hypertension, coronary artery disorders, silicosis and lung cancer with good results.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "fleece-flower",
+        "englishTitle": "Fleece Flower",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/fleece-flower",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Materia Medica of Ri Hua-Zi.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Materia Medica of Ri Hua-Zi.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "garlic",
+        "englishTitle": "Garlic",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/garlic",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "modern_usage",
+              "englishContent": "In the US and Western Europe, garlic is one of the most popular substances used to reduce various risks associated with heart disease.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "modern_usage",
+              "englishContent": "In the US and Western Europe, garlic is one of the most popular substances used to reduce various risks associated with heart disease.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "ginkgo",
+        "englishTitle": "Ginkgo",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/ginkgo",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Ginkgo helps prevent a harmful fatty build up in blood vessels. In addition, it promotes blood flow to vital organs, including the brain, thus helping sharpen the memory and keep the mind active. It may also be beneficial to people suffering from tension headaches - one of its chemical constituents, bilobol, has an inhibitory effect on hypertension.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Ginkgo helps prevent a harmful fatty build up in blood vessels. In addition, it promotes blood flow to vital organs, including the brain, thus helping sharpen the memory and keep the mind active. It may also be beneficial to people suffering from tension headaches - one of its chemical constituents, bilobol, has an inhibitory effect on hypertension.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "ginseng",
+        "englishTitle": "Ginseng",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/ginseng",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "Ginseng first appeared in the Divine Husbandman's Classic of the Materia Medica. The species Panax ginseng is thought to have been discovered over 5,000 years ago in the mountains of Manchuria, China. Although probably originally used as food, it quickly became revered for its strength-giving and rejuvenating powers and became an important trade item with neighbouring countries. It is prized for restoring harmony and balance to body: a concept understood in Chinese medicine as Yin Yang Theory. Western medicine looks upon ginseng as an adaptogen, a modern term which essentially means the same thing: restoring natural balance to the body.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "Ginseng first appeared in the Divine Husbandman's Classic of the Materia Medica. The species Panax ginseng is thought to have been discovered over 5,000 years ago in the mountains of Manchuria, China. Although probably originally used as food, it quickly became revered for its strength-giving and rejuvenating powers and became an important trade item with neighbouring countries. It is prized for restoring harmony and balance to body: a concept understood in Chinese medicine as Yin Yang Theory. Western medicine looks upon ginseng as an adaptogen, a modern term which essentially means the same thing: restoring natural balance to the body.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "glucosamine-sulfate",
+        "englishTitle": "Glucosamine Sulfate",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/glucosamine-sulfate",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "Glucosamine stimulates the production of glycosaminoglycans, the key structural component of cartilage, the protective cushion around our joints. It also helps cartilage to incorporate sulphur, an element that is necessary for its production and repair, making it useful for people suffering wear and tear to their joints either through exercise or old age. Additionally it can also be used to treat and delay the progression of osteoarthritis.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "Glucosamine stimulates the production of glycosaminoglycans, the key structural component of cartilage, the protective cushion around our joints. It also helps cartilage to incorporate sulphur, an element that is necessary for its production and repair, making it useful for people suffering wear and tear to their joints either through exercise or old age. Additionally it can also be used to treat and delay the progression of osteoarthritis.\n"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "batchNumber": 5,
+    "start": 41,
+    "end": 50,
+    "herbs": [
+      {
+        "slug": "glycerin",
+        "englishTitle": "Glycerin",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/glycerin",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "introduction",
+              "englishContent": "Synthetic. Glycerol is a chemical compound with the formula HOCH2CH(OH)CH2OH.\n"
+            },
+            {
+              "field": "traditional_usage",
+              "englishContent": "Glycerin is a sweet tasting, colourless viscous liquid. It functions as a kind of emollient that fills in the spaces between the cells in the skin, helping replace lipids and thus smoothing, moisturising and lubricating rough complexions. It is tolerated by sensitive skins and can be used to make glycerol soap, which is especially suitable for dry or easily irritated skin.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "introduction",
+              "englishContent": "Synthetic. Glycerol is a chemical compound with the formula HOCH2CH(OH)CH2OH.\n"
+            },
+            {
+              "field": "traditional_usage",
+              "englishContent": "Glycerin is a sweet tasting, colourless viscous liquid. It functions as a kind of emollient that fills in the spaces between the cells in the skin, helping replace lipids and thus smoothing, moisturising and lubricating rough complexions. It is tolerated by sensitive skins and can be used to make glycerol soap, which is especially suitable for dry or easily irritated skin.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "glycine",
+        "englishTitle": "Glycine",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/glycine",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "Glycine is an amino acid of major importance in the production of many substances in the human body. It helps synthesise protein and amino acids, construct nucleic acids (our genetic material) and convert glucose into energy. It is also involved in the synthesis of bile and therefore vital for a healthy digestive system. Glycine is also a neurotransmitter in the central nervous system.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "Glycine is an amino acid of major importance in the production of many substances in the human body. It helps synthesise protein and amino acids, construct nucleic acids (our genetic material) and convert glucose into energy. It is also involved in the synthesis of bile and therefore vital for a healthy digestive system. Glycine is also a neurotransmitter in the central nervous system.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "grape-seed",
+        "englishTitle": "Grape Seed",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/grape-seed",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Grape seed is sometimes used in the preparation of anti-ageing skincare products due to its high levels of antioxidants and bioflavanoids.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Grape seed is sometimes used in the preparation of anti-ageing skincare products due to its high levels of antioxidants and bioflavanoids.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "great-burdock",
+        "englishTitle": "Great Burdock",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/great-burdock",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "introduction",
+              "englishContent": "Arctium lappa L., family compositae.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "introduction",
+              "englishContent": "Arctium lappa L., family compositae.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "green-tea",
+        "englishTitle": "Green Tea",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/green-tea",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "In China green tea has been used for centuries to treat poor digestion, headaches, prevent fatigue and sharpen the mind. Tea plants themselves are indigenous to rainy Asian forests and are cultivated widely across China, Sri Lanka, India, Japan, Indonesia and the African continent.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "In recent times, green tea extract has used to fight cancer, treat blood clotting problems, lower cholesterol levels, regulate blood sugar and facilitate weight loss. Many of these claims have yet to be scientifically verified, however there is some evidence suggesting regular green tea drinkers may have lower chances of heart disease and developing certain types of cancer.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "In China green tea has been used for centuries to treat poor digestion, headaches, prevent fatigue and sharpen the mind. Tea plants themselves are indigenous to rainy Asian forests and are cultivated widely across China, Sri Lanka, India, Japan, Indonesia and the African continent.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "In recent times, green tea extract has used to fight cancer, treat blood clotting problems, lower cholesterol levels, regulate blood sugar and facilitate weight loss. Many of these claims have yet to be scientifically verified, however there is some evidence suggesting regular green tea drinkers may have lower chances of heart disease and developing certain types of cancer.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "hehuanhua",
+        "englishTitle": "Hehuanhua",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/hehuanhua",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Clinical tests have confirmed hehuanhua has a suppressant action on the central nervous system, exhibiting sedative and hypnotic properties.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Clinical tests have confirmed hehuanhua has a suppressant action on the central nervous system, exhibiting sedative and hypnotic properties.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "honey",
+        "englishTitle": "Honey",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/honey",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica, classified as upper class. In the west, it is thought that honey has been used for at least 2700 years to treat a variety of ailments through topical application.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Honey shows laxative, anti-tumour and detoxifying effects. It can also increase humoral immune functions. Wound gels that contain antibacterial honey and have regulatory approval for wound care are now available to help conventional medicine in the battle against drug resistant strains of the bacteria MRSA.\n"
+            }
+          ],
+          "zh-CN": []
+        }
+      },
+      {
+        "slug": "horny-goat-weed",
+        "englishTitle": "Horny Goat Weed",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/horny-goat-weed",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Yinyanghuo has been used in studies to treat conditions including coronary artery disease, neutropenia, bronchitis and neurasthenia with good success rates.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Yinyanghuo has been used in studies to treat conditions including coronary artery disease, neutropenia, bronchitis and neurasthenia with good success rates.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "hydration-factor-cte4",
+        "englishTitle": "Hydration Factor CTE4",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/hydration-factor-cte4",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "Moisturises and rehydrates skin and maintains the correct osmotic balance of water and lipids to keep complexions looking young and fresh.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "Moisturises and rehydrates skin and maintains the correct osmotic balance of water and lipids to keep complexions looking young and fresh.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "indian-mulberry-root",
+        "englishTitle": "Indian Mulberry Root",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/indian-mulberry-root",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "introduction",
+              "englishContent": "The fleshy root of Morinda officinalis How, family Rubiaceae.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "introduction",
+              "englishContent": "The fleshy root of Morinda officinalis How, family Rubiaceae.\n"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "batchNumber": 6,
+    "start": 51,
+    "end": 60,
+    "herbs": [
+      {
+        "slug": "indigowoad-root-banlangen",
+        "englishTitle": "Indigowoad Root (Banlangen)",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/indigowoad-root-banlangen",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "introduction",
+              "englishContent": "Derived from the root of Isatis tinctoria L., family Cruciferae, or Baphicacanthus cusia ( Nees) Berm, family Acanthaceae.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "introduction",
+              "englishContent": "Derived from the root of Isatis tinctoria L., family Cruciferae, or Baphicacanthus cusia ( Nees) Berm, family Acanthaceae.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "inositol",
+        "englishTitle": "Inositol",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/inositol",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "Inositol is necessary for the formation of lecithin and functions closely with a B complex vitamin, choline. It is a fundamental ingredient of cell membranes and is necessary for proper functioning of the nerves, brain and muscles. It also aids in the breakdown of fats, helps in the reduction of blood cholesterol, and can prevent thinning hair. Although it is often classified as a B vitamin itself and is sometimes referred to as vitamin B8, it is not really a vitamin as it can be manufactured by the human body.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Inositol is primarily used in the treatment of liver problems, depression, panic disorder and diabetes.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "Inositol is necessary for the formation of lecithin and functions closely with a B complex vitamin, choline. It is a fundamental ingredient of cell membranes and is necessary for proper functioning of the nerves, brain and muscles. It also aids in the breakdown of fats, helps in the reduction of blood cholesterol, and can prevent thinning hair. Although it is often classified as a B vitamin itself and is sometimes referred to as vitamin B8, it is not really a vitamin as it can be manufactured by the human body.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Inositol is primarily used in the treatment of liver problems, depression, panic disorder and diabetes.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "jiaogulan",
+        "englishTitle": "Jiaogulan",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/jiaogulan",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Qiu Fang Ben Cao.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Clinical studies have found jiaogulan to have immunostimulant, cardiovascular and anti-ageing properties as well as being able to lower cholesterol in laboratory animals.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Qiu Fang Ben Cao.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Clinical studies have found jiaogulan to have immunostimulant, cardiovascular and anti-ageing properties as well as being able to lower cholesterol in laboratory animals.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "jinyingzi",
+        "englishTitle": "Jinyingzi",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/jinyingzi",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Grandfather Lei's Discussions of Herb Preparation.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Grandfather Lei's Discussions of Herb Preparation.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "jobs-tears",
+        "englishTitle": "Job&#039;s Tears",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/jobs-tears",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "lecithin",
+        "englishTitle": "Lecithin",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/lecithin",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "Lecithin is a kind of phospholipid needed by every cell in the body, and is a key building block of cell membranes. Its fat emulsifying properties support efficient blood flow in the circulation by emulsifying big oil droplets into smaller ones. It is produced daily by the liver, provided there is adequate nutrition in the diet. Lecithin protects cells from oxidation and largely comprises the protective sheaths surrounding the brain.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "As a natural emulsifier, lecithin is used as a food additive.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "Lecithin is a kind of phospholipid needed by every cell in the body, and is a key building block of cell membranes. Its fat emulsifying properties support efficient blood flow in the circulation by emulsifying big oil droplets into smaller ones. It is produced daily by the liver, provided there is adequate nutrition in the diet. Lecithin protects cells from oxidation and largely comprises the protective sheaths surrounding the brain.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "As a natural emulsifier, lecithin is used as a food additive.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "lianqiao",
+        "englishTitle": "Lianqiao",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/lianqiao",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Lianqiao has antibiotic, anti-inflammatory, anti-pyretic and diuretic properties.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Lianqiao has antibiotic, anti-inflammatory, anti-pyretic and diuretic properties.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "linolenic-acid",
+        "englishTitle": "Linolenic Acid",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/linolenic-acid",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "The body converts linolenic acid into longer chain fatty acids which are thought to lower blood pressure. Other positive effects include anti-inflammatory and anti-blood clotting actions, and lowering cholesterol and triglyceride levels. These fatty acids may also reduce the risks and symptoms for other disorders including diabetes, stroke, rheumatoid arthritis, asthma, inflammatory bowel disease, ulcerative colitis, some cancers and mental decline.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "The body converts linolenic acid into longer chain fatty acids which are thought to lower blood pressure. Other positive effects include anti-inflammatory and anti-blood clotting actions, and lowering cholesterol and triglyceride levels. These fatty acids may also reduce the risks and symptoms for other disorders including diabetes, stroke, rheumatoid arthritis, asthma, inflammatory bowel disease, ulcerative colitis, some cancers and mental decline.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "lotus-leaf",
+        "englishTitle": "Lotus leaf",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/lotus-leaf",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "magnesium",
+        "englishTitle": "Magnesium",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/magnesium",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Magnesium can be used to treat a range of medical conditions, including aiding recovery from heart attacks; helping to dissolve kidney stones; relieving migraines; and treating asthma and diabetes.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Magnesium can be used to treat a range of medical conditions, including aiding recovery from heart attacks; helping to dissolve kidney stones; relieving migraines; and treating asthma and diabetes.\n"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "batchNumber": 7,
+    "start": 61,
+    "end": 70,
+    "herbs": [
+      {
+        "slug": "maidong",
+        "englishTitle": "Maidong",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/maidong",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "introduction",
+              "englishContent": "From the scale leaf of the bulb of Ophiopogon japonicus (L. f.) Ker-Gawl., family Liliaceae.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "introduction",
+              "englishContent": "From the scale leaf of the bulb of Ophiopogon japonicus (L. f.) Ker-Gawl., family Liliaceae.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "manganese",
+        "englishTitle": "Manganese",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/manganese",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Manganese has been found to improve thyroid function in certain patients, since the thyroid is dependent on both iodine and magnesium.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Manganese has been found to improve thyroid function in certain patients, since the thyroid is dependent on both iodine and magnesium.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "methionine",
+        "englishTitle": "Methionine",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/methionine",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "Methionine is an amino acid that assists in the breakdown of fats and thereby prevents a build-up of fat in the arteries. It also assists with the digestive system and removing heavy metals from the body since it can be converted to cysteine, a precursor to gluthione, which is of prime importance in detoxifying the liver. Methionine is also a great antioxidant as the sulphur it supplies inactivates free radicals.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Methionine may also be used to treat depression, arthritis pain and chronic liver disease - although these claims are still under investigation. Some studies have indicated that methionine might improve memory recall.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "Methionine is an amino acid that assists in the breakdown of fats and thereby prevents a build-up of fat in the arteries. It also assists with the digestive system and removing heavy metals from the body since it can be converted to cysteine, a precursor to gluthione, which is of prime importance in detoxifying the liver. Methionine is also a great antioxidant as the sulphur it supplies inactivates free radicals.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Methionine may also be used to treat depression, arthritis pain and chronic liver disease - although these claims are still under investigation. Some studies have indicated that methionine might improve memory recall.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "milk-vetch",
+        "englishTitle": "Milk Vetch",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/milk-vetch",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "introduction",
+              "englishContent": "Dried Root of Astragalus membranaceus (Fisch. ) Bunge, family Leguminosae.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Astragalus had been found to have numerous pharmacological effects in laboratory studies, including decreasing the blood pressure, raising the metabolism, sedative and analgesic effects and acting as an antibiotic in the presence of certain bacteria.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "introduction",
+              "englishContent": "Dried Root of Astragalus membranaceus (Fisch. ) Bunge, family Leguminosae.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Astragalus had been found to have numerous pharmacological effects in laboratory studies, including decreasing the blood pressure, raising the metabolism, sedative and analgesic effects and acting as an antibiotic in the presence of certain bacteria.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "mint",
+        "englishTitle": "Mint",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/mint",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Tang Materia Medica.\n"
+            },
+            {
+              "field": "introduction",
+              "englishContent": "From the branches and leaves of Mentha haplocalyx Briq., family Labiatae.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Baohe has been found to increase local circulation upon topical application, producing a cooling sensation that can relieve itching and pain. It also has antipyretic and anti-inflammatory properties.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Tang Materia Medica.\n"
+            },
+            {
+              "field": "introduction",
+              "englishContent": "From the branches and leaves of Mentha haplocalyx Briq., family Labiatae.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Baohe has been found to increase local circulation upon topical application, producing a cooling sensation that can relieve itching and pain. It also has antipyretic and anti-inflammatory properties.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "mohanlian",
+        "englishTitle": "Mohanlian",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/mohanlian",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "Mohanlian is prized across Asia for its therapeutic powers as a liver tonic and for improving hair health. In India it is known as bhangra, and used as part of traditional ayurvedic medicine to rejuvenate and promote longevity, strengthen the liver and improve the condition of hair. A black dye can also be obtained from the plant for colouring hair and tattooing. It was first mentioned in the Tang Materia Medica as a cooling herb for use in traditional Chinese medicine.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Scientific research has found that the Eclipta plant contains wedelolactone, a substance that possesses a wide range of biological activities and is used for the treatment of hepatitis and cirrhosis, as an antibacterial and as an anti-hemorrhagic, confirming its powerful therapeutic properties.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "Mohanlian is prized across Asia for its therapeutic powers as a liver tonic and for improving hair health. In India it is known as bhangra, and used as part of traditional ayurvedic medicine to rejuvenate and promote longevity, strengthen the liver and improve the condition of hair. A black dye can also be obtained from the plant for colouring hair and tattooing. It was first mentioned in the Tang Materia Medica as a cooling herb for use in traditional Chinese medicine.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Scientific research has found that the Eclipta plant contains wedelolactone, a substance that possesses a wide range of biological activities and is used for the treatment of hepatitis and cirrhosis, as an antibacterial and as an anti-hemorrhagic, confirming its powerful therapeutic properties.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "mpc",
+        "englishTitle": "MPC",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/mpc",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "Milk Peptide Complex enhances recovery of damaged skin, formation of the dermal ground substance (the skin's middle layer), blocks ageing factors, and plays a role in cell re-energising and the firming of tissue. The result is smoother, firmer skin with reduced wrinkles.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "A key ingredient in many high-tech anti-ageing skin creams.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "Milk Peptide Complex enhances recovery of damaged skin, formation of the dermal ground substance (the skin's middle layer), blocks ageing factors, and plays a role in cell re-energising and the firming of tissue. The result is smoother, firmer skin with reduced wrinkles.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "A key ingredient in many high-tech anti-ageing skin creams.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "nuzhenzi",
+        "englishTitle": "Nuzhenzi",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/nuzhenzi",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Nuzhenzi has immunostimulant, anti-diabetic, haematological, anti-inflamatory, antibiotic and hepaprotective effects. It has been used with good results to treat chronic hepatitis and high cholesterol.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Nuzhenzi has immunostimulant, anti-diabetic, haematological, anti-inflamatory, antibiotic and hepaprotective effects. It has been used with good results to treat chronic hepatitis and high cholesterol.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "omega-3",
+        "englishTitle": "Omega 3",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/omega-3",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "Omega 3 is an unsaturated essential fatty acid, which means it cannot be produced by the body and must be sourced from food. Omega 3 is thought to reduce the risk of heart disease. Other positive effects include anti-inflammatory and anti-blood clotting actions, lowering cholesterol and triglyceride levels, and reducing blood pressure. Omega 3 fatty acids may also reduce the risks and symptoms of other disorders including diabetes, stroke, rheumatoid arthritis, asthma, inflammatory bowel disease, ulcerative colitis, some cancers and mental decline.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Many clinical trials are ongoing into the therapeutic uses of omega 3 oils for a variety of conditions from easing the pain of arthritis and slowing the growth of cancer tumours to lowering the risk of heart attacks.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "Omega 3 is an unsaturated essential fatty acid, which means it cannot be produced by the body and must be sourced from food. Omega 3 is thought to reduce the risk of heart disease. Other positive effects include anti-inflammatory and anti-blood clotting actions, lowering cholesterol and triglyceride levels, and reducing blood pressure. Omega 3 fatty acids may also reduce the risks and symptoms of other disorders including diabetes, stroke, rheumatoid arthritis, asthma, inflammatory bowel disease, ulcerative colitis, some cancers and mental decline.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Many clinical trials are ongoing into the therapeutic uses of omega 3 oils for a variety of conditions from easing the pain of arthritis and slowing the growth of cancer tumours to lowering the risk of heart attacks.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "omega-6",
+        "englishTitle": "Omega 6",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/omega-6",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "Omega 6 is an essential unsaturated fatty acid, which means it cannot be made by our bodies and must be sourced from food. Most omega-6 fatty acids in the diet come from vegetable oils in the form of linoleic acid, which is converted to gamma-linolenic acid in the body and then further broken down to arachidonic acid. Clinical trials have shown that essential fatty acids protect against conditions including heart disease; cancer; autoimmune diseases including rheumatoid arthritis and multiple sclerosis; and skin diseases, including acne, atopic eczema and psoriasis. They may also protect against strokes.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "Omega 6 is an essential unsaturated fatty acid, which means it cannot be made by our bodies and must be sourced from food. Most omega-6 fatty acids in the diet come from vegetable oils in the form of linoleic acid, which is converted to gamma-linolenic acid in the body and then further broken down to arachidonic acid. Clinical trials have shown that essential fatty acids protect against conditions including heart disease; cancer; autoimmune diseases including rheumatoid arthritis and multiple sclerosis; and skin diseases, including acne, atopic eczema and psoriasis. They may also protect against strokes.\n"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "batchNumber": 8,
+    "start": 71,
+    "end": 80,
+    "herbs": [
+      {
+        "slug": "omega-9",
+        "englishTitle": "Omega 9",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/omega-9",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "Omega 9 is an unsaturated fatty acid. Despite often being described as an essential fatty acid, meaning it can only be sourced from the diet, it is in fact produced by the body in limited amounts. However, this process is dependent on the presence of omega 3 and 6 oils, which your body cannot make and needs to obtain from frood. Omega 9 helps to reduce the risk of arteriosclerosis - hardening of the arteries - as well as cardiovascular disease and strokes and is thus important for cardiovascular health.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "Omega 9 is an unsaturated fatty acid. Despite often being described as an essential fatty acid, meaning it can only be sourced from the diet, it is in fact produced by the body in limited amounts. However, this process is dependent on the presence of omega 3 and 6 oils, which your body cannot make and needs to obtain from frood. Omega 9 helps to reduce the risk of arteriosclerosis - hardening of the arteries - as well as cardiovascular disease and strokes and is thus important for cardiovascular health.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "patchouli",
+        "englishTitle": "Patchouli",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/patchouli",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Miscellaneous Records of Famous Physicians.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Miscellaneous Records of Famous Physicians.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "peilan",
+        "englishTitle": "Peilan",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/peilan",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "The decoction of peilan has antibiotic effect against certain microorganisms.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "The decoction of peilan has antibiotic effect against certain microorganisms.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "petrolatum",
+        "englishTitle": "Petrolatum",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/petrolatum",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "Petrolatum or petroleum jelly is a clear mineral oil jelly best known as a topical treatment for chapped lips and a key ingredient in cosmetics and skin-care products. Topical application of petrolatum can help the skin's outer layer recover from damage. While petroleum jelly itself has no therapeutic properties, it forms a waterproof barrier over the skin, preventing infection and keeping the skin beneath supple by preventing water evaporation.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "Petrolatum or petroleum jelly is a clear mineral oil jelly best known as a topical treatment for chapped lips and a key ingredient in cosmetics and skin-care products. Topical application of petrolatum can help the skin's outer layer recover from damage. While petroleum jelly itself has no therapeutic properties, it forms a waterproof barrier over the skin, preventing infection and keeping the skin beneath supple by preventing water evaporation.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "phospholipids",
+        "englishTitle": "Phospholipids",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/phospholipids",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "Phospholipids are organic molecules commonly found in cell membranes which play an important role in keeping skin smooth and soft. They have an affinity with both oil and water, which makes them surfactants and emulsifiers. They can increase the hydration levels of the skin without being occlusive (forming a film to prevent water loss, and preventing normal cellular function). Environmental factors (sun, wind, pollution) actually strip the natural phospholipid content from the top layer of skin giving it a rough feel and a pitted appearance under a microscope.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "Phospholipids are organic molecules commonly found in cell membranes which play an important role in keeping skin smooth and soft. They have an affinity with both oil and water, which makes them surfactants and emulsifiers. They can increase the hydration levels of the skin without being occlusive (forming a film to prevent water loss, and preventing normal cellular function). Environmental factors (sun, wind, pollution) actually strip the natural phospholipid content from the top layer of skin giving it a rough feel and a pitted appearance under a microscope.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "quanshen",
+        "englishTitle": "Quanshen",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/quanshen",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Illustrated Classic of the Materia Medica.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Illustrated Classic of the Materia Medica.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "rhodiola",
+        "englishTitle": "Rhodiola",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/rhodiola",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Xi Bu Yi Dian.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Xi Bu Yi Dian.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "saw-palmetto",
+        "englishTitle": "Saw Palmetto",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/saw-palmetto",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Several trials have been conducted into Saw Palmetto as an effective, natural treatment for men with an enlarged prostate gland. Studies are also investigating its possible use in preventing male-pattern baldness.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Several trials have been conducted into Saw Palmetto as an effective, natural treatment for men with an enlarged prostate gland. Studies are also investigating its possible use in preventing male-pattern baldness.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "selenium",
+        "englishTitle": "Selenium",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/selenium",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Selenium has been proven to enhance the efficacy of chemotherapy, reducing the toxicity of chemotherapeutic drugs and preventing the body's resistance to the drugs. One study of cancer cells in vitro showed that chemotherapeutic drugs, such as Taxol and Adriamycin, were more toxic to strains of cancer cells grown in culture when selenium was added. Its role in reducing deaths from HIV/Aids is also being investigated.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Selenium has been proven to enhance the efficacy of chemotherapy, reducing the toxicity of chemotherapeutic drugs and preventing the body's resistance to the drugs. One study of cancer cells in vitro showed that chemotherapeutic drugs, such as Taxol and Adriamycin, were more toxic to strains of cancer cells grown in culture when selenium was added. Its role in reducing deaths from HIV/Aids is also being investigated.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "shanzha",
+        "englishTitle": "Shanzha",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/shanzha",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Supplement to the Extension of the Materia Medica.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Supplement to the Extension of the Materia Medica.\n"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "batchNumber": 9,
+    "start": 81,
+    "end": 90,
+    "herbs": [
+      {
+        "slug": "shanzhuyu",
+        "englishTitle": "Shanzhuyu",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/shanzhuyu",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Pharmacological properties of shanzhuyu include diuretic, antibiotic, anti-inflammatory and a stimulatory effect on the metabolism.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Pharmacological properties of shanzhuyu include diuretic, antibiotic, anti-inflammatory and a stimulatory effect on the metabolism.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "shegan",
+        "englishTitle": "Shegan",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/shegan",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "introduction",
+              "englishContent": "Derived from the rhizome of Belamcanda chinensis (L.) DC., family Iridaceae.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "introduction",
+              "englishContent": "Derived from the rhizome of Belamcanda chinensis (L.) DC., family Iridaceae.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "shengma",
+        "englishTitle": "Shengma",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/shengma",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "introduction",
+              "englishContent": "Rhizome of Cimicifuga heracleifolia Kom., C. dahurica (Turcz.) Maxim. and C. foetida L., family Ranunculaceae.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "The pharmacological effects of shengma include antiobiotic, cardiovascular and antipyretic properties.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "introduction",
+              "englishContent": "Rhizome of Cimicifuga heracleifolia Kom., C. dahurica (Turcz.) Maxim. and C. foetida L., family Ranunculaceae.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "The pharmacological effects of shengma include antiobiotic, cardiovascular and antipyretic properties.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "shenqu",
+        "englishTitle": "Shenqu",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/shenqu",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Materia Medica of Medicinal Properties.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Materia Medica of Medicinal Properties.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "shihu",
+        "englishTitle": "Shihu",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/shihu",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "introduction",
+              "englishContent": "From the stems of Dendrobium nobile Lindl., D. chrysanthum Wall. Ex Lindl., D. loddigesii Rolfe and Ephemerantha fimbriata (Bl.) Hunt et summerh., family Orchidaceae.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "introduction",
+              "englishContent": "From the stems of Dendrobium nobile Lindl., D. chrysanthum Wall. Ex Lindl., D. loddigesii Rolfe and Ephemerantha fimbriata (Bl.) Hunt et summerh., family Orchidaceae.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "shoudihuang",
+        "englishTitle": "Shoudihuang",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/shoudihuang",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in the Illustrated Classic of Materia Medica.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in the Illustrated Classic of Materia Medica.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "shouwuteng",
+        "englishTitle": "Shouwuteng",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/shouwuteng",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Journey to the Origin of the Classic of Materia Medica.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Journey to the Origin of the Classic of Materia Medica.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "st-johns-wort",
+        "englishTitle": "St. John&#039;s Wort",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/st-johns-wort",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "modern_usage",
+              "englishContent": "St John's Wort is becoming popular as a natural alternative to antidepressants such as Prozac, since it is less likely to cause unwanted side effects such as dizziness or a dry mouth. It may also be an effective treatment for conditions including obsessive compulsive disorder and mood swings associated with premenstrual syndrome. In laboratory studies the active ingredient in St John's Wort, hypericin, has been found to have anti-viral properties against some diseases, and is being investigated for its role in the treatment of HIV. Studies have also shown that St. John's Wort oil is antibacterial, and helps prevent infections and speed wound healing.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "modern_usage",
+              "englishContent": "St John's Wort is becoming popular as a natural alternative to antidepressants such as Prozac, since it is less likely to cause unwanted side effects such as dizziness or a dry mouth. It may also be an effective treatment for conditions including obsessive compulsive disorder and mood swings associated with premenstrual syndrome. In laboratory studies the active ingredient in St John's Wort, hypericin, has been found to have anti-viral properties against some diseases, and is being investigated for its role in the treatment of HIV. Studies have also shown that St. John's Wort oil is antibacterial, and helps prevent infections and speed wound healing.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "tangerine-peel",
+        "englishTitle": "Tangerine peel",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/tangerine-peel",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "modern_usage",
+              "englishContent": "A flavonoid in the herb, which is called hesperidin, possesses antiallergic, antioxidative and antistomatitic properties. It has been used to treat mastitis, bronchitis and burns with good results.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "modern_usage",
+              "englishContent": "A flavonoid in the herb, which is called hesperidin, possesses antiallergic, antioxidative and antistomatitic properties. It has been used to treat mastitis, bronchitis and burns with good results.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "tianma",
+        "englishTitle": "Tianma",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/tianma",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Tianma has clinically proven sedative, anti-convulsant and cardiovascular properties. It has been used with good results to treat patients with headaches and nerve pain.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Tianma has clinically proven sedative, anti-convulsant and cardiovascular properties. It has been used with good results to treat patients with headaches and nerve pain.\n"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "batchNumber": 10,
+    "start": 91,
+    "end": 100,
+    "herbs": [
+      {
+        "slug": "vitamin-a",
+        "englishTitle": "Vitamin A",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/vitamin-a",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Vitamin A in the form retinyl palmitate is an ingredient in many topically-applied skin treatments.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Vitamin A in the form retinyl palmitate is an ingredient in many topically-applied skin treatments.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "vitamin-b3-niacin",
+        "englishTitle": "Vitamin B3, Niacin",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/vitamin-b3-niacin",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Niacin widens the blood vessels, thus improving circulation and can thus be used to treat dizziness and ringing in the ears, Raynauds syndrome, premenstrual syndrome, headaches, cramps and other circulatory problems. Taken in large doses, niacin blocks the breakdown of fats in adipose tissue, having an effect on blood lipid levels. It is sometimes prescribed to patients with low levels of high-density lipoprotein - also known as \"good\" cholesterol - and who are at high risk of a heart attack.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Niacin widens the blood vessels, thus improving circulation and can thus be used to treat dizziness and ringing in the ears, Raynauds syndrome, premenstrual syndrome, headaches, cramps and other circulatory problems. Taken in large doses, niacin blocks the breakdown of fats in adipose tissue, having an effect on blood lipid levels. It is sometimes prescribed to patients with low levels of high-density lipoprotein - also known as \"good\" cholesterol - and who are at high risk of a heart attack.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "vitamin-b5",
+        "englishTitle": "Vitamin B5",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/vitamin-b5",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Pantothenic acid in the form of Panthoderm is a common addition to skin creams. It can be used to relieve dry skin and promote the healing of burns, minor wounds and chapped skin.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Pantothenic acid in the form of Panthoderm is a common addition to skin creams. It can be used to relieve dry skin and promote the healing of burns, minor wounds and chapped skin.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "vitamin-b9-folate-folic-acid",
+        "englishTitle": "Vitamin B9, Folate, Folic Acid",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/vitamin-b9-folate-folic-acid",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "Vitamin B9, also known as folate, is need to synthesise the nucleic acids DNA and RNA in our genes, and to form heme, the iron-containing protein in haemoglobin. Folic acid is also needed for the interconversion of serine from glycine; for the formation of the amino acids tyrosine from phenylalanine; glutamic acid from histidine; and methionine from homocysteine. It is also essential for the synthesis of choline from ethanolamine. Folic acid is crucial for the formation of a healthy foetus and an important nutritional supplement for all women of child bearing age, as it can help prevent conditions including spina bifida.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "traditional_usage",
+              "englishContent": "Vitamin B9, also known as folate, is need to synthesise the nucleic acids DNA and RNA in our genes, and to form heme, the iron-containing protein in haemoglobin. Folic acid is also needed for the interconversion of serine from glycine; for the formation of the amino acids tyrosine from phenylalanine; glutamic acid from histidine; and methionine from homocysteine. It is also essential for the synthesis of choline from ethanolamine. Folic acid is crucial for the formation of a healthy foetus and an important nutritional supplement for all women of child bearing age, as it can help prevent conditions including spina bifida.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "vitamin-c",
+        "englishTitle": "Vitamin C",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/vitamin-c",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Vitamin C, in the form ascorbyl palmitate, is sometimes used as an antioxidant food additive to preserve the shelf-life of goods as well as being a popular ingredient in skin care.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Vitamin C, in the form ascorbyl palmitate, is sometimes used as an antioxidant food additive to preserve the shelf-life of goods as well as being a popular ingredient in skin care.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "wheat",
+        "englishTitle": "Wheat",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/wheat",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Treasury of Words on the Materia Medica.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Treasury of Words on the Materia Medica.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "white-mulberry-leaf",
+        "englishTitle": "White Mulberry Leaf",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/white-mulberry-leaf",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "white-peony-root",
+        "englishTitle": "White Peony Root",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/white-peony-root",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "introduction",
+              "englishContent": "Root of Paeonia Lactiflora Pall., family Ranunculaceae.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Baishao is a central nervous system suppressant, an antipyretic, an antibiotic and can relax and dilate blood vessels to decrease blood pressure, and calm the smooth muscles of the intestines. It has been used extensively in clinical studies to treat intestinal cramps, muscle spasms and constipation with good results.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "introduction",
+              "englishContent": "Root of Paeonia Lactiflora Pall., family Ranunculaceae.\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Baishao is a central nervous system suppressant, an antipyretic, an antibiotic and can relax and dilate blood vessels to decrease blood pressure, and calm the smooth muscles of the intestines. It has been used extensively in clinical studies to treat intestinal cramps, muscle spasms and constipation with good results.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "wild-yam",
+        "englishTitle": "Wild Yam",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/wild-yam",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "introduction",
+              "englishContent": "Extract of the rhizomes of dioscorea villosa.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "introduction",
+              "englishContent": "Extract of the rhizomes of dioscorea villosa.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "woad-or-glastum",
+        "englishTitle": "Woad or Glastum",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/woad-or-glastum",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in the Tang Materia Medica. Woad is an ancient plant native to central and western Asia and Russia, but widely cultivated across Europe. Europeans prized it for its blue dye, which has been used to colour clothes and make paint. The first archaeological finds of woad seeds date to the Neolithic period and were discovered in caves in France\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in the Tang Materia Medica. Woad is an ancient plant native to central and western Asia and Russia, but widely cultivated across Europe. Europeans prized it for its blue dye, which has been used to colour clothes and make paint. The first archaeological finds of woad seeds date to the Neolithic period and were discovered in caves in France\n"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "batchNumber": 11,
+    "start": 101,
+    "end": 109,
+    "herbs": [
+      {
+        "slug": "wuweizi",
+        "englishTitle": "Wuweizi",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/wuweizi",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in the Divine Husbandman's Classic of the Materia Medica.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in the Divine Husbandman's Classic of the Materia Medica.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "xinyihua",
+        "englishTitle": "Xinyihua",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/xinyihua",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "yuanzhi",
+        "englishTitle": "Yuanzhi",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/yuanzhi",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Yuanzhi has an effect on some cancer cell lines - an aqueous extract of the herb was found to have an inhibitory effect on HL-60 cancer cells, indicating its potential use for patients with breast cancer. Active ingredients include onjisaponin A, B, C, D, E, F,G, tenuidine, polygalitol, xanthones and trimethoxycinnamic acid.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Divine Husbandman's Classic of the Materia Medica\n"
+            },
+            {
+              "field": "modern_usage",
+              "englishContent": "Yuanzhi has an effect on some cancer cell lines - an aqueous extract of the herb was found to have an inhibitory effect on HL-60 cancer cells, indicating its potential use for patients with breast cancer. Active ingredients include onjisaponin A, B, C, D, E, F,G, tenuidine, polygalitol, xanthones and trimethoxycinnamic acid.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "yunzhi",
+        "englishTitle": "Yunzhi",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/yunzhi",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "Yunzhi is mainly found in the Yunnan and Guizhou areas of China, where it grows wild in deep forests. It is one of the most precious herbs in Chinese medicine and has been used for over 2,000 years, first recorded in the Classic of Herbal Medicine. However, it is only in very recent years that the Western world has shown interest in yunzhi following double-blind trials that proved a polysaccharide found in the fungus could significantly improve the health of patients undergoing cancer treatments.\n"
+            },
+            {
+              "field": "introduction",
+              "englishContent": "The sporophore or myceliumm of Polystictus versicolor (L.) Fr., family Polyporaceae.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "Yunzhi is mainly found in the Yunnan and Guizhou areas of China, where it grows wild in deep forests. It is one of the most precious herbs in Chinese medicine and has been used for over 2,000 years, first recorded in the Classic of Herbal Medicine. However, it is only in very recent years that the Western world has shown interest in yunzhi following double-blind trials that proved a polysaccharide found in the fungus could significantly improve the health of patients undergoing cancer treatments.\n"
+            },
+            {
+              "field": "introduction",
+              "englishContent": "The sporophore or myceliumm of Polystictus versicolor (L.) Fr., family Polyporaceae.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "zexie",
+        "englishTitle": "Zexie",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/zexie",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in the Divine Husbandman's Classic of the Materia Medica.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in the Divine Husbandman's Classic of the Materia Medica.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "zhiko",
+        "englishTitle": "Zhiko",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/zhiko",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Grandfather Lei's Discussion of Herb Preparation.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Grandfather Lei's Discussion of Herb Preparation.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "zhusun",
+        "englishTitle": "Zhusun",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/zhusun",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Grand Materia Medica.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Grand Materia Medica.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "zinc",
+        "englishTitle": "Zinc",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/zinc",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Zinc tablets are often taken to hasten recovery from colds and flu due to their role in increased immunity. The mineral may also be able to play a role in treating autoimmune diseases.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "modern_usage",
+              "englishContent": "Zinc tablets are often taken to hasten recovery from colds and flu due to their role in increased immunity. The mineral may also be able to play a role in treating autoimmune diseases.\n"
+            }
+          ]
+        }
+      },
+      {
+        "slug": "zisuye",
+        "englishTitle": "Zisuye",
+        "path": "/Users/mulgogi/src/sipm/herbapedia/src/content/herbs/zisuye",
+        "missingFields": {
+          "zh-HK": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Materia Medica of Medicinal Properties.\n"
+            },
+            {
+              "field": "introduction",
+              "englishContent": "The leaf of Perilla frutescens (L.) Britt. var. acuta (Thunb.) Kudo, family Labiatae.\n"
+            }
+          ],
+          "zh-CN": [
+            {
+              "field": "history",
+              "englishContent": "First appeared in Materia Medica of Medicinal Properties.\n"
+            },
+            {
+              "field": "introduction",
+              "englishContent": "The leaf of Perilla frutescens (L.) Britt. var. acuta (Thunb.) Kudo, family Labiatae.\n"
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

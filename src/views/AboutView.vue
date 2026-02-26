@@ -56,7 +56,7 @@
             <li><code>tcm:TCMProfile</code> - {{ t('about.ontology.profileTCM') }}</li>
             <li><code>western:WesternHerbalProfile</code> - {{ t('about.ontology.profileWestern') }}</li>
             <li><code>ayurveda:AyurvedaProfile</code> - {{ t('about.ontology.profileAyurveda') }}</li>
-            <li><code>persian:PersianProfile</code> - {{ t('about.ontology.profilePersian') }}</li>
+            <li><code>unani:UnaniProfile</code> - {{ t('about.ontology.profileUnani') }}</li>
             <li><code>mongolian:MongolianProfile</code> - {{ t('about.ontology.profileMongolian') }}</li>
           </ul>
 
@@ -66,7 +66,7 @@
             <li><strong>TCM:</strong> <code>tcm:Meridian</code>, <code>tcm:Nature</code>, <code>tcm:Flavor</code>, <code>tcm:Category</code></li>
             <li><strong>Western:</strong> <code>western:Action</code>, <code>western:Organ</code>, <code>western:System</code></li>
             <li><strong>Ayurveda:</strong> <code>ayurveda:Rasa</code>, <code>ayurveda:Guna</code>, <code>ayurveda:Virya</code>, <code>ayurveda:Vipaka</code></li>
-            <li><strong>Persian:</strong> <code>persian:Temperament</code>, <code>persian:Element</code></li>
+            <li><strong>Unani:</strong> <code>unani:Temperament</code>, <code>unani:Element</code></li>
             <li><strong>Mongolian:</strong> <code>mongolian:Element</code>, <code>mongolian:Root</code>, <code>mongolian:Taste</code></li>
           </ul>
 
@@ -88,8 +88,8 @@
 │   ├── hasGuna → ayurveda:Guna[]
 │   ├── hasVirya → ayurveda:Virya
 │   └── hasVipaka → ayurveda:Vipaka
-├── hasPersianProfile → PersianProfile
-│   └── hasTemperament → persian:Temperament
+├── hasUnaniProfile → UnaniProfile
+│   └── hasTemperament → unani:Temperament
 └── hasMongolianProfile → MongolianProfile
     ├── hasElement → mongolian:Element[]
     └── hasTaste → mongolian:Taste[]</code></pre>
