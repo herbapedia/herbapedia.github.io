@@ -11,7 +11,7 @@
 
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { dataset } from '@/api/dataset'
+import { dataset } from '@/api/graphBrowser'
 
 // ============================================================================
 // Localization Helpers
@@ -120,12 +120,19 @@ export function useTcmReferences() {
     return getLocalizedValue(labelMap, locale.value)
   }
 
+  // Extract slug from full IRI (e.g., "https://www.herbapedia.org/system/tcm/flavor/acrid" -> "acrid")
+  function extractSlug(id) {
+    if (!id) return ''
+    const parts = id.split('/')
+    return parts[parts.length - 1] || ''
+  }
+
   function getNatureLabel(natureRef) {
     if (!natureRef) return null
     const id = typeof natureRef === 'object' ? natureRef['@id'] : natureRef
     const item = dataset.getNature(id)
     const label = item ? getLabel(item) : null
-    return label || id
+    return { id, slug: extractSlug(id), label: label || id }
   }
 
   function getFlavorLabels(flavorRefs) {
@@ -134,7 +141,7 @@ export function useTcmReferences() {
       const id = typeof ref === 'object' ? ref['@id'] : ref
       const item = dataset.getFlavor(id)
       const label = item ? getLabel(item) : null
-      return { id, label: label || id }
+      return { id, slug: extractSlug(id), label: label || id }
     })
   }
 
@@ -144,7 +151,7 @@ export function useTcmReferences() {
       const id = typeof ref === 'object' ? ref['@id'] : ref
       const item = dataset.getMeridian(id)
       const label = item ? getLabel(item) : null
-      return { id, label: label || id }
+      return { id, slug: extractSlug(id), label: label || id }
     })
   }
 
@@ -153,7 +160,7 @@ export function useTcmReferences() {
     const id = typeof categoryRef === 'object' ? categoryRef['@id'] : categoryRef
     const item = dataset.getCategory(id)
     const label = item ? getLabel(item) : null
-    return label || id
+    return { id, slug: extractSlug(id), label: label || id }
   }
 
   return {

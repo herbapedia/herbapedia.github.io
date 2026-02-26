@@ -31,20 +31,18 @@
           <h2 class="section-title">{{ t('reference.usingPreparations') }}</h2>
 
           <div v-if="preparations.length > 0" class="preparations-grid">
-            <router-link
+            <PreparationCard
               v-for="prep in preparations"
-              :key="extractLabel(prep['@id'])"
-              :to="localePath(`/preparations/${extractLabel(prep['@id'])}`)"
-              class="preparation-card"
-              :class="`preparation-card--${system}`"
-            >
-              <div class="preparation-card__content">
-                <h3 class="preparation-card__name">{{ getPrepName(prep) }}</h3>
-                <p v-if="getPrepDescription(prep)" class="preparation-card__desc">
-                  {{ truncate(getPrepDescription(prep), 100) }}
-                </p>
-              </div>
-            </router-link>
+              :key="getSlug(prep)"
+              :to="localePath(`/preparations/${getSlug(prep)}`)"
+              :title="getPrepName(prep)"
+              :common-name="getCommonName(prep)"
+              :scientific-name="getScientificName(prep)"
+              :image="getImage(prep)"
+              :has-t-c-m="!!prep.hasTCMProfile"
+              :has-western="!!prep.hasWesternProfile"
+              :has-ayurveda="!!prep.hasAyurvedaProfile"
+            />
           </div>
 
           <div v-else class="empty-state">
@@ -69,7 +67,8 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { dataset } from '@/api/dataset'
 import { DEFAULT_LOCALE } from '@/i18n/locales'
-import { usePreparationLocalizer } from '@/composables/useHerbData'
+import { usePreparationLocalizer, useSourcePlant } from '@/composables/useHerbData'
+import PreparationCard from '@/components/ui/PreparationCard.vue'
 
 const props = defineProps({
   system: { type: String, required: true },
@@ -104,9 +103,9 @@ const systemConfigs = {
     icon: '🪷',
     nameKey: 'systems.ayurveda.name'
   },
-  persian: {
+  unani: {
     icon: '🌙',
-    nameKey: 'systems.persian.name'
+    nameKey: 'systems.unani.name'
   },
   mongolian: {
     icon: '🏔️',
@@ -158,7 +157,7 @@ const referenceTypeConfigs = {
   vipaka: {
     getItem: (slug) => findReferenceItem(dataset.getAllVipakas(), slug)
   },
-  // Persian
+  // Unani
   temperaments: {
     getItem: (slug) => findReferenceItem(dataset.getAllTemperaments(), slug)
   },
@@ -196,7 +195,7 @@ const referenceInfo = computed(() => {
     guna: t('ayurveda.gunas'),
     virya: t('ayurveda.viryas'),
     vipaka: t('ayurveda.vipakas'),
-    temperaments: t('persian.temperaments'),
+    temperaments: t('unani.temperaments'),
     elements: t('mongolian.elements'),
     tastes: t('mongolian.tastes')
   }
@@ -256,7 +255,7 @@ const preparations = computed(() => {
   if (props.system === 'tcm') profileCache = dataset.tcmCache
   else if (props.system === 'western') profileCache = dataset.westernCache
   else if (props.system === 'ayurveda') profileCache = dataset.ayurvedaCache
-  else if (props.system === 'persian') profileCache = dataset.persianCache
+  else if (props.system === 'unani') profileCache = dataset.unaniCache
   else if (props.system === 'mongolian') profileCache = dataset.mongolianCache
 
   if (!profileCache) return []
@@ -290,7 +289,7 @@ const preparations = computed(() => {
     if (props.system === 'tcm') profileRef = prep.hasTCMProfile
     else if (props.system === 'western') profileRef = prep.hasWesternProfile
     else if (props.system === 'ayurveda') profileRef = prep.hasAyurvedaProfile
-    else if (props.system === 'persian') profileRef = prep.hasPersianProfile
+    else if (props.system === 'unani') profileRef = prep.hasUnaniProfile
     else if (props.system === 'mongolian') profileRef = prep.hasMongolianProfile
 
     if (!profileRef) return
@@ -340,6 +339,36 @@ function truncate(text, maxLength) {
   if (text.length <= maxLength) return text
   return text.slice(0, maxLength) + '...'
 }
+
+// Helper to get slug from preparation ID
+function getSlug(prep) {
+  return extractLabel(prep?.['@id'])
+}
+
+// Helper to get common name (localized)
+function getCommonName(prep) {
+  return localizer.getName(prep) || ''
+}
+
+// Helper to get scientific name from source plant
+function getScientificName(prep) {
+  const slug = getSlug(prep)
+  const plant = useSourcePlant(slug)
+  return plant.value?.scientificName || ''
+}
+
+// Helper to format image path
+function formatImagePath(img) {
+  if (!img) return null
+  return img.startsWith('/@herbapedia') ? img : `/${img}`
+}
+
+// Helper to get image from source plant
+function getImage(prep) {
+  const slug = getSlug(prep)
+  const plant = useSourcePlant(slug)
+  return formatImagePath(plant.value?.image)
+}
 </script>
 
 <style scoped>
@@ -384,7 +413,7 @@ function truncate(text, maxLength) {
 .reference-hero--tcm { background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(34, 197, 94, 0.02) 100%); }
 .reference-hero--western { background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.02) 100%); }
 .reference-hero--ayurveda { background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(249, 115, 22, 0.02) 100%); }
-.reference-hero--persian { background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(139, 92, 246, 0.02) 100%); }
+.reference-hero--unani { background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(139, 92, 246, 0.02) 100%); }
 .reference-hero--mongolian { background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(6, 182, 212, 0.02) 100%); }
 
 .reference-hero__icon {
@@ -455,7 +484,7 @@ function truncate(text, maxLength) {
 .preparation-card--tcm { border-left: 3px solid #22c55e; }
 .preparation-card--western { border-left: 3px solid #3b82f6; }
 .preparation-card--ayurveda { border-left: 3px solid #f97316; }
-.preparation-card--persian { border-left: 3px solid #8b5cf6; }
+.preparation-card--unani { border-left: 3px solid #8b5cf6; }
 .preparation-card--mongolian { border-left: 3px solid #06b6d4; }
 
 .preparation-card__name {

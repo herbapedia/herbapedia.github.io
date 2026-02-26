@@ -177,7 +177,7 @@ const systemIcons = {
   ayurveda: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
     <path d="M12 2l3 7h7l-6 4 2 7-6-4-6 4 2-7-6-4h7l3-7z"/>
   </svg>`,
-  persian: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+  unani: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
     <path d="M12 3a6 6 0 0 0-6 6c0 3.5 6 12 6 12s6-8.5 6-12a6 6 0 0 0-6-6z"/>
     <circle cx="12" cy="9" r="2" fill="currentColor" opacity="0.3"/>
   </svg>`,
@@ -194,13 +194,13 @@ const nativeNames = {
   tcm: '中药 / 中藥',
   western: 'Western Herbalism',
   ayurveda: 'आयुर्वेद',
-  persian: 'طب یونانی / Unani',
+  unani: 'طب یونانی / Unani',
   mongolian: 'Монгол эмнэлэг / Tibetan'
 }
 
 // Dynamic systems array - ordered with Modern first, then others
 const browseSystems = computed(() => {
-  const systemOrder = ['modern', 'tcm', 'western', 'ayurveda', 'persian', 'mongolian']
+  const systemOrder = ['modern', 'tcm', 'western', 'ayurveda', 'unani', 'mongolian']
 
   return systemOrder.map(id => {
     const system = dataset.getSystem(id)
@@ -221,7 +221,7 @@ const browseSystems = computed(() => {
 const tcmCount = computed(() => allPreparations.value.filter(p => p.hasTCMProfile).length)
 const westernCount = computed(() => allPreparations.value.filter(p => p.hasWesternProfile).length)
 const ayurvedaCount = computed(() => allPreparations.value.filter(p => p.hasAyurvedaProfile).length)
-const persianCount = computed(() => allPreparations.value.filter(p => p.hasPersianProfile).length)
+const unaniCount = computed(() => allPreparations.value.filter(p => p.hasUnaniProfile).length)
 const mongolianCount = computed(() => allPreparations.value.filter(p => p.hasMongolianProfile).length)
 const modernCount = computed(() => {
   const modernProfiles = dataset.getAllModernProfiles()

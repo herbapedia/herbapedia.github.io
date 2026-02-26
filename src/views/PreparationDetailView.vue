@@ -44,7 +44,7 @@
               <span v-if="profiles?.tcm" class="preparation-detail__badge preparation-detail__badge--tcm">TCM</span>
               <span v-if="profiles?.western" class="preparation-detail__badge preparation-detail__badge--western">Western</span>
               <span v-if="profiles?.ayurveda" class="preparation-detail__badge preparation-detail__badge--ayurveda">Ayurveda</span>
-              <span v-if="profiles?.persian" class="preparation-detail__badge preparation-detail__badge--persian">Persian</span>
+              <span v-if="profiles?.unani" class="preparation-detail__badge preparation-detail__badge--unani">Unani</span>
               <span v-if="profiles?.mongolian" class="preparation-detail__badge preparation-detail__badge--mongolian">Mongolian</span>
             </div>
             <h1 class="preparation-detail__title">{{ prepTitle }}</h1>
@@ -166,12 +166,12 @@
               {{ t('preparations.ayurveda') }}
             </button>
             <button
-              v-if="profiles?.persian"
+              v-if="profiles?.unani"
               class="profile-tab"
-              :class="{ 'profile-tab--active': activeProfile === 'persian' }"
-              @click="activeProfile = 'persian'"
+              :class="{ 'profile-tab--active': activeProfile === 'unani' }"
+              @click="activeProfile = 'unani'"
             >
-              {{ t('preparations.persian') }}
+              {{ t('preparations.unani') }}
             </button>
             <button
               v-if="profiles?.mongolian"
@@ -189,27 +189,48 @@
             <div class="tcm-properties">
               <div v-if="natureLabel" class="tcm-property">
                 <span class="tcm-property__label">{{ t('tcm.nature') }}</span>
-                <span class="tcm-property__value" :class="natureClass">{{ natureLabel }}</span>
+                <router-link
+                  :to="localePath(`/systems/tcm/natures/${natureLabel.slug}`)"
+                  class="tcm-property__value tcm-property__link"
+                  :class="natureClass"
+                >
+                  {{ natureLabel.label }}
+                </router-link>
               </div>
               <div v-if="flavorLabels.length > 0" class="tcm-property">
                 <span class="tcm-property__label">{{ t('tcm.flavor') }}</span>
                 <div class="tcm-property__tags">
-                  <span v-for="flavor in flavorLabels" :key="flavor.id" class="tcm-tag tcm-tag--flavor">
+                  <router-link
+                    v-for="flavor in flavorLabels"
+                    :key="flavor.id"
+                    :to="localePath(`/systems/tcm/flavors/${flavor.slug}`)"
+                    class="tcm-tag tcm-tag--flavor tcm-tag--link"
+                  >
                     {{ flavor.label }}
-                  </span>
+                  </router-link>
                 </div>
               </div>
               <div v-if="meridianLabels.length > 0" class="tcm-property">
                 <span class="tcm-property__label">{{ t('tcm.meridian') }}</span>
                 <div class="tcm-property__tags">
-                  <span v-for="meridian in meridianLabels" :key="meridian.id" class="tcm-tag tcm-tag--meridian">
+                  <router-link
+                    v-for="meridian in meridianLabels"
+                    :key="meridian.id"
+                    :to="localePath(`/systems/tcm/meridians/${meridian.slug}`)"
+                    class="tcm-tag tcm-tag--meridian tcm-tag--link"
+                  >
                     {{ meridian.label }}
-                  </span>
+                  </router-link>
                 </div>
               </div>
               <div v-if="categoryLabel" class="tcm-property">
                 <span class="tcm-property__label">{{ t('tcm.category') }}</span>
-                <span class="tcm-property__value">{{ categoryLabel }}</span>
+                <router-link
+                  :to="localePath(`/systems/tcm/categories/${categoryLabel.slug}`)"
+                  class="tcm-property__value tcm-property__link"
+                >
+                  {{ categoryLabel.label }}
+                </router-link>
               </div>
               <div v-if="profiles.tcm.pinyin" class="tcm-property">
                 <span class="tcm-property__label">{{ t('tcm.pinyin') }}</span>
@@ -470,118 +491,118 @@
             </div>
           </div>
 
-          <!-- Persian Profile Content -->
-          <div v-if="activeProfile === 'persian' && profiles?.persian" class="profile-content">
-            <!-- Persian Properties -->
-            <div class="persian-properties">
-              <div v-if="profiles.persian.persianTransliteration" class="persian-property">
-                <span class="persian-property__label">{{ t('persian.name') }}</span>
-                <span class="persian-property__value">{{ profiles.persian.persianName }} ({{ profiles.persian.persianTransliteration }})</span>
+          <!-- Unani Profile Content -->
+          <div v-if="activeProfile === 'unani' && profiles?.unani" class="profile-content">
+            <!-- Unani Properties -->
+            <div class="unani-properties">
+              <div v-if="profiles.unani.unaniTransliteration" class="unani-property">
+                <span class="unani-property__label">{{ t('unani.name') }}</span>
+                <span class="unani-property__value">{{ profiles.unani.unaniName }} ({{ profiles.unani.unaniTransliteration }})</span>
               </div>
-              <div v-if="profiles.persian.arabicName" class="persian-property">
-                <span class="persian-property__label">{{ t('persian.arabicName') }}</span>
-                <span class="persian-property__value" dir="rtl">{{ profiles.persian.arabicName }}</span>
+              <div v-if="profiles.unani.arabicName" class="unani-property">
+                <span class="unani-property__label">{{ t('unani.arabicName') }}</span>
+                <span class="unani-property__value" dir="rtl">{{ profiles.unani.arabicName }}</span>
               </div>
-              <div v-if="temperamentLabel" class="persian-property">
-                <span class="persian-property__label">{{ t('persian.temperament') }}</span>
-                <span class="persian-property__value" :class="temperamentClass">
-                  {{ temperamentLabel }}<template v-if="profiles.persian.temperamentDegree"> ({{ profiles.persian.temperamentDegree }}°)</template>
+              <div v-if="temperamentLabel" class="unani-property">
+                <span class="unani-property__label">{{ t('unani.temperament') }}</span>
+                <span class="unani-property__value" :class="temperamentClass">
+                  {{ temperamentLabel }}<template v-if="profiles.unani.temperamentDegree"> ({{ profiles.unani.temperamentDegree }}°)</template>
                 </span>
               </div>
-              <div v-if="persianElementLabels.length > 0" class="persian-property">
-                <span class="persian-property__label">{{ t('persian.elements') }}</span>
-                <div class="persian-property__tags">
-                  <span v-for="elem in persianElementLabels" :key="elem.id" class="persian-tag persian-tag--element">
+              <div v-if="unaniElementLabels.length > 0" class="unani-property">
+                <span class="unani-property__label">{{ t('unani.elements') }}</span>
+                <div class="unani-property__tags">
+                  <span v-for="elem in unaniElementLabels" :key="elem.id" class="unani-tag unani-tag--element">
                     {{ elem.label }}
                   </span>
                 </div>
               </div>
-              <div v-if="profiles.persian.actions?.length" class="persian-property">
-                <span class="persian-property__label">{{ t('persian.actions') }}</span>
-                <div class="persian-property__tags">
-                  <span v-for="(action, index) in profiles.persian.actions.slice(0, 5)" :key="index" class="persian-tag persian-tag--action">
+              <div v-if="profiles.unani.actions?.length" class="unani-property">
+                <span class="unani-property__label">{{ t('unani.actions') }}</span>
+                <div class="unani-property__tags">
+                  <span v-for="(action, index) in profiles.unani.actions.slice(0, 5)" :key="index" class="unani-tag unani-tag--action">
                     {{ action }}
                   </span>
                 </div>
               </div>
             </div>
 
-            <!-- Persian Content Sections -->
-            <div v-if="persianFunctions" class="profile-section">
+            <!-- Unani Content Sections -->
+            <div v-if="unaniFunctions" class="profile-section">
               <h3>{{ t('sections.functions') }}</h3>
-              <p>{{ persianFunctions }}</p>
+              <p>{{ unaniFunctions }}</p>
             </div>
-            <div v-if="profiles.persian.indications?.length" class="profile-section">
+            <div v-if="profiles.unani.indications?.length" class="profile-section">
               <h3>{{ t('sections.indications') }}</h3>
               <ul class="profile-list">
-                <li v-for="(indication, index) in profiles.persian.indications" :key="index">{{ indication }}</li>
+                <li v-for="(indication, index) in profiles.unani.indications" :key="index">{{ indication }}</li>
               </ul>
             </div>
 
-            <!-- Persian Affected Organs -->
-            <div v-if="persianAffectedOrgans.length > 0" class="profile-section">
-              <h3>{{ t('persian.affectedOrgans') }}</h3>
+            <!-- Unani Affected Organs -->
+            <div v-if="unaniAffectedOrgans.length > 0" class="profile-section">
+              <h3>{{ t('unani.affectedOrgans') }}</h3>
               <div class="organ-tags">
-                <span v-for="(organ, index) in persianAffectedOrgans" :key="index" class="organ-tag">
+                <span v-for="(organ, index) in unaniAffectedOrgans" :key="index" class="organ-tag">
                   {{ organ }}
                 </span>
               </div>
             </div>
 
-            <!-- Persian Mizaj Constituents -->
-            <div v-if="persianMizajConstituents.length > 0" class="profile-section">
-              <h3>{{ t('persian.mizajConstituents') }}</h3>
+            <!-- Unani Mizaj Constituents -->
+            <div v-if="unaniMizajConstituents.length > 0" class="profile-section">
+              <h3>{{ t('unani.mizajConstituents') }}</h3>
               <div class="mizaj-list">
-                <div v-for="(constituent, index) in persianMizajConstituents" :key="index" class="mizaj-item">
+                <div v-for="(constituent, index) in unaniMizajConstituents" :key="index" class="mizaj-item">
                   <span class="mizaj-item__substance">{{ constituent.substance }}</span>
                   <span v-if="constituent.temperament" class="mizaj-item__temp">{{ constituent.temperament }}</span>
                 </div>
               </div>
             </div>
 
-            <!-- Persian Corrective (Musleh) -->
-            <div v-if="persianCorrective.length > 0" class="profile-section">
-              <h3>{{ t('persian.corrective') }}</h3>
-              <p class="profile-section__hint">{{ t('persian.correctiveDesc') }}</p>
+            <!-- Unani Corrective (Musleh) -->
+            <div v-if="unaniCorrective.length > 0" class="profile-section">
+              <h3>{{ t('unani.corrective') }}</h3>
+              <p class="profile-section__hint">{{ t('unani.correctiveDesc') }}</p>
               <div class="corrective-tags">
-                <span v-for="(item, index) in persianCorrective" :key="index" class="corrective-tag">
+                <span v-for="(item, index) in unaniCorrective" :key="index" class="corrective-tag">
                   {{ item }}
                 </span>
               </div>
             </div>
 
-            <!-- Persian Substitute (Badal) -->
-            <div v-if="persianSubstitute.length > 0" class="profile-section">
-              <h3>{{ t('persian.substitute') }}</h3>
-              <p class="profile-section__hint">{{ t('persian.substituteDesc') }}</p>
+            <!-- Unani Substitute (Badal) -->
+            <div v-if="unaniSubstitute.length > 0" class="profile-section">
+              <h3>{{ t('unani.substitute') }}</h3>
+              <p class="profile-section__hint">{{ t('unani.substituteDesc') }}</p>
               <div class="substitute-tags">
-                <span v-for="(item, index) in persianSubstitute" :key="index" class="substitute-tag">
+                <span v-for="(item, index) in unaniSubstitute" :key="index" class="substitute-tag">
                   {{ item }}
                 </span>
               </div>
             </div>
 
-            <!-- Persian Dosage Forms -->
-            <div v-if="persianDosageForms.length > 0" class="profile-section">
-              <h3>{{ t('persian.dosageForm') }}</h3>
+            <!-- Unani Dosage Forms -->
+            <div v-if="unaniDosageForms.length > 0" class="profile-section">
+              <h3>{{ t('unani.dosageForm') }}</h3>
               <div class="dosage-forms">
-                <span v-for="(form, index) in persianDosageForms" :key="index" class="dosage-form-tag">
+                <span v-for="(form, index) in unaniDosageForms" :key="index" class="dosage-form-tag">
                   {{ form }}
                 </span>
               </div>
             </div>
 
-            <!-- Persian Adverse Effects -->
-            <div v-if="persianAdverseEffects" class="profile-section profile-section--warning">
-              <h3>{{ t('persian.adverseEffects') }}</h3>
-              <p>{{ persianAdverseEffects }}</p>
+            <!-- Unani Adverse Effects -->
+            <div v-if="unaniAdverseEffects" class="profile-section profile-section--warning">
+              <h3>{{ t('unani.adverseEffects') }}</h3>
+              <p>{{ unaniAdverseEffects }}</p>
             </div>
 
-            <!-- Persian Classical References -->
-            <div v-if="persianClassicalReferences.length > 0" class="profile-section profile-section--classical">
+            <!-- Unani Classical References -->
+            <div v-if="unaniClassicalReferences.length > 0" class="profile-section profile-section--classical">
               <h3>{{ t('sections.classicalReference') }}</h3>
               <div class="classical-references">
-                <div v-for="(ref, index) in persianClassicalReferences" :key="index" class="classical-reference">
+                <div v-for="(ref, index) in unaniClassicalReferences" :key="index" class="classical-reference">
                   <div class="classical-reference__header">
                     <span class="classical-reference__text">{{ ref.text }}</span>
                     <span v-if="ref.author" class="classical-reference__section">{{ ref.author }}</span>
@@ -591,23 +612,23 @@
               </div>
             </div>
 
-            <!-- Persian Nomadic Usage -->
-            <div v-if="persianNomadicUsage" class="profile-section">
-              <h3>{{ t('persian.nomadicUsage') }}</h3>
-              <p>{{ persianNomadicUsage }}</p>
+            <!-- Unani Nomadic Usage -->
+            <div v-if="unaniNomadicUsage" class="profile-section">
+              <h3>{{ t('unani.nomadicUsage') }}</h3>
+              <p>{{ unaniNomadicUsage }}</p>
             </div>
 
-            <div v-if="persianModernResearch" class="profile-section">
+            <div v-if="unaniModernResearch" class="profile-section">
               <h3>{{ t('sections.modernResearch') }}</h3>
-              <p>{{ persianModernResearch }}</p>
+              <p>{{ unaniModernResearch }}</p>
             </div>
-            <div v-if="persianContraindications" class="profile-section profile-section--warning">
+            <div v-if="unaniContraindications" class="profile-section profile-section--warning">
               <h3>{{ t('sections.contraindications') }}</h3>
-              <p>{{ persianContraindications }}</p>
+              <p>{{ unaniContraindications }}</p>
             </div>
-            <div v-if="persianDosage" class="profile-section">
+            <div v-if="unaniDosage" class="profile-section">
               <h3>{{ t('sections.dosage') }}</h3>
-              <p>{{ persianDosage }}</p>
+              <p>{{ unaniDosage }}</p>
             </div>
           </div>
 
@@ -1338,87 +1359,87 @@ const ayurvedaFormulations = computed(() => {
 })
 
 // ============================================================================
-// Persian Profile computed
+// Unani Profile computed
 // ============================================================================
 
-// Persian Temperament
+// Unani Temperament
 const temperamentLabel = computed(() => {
-  if (!profiles.value?.persian?.hasTemperament) return null
-  const id = typeof profiles.value.persian.hasTemperament === 'object'
-    ? profiles.value.persian.hasTemperament['@id']
-    : profiles.value.persian.hasTemperament
+  if (!profiles.value?.unani?.hasTemperament) return null
+  const id = typeof profiles.value.unani.hasTemperament === 'object'
+    ? profiles.value.unani.hasTemperament['@id']
+    : profiles.value.unani.hasTemperament
   const item = dataset.getTemperament(id)
   return item ? getRefItemLabel(item) : extractLabel(id)
 })
 
 const temperamentClass = computed(() => {
-  if (!profiles.value?.persian?.hasTemperament) return ''
-  const id = typeof profiles.value.persian.hasTemperament === 'object'
-    ? profiles.value.persian.hasTemperament['@id']
-    : profiles.value.persian.hasTemperament
+  if (!profiles.value?.unani?.hasTemperament) return ''
+  const id = typeof profiles.value.unani.hasTemperament === 'object'
+    ? profiles.value.unani.hasTemperament['@id']
+    : profiles.value.unani.hasTemperament
   if (typeof id === 'string') {
-    if (id.includes('hot-dry')) return 'persian-temperament--hot-dry'
-    if (id.includes('hot-wet')) return 'persian-temperament--hot-wet'
-    if (id.includes('cold-dry')) return 'persian-temperament--cold-dry'
-    if (id.includes('cold-wet')) return 'persian-temperament--cold-wet'
+    if (id.includes('hot-dry')) return 'unani-temperament--hot-dry'
+    if (id.includes('hot-wet')) return 'unani-temperament--hot-wet'
+    if (id.includes('cold-dry')) return 'unani-temperament--cold-dry'
+    if (id.includes('cold-wet')) return 'unani-temperament--cold-wet'
   }
   return ''
 })
 
-// Persian Elements
-const persianElementLabels = computed(() => {
-  if (!profiles.value?.persian?.hasElement) return []
-  return profiles.value.persian.hasElement.map(ref => {
+// Unani Elements
+const unaniElementLabels = computed(() => {
+  if (!profiles.value?.unani?.hasElement) return []
+  return profiles.value.unani.hasElement.map(ref => {
     const id = typeof ref === 'object' ? ref['@id'] : ref
-    const item = dataset.getPersianElement(id)
+    const item = dataset.getUnaniElement(id)
     return item ? { id, label: getRefItemLabel(item) || extractLabel(id) } : { id, label: extractLabel(id) }
   })
 })
 
-// Persian content sections
-const persianFunctions = computed(() => getLocalizedLangMap(profiles.value?.persian?.persianFunctions))
-const persianModernResearch = computed(() => getLocalizedLangMap(profiles.value?.persian?.modernResearch))
-const persianContraindications = computed(() => getLocalizedLangMap(profiles.value?.persian?.contraindications))
-const persianDosage = computed(() => getLocalizedLangMap(profiles.value?.persian?.dosage))
+// Unani content sections
+const unaniFunctions = computed(() => getLocalizedLangMap(profiles.value?.unani?.unaniFunctions))
+const unaniModernResearch = computed(() => getLocalizedLangMap(profiles.value?.unani?.modernResearch))
+const unaniContraindications = computed(() => getLocalizedLangMap(profiles.value?.unani?.contraindications))
+const unaniDosage = computed(() => getLocalizedLangMap(profiles.value?.unani?.dosage))
 
-// Persian Arabic Name
-const persianArabicName = computed(() => profiles.value?.persian?.arabicName || null)
+// Unani Arabic Name
+const unaniArabicName = computed(() => profiles.value?.unani?.arabicName || null)
 
-// Persian Affected Organs
-const persianAffectedOrgans = computed(() => profiles.value?.persian?.affectedOrgans || [])
+// Unani Affected Organs
+const unaniAffectedOrgans = computed(() => profiles.value?.unani?.affectedOrgans || [])
 
-// Persian Mizaj Constituents
-const persianMizajConstituents = computed(() => {
-  const constituents = profiles.value?.persian?.mizajConstituents || []
+// Unani Mizaj Constituents
+const unaniMizajConstituents = computed(() => {
+  const constituents = profiles.value?.unani?.mizajConstituents || []
   return constituents.map(c => ({
     substance: c.substance,
     temperament: c.temperament ? `${c.temperament.hot || ''}/${c.temperament.cold || ''} ${c.temperament.dry || ''}/${c.temperament.wet || ''}`.trim() : null
   }))
 })
 
-// Persian Corrective (Musleh)
-const persianCorrective = computed(() => profiles.value?.persian?.corrective || [])
+// Unani Corrective (Musleh)
+const unaniCorrective = computed(() => profiles.value?.unani?.corrective || [])
 
-// Persian Substitute (Badal)
-const persianSubstitute = computed(() => profiles.value?.persian?.substitute || [])
+// Unani Substitute (Badal)
+const unaniSubstitute = computed(() => profiles.value?.unani?.substitute || [])
 
-// Persian Dosage Forms
-const persianDosageForms = computed(() => profiles.value?.persian?.dosageForm || [])
+// Unani Dosage Forms
+const unaniDosageForms = computed(() => profiles.value?.unani?.dosageForm || [])
 
-// Persian Adverse Effects
-const persianAdverseEffects = computed(() => {
-  const effects = profiles.value?.persian?.adverseEffects
+// Unani Adverse Effects
+const unaniAdverseEffects = computed(() => {
+  const effects = profiles.value?.unani?.adverseEffects
   if (!effects) return null
   if (typeof effects === 'string') return effects
   return getLocalizedLangMap(effects)
 })
 
-// Persian Classical References
-const persianClassicalReferences = computed(() => profiles.value?.persian?.classicalReferences || [])
+// Unani Classical References
+const unaniClassicalReferences = computed(() => profiles.value?.unani?.classicalReferences || [])
 
-// Persian Nomadic Usage
-const persianNomadicUsage = computed(() => {
-  const usage = profiles.value?.persian?.nomadicUsage
+// Unani Nomadic Usage
+const unaniNomadicUsage = computed(() => {
+  const usage = profiles.value?.unani?.nomadicUsage
   if (!usage) return null
   if (typeof usage === 'string') return usage
   return getLocalizedLangMap(usage)
@@ -1546,15 +1567,15 @@ watch(slug, (newSlug) => {
       const profileData = useProfilesForPreparation(newSlug)
       profiles.value = profileData.value
 
-      // Set initial active profile (priority: TCM > Western > Ayurveda > Persian > Mongolian)
+      // Set initial active profile (priority: TCM > Western > Ayurveda > Unani > Mongolian)
       if (profileData.value?.tcm) {
         activeProfile.value = 'tcm'
       } else if (profileData.value?.western) {
         activeProfile.value = 'western'
       } else if (profileData.value?.ayurveda) {
         activeProfile.value = 'ayurveda'
-      } else if (profileData.value?.persian) {
-        activeProfile.value = 'persian'
+      } else if (profileData.value?.unani) {
+        activeProfile.value = 'unani'
       } else if (profileData.value?.mongolian) {
         activeProfile.value = 'mongolian'
       }
@@ -1702,7 +1723,7 @@ watch(slug, (newSlug) => {
   color: #ea580c;
 }
 
-.preparation-detail__badge--persian {
+.preparation-detail__badge--unani {
   background: rgba(139, 69, 19, 0.15);
   color: #8b4513;
 }
@@ -2264,8 +2285,8 @@ watch(slug, (newSlug) => {
   color: #047857;
 }
 
-/* Persian Properties */
-.persian-properties {
+/* Unani Properties */
+.unani-properties {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: var(--spacing-md);
@@ -2274,31 +2295,31 @@ watch(slug, (newSlug) => {
   border-bottom: 1px solid var(--color-border);
 }
 
-.persian-property {
+.unani-property {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xs);
 }
 
-.persian-property__label {
+.unani-property__label {
   font-size: var(--font-size-xs);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--color-text-light);
 }
 
-.persian-property__value {
+.unani-property__value {
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-medium);
 }
 
-.persian-property__tags {
+.unani-property__tags {
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-xs);
 }
 
-.persian-tag {
+.unani-tag {
   display: inline-block;
   padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: var(--radius-full);
@@ -2306,23 +2327,23 @@ watch(slug, (newSlug) => {
   font-weight: var(--font-weight-medium);
 }
 
-.persian-tag--element {
+.unani-tag--element {
   background: #fef3c7;
   color: #92400e;
 }
 
-.persian-tag--action {
+.unani-tag--action {
   background: #ede9fe;
   color: #6b21a8;
   font-size: var(--font-size-xs);
 }
 
-.persian-temperament--hot-dry { color: #dc2626; }
-.persian-temperament--hot-wet { color: #ea580c; }
-.persian-temperament--cold-dry { color: #0891b2; }
-.persian-temperament--cold-wet { color: #1d4ed8; }
+.unani-temperament--hot-dry { color: #dc2626; }
+.unani-temperament--hot-wet { color: #ea580c; }
+.unani-temperament--cold-dry { color: #0891b2; }
+.unani-temperament--cold-wet { color: #1d4ed8; }
 
-/* Persian Organ Tags */
+/* Unani Organ Tags */
 .organ-tags {
   display: flex;
   flex-wrap: wrap;

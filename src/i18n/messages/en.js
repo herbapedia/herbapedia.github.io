@@ -71,7 +71,7 @@ export default {
     tcm: 'TCM',
     western: 'Western',
     ayurveda: 'Ayurveda',
-    persian: 'Persian',
+    unani: 'Unani',
     mongolian: 'Mongolian',
     ayurvedaComingSoon: 'Ayurveda profile coming soon.',
     natureHot: 'Hot',
@@ -252,10 +252,10 @@ export default {
     formulations: 'Classic Formulations',
     formulationUse: 'Use'
   },
-  // Persian (Unani) properties
-  persian: {
-    properties: 'Persian Medicine (Unani)',
-    name: 'Persian Name',
+  // Unani (Unani) properties
+  unani: {
+    properties: 'Unani Medicine (Unani)',
+    name: 'Unani Name',
     arabicName: 'Arabic Name',
     temperament: 'Temperament (Mizaj)',
     temperaments: 'Temperaments',
@@ -312,7 +312,7 @@ export default {
     andMore: 'and {count} more',
     aboutSystem: 'About {system}',
     aboutTitle: 'About Traditional Medicine Systems',
-    aboutText: 'Traditional medicine systems have developed over thousands of years across different cultures. Each system has its own unique framework for understanding health, disease, and treatment. Herbapedia documents preparations according to five major systems: Traditional Chinese Medicine, Western Herbalism, Ayurveda, Persian/Unani Medicine, and Mongolian Traditional Medicine.',
+    aboutText: 'Traditional medicine systems have developed over thousands of years across different cultures. Each system has its own unique framework for understanding health, disease, and treatment. Herbapedia documents preparations according to five major systems: Traditional Chinese Medicine, Western Herbalism, Ayurveda, Unani/Unani Medicine, and Mongolian Traditional Medicine.',
     tcm: {
       name: 'Traditional Chinese Medicine',
       description: 'One of the oldest continuous medical traditions, based on concepts of yin/yang, qi, and the five elements. Herbs are classified by their nature, flavor, and meridian entry.'
@@ -325,8 +325,8 @@ export default {
       name: 'Ayurveda',
       description: 'Ancient Indian system based on balancing three doshas (Vata, Pitta, Kapha). Herbs are classified by rasa (taste), virya (potency), and vipaka (post-digestive effect).'
     },
-    persian: {
-      name: 'Persian/Unani Medicine',
+    unani: {
+      name: 'Unani/Unani Medicine',
       description: 'Greek-Arabic medical tradition emphasizing temperament (mizaj) and the balance of four humors. Widely practiced in South Asia and the Middle East.'
     },
     mongolian: {
@@ -560,7 +560,7 @@ export default {
       profileTCM: 'Traditional Chinese Medicine profile with nature, flavor, meridians, category',
       profileWestern: 'Western Herbalism profile with actions, organ affinities',
       profileAyurveda: 'Ayurveda profile with rasa, guna, virya, vipaka, dosha effects',
-      profilePersian: 'Persian/Unani profile with temperament (mizaj) and elements',
+      profileUnani: 'Unani/Unani profile with temperament (mizaj) and elements',
       profileMongolian: 'Mongolian Traditional Medicine profile with elements, roots, tastes',
       referenceData: 'Reference Data',
       referenceDataDesc: 'Each medicine system defines its own taxonomy of reference terms with multilingual labels (prefLabel):',
@@ -569,7 +569,7 @@ export default {
       i18n: 'Internationalization (i18n)',
       i18nDesc: 'All ontology terms use SKOS prefLabel for multilingual support. Labels are stored in the data repository (data-herbapedia), not in the application code:',
       serialization: 'Serialization Format',
-      serializationDesc: "All data is stored as JSON-LD with proper {'@'}context for semantic interoperability. The {'@'}context files define prefixes for tcm:, ayurveda:, western:, persian:, mongolian:, and botany: vocabularies."
+      serializationDesc: "All data is stored as JSON-LD with proper {'@'}context for semantic interoperability. The {'@'}context files define prefixes for tcm:, ayurveda:, western:, unani:, mongolian:, and botany: vocabularies."
     }
   },
   // Basics page
@@ -679,10 +679,10 @@ export default {
     mahabhutasDesc: 'Five great elements in Ayurveda',
     ayurvedaCategoriesDesc: 'Classification categories for Ayurvedic herbs based on therapeutic actions',
     prabhavasDesc: 'Unique special effects of herbs that cannot be predicted from other properties',
-    // Persian
+    // Unani
     temperamentsDesc: 'Four temperaments in Unani medicine',
-    persianElementsDesc: 'Four elements in Persian medicine',
-    degreesDesc: 'Intensity degrees in Persian medicine',
+    unaniElementsDesc: 'Four elements in Unani medicine',
+    degreesDesc: 'Intensity degrees in Unani medicine',
     // Mongolian
     elementsDesc: 'Five elements in Mongolian medicine',
     tastesDesc: 'Six tastes in Mongolian medicine',

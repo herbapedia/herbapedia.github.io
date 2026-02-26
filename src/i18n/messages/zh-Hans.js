@@ -71,7 +71,7 @@ export default {
     tcm: '中医',
     western: '西方',
     ayurveda: '阿育吠陀',
-    persian: '波斯',
+    unani: '波斯',
     mongolian: '蒙古',
     modern: '现代',
     ayurvedaComingSoon: '阿育吠陀资料即将推出。',
@@ -253,10 +253,10 @@ export default {
     formulations: '经典配方',
     formulationUse: '用途'
   },
-  // Persian (Unani) properties
-  persian: {
-    properties: '波斯医学 (尤纳尼)',
-    name: '波斯名称',
+  // Unani (Unani) properties
+  unani: {
+    properties: '尤纳尼医学',
+    name: '尤纳尼名称',
     arabicName: '阿拉伯名称',
     temperament: '体质 (Mizaj)',
     temperaments: '体质',
@@ -320,8 +320,8 @@ export default {
       name: '阿育吠陀',
       description: '古印度医学体系，基于平衡三大体质（Vata、Pitta、Kapha）。草药按味（rasa）、效能和消化后作用分类。'
     },
-    persian: {
-      name: '波斯/尤纳尼医学',
+    unani: {
+      name: '尤纳尼医学',
       description: '希腊阿拉伯医学传统，强调体质和四体液平衡。广泛实践于南亚和中东。'
     },
     mongolian: {
@@ -561,7 +561,7 @@ export default {
       profileTCM: '传统中医档案 - 药性、五味、归经、分类',
       profileWestern: '西方草药档案 - 药理作用、器官亲和力',
       profileAyurveda: '阿育吠陀档案 - 味、性质、效能、消化后作用、三能影响',
-      profilePersian: '波斯/尤纳尼档案 - 体质和元素',
+      profileUnani: '波斯/尤纳尼档案 - 体质和元素',
       profileMongolian: '蒙古传统医学档案 - 元素、三根、味道',
       referenceData: '参考数据',
       referenceDataDesc: '每个医学体系定义自己的参考术语分类法，带有多语言标签：',
@@ -570,7 +570,7 @@ export default {
       i18n: '国际化（i18n）',
       i18nDesc: '所有本体术语使用 SKOS prefLabel 进行多语言支持。标签存储在数据库，而非应用程序代码中：',
       serialization: '序列化格式',
-      serializationDesc: "所有数据以 JSON-LD 格式存储，具有适当的 {'@'}context 以实现语义互操作性。{'@'}context 文件定义 tcm:、ayurveda:、western:、persian:、mongolian: 和 botany: 词汇的前缀。"
+      serializationDesc: "所有数据以 JSON-LD 格式存储，具有适当的 {'@'}context 以实现语义互操作性。{'@'}context 文件定义 tcm:、ayurveda:、western:、unani:、mongolian: 和 botany: 词汇的前缀。"
     }
   },
   // Basics page
@@ -680,9 +680,9 @@ export default {
     mahabhutasDesc: '阿育吠陀的五大元素',
     ayurvedaCategoriesDesc: '阿育吠陀草药按治疗作用的分类',
     prabhavasDesc: '无法从其他属性预测的草药特异作用',
-    // Persian
+    // Unani
     temperamentsDesc: '尤纳尼医学中的四种体质',
-    persianElementsDesc: '波斯医学中的四元素',
+    unaniElementsDesc: '波斯医学中的四元素',
     degreesDesc: '波斯医学中的强度等级',
     // Mongolian
     elementsDesc: '蒙古医学中的五元素',

@@ -6,24 +6,68 @@ A comprehensive multilingual encyclopedia of medicinal plants, herbs, vitamins, 
 
 Herbapedia provides evidence-based information in **three languages**:
 
-- 🇬🇧 **English** (default)
-- 🇭🇰 **Traditional Chinese** (zh-HK)
-- 🇨🇳 **Simplified Chinese** (zh-CN)
+- English (default)
+- Traditional Chinese (zh-Hant)
+- Simplified Chinese (zh-Hans)
 
-Content categories:
+Content is organized by **six medical systems**:
 
-- **Chinese Herbs** - Traditional Chinese medicinal plants and fungi
-- **Western Herbs** - European and North American herbal medicines
-- **Vitamins** - Essential vitamins for human health
-- **Minerals** - Important dietary minerals and trace elements
-- **Nutrients** - Beneficial compounds and supplements
+- Traditional Chinese Medicine (TCM)
+- Western Herbalism
+- Ayurveda
+- Unani Medicine
+- Mongolian Traditional Medicine
+- Modern Medicine (Evidence-Based)
 
 ## Architecture
 
-This project is designed to work both as:
+### Data Flow
 
-1. A **standalone Vue.js application**
-2. An integrated section of the main SIPM website
+```
+data-herbapedia/                    herbapedia-site/
+    (Source Data)                       (Vue App)
+        │                                    │
+        ├── entities/                        │
+        │   ├── preparations/                │
+        │   ├── botanical/                   │
+        │   └── sources/                     │
+        │                                    │
+        ├── profiles/                        │
+        │   ├── tcm/                         │
+        │   ├── western/                     │
+        │   ├── ayurveda/                    │
+        │   ├── unani/                       │
+        │   └── mongolian/                   │
+        │                                    │
+        └── systems/                         │
+            └── (reference data)             │
+                                             │
+                         ┌───────────────────┘
+                         │
+                         ▼
+            ┌────────────────────────┐
+            │  Graph Browser Adapter │
+            │  (src/api/graphBrowser)│
+            │                        │
+            │  - import.meta.glob    │
+            │  - IRI extraction      │
+            │  - Query methods       │
+            └────────────────────────┘
+                         │
+                         ▼
+            ┌────────────────────────┐
+            │     Vue Composables    │
+            │  (useHerbData,         │
+            │   useFilters)          │
+            └────────────────────────┘
+                         │
+                         ▼
+            ┌────────────────────────┐
+            │       Vue Views        │
+            │  (Preparations, Plants,│
+            │   Systems, etc.)       │
+            └────────────────────────┘
+```
 
 ### Tech Stack
 
@@ -31,26 +75,42 @@ This project is designed to work both as:
 - Vite 6 + vite-ssg (Static Site Generation)
 - Vue Router 4 with locale prefixes
 - vue-i18n for UI translations
-- YAML for content storage
+- JSON-LD structured data (via `@herbapedia/data` package)
 - Glass morphism design system (shared with SIPM)
+
+### Key Components
+
+| Component | Purpose |
+|-----------|---------|
+| `src/api/graphBrowser.ts` | Data access layer - loads JSON-LD entities |
+| `src/composables/useHerbData.js` | Preparation-centric data hooks |
+| `src/composables/useFilters.js` | Filter state with URL sync |
+| `src/i18n/` | UI translations (en, zh-Hans, zh-Hant) |
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js 18+
-- npm 9+
+- Node.js 20+
+- pnpm 9+
 
 ### Installation
 
 ```bash
-npm install
+# Clone with submodules (data-herbapedia)
+git clone --recursive https://github.com/herbapedia/herbapedia-site.git
+
+# Or if already cloned
+git submodule update --init --recursive
+
+# Install dependencies
+pnpm install
 ```
 
 ### Development
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 Open http://localhost:5173
@@ -58,203 +118,65 @@ Open http://localhost:5173
 ### Build
 
 ```bash
-npm run build
+pnpm build
 ```
 
 ### Preview Production Build
 
 ```bash
-npm run preview
+pnpm preview
 ```
 
-## Content Management
+## Data Architecture
 
-### Directory Structure
+### Entity Types
 
-```
-src/content/herbs/
-├── index.yaml              # Index file with totals
-├── ginseng/                # Each herb in its own directory
-│   ├── en.yaml            # English content
-│   ├── zh-HK.yaml         # Traditional Chinese content
-│   ├── zh-CN.yaml         # Simplified Chinese content
-│   └── images/
-│       └── ginseng.jpg    # Herb image
-├── lingzhi-reishi/
-│   ├── en.yaml
-│   ├── zh-HK.yaml
-│   ├── zh-CN.yaml
-│   └── images/
-│       └── lingzhi-reishi.jpg
-└── ...
-```
+| Entity | Description | Path |
+|--------|-------------|------|
+| HerbalPreparation | Processed herbal products | `entities/preparations/*/entity.jsonld` |
+| PlantSpecies | Botanical sources | `entities/botanical/species/*/entity.jsonld` |
+| TCMProfile | Traditional Chinese Medicine data | `profiles/tcm/*/profile.jsonld` |
+| WesternProfile | Western herbalism data | `profiles/western/*/profile.jsonld` |
+| AyurvedaProfile | Ayurvedic medicine data | `profiles/ayurveda/*/profile.jsonld` |
+| UnaniProfile | Unani medicine data | `profiles/unani/*/profile.jsonld` |
+| MongolianProfile | Mongolian medicine data | `profiles/mongolian/*/profile.jsonld` |
 
-### YAML Schema
+### IRI Patterns
 
-Each herb entry follows this schema:
-
-```yaml
-# Ginseng
-# Source: https://www.vitaherbapedia.com/en/shop/chiherbs-en/ginseng/
-# Language: en
-
-id: "ginseng"
-slug: "ginseng"
-category: "chinese-herbs"
-title: "Ginseng"
-scientific_name: "Panax Ginseng C. A. Mey"  # Optional
-image: "images/ginseng.jpg"
-
-history: |
-  Historical background of the herb.
-
-introduction: |
-  Brief introduction to the herb.
-
-traditional_usage: |
-  Traditional and historical usage.
-
-modern_usage: |
-  Modern applications and usage.
-
-functions: |
-  Functions and benefits.
-
-metadata:
-  source: "vitaherbapedia.com"
-  source_url: "https://www.vitaherbapedia.com/en/shop/chiherbs-en/ginseng/"
-  scraped_at: "2026-02-18T08:38:57.865Z"
-  language: "en"
-```
-
-### Content Fields
-
-The following content fields are supported (based on source website availability):
-
-| Field | Description | Availability |
-|-------|-------------|--------------|
-| `history` | Historical background | Most herbs |
-| `introduction` | Brief introduction | Most herbs |
-| `traditional_usage` | Traditional usage | All herbs |
-| `modern_usage` | Modern applications | Some herbs |
-| `functions` | Functions and benefits | Some herbs |
-
-## Content Verification
-
-### Overview
-
-The verification script checks all herb entries for:
-
-1. **Language completeness** - All three languages (en, zh-HK, zh-CN) present
-2. **Content completeness** - All available content sections populated
-
-### Usage
-
-```bash
-# Pretty console output with colors and emojis
-node scripts/verify-content.js
-
-# Output as JSON (for programmatic use)
-node scripts/verify-content.js --json
-
-# Generate markdown report and JSON report
-node scripts/verify-content.js --report
-```
-
-### Output
-
-The script produces:
-
-1. **Console output** - Color-coded summary with:
-   - Overall statistics
-   - Language coverage percentages
-   - List of problematic entries with source URLs
-   - Missing languages and content fields
-
-2. **Markdown report** (`CONTENT_REPORT.md`) - Contains:
-   - Summary table
-   - Language coverage table
-   - GitHub issue checklists for each problematic entry
-
-3. **JSON report** (`content-report.json`) - Machine-readable data
-
-### Example Console Output
+All entities use consistent IRI patterns:
 
 ```
-======================================================================
-🌿 HERBAPEDIA CONTENT VERIFICATION REPORT 🌿
-======================================================================
-Generated: 2026-02-18T09:42:57.588Z
-
-📊 OVERALL SUMMARY
-──────────────────────────────────────────────────
-  📁 Total entries: 178
-  ✅ Complete (all languages): 175
-  ❌ Incomplete: 3
-
-🌐 LANGUAGE COVERAGE
-──────────────────────────────────────────────────
-  🇬🇧 English              178/178 (100%) ✅
-  🇭🇰 Traditional Chinese  178/178 (100%) ✅
-  🇨🇳 Simplified Chinese   175/178 (98%) ⚠️
-
-🚨 ENTRIES WITH ISSUES (3)
-──────────────────────────────────────────────────
-
-🌿 Garlic
-   Slug: garlic
-   🔗 https://www.vitaherbapedia.com/en/shop/westherbs-en/garlic/
-   ❌ Missing languages: 🇨🇳 zh-CN
-   ⚠️ 🇬🇧 en missing content: functions
-   ⚠️ 🇭🇰 zh-HK missing content: modern_usage, functions
+https://www.herbapedia.org/entity/{type}/{slug}
+https://www.herbapedia.org/system/{system}/{type}/{value}
 ```
 
-### Example Markdown Checklist
+Future graph patterns (when Knowledge Graph API is enabled):
 
-The report generates copy-pasteable checklists for GitHub issues:
-
-```markdown
-## Garlic
-
-**Source:** https://www.vitaherbapedia.com/en/shop/westherbs-en/garlic/
-
-### Tasks
-
-- [ ] Add Simplified Chinese (zh-CN) translation
-- [ ] Add `functions` to English (en)
-- [ ] Add `modern_usage` to Traditional Chinese (zh-HK)
-- [ ] Add `functions` to Traditional Chinese (zh-HK)
+```
+https://www.herbapedia.org/graph/{type}/{slug}
+https://www.herbapedia.org/graph/vocab/{system}/{type}/{value}
 ```
 
-## Scraping
+### Using the Graph Browser Adapter
 
-### Scrape All Content
+```typescript
+import { dataset } from '@/api/graphBrowser'
 
-To scrape content from vitaherbapedia.com:
+// Get a preparation with all its profiles
+const prep = dataset.getPreparation('dried-ginger-rhizome')
+console.log(prep?.name?.en) // "Dried Ginger Rhizome"
 
-```bash
-# Scrape all content (English + Chinese)
-node scripts/scrape-herbapedia.js
-```
+// Get profiles for a preparation
+const profiles = dataset.getProfilesForPreparation('dried-ginger-rhizome')
+console.log(profiles.tcm?.pinyin) // "Gān Jiāng"
 
-The scraper uses multiple matching strategies:
+// Get reference data
+const nature = dataset.getNature('hot')
+console.log(nature?.prefLabel?.en) // "Hot"
 
-1. **Scientific name matching** - Exact match on normalized scientific names
-2. **Partial scientific name match** - For variations in naming
-3. **Image filename matching** - Matches herbs by og:image filename
-4. **Title matching** - Falls back to English title in Chinese title
-
-### Manual Chinese Content
-
-For herbs that can't be auto-matched, create a manual mapping in the fetcher script:
-
-```javascript
-const MANUAL_MAPPINGS = {
-  'herb-slug': {
-    'zh-HK': 'https://www.vitaherbapedia.com/zh/shop/...',
-    'zh-CN': 'https://www.vitaherbapedia.com/cn/shop/...'
-  }
-}
+// Get statistics
+const counts = dataset.getCounts()
+console.log(counts.preparations) // Number of preparations
 ```
 
 ## URL Structure
@@ -262,36 +184,109 @@ const MANUAL_MAPPINGS = {
 ### English (default)
 
 - Home: `/`
-- Herbs index: `/herbs`
-- Category: `/herbs/chinese-herbs`
-- Herb detail: `/herbs/chinese-herbs/ginseng`
+- Preparations: `/preparations`
+- Preparation detail: `/preparations/dried-ginger-rhizome`
+- Sources: `/sources/botanical`
+- Source detail: `/sources/botanical/ginger`
+- Systems: `/systems/tcm`
+- TCM Natures: `/systems/tcm/natures`
 
-### Traditional Chinese (zh-HK)
+### Traditional Chinese (zh-Hant)
 
-- Home: `/zh-HK`
-- Herbs index: `/zh-HK/herbs`
-- Category: `/zh-HK/herbs/chinese-herbs`
-- Herb detail: `/zh-HK/herbs/chinese-herbs/ginseng`
+- Home: `/zh-Hant`
+- Preparations: `/zh-Hant/preparations`
+- etc.
 
-### Simplified Chinese (zh-CN)
+### Simplified Chinese (zh-Hans)
 
-- Home: `/zh-CN`
-- Herbs index: `/zh-CN/herbs`
-- Category: `/zh-CN/herbs/chinese-herbs`
-- Herb detail: `/zh-CN/herbs/chinese-herbs/ginseng`
+- Home: `/zh-Hans`
+- Preparations: `/zh-Hans/preparations`
+- etc.
 
-## Integration with SIPM
+## Filter System
 
-To integrate Herbapedia into the main SIPM site:
+The preparations index supports comprehensive filtering:
 
-1. Copy the `src/content/herbs/` directory to SIPM's `src/content/`
-2. Copy `src/i18n/` to SIPM's source tree
-3. Copy the routes from `src/router/index.js` to SIPM's router
-4. Copy the views and components to SIPM's source tree
-5. Update navigation in SIPM's TheHeader component
-6. Merge `package.json` dependencies
+### TCM Filters
+
+- Nature (hot, warm, neutral, cool, cold)
+- Flavor (sweet, sour, bitter, acrid, salty, bland, astringent)
+- Meridian (lung, large intestine, stomach, spleen, etc.)
+- Category (release exterior, clear heat, etc.)
+
+### Western Filters
+
+- Action (adaptogen, anti-inflammatory, etc.)
+- Organ affinity (liver, heart, etc.)
+
+### Ayurveda Filters
+
+- Rasa (taste)
+- Guna (quality)
+- Virya (potency)
+- Vipaka (post-digestive effect)
+- Dosha effect (Vata, Pitta, Kapha)
+
+### Unani Filters
+
+- Temperament
+- Element
+
+### Mongolian Filters
+
+- Element
+- Taste
+- Root
+
+Filters sync with URL query parameters for shareable filtered views.
+
+## CI/CD
+
+The project uses GitHub Actions for automated builds and deployment:
+
+1. **Build Job**: Checks out both site and data repos, installs dependencies, builds the site
+2. **Deploy Job**: Deploys to GitHub Pages on main branch
+
+See `.github/workflows/deploy.yml` for details.
+
+## Project Structure
+
+```
+herbapedia-site/
+├── src/
+│   ├── api/
+│   │   ├── graphBrowser.ts    # Data access layer
+│   │   └── dataset.ts         # Re-export for backward compatibility
+│   ├── composables/
+│   │   ├── useHerbData.js     # Data hooks
+│   │   ├── useFilters.js      # Filter state management
+│   │   └── useHerb.js         # Legacy YAML support
+│   ├── i18n/
+│   │   ├── index.js           # i18n setup
+│   │   ├── locales.js         # Locale definitions
+│   │   └── messages/          # Translation files
+│   ├── router/
+│   │   └── index.js           # Vue Router config
+│   ├── styles/
+│   │   └── main.css           # Global styles
+│   └── views/
+│       ├── HomeView.vue
+│       ├── PreparationsView.vue
+│       ├── PreparationDetailView.vue
+│       ├── PlantsView.vue
+│       ├── SystemsView.vue
+│       └── ...
+├── vite.config.js             # Vite configuration
+├── package.json
+└── README.md
+```
+
+## Related Projects
+
+- **data-herbapedia**: Source data repository containing JSON-LD entities
+- **SIPM**: Main website that can integrate Herbapedia content
 
 ## License
 
-Content sourced from vitaherbapedia.com (Vita Green Products Co Ltd).
+Content sourced from various botanical and medical references.
 Website code is proprietary to SIPM.

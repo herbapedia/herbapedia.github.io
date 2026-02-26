@@ -134,12 +134,12 @@ const systems = computed(() => [
     referenceCount: 31 // 6 rasa + 20 guna + 2 virya + 3 vipaka
   },
   {
-    id: 'persian',
+    id: 'unani',
     icon: '🌙',
-    name: t('systems.persian.name'),
+    name: t('systems.unani.name'),
     nativeName: 'طب یونانی / Unani',
-    description: t('systems.persian.description'),
-    profileCount: stats.persian,
+    description: t('systems.unani.description'),
+    profileCount: stats.unani,
     referenceCount: 8 // 4 temperaments + 4 elements
   },
   {
@@ -223,7 +223,7 @@ const systems = computed(() => [
 .system-card--tcm:hover { border-color: #22c55e; }
 .system-card--western:hover { border-color: #3b82f6; }
 .system-card--ayurveda:hover { border-color: #f97316; }
-.system-card--persian:hover { border-color: #8b5cf6; }
+.system-card--unani:hover { border-color: #8b5cf6; }
 .system-card--mongolian:hover { border-color: #06b6d4; }
 
 .system-card__header {
